@@ -1,0 +1,118 @@
+body, table, pre, code, button, input, h1, h2, h3, h4, h5, h6{
+    // Font family setup
+    font-family: 'proxima-nova', 'Webdings', 'serif';
+    font-weight: 400;
+    font-size: var(--bodyFontSize);
+}
+
+body{
+    // transition: background-color .25s ease-in-out;
+}
+
+:root{
+    
+    a{
+        text-decoration: none;
+        color: var(--textColorPrimary);
+    }
+
+    --defaultRadius: 20px;
+
+    // fonts
+    --bodyFontSize: 16px;
+    --mainMenuFontSize: 16px;
+
+    // colored
+    --accentPurple: #7F5AF0;
+    --accentPurpleTransparent: rgba(127, 90, 240, 0.3);;
+    --hoverPurple: #7452DB;
+    --pink: #FF92DE;
+    --dataPink: #FF5470;
+    --dataPinkTransparent: rgba(255, 84, 112, 0.1);;
+    --hoverDataPink: #E84D66;
+    --orange: #FF8E3C;
+    --yellow: #FDC300;
+    --green: #2CB67D;
+    --blue: #3489F7;
+    
+    // basic
+    --white: #fff;
+    --black: #3D3B39;
+    --gradient: linear-gradient(94.22deg, #FF92E1 -18.3%, #FDC300 118.89%);
+
+    --radius: 20px;
+    --shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    --underlay: #00000033;
+    
+    // light mode
+    --bg: #fff; // ! new
+    --bgCard: #fff; // ! new
+    --bgCardBorder: #EFEFEF; // ! new
+    --bgCardHover: rgba(239, 239, 239, 0.56); // ! new
+    --bgCardActive: #EFEFEF; // ! new
+    --bgCardBorder: #EFEFEF; // ! new
+    //
+    --inputTextBg: #f9f9f9; // ! new
+    //-
+    --cream: #FCF5E3;
+    --darkGrayPlus: #5F6676;
+    --darkGray: #6F7786;
+    --midGray: #C0C0C0;
+    --lightGrayPlus: #EFEFEF;
+    --lightGrayPlusTransparent: rgba(239, 239, 239, 0.56);
+    --lightGray: #F9F9F9;
+    --lightGrayTransparent: rgba(249, 249, 249, 0.56);
+    --transparent: rgba(255, 255, 255, 0.05);
+    // 
+    --textColorPrimary: #3d3b39; // ! new
+    --textColorSecondary: #6f7786; // ! new
+    --textColorInverted: #FFF; // ! new
+    
+    //
+    --scrollThumb: #00000033; // ! new
+    
+    // dark mode
+    &.dark {
+        //
+        --bg: #1E1E1E; // ! new
+        --bgCard: #282828; // ! new
+        --bgCardBorder: #2F2F2F; // ! new
+        --bgCardHover: #333333; // ! new
+        --bgCardActive: #2E2E2E; // ! new
+        //
+        --inputTextBg: #2F2F2F; // ! new
+        // --cream: #FCF5E3;
+        --darkGrayPlus: #2E2E2E;
+        --darkGray: #2F2F2F;
+        --midGray: #333333;
+        //?? --lightGrayPlus: #EFEFEF;
+        //?? --lightGrayPlusTransparent: rgba(239, 239, 239, 0.56);
+        --lightGray: #a9a9a9;
+        --lightGrayTransparent: rgba(169, 169, 169, 0.56);
+        --transparent: rgba(0, 0, 0, 0.05);
+        //
+        //!! --midBlack: #252525;
+        //!! --lightBlack: #282828;
+        //
+        --textColorPrimary: #fff; // ! new
+        --textColorSecondary: #a9a9a9; // ! new
+        --textColorInverted: #1E1E1E; // ! new
+
+        //
+        --scrollThumb: #333333; // ! new
+
+        li:not(.active) > .icon{
+            svg{
+                filter: brightness(0) invert(1);
+            }
+        }
+        .chevron:not(.active) > .arrow, .chevron:not(.active) > .menu{
+            svg{
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+
+    
+
+}

@@ -1,0 +1,103 @@
+
+// Structure ⬇️
+// -
+// button
+// |span
+// ||.icon (optional)
+// ||.label (mandatory)
+// ||.chevron (optional)
+// -
+
+button{
+
+    // primary (default)
+    width: auto;
+    height: 48px;
+    border-radius: 16px;
+    background: linear-gradient(var(--bgCard, var(--black, var(--bgCard))), var(--bgCard, var(--dark-mode-bg-black, var(--bgCard)))) padding-box, var(--gradient) border-box;
+    color: var(--textColorPrimary);
+    border: 2px solid transparent;
+    display: grid;
+    align-content: center;
+    place-content: center;
+    span{
+        grid-template-columns: auto 1fr auto;
+        display: grid;
+        .icon{
+            width: 20px;
+            margin-right: 5px;
+            svg{
+                width: 20px !important;
+                height: 20px !important;
+            }
+        }
+        .label{
+            height: 100%;
+            display: grid;
+            align-content: center;
+            justify-content: left;
+        }
+        .chevron{
+            display: grid;
+            place-self: center;
+            .arrow, .menu{
+                width: auto;
+                margin-left: -8px;
+            }
+            svg{
+                width: 16px !important;
+                height: 16px !important;
+            }
+        }        
+    }
+
+    // secondary (rounded corners)
+    &.secondary{
+        border-radius: 100px;
+        background: var(--bgCard);
+        border-color: var(--bgCardBorder);
+        cursor: pointer;
+    }
+
+    &.tertiary{
+        cursor: pointer;
+        border-color: transparent;
+        background: var(--bgCardHover);
+        color: var(--textColorSecondary);
+        padding: 0px 20px;
+        transition: box-shadow .5s ease-in-out;
+        &:hover{
+            box-shadow: inset 0px 0px 50px #00000010;
+            color: var(--textColorPrimary);
+        }
+    }
+
+    &.purple{
+        cursor: pointer;
+        border-color: transparent;
+        background: var(--accentPurple);
+        color: var(--white);
+        padding: 0px 20px;
+        transition: box-shadow .5s ease-in-out;
+        &:hover{
+            box-shadow: inset 0px 0px 50px #00000010;
+            color: var(--white);
+            background-color: var(--hoverPurple);
+        }
+        &:disabled{
+            background: var(--bgCardHover);
+            color: var(--textColorSecondary);
+            opacity: .25 !important;
+        }
+    }
+
+    &:hover{
+        background-color: var(--bgCardHover);
+        &.active{
+            background-color: var(--bgCardActive);
+        }
+    }
+    &.active{
+        background-color: var(--bgCardActive);
+    }
+}

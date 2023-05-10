@@ -1,0 +1,19 @@
+{
+    "items":[
+        {
+            "name": "Network",
+            "value": "Mainnet",
+            "tooltip": ""
+        },
+        {
+            "name": "Current version",
+            "value": "1.0.15",
+            "tooltip": ""
+        },
+        {
+            "name": "Commit",
+            "value": "AbbasjdhKJAJKjkashdkajsdKAJSjkahJKASHJDKBASDbmAs",
+            "tooltip": ""
+        }
+    ]
+}

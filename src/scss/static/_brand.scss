@@ -1,0 +1,33 @@
+.brand{
+    padding-top: 24px;
+    max-height: 88px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    img{
+        height: 100%;
+        &.standard{
+            display: block;
+        }
+        &.symbol{
+            display: none;
+            width: 40px;
+        }
+        @media screen and (max-width: 1024px) {
+            height: 100%;
+            &.standard{
+                visibility: hidden;
+                display: none;
+            }
+            &.symbol{
+                display: block;
+            }
+        }
+    }
+    @media screen and (max-width: 512px) {
+        position: fixed;
+        top: 0px;
+        left: 24px;
+        visibility: hidden;
+    }
+}

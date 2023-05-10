@@ -1,0 +1,37 @@
+// webkit reset
+input:focus,textarea:focus,select:focus, input:focus-visible, button:focus-visible{
+  border:1px solid #transparent;
+  -webkit-box-shadow:0 0 6px #transparent;
+  -moz-box-shadow:0 0 5px #transparent;
+  box-shadow:0 0 5px #transparent;
+  outline: none;
+}
+//
+
+.input{
+    position: relative;
+    input[type="text"], input[type="number"]{
+        border: none;
+        background: var(--inputTextBg);
+        border-radius: 16px;
+        height: auto;
+        padding: 20px;
+        font-weight: 700;
+        color: var(--textColorPrimary);
+        width: calc(100% - 84px);
+        margin-top: 24px;
+        padding-left: 64px;
+        @media screen and (max-width: 1439px) {
+            // width: calc(100% - 350px);
+        }
+    }
+    .icon{
+        position: absolute;
+        top: calc(50% - 3px);
+        left: 20px;
+        img, svg{
+            width: 24px;
+            height: 24px;
+        }
+    }
+}

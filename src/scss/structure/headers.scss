@@ -1,0 +1,23 @@
+h1, h2, h3, h4, h5, h6{
+    --header-multiplier: 2.2;
+    color: var(--text-color-primary);
+    font-size: calc(var(--bodyFontSize) * var(--header-multiplier));
+    font-weight: 500;
+    line-height: calc(var(--bodyFontSize) * var(--header-multiplier));
+    margin: calc(10px * var(--header-multiplier)) auto;
+}
+h2{
+    --header-multiplier: 2;
+}
+h3{
+    --header-multiplier: 1.8;
+}
+h4{
+    --header-multiplier: 1.4;
+}
+h5{
+    --header-multiplier: 1.2;
+}
+h6{
+    --header-multiplier: 0.9;
+}
