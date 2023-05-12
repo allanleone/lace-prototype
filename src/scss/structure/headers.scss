@@ -1,10 +1,16 @@
 h1, h2, h3, h4, h5, h6{
     --header-multiplier: 2.2;
     color: var(--text-color-primary);
-    font-size: calc(var(--bodyFontSize) * var(--header-multiplier));
     font-weight: 500;
-    line-height: calc(var(--bodyFontSize) * var(--header-multiplier));
     margin: calc(10px * var(--header-multiplier)) auto;
+    line-height: calc(var(--bodyFontSize) * var(--header-multiplier));
+    font-size: calc(var(--bodyFontSize) * var(--header-multiplier));
+    align-self: flex-start;
+    width: 100%;
+    @media screen and (max-width: 512px){
+        // line-height: calc(var(--bodyFontSize) * calc(var(--header-multiplier) / 1.25));
+        // font-size: calc(var(--bodyFontSize) * calc(var(--header-multiplier) / 1.25));
+    }
 }
 h2{
     --header-multiplier: 2;

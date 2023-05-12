@@ -1,5 +1,5 @@
 <script lang="ts">
-import QACodeAddFunds from '../components/static/ui/AddFunds.vue';
+import QACodeAddFunds from '../components/static/AddFunds.vue';
 export default {
     data() {
         return {}
@@ -14,10 +14,13 @@ export default {
 </script>
 
 <template lang="pug">
-h1.animated.toggleInLeft NFTs
-QACodeAddFunds/
+.nfts
+    h1.animated.fadeInUp NFTs
+    QACodeAddFunds/
 </template>
 
 <style lang="scss">
-
+.nfts{
+    display: grid;
+}
 </style>

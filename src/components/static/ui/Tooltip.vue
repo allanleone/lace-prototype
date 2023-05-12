@@ -15,7 +15,30 @@ export default {
 }
 </script>
 <style lang="scss">
-// style -> @/src/scss/components/toggle.scss
+.tooltip{
+    position: absolute;
+    .tooltip-content{
+        height: auto;
+        z-index: 1;
+        margin-top: -60px;
+        margin-left: calc(-50% - 33px);
+        display: grid;
+        justify-content: center;
+    }
+    .icon-tooltip{
+        //
+    }
+    .label-tooltip{
+        width: auto;
+        padding: 10px;
+        background-color: var(--bgCard);
+        box-shadow: var(--shadow);
+        border-radius: 12px;
+        max-width: 300px;
+        white-space: nowrap;
+        text-align: center;
+    }
+}
 </style>
 <template lang="pug">
 .tooltip(v-if="visibility")

@@ -1,5 +1,5 @@
 <script lang="ts">
-import QACodeAddFunds from '../components/static/ui/AddFunds.vue';
+import QACodeAddFunds from '../components/static/AddFunds.vue';
 import Input from '../components/static/ui/Input.vue';
 export default {
     data() {
@@ -52,13 +52,14 @@ export default {
 
 <template lang="pug">
 .staking 
-    h1.animated.toggleInLeft Staking
+    h1.animated.fadeInUp Staking
     QACodeAddFunds.add-funds/
-    h4 
-        span Stake pools
-        span.count (2456)
-    Input.search-staking(placeholder="Search by type, token name or ID")/
-    .table-staking
+    .search-stake-pools.animated.fadeInUp.delay-0-6s
+        h4 
+            span Stake pools
+            span.count (2456)
+        Input.search-staking(placeholder="Search by type, token name or ID")/
+    .table-staking.animated.fadeInUp.delay-0-8s
         .table-header.table-row
             .table-col
                 span Pool name
@@ -87,102 +88,136 @@ export default {
 </template>
 
 <style lang="scss">
-.add-funds{
-    margin-top: 60px;
-    margin-bottom: 40px;
-}
-.count{
-    color: var(--textColorSecondary);
-    font-size: var(--bodyFontSize);
-    margin-left: 10px;
-}
-.search-staking{
-    input{
-        margin-top: 10px !important;
-    }
-    margin-bottom: 30px;
-}
-.table-staking{
+.staking{
     display: grid;
-    width: 100%;
-    overflow-y: hidden;
-    overflow-x: auto;
-    min-width: 335px;
-    .table-row{
+    .count{
+        color: var(--textColorSecondary);
+        font-size: var(--bodyFontSize);
+        margin-left: 10px;
+    }
+    .search-staking{
+        input{
+            margin-top: 10px !important;
+        }
+        margin-bottom: 10px;
+    }
+    .table-staking{
         display: grid;
-        grid-template-columns: 2fr .5fr 1fr auto;
-        padding: 20px 10px;
-        gap: 20px;
-        align-content: center;
-        position: relative;
-        cursor: pointer;
-        &:hover{
-            background-color: var(--bgCardHover);
-            border-radius: var(--radius);
-        }
-        .table-col{
+        width: 100%;
+        overflow-y: hidden;
+        overflow-x: auto;
+        min-width: 335px;
+        .table-row{
             display: grid;
+            grid-template-columns: 2fr .5fr 1fr auto;
+            padding: 20px 10px;
+            gap: 20px;
             align-content: center;
-        }
-        .data-stake{
-            display: grid;
-            grid-template-columns: 40px 1fr;
-            gap: 10px;
-            .thumb{
-                width: 32px;
-                height: 32px;
-                overflow: hidden;
-                padding: 4px;
-                border: solid 1px var(--bgCardBorder);
-                border-radius: 100px;
-                img{
+            position: relative;
+            cursor: pointer;
+            border-radius: var(--radius);
+            &:hover{
+                background-color: var(--bgCardHover);
+            }
+            .table-col{
+                display: grid;
+                align-content: center;
+            }
+            .data-stake{
+                display: grid;
+                grid-template-columns: 40px 1fr;
+                gap: 10px;
+                .thumb{
+                    width: 32px;
+                    height: 32px;
+                    overflow: hidden;
+                    padding: 4px;
+                    border: solid 1px var(--bgCardBorder);
                     border-radius: 100px;
-                    width: 100%;
-                    height: auto;
+                    img{
+                        border-radius: 100px;
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                .label{
+                    color: var(--textColorPrimary);
+                }
+                .address{
+                    color: var(--textColorSecondary);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                .label, .address{
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
             }
-            .label{
+            .stake-ros, .stake-cost, .stake-saturation{
                 color: var(--textColorPrimary);
             }
-            .address{
-                color: var(--textColorSecondary);
-            }
-            .label, .address{
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+            .stake-saturation{
+                display: grid;
+                grid-template-columns: 8px 1fr;
+                gap: 10px;
+                align-content: center;
+                .stake-status{
+                    width: 8px;
+                    height: 8px;
+                    background-color: #ccc;
+                    border-radius: 100px;
+                    display: inline-grid;
+                    margin-top: 6px;
+                    &.positive{
+                        background-color: var(--green);
+                    }
+                    &.negative{
+                        background-color: var(--orange);
+                    }
+                }
             }
         }
-        .stake-ros, .stake-cost, .stake-saturation{
-            color: var(--textColorPrimary);
-        }
-        .stake-saturation{
-            display: grid;
-            grid-template-columns: 8px 1fr;
+        @media screen and (max-width: 512px){
+            width: calc(100% + 18px);
+            min-width: auto;
+            display: flex;
+            grid-template-rows: 1fr;
             gap: 10px;
-            align-content: center;
-            .stake-status{
-                width: 8px;
-                height: 8px;
-                background-color: #ccc;
-                border-radius: 100px;
-                display: inline-grid;
-                margin-top: 6px;
-                &.positive{
-                    background-color: var(--green);
+            padding: 20px 10px;
+            margin: 0px -15px;
+            .table-row{
+                &:nth-child(2){
+                    margin-left: 10px;
                 }
-                &.negative{
-                    background-color: var(--orange);
+                &:last-child{
+                    margin-right: 15px;
                 }
+                &.table-header{
+                    display: none;
+                }
+                .data-stake{
+                    grid-template-columns: 40px 100px;
+                }
+                .table-col{
+                    width: 100%;
+                    width: 150px;
+                }
+                background-color: var(--bgCard);
+                box-shadow: var(--tinyShadow);
+                width: 150px;
+                display: grid;
+                grid-template-columns: 1fr;
             }
         }
-    }
-    .table-header{
-        &.table-row{
-            color: var(--textColorSecondary);
-            &:hover{
-                background-color: transparent;
-                cursor: default;
+        .table-header{
+            &.table-row{
+                color: var(--textColorSecondary);
+                &:hover{
+                    background-color: transparent;
+                    cursor: default;
+                }
             }
         }
     }

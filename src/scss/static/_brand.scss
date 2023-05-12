@@ -1,11 +1,13 @@
 .brand{
     padding-top: 24px;
-    max-height: 88px;
+    height: 40px;
+    margin-bottom: 40px;
     align-items: center;
     justify-content: center;
     display: flex;
     img{
         height: 100%;
+        max-width: 120px;
         &.standard{
             display: block;
         }

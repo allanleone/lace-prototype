@@ -9,6 +9,7 @@ import { RouterLink, RouterView, useRouter  } from 'vue-router'
 import UserMenu from '../components/static/UserMenu.vue';
 import MainMenu from '../components/static/MainMenu.vue';
 import Input from '../components/static/ui/Input.vue';
+import MainNetworkStatus from '../components/static/ui/MainNetworkStatus.vue';
 // -------------------------------------------------------
 
 //- Widgets ----------------------------------------------
@@ -16,6 +17,7 @@ import AboutYourWallet from '../components/widgets/AboutYourWallet.vue'
 import AboutLace from '../components/widgets/AboutLace.vue'
 import Search from '../components/widgets/Search.vue'
 import NetworkInfo from '../components/widgets/NetworkInfo.vue'
+import AddressBook from '../components/widgets/AddressBook.vue'
 // -------------------------------------------------------
 
 export default {
@@ -25,6 +27,7 @@ export default {
     data() {
         return {
             theme: this.store.theme,
+            page: null,
         }
     },
     components: {
@@ -36,12 +39,16 @@ export default {
         AboutLace,
         Search,
         NetworkInfo,
+        MainNetworkStatus,
+        AddressBook,
     },
     methods: {
         toggleSidebar() {
             if (this.store.get('sidebarVisible') == true) {
-                this.store.set({ key: 'sidebarVisible', value: false })
+                this.store.set({ key: 'widgetTransition', value: false })
+                this.store.setDelayed({ key: 'sidebarVisible', value: false })
             } else {
+                this.store.set({ key: 'widgetTransition', value: true })
                 this.store.set({ key: 'sidebarVisible', value: true })
             }
         },
@@ -52,10 +59,13 @@ export default {
             }else{
                 return true;
             }
+        },
+        checkPageName(){
+            return useRouter().currentRoute.value.name
         }
     },
     mounted(){
-
+        // this.page = useRouter().currentRoute.value.name
     },
 }
 </script>
@@ -68,20 +78,21 @@ export default {
                 .brand 
                     img(class="standard", :src="'assets/images/' + store.theme + '/lace.svg'", alt="")
                     img(class="symbol", :src="'assets/images/' + store.theme + '/lace_symbol.svg'", alt="")
+                    MainNetworkStatus/
                 //- 
                 //-  Main menu
                 MainMenu(theme="theme")/
         .col
             .sticky
-                .global-search
+                .global-search-content-placeholder
                     //- Input(type="text", placeholder="Search")
             .content
                 UserMenu(class="middle", :theme="theme", :store="store", :class="showOrHideSidebarOnThisPage() == false ? 'no-widgets' : ''")/
-                .widgets-overlay.animated.fadeIn(@click="toggleSidebar()", :class="store.sidebarVisible ? 'visible' : ''")
-                    .widgets
+                .widgets-overlay.animated(@click="toggleSidebar()", :class="(store.widgetTransition ? 'fadeIn' : 'fadeOut delay-0-5s') + (store.sidebarVisible ? ' visible ' : ' hidden ')")
+                    .widgets(v-if="showOrHideSidebarOnThisPage()", :class="(store.widgetTransition ? '' : 'animated toggleOutRight')")
                         .static-top
                         //- Search.animated.toggleInRight.delay-0-2s/
-                        //- AboutLace.animated.toggleInRight.delay-0-4s(title="About Lace")/
+                        AboutLace.animated.toggleInRight.delay-0-4s(title="About Lace")/
                         NetworkInfo.animated.toggleInRight.delay-0-6s(title="Network Info")/
                         AboutYourWallet.animated.toggleInRight.delay-0-8s(title="About your wallet")/
                     .underlay
@@ -89,11 +100,12 @@ export default {
         .col
             .sticky
                 UserMenu(class="side", :theme="theme", :store="store")/
-                .widgets(v-if="showOrHideSidebarOnThisPage()")
+                .widgets.animated
                     //- Search.animated.toggleInLeft.delay-0-2s/
-                    //- AboutLace.animated.toggleInLeft.delay-0-4s(title="About Lace")/
-                    NetworkInfo.animated.toggleInLeft.delay-0-6s(title="Network Info")/
-                    AboutYourWallet.animated.toggleInLeft.delay-0-8s(title="About your wallet")/
+                    NetworkInfo.animated.toggleInLeft.delay-0-2s(title="Network Info", v-show="checkPageName() == 'staking'")/
+                    AboutLace.animated.toggleInLeft.delay-0-2s(title="About Lace", v-show="checkPageName() == 'settings'")/
+                    AddressBook.animated.toggleInLeft.delay-0-2s(title="Add new address", v-show="checkPageName() == 'addressBook'")/
+                    AboutYourWallet.animated.toggleInLeft.delay-0-2s(title="About your wallet", v-show="checkPageName() == 'addressBook' || checkPageName() == 'tokens' || checkPageName() == 'nfts' || checkPageName() == 'activity' || checkPageName() == 'staking' || checkPageName() == 'dashboard'")/
 </template>
 
 <style lang="scss">
@@ -108,18 +120,26 @@ export default {
 @import '../scss/structure/headers';
 
 // General Components
-@import '../scss/components/globalSearch';
 @import '../scss/components/buttons';
 @import '../scss/components/pills';
-@import '../scss/components/toggle';
-@import '../scss/components/tooltip';
-@import '../scss/components/input';
 
 .widgets{
     z-index: 0;
     padding-bottom: 50px;
+    margin-top: 55px;
 }
-
+.global-search-content-placeholder{
+    display: grid;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 50px;
+    top: 0;
+    background: linear-gradient(180deg, var(--bg) 25%, transparent);
+    // background: var(--bg);
+    backdrop-filter: blur(0px);
+    z-index: 99;
+    visibility: hidden;
+}
 .widgets-overlay{
     width: 100%;
     position: fixed;
@@ -132,8 +152,9 @@ export default {
     overflow-x: hidden;
     overflow-y: scroll;
     justify-content: end;
-    background-color: #ffffffdd;
+    background-color: var(--underlay);
     display: none;
+    // backdrop-filter: blur(5px);
     @media screen and (min-width: 1280px) {
         display: none !important;
         &.visible{
@@ -142,6 +163,8 @@ export default {
     }
     &.visible{
         display: grid;
+        .widgets{
+        }
     }
     .widgets{
         max-width: 365px;
@@ -164,6 +187,7 @@ export default {
         height: 100px;
         background: linear-gradient(var(--bg) 80%, transparent);
         z-index: 1;
+        display: none;
     }
 }
 

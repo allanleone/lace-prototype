@@ -1,5 +1,6 @@
 <script>
 import Toggle from './ui/Toggle.vue'
+import MainNetworkStatus from './ui/MainNetworkStatus.vue'
 export default {
     props: {
         store: Object,
@@ -11,6 +12,7 @@ export default {
     },
     components: {
         Toggle,
+        MainNetworkStatus,
     },
     methods:{
         changeTheme(){
@@ -33,11 +35,13 @@ export default {
         },
         toggleSidebar() {
             if (this.store.get('sidebarVisible') == true) {
-                this.store.set({ key: 'sidebarVisible', value: false })
+                this.store.set({ key: 'widgetTransition', value: false })
+                this.store.setDelayed({ key: 'sidebarVisible', value: false })
             } else {
+                this.store.set({ key: 'widgetTransition', value: true })
                 this.store.set({ key: 'sidebarVisible', value: true })
             }
-        }
+        },
     },
 }
 </script>
@@ -130,14 +134,14 @@ export default {
                 transform: rotate(-180deg);
             }
             .label{
-                margin-right: 5px;
+                // margin-right: 5px;
                 width: 60px;
                 display: grid;
             }
         }
     }
     .sidemenu{
-        width: 48px;
+        width: 50px;
         transition: width .5s ease-in-out;
         display: none;
         @media screen and (max-width: 1280px) {
@@ -157,38 +161,63 @@ export default {
             grid-template-columns: auto auto;
             &.normal{
                 .square:nth-child(1){
-                    width: 10px;
-                }
-                .square:nth-child(2){
-                    width: 6px;
-                }
-            }
-            &.reverse{
-                .square:nth-child(1){
-                    width: 12px;
+                    width: 8px;
                 }
                 .square:nth-child(2){
                     width: 4px;
                 }
             }
+            &.reverse{
+                .square:nth-child(1){
+                    width: 10px;
+                }
+                .square:nth-child(2){
+                    width: 2px;
+                }
+            }
+            .arrow{
+                position: absolute;
+                width: 9px;
+                height: auto;
+                margin-left: 10px;
+                margin-top: 0px;
+                transform: rotate(180deg);
+                transition: transform .25s ease-in-out, opacity .25s ease-in-out;
+                display: none;
+                opacity: 0;
+                svg, img{
+                    width: 100%;
+                    height: auto;
+                }
+            }
             .square{
-                transition: width .5s ease-in-out, background-color .5s ease-in-out, border-radius .5s ease-in-out, ;
-                width: 8px;
-                height: 16px;
-                // border: solid 1px var(--bg);
-                --iconRadius: 4px;
+                transition: margin .25s ease-in-out,width .25s ease-in-out, background-color .25s ease-in-out, border-radius .25s ease-in-out, border-color .25s ease-in-out;
+                width: 6px;
+                height: 13px;
+                --iconRadius: 3px;
+                border: solid 2px var(--textColorPrimary);
                 &:nth-child(1){
+                    border-right-color: transparent;
                     border-radius: var(--iconRadius) 0px 0px var(--iconRadius);
-                    background: var(--lightGrayPlus);
+                    background: var(--transparent);
                 }
                 &:nth-child(2){
-                    background: var(--midGray);
+                    // border-left: none;
+                    // background: var(--midGray);
                     border-radius: 0px var(--iconRadius) var(--iconRadius) 0px ;
+                    margin-left: -2px;
                 }
             }
             padding: 0px 8px;
             margin: auto;
         }
+        // &.active{
+        //     .square{
+        //         &:nth-child(2){
+        //             background-color: var(--darkGray);
+        //         }
+        //     }
+        // }
         &:hover{
             // width: 100px;
             .label{
@@ -196,26 +225,68 @@ export default {
                 width: 50px;
                 display: grid;
             }
+            .arrow{
+                opacity: 1;
+            }
             .icon-custom{
+                // margin-left: 10px;
                 &.normal{
                     .square:nth-child(1){
-                        width: 16px;
-                        background-color: var(--darkGray);
+                        width: 12px;
+                        // background-color: var(--tex);
                         border-radius: var(--iconRadius);
+                        border-right-color: var(--textColorPrimary);
+                        // margin-left: 2px;
                     }
                     .square:nth-child(2){
                         width: 0px;
+                        // border-color: transparent;
+                        border-left-color: transparent;
                         background: var(--midGray);
+                    }
+                    @keyframes pingpongarrow1 {
+                        0%{margin-left: 10px}
+                        50%{margin-left: 12px}
+                        100%{margin-left: 10px}
+                    }
+                    .arrow{
+                        display: block;
+                        opacity: 1;
+                        transform: rotate(0deg);
+                        animation: pingpongarrow1 1.5s infinite;
+                        margin-top: -2px;
                     }
                 }
                 &.reverse{
                     .square:nth-child(1){
-                        width: 10px;
-                        background: var(--midGray);
+                        width: 8px;
                     }
                     .square:nth-child(2){
-                        width: 6px;
-                        background-color: var(--darkGray);
+                        width: 4px;
+                        background: var(--midGray);
+                        // background-color: var(--darkGray);
+                    }
+                    @keyframes pingpongarrow2 {
+                        0%{margin-left: 10px}
+                        50%{margin-left: 12px}
+                        100%{margin-left: 10px}
+                    }
+                    .arrow{
+                        display: block;
+                        opacity: 0;
+                        animation: pingpongarrow2 1s infinite ease-in-out;
+                        margin-left: 8px;
+                    }
+                }
+            }
+            .icon{
+                transition: transform .45s ease-in-out;
+            }
+            &.active{
+                .square{
+                    &:nth-child(2){
+                        background-color: var(--midGray);
+                        // margin-left: 0px;
                     }
                 }
             }
@@ -262,13 +333,13 @@ export default {
     .underlay{
         display: none;
         position: fixed;
-        background-color: var(--transparent);
+        // background: var(--gradientTransparent);
         top: 0;
         left: 0;
         width: 100%;
         height: 90px;
         z-index: -1;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(5px);
     }
     @media screen and (max-width: 1280px) {
         &.middle{
@@ -278,12 +349,16 @@ export default {
             }
             @media screen and (max-width: 1024px) {
                 right: 32px;
-                grid-template-columns: auto auto;
+                // grid-template-columns: auto auto;
                 .receive, .send, .expand{
-                    display: none;
+                    // display: none;
                 }
             }
             @media screen and (max-width: 512px) {
+                .receive, .send, .expand{
+                    display: none;
+                }
+                // grid-template-columns: auto auto;
                 right: 16px;
                 grid-template-columns: auto auto;
                 .expand{
@@ -340,7 +415,18 @@ export default {
         font-weight: 400;
         line-height: 24px;
         padding: 16px 16px;
-        margin: 0 8px;
+        margin: 4px -15px;
+        transition: background-color .25s ease-in-out;
+        border-radius: var(--radius);
+        &:hover{
+            background-color: var(--bgCardHover);
+        }
+        &.without-hover-effect{
+            background-color: transparent !important;
+            &:hover{
+                background-color: transparent !important;
+            }
+        }
     }
     hr{
         opacity: .15;
@@ -353,27 +439,28 @@ export default {
 .user-menu
     .brand 
         img(class="symbol", :src="'assets/images/' + theme + '/lace_symbol.svg'", alt="")
+        MainNetworkStatus/
     button.receive
         span
-            //- .icon 
-            //-     <svg width="1em" height="1em" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 4a1 1 0 1 0-2 0h2Zm-2 1a1 1 0 1 0 2 0h-2Zm7 10a1 1 0 1 0 0 2v-2Zm2 2a1 1 0 1 0 0-2v2Zm-8-1v-1a1 1 0 0 0-1 1h1Zm2 1a1 1 0 1 0 0-2v2Zm-3 3a1 1 0 1 0 2 0h-2Zm2-11a1 1 0 1 0-2 0h2Zm-1 3h-1a1 1 0 0 0 1 1v-1Zm4 7a1 1 0 1 0 0 2v-2Zm4 2a1 1 0 1 0 0-2v2Zm-16-10a1 1 0 1 0 0 2v-2Zm4 2a1 1 0 1 0 0-2v2Zm4.01 0a1 1 0 1 0 0-2v2Zm4 0a1 1 0 1 0 0-2v2Zm3.99-2a1 1 0 1 0 0 2v-2Zm.01 2a1 1 0 1 0 0-2v2ZM5.5 5h2V3h-2v2Zm2 0v2h2V5h-2Zm0 2h-2v2h2V7Zm-2 0V5h-2v2h2Zm0 0h-2a2 2 0 0 0 2 2V7Zm2 0v2a2 2 0 0 0 2-2h-2Zm0-2h2a2 2 0 0 0-2-2v2Zm-2-2a2 2 0 0 0-2 2h2V3Zm12 2h2V3h-2v2Zm2 0v2h2V5h-2Zm0 2h-2v2h2V7Zm-2 0V5h-2v2h2Zm0 0h-2a2 2 0 0 0 2 2V7Zm2 0v2a2 2 0 0 0 2-2h-2Zm0-2h2a2 2 0 0 0-2-2v2Zm-2-2a2 2 0 0 0-2 2h2V3Zm-12 14h2v-2h-2v2Zm2 0v2h2v-2h-2Zm0 2h-2v2h2v-2Zm-2 0v-2h-2v2h2Zm0 0h-2a2 2 0 0 0 2 2v-2Zm2 0v2a2 2 0 0 0 2-2h-2Zm0-2h2a2 2 0 0 0-2-2v2Zm-2-2a2 2 0 0 0-2 2h2v-2Zm6-11v1h2V4h-2Zm7 13h2v-2h-2v2Zm-6 0h2v-2h-2v2Zm-1-1v4h2v-4h-2Zm0-7v3h2V9h-2Zm5 12h4v-2h-4v2Zm-12-8h4v-2h-4v2Zm8 0h.01v-2h-.01v2Zm8 0h.01v-2h-.01v2Zm-8 0h4.01v-2H12.5v2Z" fill="url(#arrow-diagonal-down_component_svg__a)"></path><defs><linearGradient id="arrow-diagonal-down_component_svg__a" x1="1.57" y1="1.072" x2="25.027" y2="2.803" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"></stop><stop offset="1" stop-color="#FDC300"></stop></linearGradient></defs></svg>
+            .icon 
+                <svg width="1em" height="1em" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path style="fill: var(--orange);" d="M13.5 4a1 1 0 1 0-2 0h2Zm-2 1a1 1 0 1 0 2 0h-2Zm7 10a1 1 0 1 0 0 2v-2Zm2 2a1 1 0 1 0 0-2v2Zm-8-1v-1a1 1 0 0 0-1 1h1Zm2 1a1 1 0 1 0 0-2v2Zm-3 3a1 1 0 1 0 2 0h-2Zm2-11a1 1 0 1 0-2 0h2Zm-1 3h-1a1 1 0 0 0 1 1v-1Zm4 7a1 1 0 1 0 0 2v-2Zm4 2a1 1 0 1 0 0-2v2Zm-16-10a1 1 0 1 0 0 2v-2Zm4 2a1 1 0 1 0 0-2v2Zm4.01 0a1 1 0 1 0 0-2v2Zm4 0a1 1 0 1 0 0-2v2Zm3.99-2a1 1 0 1 0 0 2v-2Zm.01 2a1 1 0 1 0 0-2v2ZM5.5 5h2V3h-2v2Zm2 0v2h2V5h-2Zm0 2h-2v2h2V7Zm-2 0V5h-2v2h2Zm0 0h-2a2 2 0 0 0 2 2V7Zm2 0v2a2 2 0 0 0 2-2h-2Zm0-2h2a2 2 0 0 0-2-2v2Zm-2-2a2 2 0 0 0-2 2h2V3Zm12 2h2V3h-2v2Zm2 0v2h2V5h-2Zm0 2h-2v2h2V7Zm-2 0V5h-2v2h2Zm0 0h-2a2 2 0 0 0 2 2V7Zm2 0v2a2 2 0 0 0 2-2h-2Zm0-2h2a2 2 0 0 0-2-2v2Zm-2-2a2 2 0 0 0-2 2h2V3Zm-12 14h2v-2h-2v2Zm2 0v2h2v-2h-2Zm0 2h-2v2h2v-2Zm-2 0v-2h-2v2h2Zm0 0h-2a2 2 0 0 0 2 2v-2Zm2 0v2a2 2 0 0 0 2-2h-2Zm0-2h2a2 2 0 0 0-2-2v2Zm-2-2a2 2 0 0 0-2 2h2v-2Zm6-11v1h2V4h-2Zm7 13h2v-2h-2v2Zm-6 0h2v-2h-2v2Zm-1-1v4h2v-4h-2Zm0-7v3h2V9h-2Zm5 12h4v-2h-4v2Zm-12-8h4v-2h-4v2Zm8 0h.01v-2h-.01v2Zm8 0h.01v-2h-.01v2Zm-8 0h4.01v-2H12.5v2Z" fill="url(#arrow-diagonal-down_component_svg__a)"></path><defs><linearGradient id="arrow-diagonal-down_component_svg__a" x1="1.57" y1="1.072" x2="25.027" y2="2.803" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"></stop><stop offset="1" stop-color="#FDC300"></stop></linearGradient></defs></svg>
             .label Receive 
             .chevron
     button.send
         span
-            //- .icon 
-            //-     <svg width="1em" height="1em" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.964 4.636a1 1 0 1 0 0 2v-2Zm9.9 1h1a1 1 0 0 0-1-1v1Zm-1 9.9a1 1 0 1 0 2 0h-2Zm-12.435 2.12a1 1 0 0 0 1.414 1.415L5.43 17.657Zm3.535-11.02h9.9v-2h-9.9v2Zm8.9-1v9.9h2v-9.9h-2Zm.293-.707L5.429 17.657l1.414 1.414L19.571 6.343 18.157 4.93Z" fill="url(#arrow-diagonal-up_component_svg__a)"></path><defs><linearGradient id="arrow-diagonal-up_component_svg__a" x1="14.432" y1="-3.454" x2="28.133" y2="11.915" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"></stop><stop offset="1" stop-color="#FDC300"></stop></linearGradient></defs></svg>
+            .icon 
+                <svg width="1em" height="1em" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path style="fill: var(--orange);"  d="M8.964 4.636a1 1 0 1 0 0 2v-2Zm9.9 1h1a1 1 0 0 0-1-1v1Zm-1 9.9a1 1 0 1 0 2 0h-2Zm-12.435 2.12a1 1 0 0 0 1.414 1.415L5.43 17.657Zm3.535-11.02h9.9v-2h-9.9v2Zm8.9-1v9.9h2v-9.9h-2Zm.293-.707L5.429 17.657l1.414 1.414L19.571 6.343 18.157 4.93Z" fill="url(#arrow-diagonal-up_component_svg__a)"></path><defs><linearGradient id="arrow-diagonal-up_component_svg__a" x1="14.432" y1="-3.454" x2="28.133" y2="11.915" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"></stop><stop offset="1" stop-color="#FDC300"></stop></linearGradient></defs></svg>
             .label Send 
             .chevron
     button.secondary.expand
         span
             .icon
-                <svg width="1em" height="1em" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 8a1 1 0 0 0 2 0h-2Zm1-4V3a1 1 0 0 0-1 1h1Zm4 1a1 1 0 0 0 0-2v2Zm11 3a1 1 0 1 0 2 0h-2Zm1-4h1a1 1 0 0 0-1-1v1Zm-4-1a1 1 0 1 0 0 2V3Zm-11 13a1 1 0 1 0-2 0h2Zm-1 4h-1a1 1 0 0 0 1 1v-1Zm4 1a1 1 0 1 0 0-2v2Zm1.707-5.293a1 1 0 0 0-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 0 0 1.414 1.414l-1.414-1.414Zm-6 1.414a1 1 0 0 0 1.414-1.414L8.793 9.707ZM20.5 20v1a1 1 0 0 0 1-1h-1Zm-4.293-5.707a1 1 0 0 0-1.414 1.414l1.414-1.414ZM21.5 16a1 1 0 1 0-2 0h2Zm-5 3a1 1 0 1 0 0 2v-2ZM5.5 8V4h-2v4h2Zm-1-3h4V3h-4v2Zm17 3V4h-2v4h2Zm-1-5h-4v2h4V3Zm-17 13v4h2v-4h-2Zm1 5h4v-2h-4v2Zm.707-.293 5-5-1.414-1.414-5 5 1.414 1.414Zm11-11 5-5-1.414-1.414-5 5 1.414 1.414Zm-6-1.414-5-5-1.414 1.414 5 5 1.414-1.414Zm11 11-5-5-1.414 1.414 5 5 1.414-1.414ZM19.5 16v4h2v-4h-2Zm1 3h-4v2h4v-2Z" fill="currentColor"></path></svg>
+                <svg width="1em" height="1em" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path  d="M3.5 8a1 1 0 0 0 2 0h-2Zm1-4V3a1 1 0 0 0-1 1h1Zm4 1a1 1 0 0 0 0-2v2Zm11 3a1 1 0 1 0 2 0h-2Zm1-4h1a1 1 0 0 0-1-1v1Zm-4-1a1 1 0 1 0 0 2V3Zm-11 13a1 1 0 1 0-2 0h2Zm-1 4h-1a1 1 0 0 0 1 1v-1Zm4 1a1 1 0 1 0 0-2v2Zm1.707-5.293a1 1 0 0 0-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 0 0 1.414 1.414l-1.414-1.414Zm-6 1.414a1 1 0 0 0 1.414-1.414L8.793 9.707ZM20.5 20v1a1 1 0 0 0 1-1h-1Zm-4.293-5.707a1 1 0 0 0-1.414 1.414l1.414-1.414ZM21.5 16a1 1 0 1 0-2 0h2Zm-5 3a1 1 0 1 0 0 2v-2ZM5.5 8V4h-2v4h2Zm-1-3h4V3h-4v2Zm17 3V4h-2v4h2Zm-1-5h-4v2h4V3Zm-17 13v4h2v-4h-2Zm1 5h4v-2h-4v2Zm.707-.293 5-5-1.414-1.414-5 5 1.414 1.414Zm11-11 5-5-1.414-1.414-5 5 1.414 1.414Zm-6-1.414-5-5-1.414 1.414 5 5 1.414-1.414Zm11 11-5-5-1.414 1.414 5 5 1.414-1.414ZM19.5 16v4h2v-4h-2Zm1 3h-4v2h4v-2Z" fill="currentColor"></path></svg>
             .label Expand
             .chevron
     button.secondary.user-profile(@click="toggleUserMenu()", :class="store.get('userMenu') == 'opened' ? 'active' : ''")
         span
-            .status
+            //- .status
             .icon A
             .label
             .chevron
@@ -392,10 +479,12 @@ export default {
                         .status-icon
                         .status-label Synced
                 hr/
-                .item Address book
-                .item Settings
+                router-link(:to="'/address-book'")
+                    .item Address book
+                router-link(:to="'/settings'")
+                    .item Settings
                 hr/
-                .item
+                .item.without-hover-effect
                     Toggle(
                         @click.stop="changeTheme()"
                         :status="this.store.theme == 'light' ? true : false"
@@ -409,11 +498,18 @@ export default {
                     )/
                 hr/
                 .item Lock wallet
-    button.secondary.sidemenu.animated.fadeInLeft(@click.stop="toggleSidebar()")
+    button.secondary.sidemenu.animated.zoomIn(@click.stop="toggleSidebar()", :class="store.sidebarVisible ? 'active' : ''")
         span
             .icon-custom(:class="store.sidebarVisible ? 'normal' : 'reverse'")
                 .square
                 .square
+                .arrow 
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 5L21 12M21 12L14 19M21 12L3 12" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            //- .icon
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6H20M4 12H20M13 18H20" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                //- <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V7C20 7.55228 19.5523 8 19 8H5C4.44772 8 4 7.55228 4 7V5Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 13C4 12.4477 4.44772 12 5 12H11C11.5523 12 12 12.4477 12 13V19C12 19.5523 11.5523 20 11 20H5C4.44772 20 4 19.5523 4 19V13Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 13C16 12.4477 16.4477 12 17 12H19C19.5523 12 20 12.4477 20 13V19C20 19.5523 19.5523 20 19 20H17C16.4477 20 16 19.5523 16 19V13Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                //- <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 16L3 12M3 12L7 8M3 12L21 12" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                //- <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 16H12V12H11M12 8H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             //- .label
                 span(v-if="!store.sidebarVisible") Show
                 span(v-if="store.sidebarVisible") Hide

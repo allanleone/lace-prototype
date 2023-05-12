@@ -26,6 +26,8 @@ button{
         .icon{
             width: 20px;
             margin-right: 5px;
+            display: grid;
+            place-content: center;
             svg{
                 width: 20px !important;
                 height: 20px !important;

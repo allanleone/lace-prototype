@@ -97,6 +97,7 @@ export default {
 <style lang="scss">
 .main-menu{
     height: calc(100% - 65px);
+    width: 215px;
     ul{
         font-size: var(--mainMenuFontSize);
         font-weight: 500;
@@ -143,7 +144,7 @@ export default {
         box-shadow: 0px 0px 3px rgba(0,0,0,.10);
         ul{
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(5, auto);
             white-space: nowrap;
             height: 100%;
             margin: auto;
@@ -155,6 +156,12 @@ export default {
                 margin: auto;
                 .icon{
                     margin: auto;
+                }
+            }
+            a{
+                text-align: center;
+                &:last-child{
+                    display: none;
                 }
             }
         }
@@ -169,6 +176,7 @@ export default {
             background-color: var(--bg);
             z-index: 99;
             box-shadow: 25px 0px 20px var(--bgCard);
+            margin-top: -16px;
             // li:hover{
             //     .label{
             //         display: block;

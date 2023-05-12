@@ -1,5 +1,5 @@
 <script lang="ts">
-import QACodeAddFunds from '../components/static/ui/AddFunds.vue';
+import QACodeAddFunds from '../components/static/AddFunds.vue';
 export default {
     data() {
         return {}
@@ -11,10 +11,13 @@ export default {
 </script>
 
 <template lang="pug">
-h1.animated.toggleInLeft Tokens
-QACodeAddFunds/
+.tokens
+    h1.animated.fadeInUp Tokens
+    QACodeAddFunds/
 </template>
 
 <style lang="scss">
-
+.tokens{
+    display: grid;
+}
 </style>

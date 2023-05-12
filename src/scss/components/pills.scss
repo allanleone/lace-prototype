@@ -7,6 +7,12 @@
     border-radius: 16px;
     grid-template-columns: 16px 1fr;
     width: auto;
+    &.info{
+        grid-template-columns: 1fr;
+        background-color: var(--cream);
+        border-color: transparent;
+        margin: 5px;
+    }
     .status-icon{
         width: 8px;
         height: 8px;

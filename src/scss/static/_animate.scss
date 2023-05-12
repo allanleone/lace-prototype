@@ -869,6 +869,23 @@ $duration: .45s;
     animation-name: spacingIn;
 }
 
+@keyframes cubeInRight {
+    from {
+        opacity: 1;
+        transform: scale(.25) translate3d(60px, 0, 0) rotateY(-40deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translate3d(0, 0, 0) rotateY(0deg);
+    }
+}
+
+.cubeInRight {
+    -webkit-animation-name: cubeInRight;
+    animation-name: cubeInRight;
+}
+
 @keyframes cubeInDown {
     from {
         opacity: 0;
@@ -998,6 +1015,21 @@ $duration: .45s;
 
 .toggleInLeft {
     animation-name: toggleLeft;
+}
+
+@keyframes toggleOutRight {
+    from {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(20%, 0, 0);
+    }
+}
+
+.toggleOutRight {
+    animation-name: toggleOutRight;
 }
 
 @keyframes toggleRight {

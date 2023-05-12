@@ -21,6 +21,11 @@ body{
     // fonts
     --bodyFontSize: 16px;
     --mainMenuFontSize: 16px;
+    
+    @media screen and (max-width: 512px){
+        --bodyFontSize: 14px;
+        --mainMenuFontSize: 14px;
+    }
 
     // colored
     --accentPurple: #7F5AF0;
@@ -42,7 +47,8 @@ body{
 
     --radius: 20px;
     --shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
-    --underlay: #00000033;
+    --tinyShadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08);
+    --underlay: rgba(85, 83, 81, 0.88) ;
     
     // light mode
     --bg: #fff; // ! new
@@ -81,7 +87,7 @@ body{
         --bgCardActive: #2E2E2E; // ! new
         //
         --inputTextBg: #2F2F2F; // ! new
-        // --cream: #FCF5E3;
+        --cream: #2e2e2e; // ! new
         --darkGrayPlus: #2E2E2E;
         --darkGray: #2F2F2F;
         --midGray: #333333;
@@ -90,6 +96,7 @@ body{
         --lightGray: #a9a9a9;
         --lightGrayTransparent: rgba(169, 169, 169, 0.56);
         --transparent: rgba(0, 0, 0, 0.05);
+        --gradientTransparent: linear-gradient(90deg, #ff0000, #ffffff22);
         //
         //!! --midBlack: #252525;
         //!! --lightBlack: #282828;

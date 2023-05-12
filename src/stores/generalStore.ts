@@ -6,6 +6,7 @@ export const generalStore = defineStore('general', {
         theme: "light",
         userMenu: "closed",
         sidebarVisible: false,
+        widgetTransition: true,
     }),
     getters: {
         currentTheme: (state) => state.theme,
@@ -14,6 +15,11 @@ export const generalStore = defineStore('general', {
     actions: {
         async set(val) {
             this[val.key] = val.value
+        },
+        setDelayed(val) {
+            setTimeout(()=>{
+                this[val.key] = val.value
+            }, 1000) 
         },
     },
 })

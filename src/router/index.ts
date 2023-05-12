@@ -33,6 +33,16 @@ const router = createRouter({
       path: '/dappstore',
       name: 'DAppStore',
       component: () => import('../views/DAppStore.vue')
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import('../views/Settings.vue')
+    },
+    {
+      path: '/address-book',
+      name: 'addressBook',
+      component: () => import('../views/AddressBook.vue')
     }
   ]
 })

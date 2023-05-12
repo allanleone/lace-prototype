@@ -14,13 +14,12 @@ export default {
 </script>
 
 <template lang="pug">
-.activity
-    h1.animated.fadeInUp Activity
-    QACodeAddFunds/
+.settings
+    h1.animated.fadeInUp Settings
 </template>
 
 <style lang="scss">
-.activity{
+.settings{
     display: grid;
 }
 </style>
