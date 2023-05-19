@@ -104,7 +104,7 @@ export default {
                     //- Search.animated.toggleInLeft.delay-0-2s/
                     NetworkInfo.animated.toggleInLeft.delay-0-2s(title="Network Info", v-show="checkPageName() == 'staking'")/
                     AboutLace.animated.toggleInLeft.delay-0-2s(title="About Lace", v-show="checkPageName() == 'settings'")/
-                    AddressBook.animated.toggleInLeft.delay-0-2s(title="Add new address", v-show="checkPageName() == 'addressBook'")/
+                    //- AddressBook.animated.toggleInLeft.delay-0-2s(title="Add new address", v-show="checkPageName() == 'addressBook'")/
                     AboutYourWallet.animated.toggleInLeft.delay-0-2s(title="About your wallet", v-show="checkPageName() == 'addressBook' || checkPageName() == 'tokens' || checkPageName() == 'nfts' || checkPageName() == 'activity' || checkPageName() == 'staking' || checkPageName() == 'dashboard'")/
 </template>
 
@@ -183,11 +183,12 @@ export default {
         position: fixed;
         top: 0;
         right: 20px;
-        width: 400px;
+        width: 410px;
         height: 100px;
-        background: linear-gradient(var(--bg) 80%, transparent);
+        background: linear-gradient(var(--fadingGradient) 50%, transparent 100%);
         z-index: 1;
-        display: none;
+        // display: none;
+        border-radius: 100px 0px 0px 100px;
     }
 }
 

@@ -20,6 +20,7 @@ button{
     display: grid;
     align-content: center;
     place-content: center;
+    cursor: pointer;
     span{
         grid-template-columns: auto 1fr auto;
         display: grid;
@@ -52,17 +53,23 @@ button{
             }
         }        
     }
+    box-shadow: none;
+    transition: box-shadow .25s ease-in-out;
+    &:hover{
+        box-shadow: var(--tinyShadow);
+    }
 
     // secondary (rounded corners)
     &.secondary{
         border-radius: 100px;
         background: var(--bgCard);
         border-color: var(--bgCardBorder);
-        cursor: pointer;
+        &:hover{
+             box-shadow: none;
+        }
     }
 
     &.tertiary{
-        cursor: pointer;
         border-color: transparent;
         background: var(--bgCardHover);
         color: var(--textColorSecondary);
@@ -75,7 +82,6 @@ button{
     }
 
     &.purple{
-        cursor: pointer;
         border-color: transparent;
         background: var(--accentPurple);
         color: var(--white);

@@ -43,7 +43,12 @@ const router = createRouter({
       path: '/address-book',
       name: 'addressBook',
       component: () => import('../views/AddressBook.vue')
-    }
+    },
+    // {
+    //   path: '/portal',
+    //   name: 'Portal',
+    //   component: () => import('../components/3d/PortalEffect.vue')
+    // }
   ]
 })
 

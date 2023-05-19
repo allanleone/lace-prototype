@@ -49,6 +49,8 @@ body{
     --shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
     --tinyShadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08);
     --underlay: rgba(85, 83, 81, 0.88) ;
+
+    --fadingGradient: #696766; // ! new
     
     // light mode
     --bg: #fff; // ! new
@@ -107,6 +109,8 @@ body{
 
         //
         --scrollThumb: #333333; // ! new
+
+        --fadingGradient: #4C4A49; // ! new
 
         li:not(.active) > .icon{
             svg{

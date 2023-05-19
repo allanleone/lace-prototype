@@ -40,6 +40,9 @@
 body{
     overflow-y: auto;
     overflow-x: hidden;
+    #lace, .main{
+        height: 100%;
+    }
     @media screen and (max-width: 768px){
         .main{
             min-width: 768px;
@@ -116,7 +119,7 @@ body{
             .content{
                 // padding-top: 75px;
                 // min-height: 1500px;
-                height: 100%;
+                height: calc(100% - 100px);
             }
         }
         &:nth-child(3){
