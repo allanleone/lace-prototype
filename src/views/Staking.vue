@@ -1,8 +1,11 @@
-<script lang="ts">
+<script>
 import QACodeAddFunds from '../components/static/AddFunds.vue';
 import Table from '../components/static/Table.vue';
 import Input from '../components/static/ui/Input.vue';
 export default {
+    props: {
+        store: Object,
+    },
     data() {
         return {
             props: {
@@ -47,11 +50,14 @@ export default {
                     cost: "1.25% + 120ADA",
                     saturation: "12.14"
                 },
-            ]
+            ],
+            onStakes: [],
         }
     },
     methods: {
-
+        openSidedrawer(item) {
+            this.store.set({ key: 'sidedrawerVisible', value: true })
+        }
     },
     components: {
         QACodeAddFunds,
@@ -63,46 +69,24 @@ export default {
 
 <template lang="pug">
 .staking 
-    h1.animated.fadeInUp Staking
+    .page-title
+        h1.animated.fadeInUp
+            span Staking
+            span.counter ({{ onStakes.length }})
     QACodeAddFunds.add-funds/
     .search-stake-pools.animated.fadeInUp.delay-0-6s
-        h4 
+        h3 
             span Stake pools
             span.count (2456)
         Input.search-staking(placeholder="Search by type, token name or ID")/
         Table.animated.fadeInUp.delay-0-8s(
             :design="design"
             :data="stakepools"
+            :store="store"
         )/
-    //- .table-staking.animated.fadeInUp.delay-0-8s
-    //-     .table-header.table-row
-    //-         .table-col
-    //-             span Pool name
-    //-         .table-col
-    //-             span ROS
-    //-         .table-col
-    //-             span Cost
-    //-         .table-col
-    //-             span Saturation
-    //-     .table-body.table-row(v-for="sp in stakepools")
-    //-         .table-col
-    //-             .data-stake
-    //-                 .thumb 
-    //-                     img(:src="sp.thumb")
-    //-                 .info
-    //-                     .label {{ sp.label }}
-    //-                     .address {{ sp.address }}
-    //-         .table-col
-    //-             .stake-ros {{ sp.ros }}%
-    //-         .table-col
-    //-             .stake-cost {{ sp.cost }}
-    //-         .table-col
-    //-             .stake-saturation 
-    //-                 .stake-status(:class="sp.saturation > 0 ? 'positive' : 'negative'")
-    //-                 div {{ sp.saturation }}%
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .staking{
     display: grid;
     .count{

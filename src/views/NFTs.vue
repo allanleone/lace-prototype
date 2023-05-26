@@ -1,17 +1,19 @@
-<script lang="ts">
+<script>
 import QACodeAddFunds from '../components/static/AddFunds.vue';
 import Card from '../components/3d/Card.vue';
 export default {
+    props: {
+        store: Object,
+    },
     data() {
         return {
             nfts: [
                 {
                     id: "1",
                     label: "Lorem ipsum dolor",
-                    thumb: "https://editor.analyticsvidhya.com/uploads/81701adidas-nft-bored-ape-810x524.jpg",
+                    thumb: "https://public.nftstatic.com/static/nft/res/c10afbb0984f44379d835050ef6c1c6a.jpeg",
                     policyId: "habkjsh42jk3hjkawshdeajshed",
                     assetId: "habkjsh42jk3hjkawshdeajshed",
-                    aproxPrice: "6,394.00",
                     aproxPrice: "5,387.00",
                     owners: "8210",
                     volume: "12.34m",
@@ -24,7 +26,6 @@ export default {
                     policyId: "habkjsh42jk3hjkawshdeajshed",
                     assetId: "habkjsh42jk3hjkawshdeajshed",
                     aproxPrice: "6,394.00",
-                    aproxPrice: "5,387.00",
                     owners: "8210",
                     volume: "12.34m",
 
@@ -36,7 +37,6 @@ export default {
                     policyId: "habkjsh42jk3hjkawshdeajshed",
                     assetId: "habkjsh42jk3hjkawshdeajshed",
                     aproxPrice: "6,394.00",
-                    aproxPrice: "5,387.00",
                     owners: "8210",
                     volume: "12.34m",
 
@@ -44,10 +44,9 @@ export default {
                 {
                     id: "4",
                     label: "Xillum dolore eu fugiat nulla pariatur.",
-                    thumb: "https://static.stambol.com/wordpress/wp-content/uploads/2022/01/nfts-provide-immersive-exclusive-experiences-in-metaverse-oasis-1024x576.jpg",
+                    thumb: "https://lh3.googleusercontent.com/aDukKM0MNXSgS4W_JTQC8aCDVa1pQlphr3nquDpni9rM8uaPJUKkDEgaC1HoMFdBgwEQ11MlT1H_GDCC5TGq7413FKTCgwsOD_VwNQ",
                     policyId: "habkjsh42jk3hjkawshdeajshed",
                     assetId: "habkjsh42jk3hjkawshdeajshed",
-                    aproxPrice: "6,394.00",
                     aproxPrice: "5,387.00",
                     owners: "8210",
                     volume: "12.34m",
@@ -59,7 +58,6 @@ export default {
                     thumb: "https://cdn.dribbble.com/users/83671/screenshots/16682250/media/1b7652fe20e98f14a5f938aa0da701d6.png?compress=1&resize=400x300",
                     policyId: "habkjsh42jk3hjkawshdeajshed",
                     assetId: "habkjsh42jk3hjkawshdeajshed",
-                    aproxPrice: "6,394.00",
                     aproxPrice: "5,387.00",
                     owners: "8210",
                     volume: "12.34m",
@@ -68,11 +66,10 @@ export default {
                 {
                     id: "6",
                     label: "Dsunt in culpa qui officia deserunt",
-                    thumb: "https://i.guim.co.uk/img/media/ef8492feb3715ed4de705727d9f513c168a8b196/37_0_1125_675/master/1125.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=cb647d991d8897cc8a81d2c33c4406d5",
+                    thumb: "https://i.guim.co.uk/img/media/ef8492feb3715ed4de705727d9f513c168a8b196/37_0_1125_675/master/1125.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=d456a2af571d980d8b2985472c262b31",
                     policyId: "habkjsh42jk3hjkawshdeajshed",
                     assetId: "habkjsh42jk3hjkawshdeajshed",
                     aproxPrice: "6,394.00",
-                    aproxPrice: "5,387.00",
                     owners: "8210",
                     volume: "12.34m",
 
@@ -81,7 +78,9 @@ export default {
         }
     },
     methods: {
-        
+        openSidedrawer(item){
+            this.store.set({ key: 'sidedrawerVisible', value: true })
+        }
     },
     components: {
         QACodeAddFunds,
@@ -93,7 +92,9 @@ export default {
 <template lang="pug">
 .nfts
     .page-title
-        h1.animated.fadeInUp NFTs
+        h1.animated.fadeInUp
+            span NFTs
+            span.counter ({{ nfts.length }})
         span.floating-add-button.animated.toggleInRight
             button
                 span
@@ -102,7 +103,11 @@ export default {
                     .label Create folder
     //- QACodeAddFunds/
     .cards-space
-        .nft-card.animated.fadeInUp(v-for="(nft, i) in nfts", :class="i < 9 ? 'delay-1-' + (i + 1) + 's' : 'delay-2s'")
+        .nft-card.animated.fadeInUp(
+            v-for="(nft, i) in nfts", 
+            :class="i < 9 ? 'delay-1-' + (i + 1) + 's' : 'delay-2s'"
+            @click="openSidedrawer(nft)"
+            )
             .poster
                 .nft-thumb-image(:style="'background-image: url(' + nft.thumb +')'")
             .nft-title {{ nft.label }}
@@ -111,18 +116,18 @@ export default {
             p(slot="content") Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .nfts{
     .cards-space{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         text-align: center;
-        // gap: 20px;
+        gap: 10px;
         .nft-card{
             width: auto;
-            height: 220px;
+            height: auto;
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 60px;
             cursor: pointer;
             padding: 10px;
             border-radius: var(--radius);
@@ -142,12 +147,13 @@ export default {
                     overflow: hidden;
                     box-shadow: var(--tinyShadow);
                     aspect-ratio: 1 / 1;
-                    // transition: transform .05s ease-in-out;
+                    transition: background-size 1s ease-in-out;
                     width: 100%;
                     height: 100%;
                     background-color: transparent;
-                    background-size: cover;
-                    background-position: center center;
+                    background-position: 50% 50%;
+                    background-size: auto 120%;
+                    background-repeat: no-repeat;
                 }
             }
             .nft-title{

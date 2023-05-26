@@ -13,7 +13,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .first-run {
     display: grid;
     place-content: center;
@@ -42,12 +42,12 @@ export default {
         opacity: 0;
         animation: fadeOutDown .25s ease-in-out forwards;
     }
-    .cards{
+    .dappstore-cards{
         display: grid;
         grid-template-columns: 1fr 1fr;
         margin: 20px auto;
         gap: 20px;
-        .card{
+        .dappstore-card{
             position: relative;
             border-radius: var(--radius);
             width: 150px;
@@ -109,15 +109,15 @@ export default {
     .splash-screen
         h2.title.animated.fadeInDown Welcome  
         .subtitle.animated.fadeIn.delay-0-2s Before we start, choose your favorite way to navigate.
-        .cards
-            .card.animated.fadeIn.delay-0-4s(@click="selected = 1", :class="selected == 1 ? 'selected' : ''")
+        .dappstore-cards
+            .dappstore-card.animated.fadeIn.delay-0-4s(@click="selected = 1", :class="selected == 1 ? 'selected' : ''")
                 .select
                 .help 
                 .icon 
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.98562 17.9861H5.90278C8.12726 17.9861 9.93056 19.7894 9.93056 22.0139V24.0278C9.93056 26.2523 11.7339 28.0556 13.9583 28.0556C16.1828 28.0556 17.9861 29.8589 17.9861 32.0833V38.0144M11.9444 3.75903V6.90972C11.9444 9.69032 14.1986 11.9444 16.9792 11.9444H17.9861C20.2106 11.9444 22.0139 13.7477 22.0139 15.9722C22.0139 18.1967 23.8172 20 26.0417 20C28.2661 20 30.0694 18.1967 30.0694 15.9722C30.0694 13.7477 31.8727 11.9444 34.0972 11.9444L36.241 11.9444M26.0417 37.0937V32.0833C26.0417 29.8589 27.845 28.0556 30.0694 28.0556H36.241M38.125 20C38.125 30.0102 30.0102 38.125 20 38.125C9.98984 38.125 1.875 30.0102 1.875 20C1.875 9.98984 9.98984 1.875 20 1.875C30.0102 1.875 38.125 9.98984 38.125 20Z" stroke="#3D3B39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 .label Explorer
                 .desc An original way to discover DApps.
-            .card.animated.fadeIn.delay-0-6s(@click="selected = 2", :class="selected == 2 ? 'selected' : ''")
+            .dappstore-card.animated.fadeIn.delay-0-6s(@click="selected = 2", :class="selected == 2 ? 'selected' : ''")
                 .select
                 .help 
                 .icon 

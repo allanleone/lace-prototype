@@ -20,15 +20,16 @@ export default {
     let logica = (e) => {
 
       let rect = e.target.getBoundingClientRect();
-      let x = ((rect.width / 2 - (e.clientX - rect.left)) / 4) * -1;
-      let y = (-(rect.height / 2 - (e.clientY - rect.top)) / 4) * 1;
+      let x = ((rect.width / 2 - (e.clientX - rect.left)) / 10) * -1;
+      let y = (-(rect.height / 2 - (e.clientY - rect.top)) / 10) * -1;
       let [xShadow, yShadow] = [(-x * 60) / 50, -(-y * 60) / 50];
 
       if (this.hoverInAction) {
         e.target.style.transiton = `none`;
       }
-      e.target.style.boxShadow = `${xShadow}px ${yShadow}px 8px rgba(150,150,150,.15)`;
+      e.target.style.boxShadow = `${xShadow}px ${yShadow}px 20px rgba(150,150,150,.35)`;
       e.target.style.transform = `rotateX(${y}deg) rotateY(${x}deg) scale(1.15)`;
+      e.target.style.backgroundPosition = `calc(50% - calc(${x}% / 2)) calc(50% + calc(${y}% / 1))`;
     };
 
     const elemento = document.querySelectorAll('.nft-card');
@@ -37,7 +38,7 @@ export default {
       elm.querySelector(".poster").addEventListener('mouseenter', (e)=>{
         if(!this.hoverInAction){
           this.hoverInAction = true;
-          elm.querySelector(".poster .nft-thumb-image").style.transition = `transform .25s ease-out, box-shadow .25s ease-out`;
+          elm.querySelector(".poster .nft-thumb-image").style.transition = `transform .25s ease-out, box-shadow .25s ease-out, background-position .25s ease-out`;
           elm.querySelector(".poster .nft-thumb-image").style.transform = `scale(1.1)`;
           setTimeout(()=>{
             elm.querySelector(".poster .nft-thumb-image").style.transition = `none`;
@@ -59,6 +60,16 @@ export default {
         elm.querySelector(".poster .nft-thumb-image").style.boxShadow = `0px 0px 0px transparent`;
         this.hoverInAction = false;
       });
+      elm.querySelector(".poster").addEventListener('mousedown', () => {
+        elm.querySelector(".poster").style.transform = `rotateX(0deg) rotateY(0deg)`;
+        elm.querySelector(".poster").style.boxShadow = `0px 0px 0px transparent`;
+        elm.querySelector(".poster").style.transition = `all .5s ease-in-out`;
+
+        elm.querySelector(".poster .nft-thumb-image").style.transition = `all .5s ease-in-out`;
+        elm.querySelector(".poster .nft-thumb-image").style.transform = `rotateX(0deg) rotateY(0deg)`;
+        elm.querySelector(".poster .nft-thumb-image").style.boxShadow = `0px 0px 0px transparent`;
+        this.hoverInAction = false;
+      });
     });
     //////////////////////
       
@@ -70,11 +81,11 @@ export default {
 <template lang="pug">
 div
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 
 .card{
   width: 300px;
-  height: 350px;
+  height: 350px; 
   display: flex;
   justify-content: center;
   flex-direction: column;

@@ -97,6 +97,31 @@ button{
             color: var(--textColorSecondary);
             opacity: .25 !important;
         }
+        img, svg{
+            filter: brightness(0) invert(1);
+        }
+    }
+
+    &.navigation{
+        width: 40px;
+        height: 40px;
+        border-radius: 100px;
+        border-color: transparent !important;
+        display: inline-block;
+        place-content: center;
+        background: var(--bgCardHover);
+        &:hover{
+            background: var(--bgCardActive);
+            box-shadow: none;
+        }
+        span{
+            text-align: center;
+            grid-template-columns: 1fr;
+            place-content: center;
+            .icon{
+                margin: auto !important;
+            }
+        }
     }
 
     &:hover{

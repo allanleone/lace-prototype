@@ -1,0 +1,48 @@
+// webkit reset
+input:focus,textarea:focus,select:focus, input:focus-visible, button:focus-visible{
+  border:1px solid transparent;
+  -webkit-box-shadow: 0 0 6px #transparent;
+  -moz-box-shadow: 0 0 5px #transparent;
+  box-shadow: 0 0 5px #transparent;
+  outline: none;
+}
+//
+label{
+    position: relative;
+    height: auto;
+    input[type="text"], input[type="number"]{
+        position: relative;
+        border: none;
+        background: var(--inputTextBg);
+        border-radius: 16px;
+        height: auto;
+        padding: 20px;
+        font-weight: 700;
+        color: var(--textColorPrimary);
+        width: calc(100% - 40px);
+        margin-top: 24px;
+        margin-bottom: 20px;
+        @media screen and (max-width: 1439px) {
+            // width: calc(100% - 350px);
+        }
+        &::placeholder{
+            font-weight: 400;
+        }
+    }
+    .icon{
+        position: absolute;
+        top: calc(50% - 3px);
+        left: 20px;
+        img, svg{
+            width: 24px;
+            height: 24px;
+        }
+    }
+    .error-feedback{
+        position: absolute;
+        color: var(--hoverDataPink);
+        margin: 0 20px;
+        height: 20px;
+        bottom: -45px;
+    }
+}

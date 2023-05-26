@@ -82,6 +82,7 @@ export default {
             li(
                 :class="menu.selected ? 'active' : ''"
                 @mouseenter="hoverIndex = index"
+                @mouseleave="hoverIndex = -1"
             )
                 .icon(
                     v-html="menu.iconSelected"

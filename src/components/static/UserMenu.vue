@@ -142,13 +142,13 @@ export default {
     }
     .sidemenu{
         width: 50px;
-        transition: width .5s ease-in-out;
+        // transition: width .25s ease-in-out;
         display: none;
         @media screen and (max-width: 1280px) {
             display: grid;
         }
         .label{
-            transition: width .5s ease-in-out;
+            // transition: width .25s ease-in-out;
             overflow: hidden;
             width: 0;
         }
@@ -169,25 +169,31 @@ export default {
             }
             &.reverse{
                 .square:nth-child(1){
-                    width: 10px;
+                    width: 9px;
+                    // background-color: var(--darkGray);
                 }
                 .square:nth-child(2){
-                    width: 2px;
+                    width: 3px;
                 }
             }
             .arrow{
                 position: absolute;
-                width: 9px;
+                width: 6px;
                 height: auto;
-                margin-left: 10px;
-                margin-top: 0px;
+                margin-left: 7px;
+                margin-top: 1px;
                 transform: rotate(180deg);
-                transition: transform .25s ease-in-out, opacity .25s ease-in-out;
-                display: none;
+                // transition: transform .25s ease-in-out, opacity .25s ease-in-out;
+                // display: none;
                 opacity: 0;
                 svg, img{
                     width: 100%;
                     height: auto;
+                }
+                &.dark{
+                    svg, img{
+                        filter: brightness(0) invert(1);
+                    }
                 }
             }
             .square{
@@ -211,13 +217,17 @@ export default {
             padding: 0px 8px;
             margin: auto;
         }
-        // &.active{
-        //     .square{
-        //         &:nth-child(2){
-        //             background-color: var(--darkGray);
-        //         }
-        //     }
-        // }
+        &.active{
+            .square{
+                &:nth-child(1){
+                    background-color: var(--darkGray);
+                }
+                &:nth-child(2){
+                    // background-color: var(--midGray);
+                    // margin-left: 0px;
+                }
+            }
+        }
         &:hover{
             // width: 100px;
             .label{
@@ -227,13 +237,17 @@ export default {
             }
             .arrow{
                 opacity: 1;
+                display: block;
+                svg{
+                    filter: brightness(0) invert(1);
+                }
             }
             .icon-custom{
                 // margin-left: 10px;
                 &.normal{
                     .square:nth-child(1){
                         width: 12px;
-                        // background-color: var(--tex);
+                        // background-color: var(--textColorPrimary);
                         border-radius: var(--iconRadius);
                         border-right-color: var(--textColorPrimary);
                         // margin-left: 2px;
@@ -241,30 +255,33 @@ export default {
                     .square:nth-child(2){
                         width: 0px;
                         // border-color: transparent;
-                        border-left-color: transparent;
+                        border-left-color: var(--textColorPrimary);
                         background: var(--midGray);
                     }
                     @keyframes pingpongarrow1 {
-                        0%{margin-left: 10px}
-                        50%{margin-left: 12px}
-                        100%{margin-left: 10px}
+                        0%{margin-left: 12px}
+                        50%{margin-left: 14px}
+                        100%{margin-left: 12px}
                     }
                     .arrow{
                         display: block;
                         opacity: 1;
                         transform: rotate(0deg);
-                        animation: pingpongarrow1 1.5s infinite;
-                        margin-top: -2px;
+                        animation: pingpongarrow1 1s infinite;
+                        margin-top: -5px;
+                        svg{
+                            filter: brightness(0);
+                        }
                     }
                 }
                 &.reverse{
                     .square:nth-child(1){
-                        width: 8px;
+                        width: 7px;
+                        background-color: var(--darkGray);
                     }
                     .square:nth-child(2){
-                        width: 4px;
-                        background: var(--midGray);
-                        // background-color: var(--darkGray);
+                        width: 5px;
+                        // background: var(--midGray);
                     }
                     @keyframes pingpongarrow2 {
                         0%{margin-left: 10px}
@@ -273,9 +290,9 @@ export default {
                     }
                     .arrow{
                         display: block;
-                        opacity: 0;
-                        animation: pingpongarrow2 1s infinite ease-in-out;
-                        margin-left: 8px;
+                        opacity: 1;
+                        animation: pingpongarrow2 .75s infinite ease-in-out;
+                        margin-left: 2px;
                     }
                 }
             }
@@ -284,6 +301,9 @@ export default {
             }
             &.active{
                 .square{
+                    &:nth-child(1){
+                        background-color: var(--white);
+                    }
                     &:nth-child(2){
                         background-color: var(--midGray);
                         // margin-left: 0px;
@@ -419,12 +439,12 @@ export default {
         transition: background-color .25s ease-in-out;
         border-radius: var(--radius);
         &:hover{
-            background-color: var(--bgCardHover);
+            // background-color: var(--bgCardHover);
         }
         &.without-hover-effect{
             background-color: transparent !important;
             &:hover{
-                background-color: transparent !important;
+                // background-color: transparent !important;
             }
         }
     }
@@ -503,7 +523,7 @@ export default {
             .icon-custom(:class="store.sidebarVisible ? 'normal' : 'reverse'")
                 .square
                 .square
-                .arrow 
+                .arrow(:class="store.theme")
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 5L21 12M21 12L14 19M21 12L3 12" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             //- .icon
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6H20M4 12H20M13 18H20" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>

@@ -10,6 +10,7 @@ import UserMenu from '../components/static/UserMenu.vue';
 import MainMenu from '../components/static/MainMenu.vue';
 import Input from '../components/static/ui/Input.vue';
 import MainNetworkStatus from '../components/static/ui/MainNetworkStatus.vue';
+import SideDrawer from '../components/static/ui/SideDrawer.vue';
 // -------------------------------------------------------
 
 //- Widgets ----------------------------------------------
@@ -34,6 +35,8 @@ export default {
         UserMenu,
         MainMenu,
         Input,
+        //
+        SideDrawer,
         //
         AboutYourWallet,
         AboutLace,
@@ -66,46 +69,55 @@ export default {
     },
     mounted(){
         // this.page = useRouter().currentRoute.value.name
+        // let minimum = document.querySelector(".content").offsetWidth;
+        // window.addEventListener("resize", ()=>{
+        //     minimum = minimum < document.querySelector(".content").offsetWidth ? minimum : document.querySelector(".content").offsetWidth
+        //     document.querySelector(".debug").innerHTML = "c: " + document.querySelector(".content").offsetWidth + " | " + "m: " + minimum;
+        // });
+        // minimum = minimum < document.querySelector(".content").offsetWidth ? minimum : document.querySelector(".content").offsetWidth
+        // document.querySelector(".debug").innerHTML = "c: " + document.querySelector(".content").offsetWidth + " | " + "m: " + minimum;
     },
 }
 </script>
 
 <template lang="pug">
 .main#lace(:class="showOrHideSidebarOnThisPage() == false ? 'no-widgets' : ''")
-        .col
-            .sticky
-                //- Lace Brand
-                .brand 
-                    img(class="standard", :src="'assets/images/' + store.theme + '/lace.svg'", alt="")
-                    img(class="symbol", :src="'assets/images/' + store.theme + '/lace_symbol.svg'", alt="")
-                    MainNetworkStatus/
-                //- 
-                //-  Main menu
-                MainMenu(theme="theme")/
-        .col
-            .sticky
-                .global-search-content-placeholder
-                    //- Input(type="text", placeholder="Search")
-            .content
-                UserMenu(class="middle", :theme="theme", :store="store", :class="showOrHideSidebarOnThisPage() == false ? 'no-widgets' : ''")/
-                .widgets-overlay.animated(@click="toggleSidebar()", :class="(store.widgetTransition ? 'fadeIn' : 'fadeOut delay-0-5s') + (store.sidebarVisible ? ' visible ' : ' hidden ')")
-                    .widgets(v-if="showOrHideSidebarOnThisPage()", :class="(store.widgetTransition ? '' : 'animated toggleOutRight')")
-                        .static-top
-                        //- Search.animated.toggleInRight.delay-0-2s/
-                        AboutLace.animated.toggleInRight.delay-0-4s(title="About Lace")/
-                        NetworkInfo.animated.toggleInRight.delay-0-6s(title="Network Info")/
-                        AboutYourWallet.animated.toggleInRight.delay-0-8s(title="About your wallet")/
-                    .underlay
-                <RouterView />
-        .col
-            .sticky
-                UserMenu(class="side", :theme="theme", :store="store")/
-                .widgets.animated
-                    //- Search.animated.toggleInLeft.delay-0-2s/
-                    NetworkInfo.animated.toggleInLeft.delay-0-2s(title="Network Info", v-show="checkPageName() == 'staking'")/
-                    AboutLace.animated.toggleInLeft.delay-0-2s(title="About Lace", v-show="checkPageName() == 'settings'")/
-                    //- AddressBook.animated.toggleInLeft.delay-0-2s(title="Add new address", v-show="checkPageName() == 'addressBook'")/
-                    AboutYourWallet.animated.toggleInLeft.delay-0-2s(title="About your wallet", v-show="checkPageName() == 'addressBook' || checkPageName() == 'tokens' || checkPageName() == 'nfts' || checkPageName() == 'activity' || checkPageName() == 'staking' || checkPageName() == 'dashboard'")/
+    .col
+        .sticky
+            //- Lace Brand
+            .brand 
+                img(class="standard", :src="'assets/images/' + store.theme + '/lace.svg'", alt="")
+                img(class="symbol", :src="'assets/images/' + store.theme + '/lace_symbol.svg'", alt="")
+                MainNetworkStatus/
+            //- 
+            //-  Main menu
+            MainMenu(theme="theme")/
+    .col
+        .sticky
+            .global-search-content-placeholder
+                //- Input(type="text", placeholder="Search")
+        .content
+            UserMenu(class="middle", :theme="theme", :store="store", :class="showOrHideSidebarOnThisPage() == false ? 'no-widgets' : ''")/
+            .widgets-overlay.animated(@click="toggleSidebar()", :class="(store.widgetTransition ? 'fadeIn' : 'fadeOut delay-0-5s') + (store.sidebarVisible ? ' visible ' : ' hidden ')")
+                .widgets(v-if="showOrHideSidebarOnThisPage()", :class="(store.widgetTransition ? '' : 'animated toggleOutRight')")
+                    .static-top
+                    //- Search.animated.toggleInRight.delay-0-2s/
+                    AboutLace.animated.toggleInRight.delay-0-4s(title="About Lace")/
+                    NetworkInfo.animated.toggleInRight.delay-0-6s(title="Network Info")/
+                    AboutYourWallet.animated.toggleInRight.delay-0-8s(title="About your wallet")/
+                .underlay
+            //- .debug(style="position: fixed; font-size: 42px; bottom: 20px; left: 20px; background-color: #eeeeeeee; border-radius: 10px; z-index: 99999999999; padding: 10px;") 768
+            <RouterView :store="store" />
+    .col
+        .sticky
+            UserMenu(class="side", :theme="theme", :store="store")/
+            .widgets.animated
+                //- Search.animated.toggleInLeft.delay-0-2s/
+                NetworkInfo.animated.toggleInLeft.delay-0-2s(title="Network Info", v-show="checkPageName() == 'staking'")/
+                AboutLace.animated.toggleInLeft.delay-0-2s(title="About Lace", v-show="checkPageName() == 'settings'")/
+                //- AddressBook.animated.toggleInLeft.delay-0-2s(title="Add new address", v-show="checkPageName() == 'addressBook'")/
+                AboutYourWallet.animated.toggleInLeft.delay-0-2s(title="About your wallet", v-show="checkPageName() == 'addressBook' || checkPageName() == 'tokens' || checkPageName() == 'nfts' || checkPageName() == 'activity' || checkPageName() == 'staking' || checkPageName() == 'dashboard'")/
+    SideDrawer(:store="store", v-if="store.sidedrawerVisible")/
 </template>
 
 <style lang="scss">
@@ -122,6 +134,7 @@ export default {
 // General Components
 @import '../scss/components/buttons';
 @import '../scss/components/pills';
+@import '../scss/components/input';
 
 .widgets{
     z-index: 0;

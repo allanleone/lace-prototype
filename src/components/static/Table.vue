@@ -1,7 +1,8 @@
 <script>
+import LineChart from '../charts/LineTypeChart.vue'
 export default {
     props: {
-        // store: Object,
+        store: Object,
         data: Object,
         status: Boolean,
         design: Object,
@@ -12,7 +13,7 @@ export default {
         }
     },
     components: {
-
+        LineChart,
     },
     methods:{
         convertTimestap(d){
@@ -22,6 +23,18 @@ export default {
             const options = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
             return dateObj.toLocaleTimeString(undefined, options).toUpperCase();
         },
+        openSidedrawer(item) {
+            this.store.set({ key: 'sidedrawerVisible', value: true })
+        },
+        standardNumberFormat(number) {
+            return "" + number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+        tokenPriceNumberFormat(number) {
+            return "" + number.toFixed(3);
+        },
+        percentageNumberFormat(number) {
+            return "" + number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
     },
 }
 </script>
@@ -135,11 +148,26 @@ export default {
     .primary{
         color: var(--textColorPrimary);
     }
-    .right{
-        text-align: right;
+    .chart-overlay{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--radius);
+        z-index: 1;
     }
-    .bold{
-        font-weight: 600;
+    .table-header{
+        &.table-row{
+            color: var(--textColorSecondary);
+            &:hover{
+                background-color: transparent;
+                cursor: default;
+            }
+        }
+        .table-col{
+            &:last-child{
+                text-align: right;
+            }
+        }
     }
     @media screen and (max-width: 512px){
         width: calc(100% + 18px);
@@ -173,20 +201,6 @@ export default {
             grid-template-columns: 1fr;
         }
     }
-    .table-header{
-        &.table-row{
-            color: var(--textColorSecondary);
-            &:hover{
-                background-color: transparent;
-                cursor: default;
-            }
-        }
-        .table-col{
-            &:last-child{
-                text-align: right;
-            }
-        }
-    }
 }
 </style>
 <template lang="pug">
@@ -206,6 +220,7 @@ export default {
         v-for="(d, i) in data", 
         :style="'grid-template-columns:' + design.grid + ';'"
         :class="i > 9 ? 'delay-2s' : 'delay-1-' + (i + 1) + 's'"
+        @click="openSidedrawer(d)"
     ) 
         // type 'full' (name + icon + address)
         .table-col
@@ -238,6 +253,9 @@ export default {
         v-for="(d, i) in data", 
         :style="'grid-template-columns:' + design.grid + ';'"
         :class="i > 9 ? 'delay-2s' : 'delay-1-' + (i + 1) + 's'"
+        @click="openSidedrawer(d)"
+        @mouseenter="d.overlay = true"
+        @mouseleave="d.overlay = false"
     ) 
         // type 'full' (name + icon + address)
         .table-col
@@ -249,15 +267,62 @@ export default {
                     .address {{ d.address }}
         
         // type 'price' (number)
-        .table-col
-            div {{ d.currentPrice }}
-            div(:class="d.variation > 0 ? 'positive' : 'negative'") {{d.variation > 0 ? '+' : ''}}{{ d.variation }}
+        //.table-col(:style="'visibility: hidden;'")
+        .table-col(:style="d.overlay ? 'visibility: hidden;' : ''") 
+            div 
+                number(
+                    ref="tokenPercentage"
+                    :from="0"
+                    :to="d.currentPrice"
+                    :format="tokenPriceNumberFormat"
+                    :duration="2"
+                    :delay="0"
+                    easing="Power1.easeOut"
+                )
+                //- span {{ d.currentPrice }}
+            div(:class="d.variation > 0 ? 'positive' : 'negative'") 
+                span {{d.variation > 0 ? '+' : ''}}
+                number(
+                    ref="tokenPercentage"
+                    :from="0"
+                    :to="d.variation"
+                    :format="standardNumberFormat"
+                    :duration="2"
+                    :delay="0"
+                    easing="Power1.easeOut"
+                )
         
         // type 'balance' (string)
         .table-col
-            div.right {{ d.balance }}
-            div.right.secondary {{ (Number(d.balance.replace(',','')) * Number(d.currentPrice)).toFixed(2) }} USD
+            div.right
+                number(
+                    ref="tokenPercentage"
+                    :from="0"
+                    :to="d.balance"
+                    :format="standardNumberFormat"
+                    :duration="2"
+                    :delay="0"
+                    easing="Power1.easeOut"
+                )
+            div.right.secondary 
+                number(
+                    ref="tokenPercentage"
+                    :from="0"
+                    :to="(d.balance * d.currentPrice)"
+                    :format="standardNumberFormat"
+                    :duration="2"
+                    :delay="0"
+                    easing="Power1.easeOut"
+                )
+                span &nbsp;USD
+                //- {{ (Number(d.balance.replace(',','')) * Number(d.currentPrice)).toFixed(2) }} USD
     
+        .chart-overlay.animated.fadeIn(v-if="d.overlay")
+            LineChart(
+                :mainData="d.last24HoursVariation"
+                :currentPrice="d.currentPrice"
+                :ref="'lineTokensChart_' + i"
+            )/
     .raw-row.animated.fadeIn.delay-2s(
         v-if="design.template == 'tokens'"
     ) 
@@ -287,6 +352,7 @@ export default {
             v-for="(d, i) in dt", 
             :style="'grid-template-columns:' + design.grid + ';'"
             :class="i > 9 ? 'delay-2s' : 'delay-' + indx + '-' + (i + 1) + 's'"
+            @click="openSidedrawer(d)"
         ) 
             // type 'full' (name + icon + address)
             .table-col

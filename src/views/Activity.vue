@@ -2,6 +2,9 @@
 import QACodeAddFunds from '../components/static/AddFunds.vue';
 import Table from '../components/static/Table.vue';
 export default {
+    props: {
+        store: Object,
+    },
     data() {
         return {
             design: {
@@ -71,7 +74,9 @@ export default {
         }
     },
     methods: {
-
+        openSidedrawer(item) {
+            this.store.set({ key: 'sidedrawerVisible', value: true })
+        }
     },
     components: {
         QACodeAddFunds,
@@ -117,11 +122,12 @@ export default {
     Table(
             :design="design"
             :data="formattedActivity"
+            :store="store"
         )/
     
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .activity{
     display: grid;
 }
