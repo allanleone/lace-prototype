@@ -78,6 +78,8 @@ body{
     
     //
     --scrollThumb: #00000033; // ! new
+    --scrollTrack: #efefef66; // ! new
+    --scrollBarWidth: 10px; // ! new
     
     // dark mode
     &.dark {
@@ -108,7 +110,9 @@ body{
         --textColorInverted: #1E1E1E; // ! new
 
         //
-        --scrollThumb: #333333; // ! new
+        --scrollThumb: rgba(169, 169, 169, 0.56); // ! new
+        --scrollTrack: #333333; // ! new
+        --scrollBarWidth: 10px; // ! new
 
         --fadingGradient: #4C4A49; // ! new
 

@@ -5,12 +5,14 @@ export default {
     data() {
         return {
             router: useRouter().currentRoute.value.name,
+
             //address book
             addressBookName: "",
             addressBookWalletAddress: "",
             addressBookEditing: false,
             addressBookEditingTemporaryFields: {name: null, wallet: null},
             //////////////
+            
         }
     },
     props: {
@@ -25,6 +27,7 @@ export default {
 
             // Work on this later 👍🏻
             //  window.localStorage.setItem("prototypeSaveFile", JSON.stringify(this.store.get("addressBookContacts")))
+
         },
         // Address Book
         addressBookAddContact(){

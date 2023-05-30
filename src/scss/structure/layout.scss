@@ -7,8 +7,8 @@
     background-color: var(--bg);
     overflow-x: hidden;
     &::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
+        width: var(--scrollBarWidth);
+        height: var(--scrollBarWidth);
         scrollbar-width: thin;
     }
     &::-webkit-scrollbar-thumb {
@@ -18,12 +18,13 @@
     }
     &::-webkit-scrollbar-track {
         background-color: var(--bg);
-        border-radius: 0px 0px 0px 20px;
+        border-radius: 0px 0px 0px 0px;
+        background: var(--scrollTrack);
     }
-    div{
+    div, textarea, input{
         &::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: var(--scrollBarWidth);
+            height: var(--scrollBarWidth);
             scrollbar-width: thin;
         }
         &::-webkit-scrollbar-thumb {
@@ -33,7 +34,8 @@
         }
         &::-webkit-scrollbar-track {
             background-color: var(--bg);
-            border-radius: 0px 0px 0px 20px;
+            border-radius: 0px 0px 0px 0px;
+            background: var(--scrollTrack);
         }
     }
 }
