@@ -1016,6 +1016,20 @@ $duration: .45s;
 .toggleInLeft {
     animation-name: toggleLeft;
 }
+@keyframes toggleInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0%, 20%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.toggleInUp {
+    animation-name: toggleInUp;
+}
 
 @keyframes toggleOutRight {
     from {
@@ -3256,19 +3270,42 @@ $duration: .45s;
     animation-delay: 1.9s;
 }
 
-.animated.delay-1-5s {
-    -webkit-animation-delay: 1.5s;
-    animation-delay: 1.5s;
-}
-
 .animated.delay-2-5s {
     -webkit-animation-delay: 2.5s;
     animation-delay: 2.5s;
 }
 
+.animated.delay-3-2s {
+    -webkit-animation-delay: 3.2s;
+    animation-delay: 3.2s;
+}
+.animated.delay-3-3s {
+    -webkit-animation-delay: 3.3s;
+    animation-delay: 3.3s;
+}
+.animated.delay-3-4s {
+    -webkit-animation-delay: 3.4s;
+    animation-delay: 3.4s;
+}
 .animated.delay-3-5s {
     -webkit-animation-delay: 2.5s;
     animation-delay: 2.5s;
+}
+.animated.delay-3-6s {
+    -webkit-animation-delay: 3.6s;
+    animation-delay: 3.6s;
+}
+.animated.delay-3-7s {
+    -webkit-animation-delay: 3.7s;
+    animation-delay: 3.7s;
+}
+.animated.delay-3-8s {
+    -webkit-animation-delay: 3.8s;
+    animation-delay: 3.8s;
+}
+.animated.delay-3-9s {
+    -webkit-animation-delay: 3.9s;
+    animation-delay: 3.9s;
 }
 
 .animated.delay-4-5s {

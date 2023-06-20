@@ -7,15 +7,15 @@ input:focus,textarea:focus,select:focus, input:focus-visible, button:focus-visib
   outline: none;
 }
 //
-label{
+label{ 
     position: relative;
     height: auto;
-    input[type="text"], input[type="number"]{
+    input[type="text"], input[type="number"], input[type="password"]{
         position: relative;
         border: none;
         background: var(--inputTextBg);
         border-radius: 16px;
-        height: auto;
+        height: auto; 
         padding: 20px;
         font-weight: 700;
         color: var(--textColorPrimary);
@@ -27,7 +27,7 @@ label{
         }
         &::placeholder{
             font-weight: 400;
-        }
+        } 
     }
     .icon{
         position: absolute;

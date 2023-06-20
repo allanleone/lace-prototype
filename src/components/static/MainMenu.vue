@@ -9,14 +9,14 @@ export default {
         return {
             mainMenu: [
                 {
-                    selected: true,
+                    selected: false,
                     label: 'Dashboard',
                     route: '/',
                     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12L5 10M5 10L12 3L19 10M5 10V20C5 20.5523 5.44772 21 6 21H9M19 10L21 12M19 10V20C19 20.5523 18.5523 21 18 21H15M9 21C9.55228 21 10 20.5523 10 20V16C10 15.4477 10.4477 15 11 15H13C13.5523 15 14 15.4477 14 16V20C14 20.5523 14.4477 21 15 21M9 21H15" stroke="#3D3B39" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
                     iconSelected: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.3397 3.34781C11.8759 2.88406 11.1241 2.88406 10.6603 3.34781L2.34781 11.6603C1.88406 12.1241 1.88406 12.8759 2.34781 13.3397C2.81156 13.8034 3.56344 13.8034 4.02719 13.3397L4.375 12.9919V20.8125C4.375 21.4683 4.90666 22 5.5625 22H7.9375C8.59334 22 9.125 21.4683 9.125 20.8125V18.4375C9.125 17.7817 9.65666 17.25 10.3125 17.25H12.6875C13.3433 17.25 13.875 17.7817 13.875 18.4375V20.8125C13.875 21.4683 14.4067 22 15.0625 22H17.4375C18.0933 22 18.625 21.4683 18.625 20.8125V12.9919L18.9728 13.3397C19.4366 13.8034 20.1884 13.8034 20.6522 13.3397C21.1159 12.8759 21.1159 12.1241 20.6522 11.6603L12.3397 3.34781Z" fill="url(#paint0_linear_4865_467252)"/><defs><linearGradient id="paint0_linear_4865_467252" x1="-1.4766" y1="-0.476591" x2="26.3606" y2="1.57657" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"/><stop offset="1" stop-color="#FDC300"/></linearGradient></defs></svg>',
                 },
                 {
-                    selected: false,
+                    selected: true,
                     label: 'Tokens',
                     route: '/tokens',
                     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6C4 4.89543 4.89543 4 6 4H8C9.10457 4 10 4.89543 10 6V8C10 9.10457 9.10457 10 8 10H6C4.89543 10 4 9.10457 4 8V6Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6C14 4.89543 14.8954 4 16 4H18C19.1046 4 20 4.89543 20 6V8C20 9.10457 19.1046 10 18 10H16C14.8954 10 14 9.10457 14 8V6Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16C4 14.8954 4.89543 14 6 14H8C9.10457 14 10 14.8954 10 16V18C10 19.1046 9.10457 20 8 20H6C4.89543 20 4 19.1046 4 18V16Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 16C14 14.8954 14.8954 14 16 14H18C19.1046 14 20 14.8954 20 16V18C20 19.1046 19.1046 20 18 20H16C14.8954 20 14 19.1046 14 18V16Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
