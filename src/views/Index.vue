@@ -207,7 +207,7 @@ export default {
     SideDrawer(:store="store", v-if="store.sidedrawerVisible")/
     
     //-     
-    include includes/onboarding.pug 
+    include includes/onboarding.pug  
     //- 
     
     Tracker/
@@ -550,12 +550,37 @@ export default {
                 .improve-input{
                     padding: 0px 10px;
                 }
+                .improve-input{
+                    width: calc(100% - 20px);
+                    display: grid;
+                    grid-template-columns: 1fr 110px;
+                    align-items: center; 
+                    margin: 10px 0 10px 0;
+                    .info{
+                        text-align: right; 
+                        .required-label{
+                            font-size: 14px;
+                            color: var(--darkGray);
+                            margin-left: 12px;
+                        }
+                        svg{
+                            width: 16px;
+                            margin-right: 5px;
+                            margin-bottom: -7px;
+                            opacity: 1 !important;
+                            path{
+                                // fill: var(--darkGray);
+                                stroke: var(--darkGray);
+                            }
+                        }
+                    }
+                } 
                 .terms-input{
                     display: grid;
                     grid-template-columns: 1fr 170px;
                     align-content: center;
                     border-radius: 10px;
-                    width: calc(100% - 30px);
+                    width: calc(100% - 60px);
                     padding: 0px 10px;
                     .info{
                         margin-top: 9px;

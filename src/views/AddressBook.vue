@@ -9,12 +9,19 @@ export default {
         return {
             contacts:this.store.get("addressBookContacts"),
             addAddressOverlay: false,
+            copied: false,
         }
     },
     methods: {
         openSidedrawer(item) {
             this.store.set({ key: 'sidedrawerStorage', value: item })
             this.store.set({ key: 'sidedrawerVisible', value: true })
+        },
+        copyAddress(addr){
+            this.copied = true;
+            setTimeout(() => {
+                this.copied = false;
+            }, 2000);
         }
     },
     components: {
@@ -47,7 +54,25 @@ export default {
                     .thumb {{ contact.name.substr(0,1) }}
                     .name {{ contact.name }}
             .table-col 
-                .address {{ contact.wallet }}
+                .address 
+                    .chain 
+                        img(src="https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/cardano_ada-512.png")
+                        //- span CA
+                    .addr 
+                        span {{ contact.wallet }}
+            .table-col 
+                .copy-btn
+                    button.tertiary.copy-wallet-address.animated.toggleInLeft(
+                        @click.stop="copyAddress(contact.wallet)"
+                        @mouseenter="contact.hover = true"
+                        @mouseleave="contact.hover = false"
+                    )
+                        span
+                            .icon
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16H6C4.89543 16 4 15.1046 4 14V6C4 4.89543 4.89543 4 6 4H14C15.1046 4 16 4.89543 16 6V8M10 20H18C19.1046 20 20 19.1046 20 18V10C20 8.89543 19.1046 8 18 8H10C8.89543 8 8 8.89543 8 10V18C8 19.1046 8.89543 20 10 20Z" stroke="#6F7786" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            //- .label(v-if="!copied") Copy
+                            //- .label(v-if="copied") Copied
+                .tooltip(v-if="contact.hover") Copy address
         //- hr/
     //
     .contacts 
@@ -57,6 +82,7 @@ export default {
 <style lang="scss" scoped>
 .address-book{
     display: grid;
+
     .address-book-box {
         display: block;
         padding: 20px 20px;
@@ -102,8 +128,8 @@ export default {
     .table-address-book{
         display: grid;
         width: 100%;
-        overflow-y: hidden;
-        overflow-x: auto;
+        // overflow-y: hidden;
+        // overflow-x: auto;
         min-width: 335px;
         margin-top: 20px;
         margin-bottom: 40px;
@@ -151,12 +177,33 @@ export default {
                     }
                 }
                 .address{
-                    display: inline-block;
+                    display: inline-grid;
                     align-content: center;
                     color: var(--textColorSecondary);
                     white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
+                    grid-template-columns: auto 1fr;
+                    gap: 10px;
+                    align-self: center;
+                    align-items: center;
+                    .addr {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    .chain{
+                        display: grid;
+                        place-items: center;
+                        width: 24px;
+                        height: 24px;
+                        margin-top: 0px;
+                        background-color: var(--lightGrayPlus);
+                        border: solid 1px var(--lightGrayPlus);
+                        border-radius: 100px;
+                        font-size: 12px;
+                        overflow: hidden;
+                        img{
+                            width: 100%;
+                        }
+                    }
                 }
             }
             .stake-ros, .stake-cost, .stake-saturation{
@@ -179,6 +226,63 @@ export default {
                     }
                     &.negative{
                         background-color: var(--orange);
+                    }
+                }
+            }
+            transition: width .5s ease-in-out;
+            // 
+            width: calc(100% - 50px);
+            // overflow: visible;
+            .copy-btn{
+                @keyframes inCopy {
+                    0% {width: 0px;}
+                    100% {width: 100px;}
+                }
+                display: grid;
+                place-content: center;
+                grid-template-columns: auto;
+                margin-right: 10px;
+                overflow: hidden;
+                width: 0px;
+                margin-top: -5px;
+                transition: all .5s ease-in-out;
+                animation: inCopy .5s forwards;
+                display: none;
+                position: absolute;
+                opacity: .75;
+                button{
+                    background: transparent;
+                    width: 40px !important;
+                    grid-template-columns: auto;
+                    .icon{
+                        margin-left: 5px;
+                    }
+                }
+            }
+            .tooltip{
+                position: absolute;
+                margin-top: -55px;
+                background: #fff;
+                box-shadow: var(--tinyShadow);
+                opacity: 1;
+                width: 100px;
+                margin-left: -15px;
+                padding: 15px;
+                font-size: 14px;
+                text-align: center;
+                border-radius: 16px;
+                display: none;
+            }
+            &:hover{
+                width: calc(100% - 80px);
+                .tooltip{
+                    display: block;
+                }
+                .copy-btn{
+                    width: 60px;
+                    display: grid;
+                    &:hover{
+                        opacity: 1;
                     }
                 }
             }
@@ -223,7 +327,7 @@ export default {
                     cursor: default;
                 }
             }
-        }
+        } 
     }
     //
     .page-title{

@@ -116,18 +116,22 @@
                                                 span Not sell your personal data
                                     div.col-input
                                         label.improve-input
-                                            input(type="checkbox", :checked="true", v-model="helpImprove")
-                                            span I wish to help to improve Lace's user experience
+                                            span
+                                                input(type="checkbox", :checked="true", v-model="helpImprove")
+                                                span Help to improve Lace's user experience
+                                            .info
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 16H12V12H11M12 8H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#C0C0C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                span.required-label Optional
                                     
                                     div 
                                         label.terms-input(:style="!termsChecked ? 'background-color: #FDC30022;' : ''")
                                             span
                                                 input(type="checkbox", v-model="termsChecked")
                                                 span I accept the terms of use
-                                            .info(v-if="!termsChecked")
+                                            .info(vv-if="!termsChecked")
                                                 <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12.884 2.532c-.346-.654-1.422-.654-1.768 0l-9 17A.999.999 0 0 0 3 21h18a.998.998 0 0 0 .883-1.467L12.884 2.532zM13 18h-2v-2h2v2zm-2-4V9h2l.001 5H11z"/></svg>
                                                 span.required-label Required to continue
-                                    .padding(style="height: 30px;")
+                                    .padding(style="height: 20px;")
                             //- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
                             //- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -239,7 +243,7 @@
                                 span
                                     button.purple(v-if="stage >= 2", @click="changeStageTo('next')", :disabled="nextShouldBeEnabled()") 
                                         span(v-if="stage > 2 && stage != 5") Next
-                                        span(v-if="stage == 2 && stage != 5") I Agree and wish to continue
+                                        span(v-if="stage == 2 && stage != 5") Next
                                         span(v-if="stage == 5") Go to my wallet
                                     //- .tooltip(v-if="(!termsChecked && stage == 2)") Please read and accept the terms
                 //- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

@@ -1,6 +1,7 @@
 <script>
 import { RouterLink, RouterView, useRouter } from 'vue-router'
 import Input from '../ui/Input.vue'
+import QR from './QR.vue';
 export default {
     data() {
         return {
@@ -11,6 +12,8 @@ export default {
             addressBookWalletAddress: "",
             addressBookEditing: false,
             addressBookEditingTemporaryFields: {name: null, wallet: null},
+            typeOfChain: null,
+            animationChainDone: true,
             //////////////
             
         }
@@ -20,6 +23,7 @@ export default {
     },
     components: {
         Input,
+        QR
     },
     methods: {
         close(){
@@ -38,11 +42,23 @@ export default {
             this.addressBookEditingTemporaryFields.name = String(this.store.get('sidedrawerStorage').data.name);
             this.addressBookEditingTemporaryFields.wallet = String(this.store.get('sidedrawerStorage').data.wallet);
             this.addressBookEditing = true;
+            this.checkTypeOfChain()
         },
         addressBookEditSaveContact() {
             this.addressBookEditing = false;
             this.store.get('sidedrawerStorage').data.name = this.addressBookEditingTemporaryFields.name;
             this.store.get('sidedrawerStorage').data.wallet = this.addressBookEditingTemporaryFields.wallet;
+        },
+        checkTypeOfChain(){
+            // this.animationChainDone = false;
+            this.typeOfChain = null;
+            setTimeout(()=>{
+                this.typeOfChain = 1;
+                setTimeout(() => {
+                    this.typeOfChain = 2;
+                    // this.animationChainDone = true;
+                }, 1000)
+            }, 2000)
         }
         ///////////////
     },
@@ -104,11 +120,11 @@ export default {
             width: calc(100% - 60px);
             height: calc(100% - 270px);
             &.with-2-buttons{
-                height: calc(100% - 350px);
+                height: calc(100% - 328px);
             }
             padding: 30px;
             position: absolute;
-            margin-top: 100px;
+            margin-top: 80px;
             overflow-x: hidden;
             overflow-y: scroll;
             display: grid;
@@ -133,8 +149,45 @@ export default {
 
         // Address Book
         .address-book{
+            .spinner{
+                @keyframes spinLoading{
+                    0%{transform: rotate(0deg)}
+                    100%{transform: rotate(360deg)}
+                }
+                svg{
+                    animation: spinLoading 2s linear infinite;
+                }
+            }
+            .w-icon{
+                input{
+                    padding-right: 60px;
+                    width: calc(100% - 80px);
+                }
+            }
+            .chain-ico.input{
+                width: 24px;
+                position: absolute;
+                right: 20px;
+                top: -2px;
+                img, svg{
+                    width: 100%;
+                }
+            }
             .wallet-name{
                 text-align: center;
+                display: grid;
+                grid-template-columns: 42px 1fr 100px;
+                gap: 15px;
+                align-items: center;
+                // margin-top: 20px;
+                margin-bottom: 20px;
+                text-align: left;
+                .chain-ico{
+                    width: 42px;
+                    img{
+                        width: 100%;
+                    }
+                }
             }
             .wallet-address{
                 text-align: center;
@@ -146,6 +199,39 @@ export default {
             .copy-wallet-address{
                 max-width: 200px;
                 margin: 10px auto 0 auto;
+            }
+            .address-qr{
+                margin: 10px auto;
+                max-width: 200px;
+                position: relative;
+                border: 2px solid transparent;
+                color: var(--text-color-primary);
+                padding: 5px;
+                border-radius: var(--radius);
+                background: linear-gradient(var(--bgCard), var(--bgCard)) padding-box,linear-gradient(to right, #ff92e1, #fdc300) border-box;
+                .chain{
+                    display: grid;
+                    place-items: center;
+                    width: 50px;
+                    height: 50px;
+                    margin-top: 0px;
+                    background-color: var(--lightGrayPlus);
+                    border: solid 10px var(--bgCard);
+                    border-radius: 100px;
+                    overflow: hidden;
+                    font-size: 12px;
+                    position: absolute;
+                    top: calc(50% - 30px);
+                    left: calc(50% - 30px);
+                    border-radius: 100px;
+                    overflow: hidden;
+                    img{
+                        width: 100%;
+                    }
+                }
+            }
+            .delete{
+                color: var(--hoverDataPink);
             }
         }
         ///////////////
@@ -193,30 +279,33 @@ export default {
                 div(v-if="store.get('sidedrawerStorage').action == 'add'")
                     div
                         h3.bold Add new address
-                        .desc Save your favorite addressess to find then easily
+                        //- .desc Save your favorite addressess to find then easily
                     div
                         label
                             input(type="text", placeholder="Name", v-model="addressBookName", autocomplete="off")/
                             .error-feedback(v-if="addressBookName.length > 20")
                                 div.animated.fadeInDown Max 20 characters
-                        label
-                            input(type="text", placeholder="Address", v-model="addressBookWalletAddress", autocomplete="off")/
+                        //- label
+                        //-     input(type="text", placeholder="Address", v-model="addressBookWalletAddress", autocomplete="off")/
+                        //-     .error-feedback(v-if="addressBookWalletAddress.length > 0 && addressBookWalletAddress.length < 3")
+                        //-         div.animated.fadeInDown Incorrect Cardano address or Alias
+                        label.w-icon
+                            input(
+                                type="text", 
+                                placeholder="Address", v-model="addressBookWalletAddress", 
+                                autocomplete="off"
+                                @keyup="checkTypeOfChain()"
+                            )/
                             .error-feedback(v-if="addressBookWalletAddress.length > 0 && addressBookWalletAddress.length < 3")
                                 div.animated.fadeInDown Incorrect Cardano address or Alias
-                    //- Input(
-                    //-     :store="store"
-                    //-     placeholder="Name", 
-                    //-     :text="addressBookName", 
-                    //-     @input="e => addressBookName = e.target.value"
-                    //-     :validation="{error: 'Max 20 characters', type: 'max-20'}"
-                    //- )
-                    //- Input(
-                    //-     :store="store"
-                    //-     placeholder="Address", 
-                    //-     :text="addressBookWalletAddress", 
-                    //-     @input="e => addressBookWalletAddress = e.target.value"
-                    //-     :validation="{error: 'Incorrect Cardano address', type: 'cardano-address'}"
-                    //- )
+                            .chain-ico.input(v-if="addressBookWalletAddress.length > 0")
+                                .spinner(v-if="typeOfChain == null && addressBookWalletAddress.length > 2")
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5C12.1491 2.5 14.0871 3.40394 15.4545 4.85236" stroke="#6F7786" stroke-width="2" stroke-linecap="round"/></svg>
+                                .checked(v-if="typeOfChain == 1 && addressBookWalletAddress.length > 2")
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13L9 17L19 7" stroke="#2CB67D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                .error(v-if="addressBookWalletAddress.length < 3")
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#E84D66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                img.animated.zoomIn(v-if="typeOfChain == 2 && addressBookWalletAddress.length > 2", src="https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/cardano_ada-512.png")
                 // !
 
                 // !
@@ -224,19 +313,40 @@ export default {
                 div(v-if="store.get('sidedrawerStorage').action == 'edit'", :class="addressBookEditing ? '' : 'middle'")
                     div(v-if="addressBookEditing")
                         h3.bold Edit Contact
-                        .desc edit or delete this contact details
+                        //- .desc edit or delete this contact details
                     div(v-if="addressBookEditing")
                         label
                             input(type="text", placeholder="Name", v-model="addressBookEditingTemporaryFields.name", autocomplete="off")/
                             .error-feedback(v-if="addressBookEditingTemporaryFields.name.length > 20")
                                 div.animated.fadeInDown Max 20 characters
-                        label
-                            input(type="text", placeholder="Address", v-model="addressBookEditingTemporaryFields.wallet", autocomplete="off")/
+                        label.w-icon
+                            input(
+                                type="text", 
+                                placeholder="Address", v-model="addressBookEditingTemporaryFields.wallet", 
+                                autocomplete="off"
+                                @keyup="checkTypeOfChain()"
+                            )/
                             .error-feedback(v-if="addressBookEditingTemporaryFields.wallet.length > 0 && addressBookEditingTemporaryFields.wallet.length < 3")
                                 div.animated.fadeInDown Incorrect Cardano address or Alias
+                            .chain-ico.input(v-if="addressBookEditingTemporaryFields.wallet.length > 0")
+                                .spinner(v-if="typeOfChain == null && addressBookEditingTemporaryFields.wallet.length > 2")
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5C12.1491 2.5 14.0871 3.40394 15.4545 4.85236" stroke="#6F7786" stroke-width="2" stroke-linecap="round"/></svg>
+                                .checked(v-if="typeOfChain == 1 && addressBookEditingTemporaryFields.wallet.length > 2")
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13L9 17L19 7" stroke="#2CB67D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                .error(v-if="addressBookEditingTemporaryFields.wallet.length < 3")
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#E84D66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                img.animated.zoomIn(v-if="typeOfChain == 2 && addressBookEditingTemporaryFields.wallet.length > 2", src="https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/cardano_ada-512.png")
 
                     .middle.address-book(v-if="!addressBookEditing")
-                        .wallet-name.bold {{ store.get('sidedrawerStorage').data.name }}
+                        .wallet-name 
+                            .chain-ico
+                                img(src="https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/cardano_ada-512.png")
+                            h4.bold {{ store.get('sidedrawerStorage').data.name }}
+                            button.tertiary(@click="addressBookEditContact()") Edit
+                        .address-qr
+                            .chain 
+                                img(src="https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/cardano_ada-512.png")
+                            QR/
                         .wallet-address {{ store.get('sidedrawerStorage').data.wallet }}
                         button.tertiary.copy-wallet-address
                             span
@@ -250,18 +360,25 @@ export default {
                     v-if="store.get('sidedrawerStorage').action == 'add'"
                     @click="addressBookAddContact()"
                     :disabled="(addressBookName.length == 0 || addressBookWalletAddress == 0) || (addressBookName.length > 20) || (addressBookWalletAddress.length > 0 && addressBookWalletAddress.length < 3)"
-                ) Save
+                ) Confirm
                 // edit
                 button.purple(
                     v-if="!addressBookEditing && store.get('sidedrawerStorage').action == 'edit'"
                     @click="addressBookEditContact()", 
-                ) Edit
+                ) Send
                 button.purple(
                     v-if="addressBookEditing"
                     :disabled="(addressBookEditingTemporaryFields.name.length == 0 || addressBookEditingTemporaryFields.wallet == 0) || (addressBookEditingTemporaryFields.name.length > 20) || (addressBookEditingTemporaryFields.wallet.length > 0 && addressBookEditingTemporaryFields.wallet.length < 3)"
                     @click="addressBookEditSaveContact()", 
-                ) Save
-                button.tertiary(@click="close()") Close
+                ) Done
+                button.tertiary.delete(
+                    @click="close()"
+                    v-show="addressBookEditing"
+                ) Delete
+                button.tertiary(
+                    @click="close()"
+                    v-show="!addressBookEditing"
+                ) Cancel
         /////////////////////////////////////
 
         // !

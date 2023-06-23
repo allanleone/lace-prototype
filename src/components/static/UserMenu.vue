@@ -159,23 +159,8 @@ export default {
         .icon-custom{
             display: grid;
             grid-template-columns: auto auto;
-            &.normal{
-                .square:nth-child(1){
-                    width: 8px;
-                }
-                .square:nth-child(2){
-                    width: 4px;
-                }
-            }
-            &.reverse{
-                .square:nth-child(1){
-                    width: 9px;
-                    // background-color: var(--darkGray);
-                }
-                .square:nth-child(2){
-                    width: 3px;
-                }
-            }
+            padding: 0px 8px;
+            margin: auto;
             .arrow{
                 position: absolute;
                 width: 6px;
@@ -199,23 +184,32 @@ export default {
             .square{
                 transition: margin .25s ease-in-out,width .25s ease-in-out, background-color .25s ease-in-out, border-radius .25s ease-in-out, border-color .25s ease-in-out;
                 width: 6px;
-                height: 13px;
-                --iconRadius: 3px;
+                height: 14px;
+                --iconRadius: 4px;
                 border: solid 2px var(--textColorPrimary);
                 &:nth-child(1){
+                    width: 10px;
                     border-right-color: transparent;
                     border-radius: var(--iconRadius) 0px 0px var(--iconRadius);
                     background: var(--transparent);
+                    z-index: -1;
                 }
                 &:nth-child(2){
-                    // border-left: none;
+                    border-left-color: transparent;
                     // background: var(--midGray);
                     border-radius: 0px var(--iconRadius) var(--iconRadius) 0px ;
                     margin-left: -2px;
+                    width: 4px;
                 }
             }
-            padding: 0px 8px;
-            margin: auto;
+            &.reverse{
+                .square{
+                    &:nth-child(1){
+                        border-right-color: var(--textColorPrimary);
+                    }
+                }
+            }
+            
         }
         &.active{
             .square{
@@ -247,28 +241,25 @@ export default {
                 &.normal{
                     .square:nth-child(1){
                         width: 12px;
-                        // background-color: var(--textColorPrimary);
-                        border-radius: var(--iconRadius);
-                        border-right-color: var(--textColorPrimary);
-                        // margin-left: 2px;
+                        background-color: var(--transparent);
+                        border-right-color: transparent;
                     }
                     .square:nth-child(2){
-                        width: 0px;
-                        // border-color: transparent;
-                        border-left-color: var(--textColorPrimary);
-                        background: var(--midGray);
+                        width: 2px;
+                        background: var(--darkGray);
+                        // border-left-color: transparent;
                     }
                     @keyframes pingpongarrow1 {
-                        0%{margin-left: 12px}
-                        50%{margin-left: 14px}
-                        100%{margin-left: 12px}
+                        0%{margin-left: 10px}
+                        100%{margin-left: 13px}
                     }
                     .arrow{
                         display: block;
                         opacity: 1;
                         transform: rotate(0deg);
-                        animation: pingpongarrow1 1s infinite;
-                        margin-top: -5px;
+                        margin-left: 13px;
+                        animation: pingpongarrow1 .25s forwards;
+                        margin-top: -4px;
                         svg{
                             filter: brightness(0);
                         }
@@ -276,24 +267,26 @@ export default {
                 }
                 &.reverse{
                     .square:nth-child(1){
-                        width: 7px;
+                        width: 8px;
                         background-color: var(--darkGray);
+                        border-right-color: transparent;
                     }
                     .square:nth-child(2){
-                        width: 5px;
-                        // background: var(--midGray);
+                        width: 6px;
+                        // background: var(--white);
+                        border-left-color: transparent;
                     }
                     @keyframes pingpongarrow2 {
-                        0%{margin-left: 10px}
-                        50%{margin-left: 12px}
-                        100%{margin-left: 10px}
+                        0%{margin-left: 15px}
+                        100%{margin-left: 11px}
                     }
                     .arrow{
                         display: block;
                         opacity: 1;
-                        animation: pingpongarrow2 .75s infinite ease-in-out;
-                        margin-left: 2px;
+                        margin-left: 11px;
+                        animation: pingpongarrow2 .25s forwards;
                     }
+
                 }
             }
             .icon{
@@ -524,7 +517,7 @@ export default {
                 .square
                 .square
                 .arrow(:class="store.theme")
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 5L21 12M21 12L14 19M21 12L3 12" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.83333 2.08398L8.75 5.00065M8.75 5.00065L5.83333 7.91732M8.75 5.00065L1.25 5.00065" stroke="#A9A9A9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             //- .icon
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6H20M4 12H20M13 18H20" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 //- <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 5C4 4.44772 4.44772 4 5 4H19C19.5523 4 20 4.44772 20 5V7C20 7.55228 19.5523 8 19 8H5C4.44772 8 4 7.55228 4 7V5Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 13C4 12.4477 4.44772 12 5 12H11C11.5523 12 12 12.4477 12 13V19C12 19.5523 11.5523 20 11 20H5C4.44772 20 4 19.5523 4 19V13Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 13C16 12.4477 16.4477 12 17 12H19C19.5523 12 20 12.4477 20 13V19C20 19.5523 19.5523 20 19 20H17C16.4477 20 16 19.5523 16 19V13Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>

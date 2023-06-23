@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<template lang="pug">
+<template lang="pug"> 
 .onboarding-steps
     h1.animated.fadeInUp
 
