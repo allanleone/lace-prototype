@@ -24,6 +24,15 @@ export default {
                     last24HoursVariation: [0.710, 0.945, 0.715, 0.556, 0.431, 0.500, 0.777, 0.406, 0.698, 0.485, 0.896, 0.453, 0.823, 0.886, 0.409, 0.701, 0.732, 0.623, 0.844, 0.597, 0.412, 0.529, 0.497, 0.723, 0.788],
                 },
                 {
+                    thumb: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tXNYaJZUHNddtcvDz8w-U2kQM_gbZsUeqA&usqp=CAU",
+                    label: "Cardano",
+                    address: "tADA",
+                    currentPrice: "0.376",
+                    variation: "2.43",
+                    balance: "8804.51",
+                    last24HoursVariation: [0.710, 0.945, 0.715, 0.556, 0.431, 0.500, 0.777, 0.406, 0.698, 0.485, 0.896, 0.453, 0.823, 0.886, 0.409, 0.701, 0.732, 0.623, 0.844, 0.597, 0.412, 0.529, 0.497, 0.723, 0.788],
+                },
+                {
                     thumb: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb14_Ix10ND-gRhOBTdPVPrdwdZ-sjyyOMaw&usqp=CAU",
                     label: "Lace 1",
                     address: "L1",

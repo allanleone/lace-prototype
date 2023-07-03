@@ -16,6 +16,7 @@ import Tracker from '../components/tracker/Tracker.vue';
 
 //- Widgets ----------------------------------------------
 import AboutYourWallet from '../components/widgets/AboutYourWallet.vue'
+import WalletSettings from '../components/widgets/WalletSettings.vue'
 import AboutLace from '../components/widgets/AboutLace.vue'
 import Search from '../components/widgets/Search.vue'
 import NetworkInfo from '../components/widgets/NetworkInfo.vue'
@@ -68,6 +69,7 @@ export default {
         SideDrawer,
         //
         AboutYourWallet,
+        WalletSettings,
         AboutLace,
         Search,
         NetworkInfo,
@@ -199,6 +201,7 @@ export default {
         .sticky 
             UserMenu(class="side", :theme="theme", :store="store",)/    
             .widgets.animated
+                WalletSettings.animated.toggleInLeft.delay-0-2s(title="Allan's Wallet", v-show="checkPageName() == 'settings'", :store="store")/
                 //- Search.animated.toggleInLeft.delay-0-2s/
                 NetworkInfo.animated.toggleInLeft.delay-0-2s(title="Network Info", v-show="checkPageName() == 'staking'")/
                 AboutLace.animated.toggleInLeft.delay-0-2s(title="About Lace", v-show="checkPageName() == 'settings'")/

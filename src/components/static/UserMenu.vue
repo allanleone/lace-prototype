@@ -42,6 +42,10 @@ export default {
                 this.store.set({ key: 'sidebarVisible', value: true })
             }
         },
+        openSidedrawer(item) {
+            this.store.set({ key: 'sidedrawerStorage', value: item })
+            this.store.set({ key: 'sidedrawerVisible', value: true })
+        },
     },
 }
 </script>
@@ -459,7 +463,7 @@ export default {
                 <svg width="1em" height="1em" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path style="fill: var(--orange);" d="M13.5 4a1 1 0 1 0-2 0h2Zm-2 1a1 1 0 1 0 2 0h-2Zm7 10a1 1 0 1 0 0 2v-2Zm2 2a1 1 0 1 0 0-2v2Zm-8-1v-1a1 1 0 0 0-1 1h1Zm2 1a1 1 0 1 0 0-2v2Zm-3 3a1 1 0 1 0 2 0h-2Zm2-11a1 1 0 1 0-2 0h2Zm-1 3h-1a1 1 0 0 0 1 1v-1Zm4 7a1 1 0 1 0 0 2v-2Zm4 2a1 1 0 1 0 0-2v2Zm-16-10a1 1 0 1 0 0 2v-2Zm4 2a1 1 0 1 0 0-2v2Zm4.01 0a1 1 0 1 0 0-2v2Zm4 0a1 1 0 1 0 0-2v2Zm3.99-2a1 1 0 1 0 0 2v-2Zm.01 2a1 1 0 1 0 0-2v2ZM5.5 5h2V3h-2v2Zm2 0v2h2V5h-2Zm0 2h-2v2h2V7Zm-2 0V5h-2v2h2Zm0 0h-2a2 2 0 0 0 2 2V7Zm2 0v2a2 2 0 0 0 2-2h-2Zm0-2h2a2 2 0 0 0-2-2v2Zm-2-2a2 2 0 0 0-2 2h2V3Zm12 2h2V3h-2v2Zm2 0v2h2V5h-2Zm0 2h-2v2h2V7Zm-2 0V5h-2v2h2Zm0 0h-2a2 2 0 0 0 2 2V7Zm2 0v2a2 2 0 0 0 2-2h-2Zm0-2h2a2 2 0 0 0-2-2v2Zm-2-2a2 2 0 0 0-2 2h2V3Zm-12 14h2v-2h-2v2Zm2 0v2h2v-2h-2Zm0 2h-2v2h2v-2Zm-2 0v-2h-2v2h2Zm0 0h-2a2 2 0 0 0 2 2v-2Zm2 0v2a2 2 0 0 0 2-2h-2Zm0-2h2a2 2 0 0 0-2-2v2Zm-2-2a2 2 0 0 0-2 2h2v-2Zm6-11v1h2V4h-2Zm7 13h2v-2h-2v2Zm-6 0h2v-2h-2v2Zm-1-1v4h2v-4h-2Zm0-7v3h2V9h-2Zm5 12h4v-2h-4v2Zm-12-8h4v-2h-4v2Zm8 0h.01v-2h-.01v2Zm8 0h.01v-2h-.01v2Zm-8 0h4.01v-2H12.5v2Z" fill="url(#arrow-diagonal-down_component_svg__a)"></path><defs><linearGradient id="arrow-diagonal-down_component_svg__a" x1="1.57" y1="1.072" x2="25.027" y2="2.803" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"></stop><stop offset="1" stop-color="#FDC300"></stop></linearGradient></defs></svg>
             .label Receive 
             .chevron
-    button.send
+    button.send(@click="openSidedrawer({global: 'send', action: 'send', title: 'Send'})")
         span
             .icon 
                 <svg width="1em" height="1em" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path style="fill: var(--orange);"  d="M8.964 4.636a1 1 0 1 0 0 2v-2Zm9.9 1h1a1 1 0 0 0-1-1v1Zm-1 9.9a1 1 0 1 0 2 0h-2Zm-12.435 2.12a1 1 0 0 0 1.414 1.415L5.43 17.657Zm3.535-11.02h9.9v-2h-9.9v2Zm8.9-1v9.9h2v-9.9h-2Zm.293-.707L5.429 17.657l1.414 1.414L19.571 6.343 18.157 4.93Z" fill="url(#arrow-diagonal-up_component_svg__a)"></path><defs><linearGradient id="arrow-diagonal-up_component_svg__a" x1="14.432" y1="-3.454" x2="28.133" y2="11.915" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"></stop><stop offset="1" stop-color="#FDC300"></stop></linearGradient></defs></svg>
