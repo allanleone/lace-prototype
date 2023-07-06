@@ -1,5 +1,6 @@
 <script>
 import LineChart from '../charts/LineTypeChart.vue'
+import { useRouter } from 'vue-router'
 export default {
     props: {
         store: Object,
@@ -10,12 +11,20 @@ export default {
     data() {
         return {
             // theme: this.store.get("theme"),
+            route:  useRouter(),
         }
     },
     components: {
         LineChart,
     },
     methods:{
+        tokenDetailsTrade(d){
+            let r = this.route.push("trading");
+            this.store.set({ key: 'storedTrading', value: d })
+            setTimeout(()=>{
+                this.$forceUpdate();
+            }, 1000);
+        },
         convertTimestap(d){
             const timestamp = d;
             const dateObj = new Date(timestamp);
@@ -24,6 +33,7 @@ export default {
             return dateObj.toLocaleTimeString(undefined, options).toUpperCase();
         },
         openSidedrawer(item) {
+            this.store.set({ key: 'sidedrawerStorage', value: item })
             this.store.set({ key: 'sidedrawerVisible', value: true })
         },
         standardNumberFormat(number) {
@@ -53,6 +63,20 @@ export default {
         font-size: 12px;
         a{
             color: var(--blue);
+        }
+    }
+    .token-label{
+        position: relative;
+        margin: 10px 0;
+        .ico{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        input{
+            padding-left: 50px;
+            margin: 0;
+            width: calc(100% - 80px);
         }
     }
     .table-row{
@@ -155,6 +179,19 @@ export default {
         border-radius: var(--radius);
         z-index: 1;
     }
+    .button-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        button{
+            position: absolute;
+            min-width: 120px;
+            right: 10px;
+            top: 20px;
+            left: auto;
+            z-index: 1;
+        }
+    }
     .table-header{
         &.table-row{
             color: var(--textColorSecondary);
@@ -205,6 +242,11 @@ export default {
 </style>
 <template lang="pug">
 .table
+
+    label.token-label.animated.fadeInUp.delay-1s(v-if="design.template == 'tokens'")
+        input(type="text", placeholder="Search")
+        .ico
+            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class=""><path fill-rule="evenodd" clip-rule="evenodd" d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12Zm-8 6a8 8 0 1 1 14.32 4.906l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.387-5.387A8 8 0 0 1 2 10Z" fill="url(#search_component_svg__a)"></path><defs><linearGradient id="search_component_svg__a" x1="-1.66" y1="-1.66" x2="27.643" y2="0.502" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"></stop><stop offset="1" stop-color="#FDC300"></stop></linearGradient></defs></svg>       
     
     // repeat columns from 'design' prop
     .table-header.table-row.animated.fadeInUp.delay-1s(
@@ -220,7 +262,7 @@ export default {
         v-for="(d, i) in data", 
         :style="'grid-template-columns:' + design.grid + ';'"
         :class="i > 9 ? 'delay-2s' : 'delay-1-' + (i + 1) + 's'"
-        @click="openSidedrawer(d)"
+        @click="openSidedrawer({action: 'staking', title: 'Staking'})"
     ) 
         // type 'full' (name + icon + address)
         .table-col
@@ -253,7 +295,7 @@ export default {
         v-for="(d, i) in data", 
         :style="'grid-template-columns:' + design.grid + ';'"
         :class="i > 9 ? 'delay-2s' : 'delay-1-' + (i + 1) + 's'"
-        @click="openSidedrawer(d)"
+        @click="openSidedrawer({action: 'token', title: 'Token details', value: d})"
         @mouseenter="d.overlay = true"
         @mouseleave="d.overlay = false"
     ) 
@@ -293,7 +335,7 @@ export default {
                 )
         
         // type 'balance' (string)
-        .table-col
+        .table-col(:style="d.overlay ? 'visibility: hidden;' : ''") 
             div.right
                 number(
                     ref="tokenPercentage"
@@ -323,6 +365,11 @@ export default {
                 :currentPrice="d.currentPrice"
                 :ref="'lineTokensChart_' + i"
             )/
+        .button-overlay(
+            v-if="d.overlay"
+            @click.stop="tokenDetailsTrade(d)"
+        )
+            button.purple.animated.fadeIn Trade
     .raw-row.animated.fadeIn.delay-2s(
         v-if="design.template == 'tokens'"
     ) 
@@ -352,7 +399,7 @@ export default {
             v-for="(d, i) in dt", 
             :style="'grid-template-columns:' + design.grid + ';'"
             :class="i > 9 ? 'delay-2s' : 'delay-' + indx + '-' + (i + 1) + 's'"
-            @click="openSidedrawer(d)"
+            @click="openSidedrawer({action: 'activity', title: 'Activity'})"
         ) 
             // type 'full' (name + icon + address)
             .table-col

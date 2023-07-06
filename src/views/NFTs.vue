@@ -7,74 +7,7 @@ export default {
     },
     data() {
         return {
-            nfts: [
-                {
-                    id: "1",
-                    label: "Lorem ipsum dolor",
-                    thumb: "https://public.nftstatic.com/static/nft/res/c10afbb0984f44379d835050ef6c1c6a.jpeg",
-                    policyId: "habkjsh42jk3hjkawshdeajshed",
-                    assetId: "habkjsh42jk3hjkawshdeajshed",
-                    aproxPrice: "5,387.00",
-                    owners: "8210",
-                    volume: "12.34m",
-
-                },
-                {
-                    id: "2",
-                    label: "Consectetur adipiscing elit, sed do eiusmod tempor",
-                    thumb: "https://makerradar.com/wp-content/uploads/2022/03/Nyan-Flying-Cat-Gif.gif",
-                    policyId: "habkjsh42jk3hjkawshdeajshed",
-                    assetId: "habkjsh42jk3hjkawshdeajshed",
-                    aproxPrice: "6,394.00",
-                    owners: "8210",
-                    volume: "12.34m",
-
-                },
-                {
-                    id: "3",
-                    label: "Duis aute irure dolor in reprehenderit in",
-                    thumb: "https://cdn.dribbble.com/users/83671/screenshots/17013854/mr_noir_1_1.png?compress=1&resize=400x300",
-                    policyId: "habkjsh42jk3hjkawshdeajshed",
-                    assetId: "habkjsh42jk3hjkawshdeajshed",
-                    aproxPrice: "6,394.00",
-                    owners: "8210",
-                    volume: "12.34m",
-
-                },
-                {
-                    id: "4",
-                    label: "Xillum dolore eu fugiat nulla pariatur.",
-                    thumb: "https://lh3.googleusercontent.com/aDukKM0MNXSgS4W_JTQC8aCDVa1pQlphr3nquDpni9rM8uaPJUKkDEgaC1HoMFdBgwEQ11MlT1H_GDCC5TGq7413FKTCgwsOD_VwNQ",
-                    policyId: "habkjsh42jk3hjkawshdeajshed",
-                    assetId: "habkjsh42jk3hjkawshdeajshed",
-                    aproxPrice: "5,387.00",
-                    owners: "8210",
-                    volume: "12.34m",
-
-                },
-                {
-                    id: "5",
-                    label: "Excepteur sint occaecat cupidatat",
-                    thumb: "https://cdn.dribbble.com/users/83671/screenshots/16682250/media/1b7652fe20e98f14a5f938aa0da701d6.png?compress=1&resize=400x300",
-                    policyId: "habkjsh42jk3hjkawshdeajshed",
-                    assetId: "habkjsh42jk3hjkawshdeajshed",
-                    aproxPrice: "5,387.00",
-                    owners: "8210",
-                    volume: "12.34m",
-
-                },
-                {
-                    id: "6",
-                    label: "Dsunt in culpa qui officia deserunt",
-                    thumb: "https://i.guim.co.uk/img/media/ef8492feb3715ed4de705727d9f513c168a8b196/37_0_1125_675/master/1125.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=d456a2af571d980d8b2985472c262b31",
-                    policyId: "habkjsh42jk3hjkawshdeajshed",
-                    assetId: "habkjsh42jk3hjkawshdeajshed",
-                    aproxPrice: "6,394.00",
-                    owners: "8210",
-                    volume: "12.34m",
-
-                },
-            ]
+            nfts: this.store.get("nfts"),
         }
     },
     methods: {

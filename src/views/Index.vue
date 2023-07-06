@@ -156,6 +156,8 @@ export default {
             console.log(this.page)
             if(this.page == "onboarding"){
                 document.querySelector("#lace").style.backgroundImage = "url('assets/images/background-onboarding.png')"
+            }else{
+                document.querySelector("#lace").style.backgroundImage = "none"
             }
         }, 500);   
         // let minimum = document.querySelector(".content").offsetWidth;
@@ -206,7 +208,7 @@ export default {
                 NetworkInfo.animated.toggleInLeft.delay-0-2s(title="Network Info", v-show="checkPageName() == 'staking'")/
                 AboutLace.animated.toggleInLeft.delay-0-2s(title="About Lace", v-show="checkPageName() == 'settings'")/
                 //- AddressBook.animated.toggleInLeft.delay-0-2s(title="Add new address", v-show="checkPageName() == 'addressBook'")/
-                AboutYourWallet.animated.toggleInLeft.delay-0-2s(title="About your wallet", v-show="checkPageName() == 'addressBook' || checkPageName() == 'tokens' || checkPageName() == 'nfts' || checkPageName() == 'activity' || checkPageName() == 'staking' || checkPageName() == 'dashboard'")/
+                AboutYourWallet.animated.toggleInLeft.delay-0-2s(title="About your wallet", v-show="checkPageName() == 'addressBook' || checkPageName() == 'tokens' || checkPageName() == 'nfts' || checkPageName() == 'activity' || checkPageName() == 'staking' || checkPageName() == 'dashboard' || checkPageName() == 'trading'")/
     SideDrawer(:store="store", v-if="store.sidedrawerVisible")/
     
     //-     

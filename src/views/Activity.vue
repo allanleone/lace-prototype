@@ -14,63 +14,7 @@ export default {
                 template: 'activity',
             },
             formattedActivity: [],
-            activity: [
-                {
-                    thumb: "received",
-                    label: "Received",
-                    timestamp: "15 May 2023 14:22:35 GMT",
-                    bundle: [
-                        "12.00 tADA",
-                        "0.0005 Lace1",
-                        "4.0065 Lace2",
-                    ],
-                    convertedTotal: "5.44"
-                },
-                {
-                    thumb: "delegation",
-                    label: "Delegation",
-                    timestamp: "15 May 2023 14:23:14 GMT",
-                    bundle: [
-                        "12.00 tADA",
-                        "0.0005 Lace1",
-                        "4.0065 Lace2",
-                    ],
-                    convertedTotal: "5.44"
-                },
-                {
-                    thumb: "received",
-                    label: "Received",
-                    timestamp: "14 May 2023 11:22:35 GMT",
-                    bundle: [
-                        "12.00 tADA",
-                        "0.0005 Lace1",
-                        "4.0065 Lace2",
-                    ],
-                    convertedTotal: "5.44"
-                },
-                {
-                    thumb: "sent",
-                    label: "Sent",
-                    timestamp: "14 May 2023 12:22:35 GMT",
-                    bundle: [
-                        "12.00 tADA",
-                        "0.0005 Lace1",
-                        "4.0065 Lace2",
-                    ],
-                    convertedTotal: "5.44"
-                },
-                {
-                    thumb: "self",
-                    label: "Self Transaction",
-                    timestamp: "14 May 2023 15:22:35 GMT",
-                    bundle: [
-                        "12.00 tADA",
-                        "0.0005 Lace1",
-                        "4.0065 Lace2",
-                    ],
-                    convertedTotal: "5.44"
-                },
-            ],
+            activity: this.store.get("activity"),
         }
     },
     methods: {

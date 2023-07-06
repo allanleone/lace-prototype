@@ -22,12 +22,20 @@ label{
         width: calc(100% - 40px);
         margin-top: 24px;
         margin-bottom: 20px;
+        -moz-appearance: textfield !important;
+        -webkit-appearance: none !important;
+        appearance: none !important;
         @media screen and (max-width: 1439px) {
             // width: calc(100% - 350px);
         }
         &::placeholder{
             font-weight: 400;
         } 
+        &:hover{
+            -moz-appearance: textfield !important;
+            -webkit-appearance: none !important;
+            appearance: none !important;
+        }
     }
     .icon{
         position: absolute;

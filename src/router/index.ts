@@ -45,6 +45,11 @@ const router = createRouter({
       name: 'addressBook',
       component: () => import('../views/AddressBook.vue')
     },
+    {
+      path: '/trading',
+      name: 'trading',
+      component: () => import('../views/Trading.vue')
+    },
     // {
     //   path: '/portal',
     //   name: 'Portal',

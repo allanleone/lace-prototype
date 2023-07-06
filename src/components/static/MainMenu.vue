@@ -50,6 +50,13 @@ export default {
                     icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 11H5M19 11C20.1046 11 21 11.8954 21 13V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V13C3 11.8954 3.89543 11 5 11M19 11V9C19 7.89543 18.1046 7 17 7M5 11V9C5 7.89543 5.89543 7 7 7M7 7V5C7 3.89543 7.89543 3 9 3H15C16.1046 3 17 3.89543 17 5V7M7 7H17" stroke="#3D3B39" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
                     iconSelected: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 4C7.33726 4 6.8 4.53726 6.8 5.2C6.8 5.86274 7.33726 6.4 8 6.4H15.2C15.8627 6.4 16.4 5.86274 16.4 5.2C16.4 4.53726 15.8627 4 15.2 4H8Z" fill="url(#paint0_linear_4869_467261)"/><path d="M4.4 8.8C4.4 8.13726 4.93726 7.6 5.6 7.6H17.6C18.2627 7.6 18.8 8.13726 18.8 8.8C18.8 9.46274 18.2627 10 17.6 10H5.6C4.93726 10 4.4 9.46274 4.4 8.8Z" fill="url(#paint1_linear_4869_467261)"/><path d="M2 13.6C2 12.2745 3.07452 11.2 4.4 11.2H18.8C20.1255 11.2 21.2 12.2745 21.2 13.6V18.4C21.2 19.7255 20.1255 20.8 18.8 20.8H4.4C3.07452 20.8 2 19.7255 2 18.4V13.6Z" fill="url(#paint2_linear_4869_467261)"/><defs><linearGradient id="paint0_linear_4869_467261" x1="-1.51319" y1="0.925962" x2="26.5706" y2="3.29321" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"/><stop offset="1" stop-color="#FDC300"/></linearGradient><linearGradient id="paint1_linear_4869_467261" x1="-1.51319" y1="0.925962" x2="26.5706" y2="3.29321" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"/><stop offset="1" stop-color="#FDC300"/></linearGradient><linearGradient id="paint2_linear_4869_467261" x1="-1.51319" y1="0.925962" x2="26.5706" y2="3.29321" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"/><stop offset="1" stop-color="#FDC300"/></linearGradient></defs></svg>',
                 },
+                {
+                    selected: false,
+                    label: 'Trading',
+                    route: '/trading',
+                    icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 7H21M21 7V15M21 7L13 15L9 11L3 17" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                    iconSelected: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 7H21M21 7V15M21 7L13 15L9 11L3 17" stroke="#FF8E3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                },
             ],
             hoverIndex: 0,
         }
@@ -64,6 +71,13 @@ export default {
             })
             item.selected = true;
         },
+    },
+    update() {
+        this.mainMenu.forEach((m) => {
+            if (m.route == ("/" + useRoute().name)) {
+                this.selectMenu(m)
+            }
+        })
     },
     created() {
         this.mainMenu.forEach((m) => {

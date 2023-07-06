@@ -101,6 +101,26 @@ button{
             filter: brightness(0) invert(1);
         }
     }
+    &.purple-link{
+        border-color: transparent;
+        background: transparent;
+        color: var(--accentPurple);
+        padding: 0px 20px;
+        transition: box-shadow .5s ease-in-out;
+        &:hover{
+            box-shadow: inset 0px 0px 50px #00000010;
+            color: var(--accentPurple);
+            background-color: transparent;
+        }
+        &:disabled{
+            background: var(--bgCardHover);
+            color: var(--textColorSecondary);
+            opacity: .25 !important;
+        }
+        img, svg{
+            filter: brightness(0) invert(1);
+        }
+    }
     &.red{
         border-color: transparent;
         background: var(--dataPink);
