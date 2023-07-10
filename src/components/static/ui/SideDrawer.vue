@@ -50,6 +50,8 @@ export default {
             ],
             selectTokenSend: 1,
             selectedTokens: [],
+            copyingProcess: false,
+            copied: "",
             //////////////
             
         }
@@ -363,6 +365,14 @@ export default {
                     this.globalSendAssets[i] = t
                 }
             })
+        },
+        // Receive
+        confirmCopy(w){
+            this.copied = w.name;
+            this.copyingProcess = true
+            setTimeout(()=>{
+                this.copyingProcess = false
+            }, 2000)
         }
         ////////////////
     },
@@ -1634,6 +1644,169 @@ export default {
         }
     }
     // !!!!!!
+
+    // Receive
+    .receive-global {
+        dib{
+            height: auto;
+        }
+        hr{
+            opacity: .2;
+            margin: 25px 0;
+        }
+        .wallet-title{
+            display: grid;
+            grid-template-columns: 32px 1fr 30px;
+            gap: 10px;
+            .thumb{
+                display: grid;
+                place-content: center;
+                font-weight: 700;
+                width: 32px;
+                height: 32px;
+                border-radius: 100px;
+                background: var(--gradient);
+                color: var(--white);
+            }
+            .name{
+                align-items: center;
+                display: grid;
+                font-weight: bold;
+            }
+        }
+        .addresses{
+            border: solid 1px var(--lightGrayPlus);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin: 30px auto;
+            position: relative;
+            .title-section{
+                grid-template-columns: 1fr 20px 20px;
+                display: grid;
+                gap: 10px;
+            }
+            .label{
+                color: var(--textColorSecondary);
+            }
+            .chevron{
+                width: 24px;
+                height: 24px;
+                border-radius: 100px;
+                padding: 0px;
+                place-content: center;
+                display: grid;
+                cursor: pointer;
+                &:hover{
+                    background-color: var(--lightGray);
+                }
+                svg{
+                    width: 16px;
+                    height: auto;
+                }
+                &.inverted{
+                    svg{
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            .copy{
+                position: absolute;
+                bottom: 20px;
+                right: 20px;
+                display: none;
+            }
+            &:hover{
+                background-color: var(--lightGray);
+                cursor: pointer;
+                .copy{
+                    display: block;
+                }
+            }
+        }
+        .copy-feedback{
+            position: fixed;
+            bottom: 20px;
+            left: calc(50% - 135px);
+            width: 250px;
+            background-color: var(--bgCard);
+            padding: 20px;
+            text-align: center;
+            border-radius: var(--radius);
+            box-shadow: var(--tinyShadow);
+            overflow: hidden;
+            .progress-bar{
+                @keyframes progressBar{
+                    0%{width: 0;}
+                    100%{width: 100%;}
+                }
+                animation: progressBar 2s forwards ease-in-out;
+                width: 75%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 5px;
+                background: var(--gradient);
+            }
+        }
+        .qr-section{
+            display: grid;
+            grid-template-columns: 33% 1fr;
+            gap: 20px;
+            .info{
+                display: grid;
+                align-items: center;
+                .content{
+                    width: 100%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;    
+                }
+                .address{
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;    
+                    text-overflow: ellipsis;
+                    color: var(--textColorSecondary);
+                    width: 100%;
+                }
+            }
+            .address-qr{
+                margin: 10px auto;
+                max-width: 200px;
+                position: relative;
+                border: 2px solid transparent;
+                color: var(--text-color-primary);
+                padding: 5px;
+                border-radius: var(--radius);
+                background: linear-gradient(var(--bgCard), var(--bgCard)) padding-box,linear-gradient(to right, #ff92e1, #fdc300) border-box;
+                .chain{
+                    display: grid;
+                    place-items: center;
+                    width: 40px;
+                    height: 40px;
+                    margin-top: 0px;
+                    background-color: var(--lightGrayPlus);
+                    border: solid 10px var(--bgCard);
+                    border-radius: 100px;
+                    overflow: hidden;
+                    font-size: 12px;
+                    position: absolute;
+                    top: calc(50% - 27px);
+                    left: calc(50% - 27px);
+                    // border-radius: 100px;
+                    // overflow: hidden;
+                    img{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .staking-status{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    // !!!!!!!
     
 }
 </style>
@@ -1644,7 +1817,7 @@ export default {
 
         // Settings ////////////////////
         //- 
-        span.settings(v-if="router == 'settings' && store.get('settingsPage') == 1 && store.get('sidedrawerStorage').global !== 'send'")
+        span.settings(v-if="router == 'settings' && store.get('settingsPage') == 1 && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' ")
             .window-header
                 .title
                     //- span Address Book
@@ -1731,7 +1904,7 @@ export default {
                     v-show="!addressBookEditing"
                 ) Close
         //- 
-        span.settings(v-if="router == 'settings' && store.get('settingsPage') == 2 && store.get('sidedrawerStorage').global !== 'send'")
+        span.settings(v-if="router == 'settings' && store.get('settingsPage') == 2 && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' ")
             .window-header.with-back-button 
                 .back(@click="store.set({ key: 'settingsPage', value: 1 })")
                     button.navigation
@@ -1784,7 +1957,7 @@ export default {
 
 
         // Address Book ////////////////////
-        span.address-book(v-if="router == 'addressBook' && store.get('sidedrawerStorage').global !== 'send'")
+        span.address-book(v-if="router == 'addressBook' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' ")
             //- .window-header.with-back-button
             .window-header
                 //- .back
@@ -1909,6 +2082,52 @@ export default {
                     @click="close()"
                     v-show="!addressBookEditing"
                 ) Cancel
+        /////////////////////////////////////
+
+        // Receive ////////////////////
+        //- >> default
+        span.receive-global(v-if="store.get('sidedrawerStorage').global ? (store.get('sidedrawerStorage').global == 'receive' && store.get('sidedrawerStorage').action == 'receive' ? true : false) : false")
+
+            .window-header
+                .title
+                    span(v-if="store.get('sidedrawerStorage').title") {{store.get("sidedrawerStorage").title}}
+                    span(v-if="store.get('sidedrawerStorage').title === null || store.get('sidedrawerStorage').title === undefined") Lace.io
+                .close
+                    button.navigation(@click="close()")
+                        span
+                            .icon
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6L18 18" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+            .window-content.no-buttons
+                div
+                    div
+                        h3.bold Your wallet address
+                        p These are all your addresses, scan QR codes or copy these to receive funds.    
+                    .addresses(
+                        v-for="wallets in store.get('wallets')", 
+                        @click="confirmCopy(wallets)"
+                        v-show="wallets ? (wallets.active == true ? true : false) : false"
+                    )
+                        .qr-section
+                            .address-qr
+                                .chain 
+                                    img(:src="wallets.icon")
+                                QR/
+                            .info
+                                .content
+                                    .name.bold 
+                                        span {{wallets.name}}
+                                    .address {{wallets.addr}}
+                            .copy
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16H6C4.89543 16 4 15.1046 4 14V6C4 4.89543 4.89543 4 6 4H14C15.1046 4 16 4.89543 16 6V8M10 20H18C19.1046 20 20 19.1046 20 18V10C20 8.89543 19.1046 8 18 8H10C8.89543 8 8 8.89543 8 10V18C8 19.1046 8.89543 20 10 20Z" stroke="#3D3B39" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    span.animated.fadeInUp(v-if="copyingProcess")
+                        .copy-feedback.animated.fadeOut.delay-2s
+                            div
+                                span Address of 
+                                span.bold  {{copied}} 
+                                span  Copied!
+                                .progress-bar
+        // !
         /////////////////////////////////////
 
         // Send ////////////////////
@@ -2248,7 +2467,7 @@ export default {
         ////////////////////////////
 
         // Tokens ////////////////////
-        span.tokens-sidedrawer(v-if="router == 'tokens' && store.get('sidedrawerStorage').global !== 'send'")
+        span.tokens-sidedrawer(v-if="router == 'tokens' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' ")
             //- .window-header.with-back-button
             .window-header
                 .title

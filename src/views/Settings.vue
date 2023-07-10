@@ -49,7 +49,7 @@ export default {
                 .status
                     //- .bold Mainnet
                     .networks 
-                        .chain(v-for="(n, i) in store.get('wallets')")
+                        .chain(v-for="(n, i) in store.get('wallets')", :class="n.active ? '' : 'inactive'")
                             img(:src="n.icon")
                             //- span CA
             hr/
@@ -240,7 +240,18 @@ export default {
                 border-radius: 100px;
                 font-size: 12px;
                 overflow: hidden;
-                margin-right: -10px;
+                margin-right: 5px;
+                &.inactive{
+                    opacity: .1;
+                    &:after{
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        background-color: white;
+                    }
+                }
                 img{
                     width: 100%;
                 }

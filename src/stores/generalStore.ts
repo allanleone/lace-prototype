@@ -284,6 +284,15 @@ export const generalStore = defineStore('general', {
                 netSelection: 1,
                 active: true,
             },
+            {
+                name: "Handle",
+                type: "$handle",
+                addr: "$allanleone",
+                icon: "https://res.cloudinary.com/dkjdnfj7u/image/upload/c_limit,h_500,w_500/q_auto:best/v1678458230/collections/hero_image/adahandle?_a=ATCqVAA0.webp",
+                expanded: false,
+                netSelection: 1,
+                active: true,
+            },
         ],
         // !
         // trading

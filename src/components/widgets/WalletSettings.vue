@@ -16,7 +16,10 @@ export default {
         QR,
     },
     methods: {
-
+        openSidedrawer(item) {
+            this.store.set({ key: 'sidedrawerStorage', value: item })
+            this.store.set({ key: 'sidedrawerVisible', value: true })
+        },
     },
     mounted(){
         this.wallets = this.store.get("wallets");
@@ -84,12 +87,41 @@ export default {
                     transform: rotate(180deg);
                 }
             }
+            &.disabled{
+                opacity: .15;
+            }
+        }
+        &.inactive{
+            .qr-section{
+                .address-qr{
+                    opacity: .25;
+                    filter: saturate(0);
+                    &:before{
+                        position: absolute;
+                        width: auto;
+                        height: auto;
+                        content: 'disabled';
+                        z-index: 1;
+                        background-color: var(--bgCard);
+                        border-radius: 100px;
+                        padding: 10px;
+                        left: calc(50% - 40px);
+                        top: calc(50% - 20px);
+                    }
+                }
+            }
         }
     }
     .qr-section{
         display: grid;
         grid-template-columns: 120px 1fr;
         gap: 20px;
+        padding: 0 10px;
+        cursor: pointer;
+        &:hover{
+            background-color: var(--lightGray);
+            border-radius: var(--radius);
+        }
         .info{
             display: grid;
             align-items: center;
@@ -152,14 +184,20 @@ export default {
         .name Allan's wallet
         .settings.bold ...
     hr/
-    .addresses(v-if="index != null")
+    .addresses(v-if="index != null", :class="wallets[index] ? (wallets[index].active ? '' : 'inactive') : ''")
         .title-section
             .label Addresses 
-            .chevron.inverted(@click="index = (index > 0 ? (index - 1) : (index = 0))")
+            .chevron.inverted(
+                @click="index = (index > 0 ? (index - 1) : (index = 0))"
+                :class="index == 0 ? 'disabled' : ''"
+            )
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 5L16 12L9 19" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            .chevron(@click="index = (index >= (wallets.length - 1) ? (wallets.length - 1) : (index + 1))")
+            .chevron(
+                @click="index = (index >= (wallets.length - 1) ? (wallets.length - 1) : (index + 1))"
+                :class="(index >= (wallets.length - 1)) ? 'disabled' : ''"    
+            )
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 5L16 12L9 19" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        .qr-section
+        .qr-section(@click="openSidedrawer({action: 'network', title: 'Settings'})")
             .address-qr
                 .chain 
                     img(:src="wallets[index].icon")
