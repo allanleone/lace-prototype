@@ -45,6 +45,8 @@ export default {
             editWord: "",
             showSugestions: false,
             showSugestionsEdit: false,
+            createOrRestore: "",
+            showModalWords: true,
             wordsRecovery: [
             ],
             indexKeyNavigation: 0,
@@ -405,7 +407,7 @@ export default {
                                     .label 
                                         .title  New wallet
                                         .desc Create a new Lace wallet
-                                    button.primary(@click="changeStageTo(2, false);") Create
+                                    button.primary(@click="showModalWords = true; createOrRestore = 'create'; changeStageTo(2, false);") Create
                                 hr/
                                 .select-option-item.animated.fadeInUp.delay-3-7s
                                     .ico 
@@ -421,7 +423,7 @@ export default {
                                     .label 
                                         .title Restore wallet
                                         .desc Enter your recovery phrase
-                                    button.primary(@click="popupRestore = true;") Restore
+                                    button.primary(@click="showModalWords = false; createOrRestore = 'restore'; popupRestore = true;") Restore
                 Transition(name="fade")
                     
                     //- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -548,10 +550,31 @@ export default {
 
                                 //- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                                 .content-stage.animated.toggleInUp(v-if="stage == 4")
-                                    h2 Recovery phrase
+                                    h2(v-show="createOrRestore == 'create' && showModalWords") Save your phrase
+                                    h2(v-show="createOrRestore == 'create' && !showModalWords") Confirm your phrase
+                                    h2(v-show="createOrRestore == 'restore'") Recovery phrase
                                     .content-section
-                                        span Enter each word of your recovery phrase in the right order.
+                                        span(v-show="createOrRestore == 'create' && showModalWords") We recommend to write it down in a safe place.
+                                        span(v-show="createOrRestore == 'create' && !showModalWords") Enter each word of your recovery phrase in the right order.
+                                        span(v-show="createOrRestore == 'restore'") Enter each word of your recovery phrase in the right order.
                                         //- span Enter each word of your recovery phrase in the right order.
+                                    .new-wallet-mockup(v-if="createOrRestore == 'create' && showModalWords")
+                                        .pass-wall
+                                            .word 1. mouse
+                                            .word 2. cloud
+                                            .word 3. apple
+                                            .word 4. fox
+                                            .word 5. light
+                                            .word 6. bus
+                                            .word 7. bat
+                                            .word 8. bread
+                                            .word 9. sun
+                                            .word 10. music
+                                            .word 11. egg
+                                            .word 12. happy
+                                        .understood-button
+                                            button.purple.animated.fadeInDown.delay-2s(@click="showModalWords = false") Continue
+                                        
                                     .tabs 
                                         .tab(@click="tabRecovery = 1;", :class="tabRecovery == 1 ? 'active' : ''") 12-word
                                         .tab(@click="tabRecovery = 2;", :class="tabRecovery == 2 ? 'active' : ''") 15-word
@@ -654,7 +677,7 @@ export default {
                                         //- button.tertiary(@click="changeStageTo(4, false)", v-if="stage == 3", style="margin: auto") 
                                             span Skip
                                     span
-                                        button.purple(v-if="stage >= 2", @click="changeStageTo('next')", :disabled="nextShouldBeEnabled()") 
+                                        button.purple(v-if="stage >= 2", @click="(createOrRestore == 'create' ? (showModalWords = true) : (showModalWords = false)); changeStageTo('next')", :disabled="nextShouldBeEnabled()") 
                                             span(v-if="stage > 2 && stage != 5") Next
                                             span(v-if="stage == 2 && stage != 5") Next
                                             span(v-if="stage == 5") Go to my wallet
@@ -860,6 +883,34 @@ export default {
         // min-height: 585px;
         height: calc(100% - 200px); 
         margin: auto auto 100px auto;
+
+        .new-wallet-mockup{
+            position: absolute;
+            width: calc(100% - 30px);
+            height: calc(100% - 40px);
+            background-color: var(--bgCard);
+            z-index: 1;
+            margin-top: 0px;
+            padding: 20px;
+            text-align: center;
+            .pass-wall{
+                padding-top: 40px;
+            }
+            .word{
+                padding: 20px;
+                display: inline-grid;
+                background-color: var(--lightGray);
+                border-radius: 200px;
+                margin: 10px;
+            }
+            .understood-button{
+                position: absolute;
+                bottom: 40px;
+                width: auto;
+                right: 20px;
+                bottom: 20px;
+            }
+        }
         
         .main-window{
             // width: 10px;

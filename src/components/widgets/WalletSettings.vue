@@ -10,6 +10,9 @@ export default {
             // theme: this.store.get("theme"),
             index: null,
             wallets: [],
+            transition: false,
+            directionIn: 'fadeInLeft',
+            directionOut: 'fadeOutLeft',
         }
     },
     components: {
@@ -19,6 +22,22 @@ export default {
         openSidedrawer(item) {
             this.store.set({ key: 'sidedrawerStorage', value: item })
             this.store.set({ key: 'sidedrawerVisible', value: true })
+        },
+        transitionEffect(dir){
+            this.transition = true;
+            console.log(dir)
+            setTimeout(()=>{
+                this.transition = false;
+                if(dir == 1){
+                    this.directionIn = 'fadeInLeft'
+                    this.directionOut = 'fadeOutLeft'
+                    this.index = (this.index > 0 ? (this.index - 1) : (this.index = 0))
+                }else{
+                    this.directionIn = 'fadeInRight'
+                    this.directionOut = 'fadeOutRight'
+                    this.index = (this.index >= (this.wallets.length - 1) ? (this.wallets.length - 1) : (this.index + 1))
+                }
+            }, 500)
         },
     },
     mounted(){
@@ -34,6 +53,7 @@ export default {
     border: solid 2px var(--bgCardBorder);
     margin-top: 20px;
     border-radius: var(--defaultRadius);
+    overflow: hidden;
     hr{
         opacity: .2;
         margin: 25px 0;
@@ -63,6 +83,7 @@ export default {
             grid-template-columns: 1fr 20px 20px;
             display: grid;
             gap: 10px;
+            overflow: hidden;
         }
         .label{
             color: var(--textColorSecondary);
@@ -93,6 +114,8 @@ export default {
         }
         &.inactive{
             .qr-section{
+                animation-duration: .25s !important;
+                transition-duration: .25s !important;
                 .address-qr{
                     opacity: .25;
                     filter: saturate(0);
@@ -188,16 +211,19 @@ export default {
         .title-section
             .label Addresses 
             .chevron.inverted(
-                @click="index = (index > 0 ? (index - 1) : (index = 0))"
+                @click="transitionEffect(1); "
                 :class="index == 0 ? 'disabled' : ''"
             )
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 5L16 12L9 19" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             .chevron(
-                @click="index = (index >= (wallets.length - 1) ? (wallets.length - 1) : (index + 1))"
+                @click="transitionEffect(2);"
                 :class="(index >= (wallets.length - 1)) ? 'disabled' : ''"    
             )
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 5L16 12L9 19" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        .qr-section(@click="openSidedrawer({action: 'network', title: 'Settings'})")
+        .qr-section.animated(
+            :class="transition == true ? directionOut : directionIn"
+            @click="openSidedrawer({action: 'network', title: 'Settings'})"
+        )
             .address-qr
                 .chain 
                     img(:src="wallets[index].icon")

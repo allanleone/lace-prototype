@@ -18,9 +18,7 @@ export default {
         }
     },
     methods: {
-        openSidedrawer(item) {
-            this.store.set({ key: 'sidedrawerVisible', value: true })
-        }
+
     },
     components: {
         QACodeAddFunds,

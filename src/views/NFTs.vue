@@ -11,8 +11,20 @@ export default {
         }
     },
     methods: {
-        openSidedrawer(item){
+        openSidedrawer(item) {
+            this.store.set({ key: 'sidedrawerStorage', value: item })
             this.store.set({ key: 'sidedrawerVisible', value: true })
+        },
+        checkNft(nft) {
+            let r = true;
+            this.store.get("wallets").forEach((w) => {
+                if (w.active == false) {
+                    if (w.network == nft.network) {
+                        r = false;
+                    }
+                }
+            })
+            return r;
         }
     },
     components: {
@@ -29,7 +41,7 @@ export default {
             span NFTs
             span.counter ({{ nfts.length }})
         span.floating-add-button.animated.toggleInRight
-            button
+            //- button
                 span
                     .icon 
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 13H15M12 10V16M3 17V7C3 5.89543 3.89543 5 5 5H11L13 7H19C20.1046 7 21 7.89543 21 9V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17Z" stroke="url(#paint0_linear_17397_113264)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="paint0_linear_17397_113264" x1="-0.293617" y1="2.4383" x2="25.9856" y2="4.93033" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"/><stop offset="1" stop-color="#FDC300"/></linearGradient></defs></svg>
@@ -38,11 +50,14 @@ export default {
     .cards-space
         .nft-card.animated.fadeInUp(
             v-for="(nft, i) in nfts", 
+            v-show="checkNft(nft)"
             :class="i < 9 ? 'delay-1-' + (i + 1) + 's' : 'delay-2s'"
-            @click="openSidedrawer(nft)"
+            @click="openSidedrawer({action: 'NFTs', title: 'NFT detail', value: nft})"
             )
             .poster
                 .nft-thumb-image(:style="'background-image: url(' + nft.thumb +')'")
+                    //- .network 
+                        img(:src="nft.thumbNetwork")/
             .nft-title {{ nft.label }}
         Card(data-image="https://images.unsplash.com/photo-1479660656269-197ebb83b540?dpr=2&auto=compress,format&fit=crop&w=1199&h=798&q=80&cs=tinysrgb&crop=")
             h1(slot="header") Canyons
@@ -53,7 +68,7 @@ export default {
 .nfts{
     .cards-space{
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         text-align: center;
         gap: 10px;
         .nft-card{
@@ -65,6 +80,19 @@ export default {
             padding: 10px;
             border-radius: var(--radius);
             transition: background-color .25s ease-in-out;
+            .network{
+                width: 24px;
+                height: 24px;
+                overflow: hidden;
+                border-radius: 100px;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                border: solid 2px #ffffff66;
+                img{
+                    width: 100%;
+                }
+            }
             &:hover{
 
             }

@@ -5,7 +5,7 @@ import Structure from './views/Index.vue'
 // -------------------------------------------------------
 
 //- Store ------------------------------------------------
-import { generalStore } from './stores/generalStore'
+import { generalStore } from './stores/generalStore.js'
 import { storeToRefs } from 'pinia';
 const store = generalStore()
 // -------------------------------------------------------

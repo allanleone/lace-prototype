@@ -1,4 +1,5 @@
 <script>
+import Table from '../components/static/Table.vue';
 export default {
     props: {
         store: Object,
@@ -8,25 +9,24 @@ export default {
             activeTab: 0,
             activeTabSlippage: 0.25,
             slippageExpanded: false,
+            buyAndSell: 1,
+            design: {
+                showIcon: true,
+                grid: "2fr auto",
+                // columns: ['', ''],
+                template: 'activity',
+            },
+            formattedActivity: [],
+            activity: this.store.get("activity"),
             swapDataFrom: [
-                {
-                    name: "ADA",
-                    address: "ADA",
-                    balance: 1400,
-                    amount: 1,
-                    cost: 0.254,
-                    thumb: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tXNYaJZUHNddtcvDz8w-U2kQM_gbZsUeqA&usqp=CAU",
-                    ico: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tXNYaJZUHNddtcvDz8w-U2kQM_gbZsUeqA&usqp=CAU",
-                    type: "token",
-                    hotSwap: false,
-                },
+                this.store.tokens[0],
             ],
             swapDataTo: [
                 {
                     name: "Select",
                     address: "Select",
                     balance: 0,
-                    amount: 0,
+                    amount: 0.0000000,
                     cost: 0,
                     thumb: "https://cdn0.iconfinder.com/data/icons/essentials-9/128/__Menu-512.png",
                     ico: "https://cdn0.iconfinder.com/data/icons/essentials-9/128/__Menu-512.png",
@@ -56,6 +56,9 @@ export default {
         },
         simpleNumberFormat(number) {
             return "" + number.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+        tokenNumberFormat(number) {
+            return "" + number.toFixed(6);
         },
         swapTokenFrom(a, st, type) {
 
@@ -149,7 +152,7 @@ export default {
         }
     },
     components: {
-
+        Table,
     },
     created(){
         // return console.log("D", this.store.get("storedTrading"))
@@ -171,7 +174,32 @@ export default {
         }
     },  
     mounted(){    
+        //
+        var options = { day: 'numeric', month: 'short', year: 'numeric' };
 
+        var sortedActivity = this.activity.sort((a, b) => {
+            var dateA = new Date(a.timestamp);
+            var dateB = new Date(b.timestamp);
+            return dateB - dateA; // Compare in descending order
+        }).reverse();
+
+        var result = sortedActivity.reduce((acc, obj) => {
+            var date = new Date(obj.timestamp).toLocaleDateString(undefined, options);
+            if (!acc[date]) {
+                acc[date] = [];
+            }
+            acc[date].push(obj);
+            return acc;
+        }, {});
+
+        this.formattedActivity = Object.keys(result)
+            .sort((a, b) => new Date(b) - new Date(a))
+            .reduce((acc, key) => {
+                acc[key] = result[key];
+                return acc;
+            }, {});
+
+        //
     }
 }
 </script>
@@ -185,7 +213,7 @@ export default {
         .tab-a(@click="activeTab = 1", :class="activeTab == 1 ? 'active' : ''") Buy & Sell
         .tab-a(@click="activeTab = 2", :class="activeTab == 2 ? 'active' : ''") Activity
     
-    .swap.animated.toggleInUp.delay-0-8s(v-if="activeTab == 0")
+    .swap.animated.toggleInUp.delay-0-5s(v-if="activeTab == 0")
         .transfer
             .orign
                 .item(v-for="(asset, index) in swapDataFrom")
@@ -203,7 +231,7 @@ export default {
                                         ref="walletBalance"
                                         :from="0"
                                         :to="asset.balance"
-                                        :format="standardNumberFormat"
+                                        :format="tokenNumberFormat"
                                         :duration="1"
                                         :delay="0"
                                         easing="Power1.easeOut"
@@ -211,7 +239,12 @@ export default {
                     .value
                         .amount
                             label
-                                input(type="number", v-model="asset.amount")
+                                input(
+                                    type="number"
+                                    vv-model="asset.amount"
+                                    pattern="([0-9]{1,3}).([0-9]{1,3})"
+                                    :value="asset.balance"
+                                )
                         .cost-usd 
                             span ≈ {{ asset.cost }} USD
                     // !
@@ -267,7 +300,7 @@ export default {
                     .value
                         .amount
                             label
-                                input(type="number", v-model="asset.amount")
+                                input(type="number", v-model="asset.amount", pattern="([0-9]{1,3}).([0-9]{1,3})")
                         .cost-usd 
                             span ≈ {{ asset.cost }} USD
                     // !
@@ -287,7 +320,6 @@ export default {
                                     .amount {{t.balance}}
                                     .conversion {{(t.currentPrice * t.balance).toFixed(2) }} USD
                     //- 
-
         .slippage
             .info-label 
                 span Slippage
@@ -318,6 +350,94 @@ export default {
         .review-btn
             button.purple Review swap
     
+    .buy-and-sell.animated.toggleInUp.delay-0-5s(v-if="activeTab == 1")
+        .action-toggle 
+            h3
+                div I want to  
+                div(vv-if="buyAndSell == 1", :class="buyAndSell == 1 ? 'in' : 'out'") &nbsp;buy 
+                div(vv-if="buyAndSell == 2", :class="buyAndSell == 2 ? 'in' : 'out'") &nbsp;sell 
+            .tabs 
+                .tab(:class="buyAndSell == 1 ? 'active' : ''", @click="buyAndSell = 1") Buy
+                .tab(:class="buyAndSell == 2 ? 'active' : ''", @click="buyAndSell = 2") Sell
+        .transfer
+            .orign
+                .item(v-for="(asset, index) in swapDataFrom")
+                    .coin(@click="asset.hotSwap = !asset.hotSwap; selectTokenSend = 1;", :class="asset.hotSwap ? 'active' : ''")
+                        .name 
+                            span.ico(:class="asset.type",:style="'background-image: url(' + (asset.ico ? asset.ico : asset.thumb) + ')'")
+                                //- img(:src="asset.ico")
+                            span.name-long {{ asset.address ? (asset.address.length > 20 ? asset.address.substr(0,17) + '...' : asset.address) : '' }}
+                            span.chevron(:class="asset.hotSwap ? 'expanded' : ''")
+                                <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 5.33268L10.6667 9.99935L6 14.666" stroke="#3D3B39" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        .balance 
+                            span Balance: 
+                            span
+                                number(
+                                        ref="walletBalance"
+                                        :from="0"
+                                        :to="asset.balance"
+                                        :format="standardNumberFormat"
+                                        :duration="1"
+                                        :delay="0"
+                                        easing="Power1.easeOut"
+                                    )
+                    .value
+                        .amount
+                            label
+                                input(type="number", v-model="asset.amount", pattern="([0-9]{1,3}).([0-9]{1,3})")
+                        .cost-usd
+                            span ≈ {{ asset.cost }} USD
+                    // !
+                    .modal-clickable.send-select-add-asset.animated.fadeIn(v-if="asset.hotSwap")
+                        .list-tokens
+                            .list-item-tkn(
+                                v-for="t in this.store.get('tokens')"
+                                @click.stop="swapTokenFrom(asset,t)"
+                                :class="t.address == swapDataFrom[0].address ? 'selected' : ''"
+                            )
+                                .ico 
+                                    img(:src="t.thumb")
+                                .info 
+                                    .network {{ t.label }}
+                                    .name {{ t.address }}
+                                .balance 
+                                    .amount 
+                                        number(
+                                            ref="walletBalance"
+                                            :from="0"
+                                            :to="t.balance"
+                                            :format="standardNumberFormat"
+                                            :duration="2"
+                                            :delay="1"
+                                            easing="Power1.easeOut"
+                                        )
+                                    .conversion {{(t.currentPrice * t.balance).toFixed(2) }} USD
+                    //- 
+        .fee
+            .info-label 
+                span Transaction fee
+                span.icon 
+                    <svg width="1em" height="1em" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="h2F_3zS1iuR_cDZ_XOEP"><path d="M11 14h-1v-4H9m1-4h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            .perc(style="margin-right: -20px;")
+                number(
+                    ref="walletBalance"
+                    :from="0"
+                    :to="2.15"
+                    :format="standardNumberFormat"
+                    :duration="1"
+                    :delay="0"
+                    easing="Power1.easeOut"
+                )
+                span USD
+        .review-btn
+            button.purple To payment options
+    .activity-list(v-if="activeTab == 2")
+        Table(
+            :design="design"
+            :data="formattedActivity"
+            :store="store"
+        )/
+    
 </template>
 
 <style lang="scss" scoped>
@@ -341,7 +461,7 @@ export default {
             }
         }
     }
-    .swap{
+    .swap, .buy-and-sell{
         margin: 30px auto;
         padding: 20px;
         border-radius: var(--radius);
@@ -350,6 +470,44 @@ export default {
         position: relative;
         .transfer{
             position: relative;
+        }
+        .action-toggle {
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            h3{
+                div{
+                    display: inline-grid;
+                    width: auto;
+                    &.in{
+                        animation: fadeInUp .5s ease-in-out forwards;
+                        position: absolute;
+                    }
+                    &.out{
+                        position: absolute;
+                        animation: fadeOutUp .5s ease-in-out forwards;
+                    }
+                }
+            }
+            .tabs{
+                    display: grid;
+                    gap: 10px;
+                    grid-template-columns: 1fr 1fr;
+                    padding: 5px;
+                    background-color: var(--lightGrayPlus);
+                    border-radius: 12px;
+                    margin: 10px auto 20px auto;
+                    width: calc(100% - 30px);
+
+                    .tab{
+                        padding: 15px 10px;
+                        border-radius: 12px;
+                        text-align: center;
+                        cursor: pointer;
+                        &.active{
+                            background-color: var(--white);
+                        }
+                    }
+                }
         }
         .orign, .dest{
             background-color: var(--lightGray);
@@ -655,10 +813,11 @@ export default {
                 width: 100%;
             }
         }
-        .slippage{
+        .slippage, .fee{
             display: grid;
-            grid-template-columns: 1fr auto 50px;
+            grid-template-columns: 1fr auto minmax(auto, 50px);
             align-items: center;
+            padding-left: 45px;
             .info-label {
                 .icon{
                     padding: 5px;

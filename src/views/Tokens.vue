@@ -12,7 +12,7 @@ export default {
                 grid: "1.5fr 1fr 1fr",
                 columns: ['Token', 'Price / 24hr %', 'Balance'],
                 template: 'tokens',
-                walletBalance: 0,
+                walletBalanceAmount: 0,
             },
             tokens: this.store.get('tokens'),
         }
@@ -26,6 +26,29 @@ export default {
         },
         simpleNumberFormat(number) {
             return "" + number.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+        checkBalanceDisabledNetworks(){
+            let r = false;
+            this.store.get("wallets").forEach((w)=>{
+                if(w.active == false){
+                    this.store.get("tokens").forEach((t)=>{
+                        if(w.network == t.network){
+                            if(t.balance > 0){
+                                r = true;
+                            }
+                        }
+                    })
+                }
+            })
+            return r;
+        },
+        walletBalance(){
+            let r = 0;
+            this.store.get('tokens').forEach((t) => {
+                r += (Number(t.balance) * Number(t.currentPrice));
+            });
+            this.walletBalanceAmount = r;
+            return this.walletBalanceAmount;
         }
     },
     components: {
@@ -33,12 +56,6 @@ export default {
         Table,
     },
     created(){
-        let b = 0;
-        this.store.get('tokens').forEach((t)=>{
-            b += (Number(t.balance) * Number(t.currentPrice));
-        });
-        console.log(b)
-        this.walletBalance = b;
     },
 }
 </script>
@@ -48,8 +65,9 @@ export default {
     h1.animated.fadeInUp
         span Tokens
         span.counter 
+            span (
             number(
-                    ref="walletBalance"
+                    ref="walletBalanceAmount"
                     :from="0"
                     :to="tokens.length"
                     :format="simpleNumberFormat"
@@ -57,6 +75,7 @@ export default {
                     :delay="1"
                     easing="Power1.easeOut"
                 )
+            span )
     //- QACodeAddFunds/
     .balance.animated.fadeInUp.delay-0-8s
         .info-label
@@ -66,9 +85,9 @@ export default {
         .balance-amount
             .amount
                 number(
-                    ref="walletBalance"
+                    ref="walletBalanceAmount2"
                     :from="0"
-                    :to="walletBalance"
+                    :to="walletBalance()"
                     :format="standardNumberFormat"
                     :duration="2"
                     :delay="1"
@@ -78,7 +97,7 @@ export default {
         .increase-or-decreased
             span +
             number(
-                    ref="walletBalance"
+                    ref="walletBalanceAmount3"
                     :from="0"
                     :to="2.46"
                     :format="standardNumberFormat"
@@ -87,6 +106,9 @@ export default {
                     easing="Power1.easeOut"
                 )
             span %
+    .balance-on-other-networks.animated.fadeIn.delay-1s(v-if="checkBalanceDisabledNetworks()")
+        div We have identified a positive balance with a previously disabled network. 
+        div Please go to the Settings, then Networks for more information.
     Table(
         :design="design"
         :data="tokens"
@@ -137,6 +159,12 @@ export default {
             color: var(--green);
             margin: -20px 0 20px 0;
         }
+    }
+    .balance-on-other-networks {
+        padding: 20px;
+        margin: 0px 0 20px 0;
+        border-radius: var(--radius);
+        background-color: var(--greenTranparent);
     }
 }
 </style>

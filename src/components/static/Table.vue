@@ -40,10 +40,29 @@ export default {
             return "" + number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
         tokenPriceNumberFormat(number) {
-            return "" + number.toFixed(3);
+            return "" + number.toFixed(4);
         },
         percentageNumberFormat(number) {
             return "" + number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
+        tokenNumberFormat(number) {
+            function toFixedIfNecessary(value, dp) {
+                return +parseFloat(value).toFixed(dp);
+            }
+            return "" + toFixedIfNecessary(number);
+        },
+        checkToken(token){
+            let r = true;
+            this.store.get("wallets").forEach((w) => {
+                if (w.active == false) {
+                    if (w.network == token.network) {
+                        r = false;
+                    }
+                } else if (token.balance <= 0) {
+                    r = false;
+                }
+            })
+            return r;
         }
     },
 }
@@ -293,6 +312,7 @@ export default {
     .table-body.table-row.animated.fadeInUp(
         v-if="design.template == 'tokens'"
         v-for="(d, i) in data", 
+        v-show="checkToken(d)"
         :style="'grid-template-columns:' + design.grid + ';'"
         :class="i > 9 ? 'delay-2s' : 'delay-1-' + (i + 1) + 's'"
         @click="openSidedrawer({action: 'token', title: 'Token details', value: d})"
@@ -341,11 +361,12 @@ export default {
                     ref="tokenPercentage"
                     :from="0"
                     :to="d.balance"
-                    :format="standardNumberFormat"
+                    :format="tokenNumberFormat"
                     :duration="2"
                     :delay="0"
                     easing="Power1.easeOut"
                 )
+                span &nbsp;{{ d.address }}
             div.right.secondary 
                 number(
                     ref="tokenPercentage"
@@ -399,7 +420,7 @@ export default {
             v-for="(d, i) in dt", 
             :style="'grid-template-columns:' + design.grid + ';'"
             :class="i > 9 ? 'delay-2s' : 'delay-' + indx + '-' + (i + 1) + 's'"
-            @click="openSidedrawer({action: 'activity', title: 'Activity'})"
+            @click="openSidedrawer({action: 'activity', title: 'Activity details', value: d})"
         ) 
             // type 'full' (name + icon + address)
             .table-col
