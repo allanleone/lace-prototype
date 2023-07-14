@@ -24,6 +24,10 @@ export default {
             netSelection: 1,
             sendNotes: "",
             confirmPassword: "",
+            confirmPasswordSwap: "",
+            loadingTransfer: false,
+            transactionCostsSwap: false,
+            gasGeeSwap: false,
             activityDesign: {
                 showIcon: true,
                 grid: "2fr auto",
@@ -35,7 +39,7 @@ export default {
                     name: "ADA",
                     address: "ADA",
                     balance: this.store.get("tokens")[0].balance,
-                    amount: 1,
+                    amount: "0.00",
                     cost: 0.254,
                     thumb: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tXNYaJZUHNddtcvDz8w-U2kQM_gbZsUeqA&usqp=CAU",
                     ico: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tXNYaJZUHNddtcvDz8w-U2kQM_gbZsUeqA&usqp=CAU",
@@ -183,7 +187,17 @@ export default {
                 r = "disabled"
             }
             this.globalSendAssets.forEach((g)=>{
-                if(g.amount <= 0) r = "disabled"
+                if(g.amount <= 0){
+                    r = "disabled";
+                }else{
+                    this.store.get("tokens").forEach((t) => {
+                        if(t.address == g.address) {
+                            if(Number(g.amount) > Number(t.balance)) {
+                                r = "disabled";
+                            }
+                        }
+                    });
+                }
             });
             return r;
         },
@@ -302,7 +316,7 @@ export default {
                         name: st.address,
                         address: st.address,
                         balance: st.balance,
-                        amount: 1,
+                        amount: "0.00",
                         cost: st.currentPrice,
                         ico: st.thumb,
                         thumb: st.thumb,
@@ -332,14 +346,43 @@ export default {
             this.store.set({ key: 'sidedrawerStorage', value: s })
         },
         sendTransaction(){
-            this.transferProcess = true;
+            this.loadingTransfer = true;
             setTimeout(()=>{
-                this.transferProcess = false;
-                
+                this.loadingTransfer = false;
+                this.transferProcess = true;
+                let s = this.store.get("sidedrawerStorage");
+                s.action = "request-password-2";
+                this.store.set({ key: 'sidedrawerStorage', value: s })
+
+                this.store.get("tokens").forEach((t)=>{
+                    this.globalSendAssets.forEach((gsa)=>{
+                        if(t.address == gsa.address){
+                            t.balance = (gsa.balance - gsa.amount)
+                            let currentDate = new Date();
+                            this.store.get("activity").push({
+                                thumb: "sent",
+                                label: "Sent",
+                                timestamp: currentDate,
+                                bundle: [
+                                    gsa.amount + " " + gsa.address,
+                                ],
+                                convertedTotal: t.variation,
+                                status: "Success",
+                                hash: "092834029384092384fh23049fjhs0wdrfu023ru0wdf",
+                                network: t.network,
+                                type: "transfer"
+                            })
+                        }
+                    })
+                })
+
                 setTimeout(()=>{
-                    this.close();
-                }, 1000);
-            }, 4000);
+                    this.transferProcess = false;
+                    setTimeout(()=>{
+                        this.close();
+                    }, 1000);
+                }, 4000);
+            }, 2000);
         },
         swapToken(a,st, type){
 
@@ -356,7 +399,7 @@ export default {
                     name: st.label ? st.label : st.address,
                     address: st.label ? st.label : st.address,
                     balance: st.balance,
-                    amount: 1,
+                    amount: "0.00",
                     cost: st.aproxPrice,
                     ico: st.thumb,
                     thumb: st.thumb,
@@ -369,7 +412,7 @@ export default {
                     name: st.address,
                     address: st.address,
                     balance: st.balance,
-                    amount: 1,
+                    amount: "0.00",
                     cost: st.currentPrice,
                     ico: st.thumb,
                     thumb: st.thumb,
@@ -435,28 +478,75 @@ export default {
                 }
             }
             return r;
-        }
+        },
+        reviewSwap(){
+            let s = this.store.get("sidedrawerStorage");
+            s.action = "swap-confirm";
+            this.store.set({ key: 'sidedrawerStorage', value: s })
+        },  
+        reviewSwapConfirmPassword(){
+            let s = this.store.get("sidedrawerStorage");
+            s.action = "swap-done";
+            this.store.set({ key: 'sidedrawerStorage', value: s })
+
+            // console.log(this.store.get("sidedrawerStorage"))
+            let d = this.store.get("sidedrawerStorage");
+            this.store.activitySwapPush(d)
+            // 
+        },  
+        closeSwap(){
+            let s = this.store.get("sidedrawerStorage");
+            s.action = "swap";
+            this.store.set({ key: 'sidedrawerStorage', value: s })
+        },  
+        buyAndSellBuy(){
+            let s = this.store.get("sidedrawerStorage");
+            s.action = "swap-confirm-buy";
+            this.store.set({ key: 'sidedrawerStorage', value: s })
+        },  
+        buyAndSellBuyDone(){
+            let s = this.store.get("sidedrawerStorage");
+            s.action = "swap-confirm-buy-done";
+            this.store.set({ key: 'sidedrawerStorage', value: s })
+        },  
         ////////////////
     },
     updated(){
-        if (this.store.get('sidedrawerStorage')) {
-            if (this.store.get('sidedrawerStorage').selectedToken) {
-                let d = this.store.get('sidedrawerStorage').selectedToken;
-                
-                this.globalSendAssets = [
-                    {
-                        name: d.address,
-                        address: d.address,
-                        balance: d.balance,
-                        amount: 1,
-                        cost: d.currentPrice,
-                        thumb: d.thumb,
-                        ico: d.thumb,
-                        type: d.type,
-                        hotSwap: false,
-                    }
-                ]
+        
+        if(this.store.get("tokenSelectedFromTable")){
+            this.store.set({ key: "tokenSelectedFromTable", value: false })
+            if (this.store.get('sidedrawerStorage')) {
+                if (this.store.get('sidedrawerStorage').selectedToken) {
+                    let d = this.store.get('sidedrawerStorage').selectedToken;
 
+                    //@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    this.selectTokenSend = 1;
+                    d.clicked = true;
+                    this.globalSendAssets.forEach((gt)=>{
+                        gt.clicked = false;
+                    })
+                    this.store.get("tokens").forEach((tk)=>{
+                        tk.clicked = false;
+                    });
+                    this.store.get("nfts").forEach((nf)=>{
+                        nf.clicked = false;
+                    });
+                    this.swapToken(this.globalSendAssets[0], d, 'token')
+                    // this.globalSendAssets = [
+                    //     {
+                    //         name: d.address,
+                    //         address: d.address,
+                    //         balance: d.balance,
+                    //         amount: 1,
+                    //         cost: d.currentPrice,
+                    //         thumb: d.thumb,
+                    //         ico: d.thumb,
+                    //         type: d.type,
+                    //         hotSwap: false,
+                    //     }
+                    // ]
+
+                }
             }
         }
     },
@@ -467,8 +557,6 @@ export default {
         //     let s = JSON.parse(localStorage.getItem('prototypeSaveFile'))
         //     this.store.set({ key: 'addressBookContacts', value: s })
         // }
-
-        
 
         switch(this.router){
             case "addressBook":
@@ -482,11 +570,20 @@ export default {
                 // }
             break;
         }
+
+
     },
 }
 </script>
 <style lang="scss">
 .sidedrawer{
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
 
     .copy-feedback{
         position: fixed;
@@ -513,14 +610,7 @@ export default {
             height: 5px;
             background: var(--gradient);
         }
-    }
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
+    } 
     .sidedrawer-underlay{
         cursor: pointer;
         background-color: var(--underlay);
@@ -599,11 +689,7 @@ export default {
         
     }
 
-
-
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
 
     // Settings
     .settings{
@@ -881,8 +967,51 @@ export default {
         .password{
             display: grid;
             place-content: center;
+            height: calc(100% - 100px);
+            // margin-top: -250px;
             input{
                 min-width: 250px;
+            }
+            .icon-btn-recipient{
+                margin-top: 44px;
+            }
+            .table-item{
+                width: 100%;
+                display: grid;
+                place-content: center;
+                grid-template-columns: 80px 170px;
+                gap: 10px;
+                position: relative;
+                min-width: 550px;
+                padding-top: 50px;
+                text-align: left;
+                span, h1,h2,h3,h4,h5,h6{
+                    text-align: left;
+                    justify-content: left;
+                    justify-items: left;
+                }
+                .item{
+                    display: grid;
+                    place-items: center;
+                    text-align: left;
+                    justify-content: left;
+                    img{
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 100px;
+                    }
+                    .primary{
+                        text-align: left;
+                        font-weight: bold;
+                    }
+                    .secondary{
+                        text-align: left;
+                        color: var(--textColorSecondary);
+                    }
+                    .red{
+                        color: var(--orange);
+                    }
+                }
             }
         }
 
@@ -2101,6 +2230,231 @@ export default {
         }
     }
     // !!!!!!!!!
+
+    // Trade
+    .trading-sidedrawer{
+        .tokens{
+            width: 100%;
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            place-content: center;
+            place-items: center;
+            text-align: center;
+            padding: 20px;
+            .data{
+                display: grid;
+                gap: 5px;
+                grid-template-columns: auto auto;
+                .ico{
+                    text-align: right;
+                    img{
+                        width: 50px;
+                        height: 50px;
+                    }
+                    svg{
+                        width: 24px;
+                    }
+                }
+                .name{
+                    text-align: left;
+                }
+
+            }
+            .token{
+                border-radius: var(--radius);
+                background-color: var(--lightGray);
+                width: calc(100% - 40px);
+                height: auto;
+                padding: 20px;
+            }
+        }
+        button.white {
+            border: none;
+            width: 50px;
+            margin: 0px auto;
+        }
+        .token-detail{ 
+            display: grid;
+            grid-template-columns: 60px 1fr 200px;
+            ga: 20px;
+            padding: 20px;
+            align-items: center;
+            .amount{
+                text-align: right;
+            }
+            .ico{
+                img{
+                    width: 50px;
+                    height: 50px;
+                }
+                svg{
+                    width: 24px;
+                }
+            }
+        }
+        .details{
+             margin: 20px auto;
+            .item{
+                .info{
+                    display: grid;
+                    grid-template-columns: 1fr auto auto;
+                    gap: 20px;
+                    align-items: center;
+                    .chevron{
+                        width: 30px;
+                        height: 30px;
+                        transform: rotate(90deg);
+                        border: solid 1px var(--lightGrayPlus);
+                        display: grid;
+                        place-content: center;
+                        padding: 0;
+                        border-radius: 10px;
+                        &.opened{
+                            transform: rotate(-90deg);
+                        }
+                    }
+                }
+            }
+            .more-details{
+                margin-top: 20px;
+                .inside{
+                    display: grid;
+                    grid-template-columns: 1fr auto;
+                    margin: 30px auto;
+                    align-items: center;
+                    padding: 0 0px;
+                    .converted{
+                        color: var(--textColorSecondary);
+                    }
+                }
+            }
+        }
+        .item-gas{
+            margin: 20px auto;
+            .info{
+                grid-template-columns: 1fr auto auto;
+                display: grid;
+                gap: 20px;
+                align-items: center;
+            }
+            .chevron{
+                width: 30px;
+                height: 30px;
+                transform: rotate(90deg);
+                border: solid 1px var(--lightGrayPlus);
+                display: grid;
+                place-content: center;
+                padding: 0;
+                border-radius: 10px;
+                &.opened{
+                    transform: rotate(-90deg);
+                }
+            }
+            .tabs{
+                display: grid;
+                gap: 10px;
+                grid-template-columns: 1fr 1fr 1fr;
+                padding: 5px;
+                background-color: var(--lightGrayPlus);
+                border-radius: 12px;
+                margin: 20px auto 20px auto;
+                width: calc(100% - 30px);
+
+                .tab{
+                    padding: 15px 10px;
+                    border-radius: 12px;
+                    text-align: center;
+                    // cursor: pointer;
+                    &.active{
+                        background-color: var(--white);
+                    }
+                }
+            }
+        }
+        .summary-done{
+            text-align: center;
+            display: grid;
+            height: 100%;
+            place-content: center;
+            h3{
+                font-weight: bold;
+            }
+            .hash{
+                font-weight: bold;
+                word-break: break-all;
+                max-width: 300px;
+                margin: 20px auto;
+            }
+        }
+        .payments-tabs{
+            height: 50px;
+            margin-top: 40px;
+            .payment-tab{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                height: 70px;
+                gap: 20px;
+                .card{
+                    padding: 20px;
+                    border: solid 1px var(--lightGrayPlus);
+                    border-radius: var(--radius);
+                    display: grid;
+                    grid-template-rows: 30px 1fr;
+                    &.disabled{
+                        opacity: .25;
+                    }
+                    &.selected{
+                        background-color: var(--lightGray);
+                    }
+                }
+            }
+        }
+        .form-payment{
+            margin-top: 75px;
+            input{
+                margin: 10px auto;
+            }
+            .split-col{
+                display: grid;
+                grid-template-columns: 1fr 1fr; 
+                gap: 20px;
+            }
+        }
+        .buy-sell{
+            label{
+                position: relative;
+            }
+            .ico-card{
+                position: absolute;
+                width: 30px;
+                right: 20px;
+                top: -55px;
+                z-index: 1; 
+                svg{
+                    width: 100%;
+                }
+            }
+            .payment-tab{
+                .ico{
+                    svg{
+                        width: 24px;
+                    }
+                    &.xl{
+                        border: solid 2px var(--textColorPrimary);
+                        width: 20px;
+                        height: 15px;
+                        border-radius: 3px;
+                        padding: 2px;
+                        svg{
+                            width: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // !!!!!!!!
     
 }
 </style>
@@ -2653,7 +3007,13 @@ export default {
                                 .value
                                     .amount
                                         label
-                                            input(type="number", v-model="asset.amount")
+                                            input(
+                                                type="number"
+                                                v-model="asset.amount"
+                                                placeholder="0.00"
+                                                step=".01"
+                                                min="0"
+                                            )/
                                     .cost-usd 
                                         span ≈ {{ asset.cost }} USD
                                 //- 
@@ -2690,7 +3050,7 @@ export default {
                                             .nft-card.animated.fadeInUp(
                                                 v-for="(nft, i) in store.get('nfts')", 
                                                 :class="nft.clicked ? 'selected' : ''"
-                                                @click.stop="swapToken(asset,nft, 'nft')"
+                                                @click.stop="swapToken(asset, nft, 'nft')"
                                             )
                                                 .poster
                                                     .nft-thumb-image(:style="'background-image: url(' + nft.thumb +')'")
@@ -2930,9 +3290,9 @@ export default {
                             .data
                                 .transact(v-for="t in globalSendAssets")
                                     div 
-                                        span {{ (t.amount.toFixed(2) / 50) }}  
-                                        span &nbsp;{{ t.name ? (t.name.length > 10 ? t.name.substr(0, 7) + '...' : t.name) : '' }}
-                                    div  {{ ((t.amount * t.cost) / 50).toFixed(2) }} USD
+                                        span {{ (t.amount / 50).toFixed(2) }}  
+                                        span &nbsp;{{ t.address ? (t.address.length > 10 ? t.address.substr(0, 7) + '...' : t.address) : '' }}
+                                    div  {{ ((t.amount * (t.cost ? t.cost : 2)) / 50).toFixed(2) }} USD
                     
             .window-footer  
                 // review
@@ -2965,24 +3325,88 @@ export default {
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6L18 18" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 
             .window-content.with-2-buttons
-                .password
-                    label
-                        input(v-model="confirmPassword", type="password", placeholder="Type your password")/
+                div
+                    .title.animated.fadeInUp
+                        h3 Transaction confirmation
+                        p Please sign the transaction with your password.
+                    .password.animated.fadeIn.delay-0-5s
+                        label.recipient-address
+                            input(v-model="confirmPassword", type="password", placeholder="Type your password")/
+                            .icon-btn-recipient(@click="showSendAddress()")
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9998 12C14.9998 13.6569 13.6566 15 11.9998 15C10.3429 15 8.99976 13.6569 8.99976 12C8.99976 10.3431 10.3429 9 11.9998 9C13.6566 9 14.9998 10.3431 14.9998 12Z" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.45801 12C3.73228 7.94288 7.52257 5 12.0002 5C16.4778 5 20.2681 7.94291 21.5424 12C20.2681 16.0571 16.4778 19 12.0002 19C7.52256 19 3.73226 16.0571 2.45801 12Z" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             
             .window-footer  
                 // review
                 button.purple(
                     @click="sendTransaction()"
                     :disabled="confirmPassword.length < 5 ? 'disabled' : false"
-                ) Confirm
+                )
+                    span(v-if="!loadingTransfer") Confirm
+                    span(v-if="loadingTransfer") Please wait...
                 // edit
                 button.tertiary(
                     @click="backFromTransaction()"
-                    v-if="store.get('sidedrawerStorage').action == 'review-transaction-from-send'"
+                    v-if="store.get('sidedrawerStorage').action == 'review-transaction-from-send' || store.get('sidedrawerStorage').action == 'request-password'"
+                ) Cancel
+            // !
+        /////////////////////////////////////
+        //- >> password confirmation [in progress/loading]
+        span.send-global(v-if="store.get('sidedrawerStorage').global ? (store.get('sidedrawerStorage').global == 'send' && store.get('sidedrawerStorage').action == 'request-password-2' ? true : false) : false")
+
+            .window-header.with-back-button
+                .back
+                    button.navigation(@click="showSendAddressDone()")
+                        span
+                            .icon
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 19L3 12M3 12L10 5M3 12L21 12" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                .title
+                    span(v-if="store.get('sidedrawerStorage').title") {{store.get("sidedrawerStorage").title}}
+                    span(v-if="store.get('sidedrawerStorage').title === null || store.get('sidedrawerStorage').title === undefined") Lace.io
+                .close
+                    button.navigation(@click="close()")
+                        span
+                            .icon
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6L18 18" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+            .window-content.no-buttons
+                div
+                    //- .title
+                        h3 Please wait...
+                    .password
+                        .table-item(v-for="t in globalSendAssets")
+                            .item 
+                                img(:src="t.thumb")
+                            .item.secondary 
+                                h4.primary {{t.name}}
+                                span.primary Current Balance
+                                span.secondary
+                                    h2 
+                                        number(
+                                            ref="walletBalance"
+                                            :from="t.balance"
+                                            :to="t.balance - t.amount"
+                                            :format="dollarNumberFormat"
+                                            :duration="2"
+                                            :delay="2"
+                                            easing="Power1.easeOut"
+                                        )
+                                        h5.red.animated.fadeInDown
+                                            div.animated.fadeOutDown.delay-4s - {{t.amount}}
+            
+            //- .window-footer  
+                // review
+                button.purple(
+                    disabled="disabled"
+                ) 
+                    span(v-if="!loadingTransfer") Confirm
+                    span (v-if="loadingTransfer") Please wait...
+                // edit
+                button.tertiary(
+                    disabled="disabled"
                 ) Cancel
             // !
 
-            /////////////////////////////////////
+        /////////////////////////////////////
         ////////////////////////////
 
         // Tokens ////////////////////
@@ -3188,6 +3612,329 @@ export default {
                 button.purple(
                                         @click="openSidedrawer({global: 'send', action: 'send', title: 'Send', selectedToken: store.get('sidedrawerStorage').value})"
                 ) Send NFT
+        /////////////////////////////////////
+        
+        // Trading ////////////////////
+        //- 
+        span.trading-sidedrawer(v-if="router == 'trading' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive'")
+
+            //- Swap
+            span.send-global(v-if="store.get('sidedrawerStorage').action == 'swap' ? true : false")
+
+                .window-header
+                    .title
+                        //- span Address Book
+                        span(v-if="store.get('sidedrawerStorage').title") {{store.get("sidedrawerStorage").title}}
+                        span(v-if="store.get('sidedrawerStorage').title === null || store.get('sidedrawerStorage').title === undefined") Lace.io
+                    .close
+                        button.navigation(@click="close()")
+                            span
+                                .icon
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6L18 18" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+                .window-content.with-buttons
+                    div
+                        .header
+                            h3 Review swap
+                            div Confirm the tokens and amounts for your trade.
+                        .tokens 
+                            .token(v-for="from in store.get('sidedrawerStorage').data.from")
+                                .data
+                                    .ico
+                                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.21072 5.61515L14.2107 5.61515M14.2107 5.61515L11.5441 2.94849M14.2107 5.61515L11.5441 8.28182M11.5441 12.2818L3.54406 12.2818M3.54406 12.2818L6.21072 14.9485M3.54406 12.2818L6.21072 9.61515" stroke="#FF8E3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+                                    .name {{from.name}} / LQ rate
+                                .amount
+                                    span.bold {{from.amount.toFixed(2)}}
+                                    span &nbsp; {{from.address}}
+                            .token(v-for="to in store.get('sidedrawerStorage').data.to")
+                                .data
+                                    .ico
+                                        <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.21143 10.457C6.93996 10.1441 6.46628 10.1105 6.15342 10.382C5.84056 10.6535 5.80701 11.1272 6.07848 11.44L7.21143 10.457ZM9.54333 7.44002C9.8148 7.75287 10.2885 7.78643 10.6013 7.51496C10.9142 7.2435 10.9478 6.76981 10.6763 6.45695L9.54333 7.44002ZM7.62739 12.2818C7.62739 12.696 7.96317 13.0318 8.37739 13.0318C8.7916 13.0318 9.12739 12.696 9.12739 12.2818L7.62739 12.2818ZM9.12739 5.61517C9.1274 5.20095 8.79162 4.86516 8.3774 4.86515C7.96319 4.86514 7.6274 5.20092 7.62739 5.61514L9.12739 5.61517ZM3.12739 8.94849C3.12739 6.04899 5.47789 3.69849 8.37739 3.69849L8.37739 2.19849C4.64947 2.19849 1.62739 5.22056 1.62739 8.94849L3.12739 8.94849ZM8.37739 3.69849C11.2769 3.69849 13.6274 6.04899 13.6274 8.94849L15.1274 8.94849C15.1274 5.22056 12.1053 2.19849 8.37739 2.19849L8.37739 3.69849ZM13.6274 8.94849C13.6274 11.848 11.2769 14.1985 8.37739 14.1985L8.37739 15.6985C12.1053 15.6985 15.1274 12.6764 15.1274 8.94849L13.6274 8.94849ZM8.37739 14.1985C5.47789 14.1985 3.12739 11.848 3.12739 8.94849L1.62739 8.94849C1.62739 12.6764 4.64947 15.6985 8.37739 15.6985L8.37739 14.1985ZM8.37739 9.69849C8.80226 9.69849 9.15298 9.81465 9.37558 9.96305C9.60342 10.1149 9.62739 10.2424 9.62739 10.2818L11.1274 10.2818C11.1274 9.58484 10.7036 9.04565 10.2076 8.71497C9.70637 8.3808 9.05709 8.19849 8.37739 8.19849L8.37739 9.69849ZM9.62739 10.2818C9.62739 10.3212 9.60342 10.4487 9.37558 10.6006C9.15298 10.749 8.80226 10.8652 8.37739 10.8652L8.37739 12.3652C9.05709 12.3652 9.70637 12.1828 10.2076 11.8487C10.7036 11.518 11.1274 10.9788 11.1274 10.2818L9.62739 10.2818ZM8.37739 10.8652C7.79209 10.8652 7.37845 10.6494 7.21143 10.457L6.07848 11.44C6.60308 12.0446 7.48212 12.3652 8.37739 12.3652L8.37739 10.8652ZM8.37739 8.19849C7.95252 8.19849 7.60179 8.08232 7.37919 7.93392C7.15134 7.78202 7.12737 7.65455 7.12737 7.61515L5.62737 7.61515C5.62737 8.31213 6.05113 8.85133 6.54715 9.182C7.04841 9.51617 7.69769 9.69849 8.37739 9.69849L8.37739 8.19849ZM9.12739 12.2818L9.12739 11.6152L7.62739 11.6152L7.62739 12.2818L9.12739 12.2818ZM9.12737 6.28183L9.12739 5.61517L7.62739 5.61514L7.62737 6.2818L9.12737 6.28183ZM8.37737 7.03182C8.96267 7.03182 9.37632 7.24754 9.54333 7.44002L10.6763 6.45695C10.1517 5.85237 9.27263 5.53182 8.37738 5.53182L8.37737 7.03182ZM7.12737 7.61515C7.12737 7.57575 7.15134 7.44827 7.37919 7.29638C7.60178 7.14798 7.95251 7.03182 8.37737 7.03182L8.37737 5.53182C7.69767 5.53182 7.04839 5.71413 6.54714 6.04831C6.05112 6.37898 5.62737 6.91818 5.62737 7.61515L7.12737 7.61515ZM9.12739 11.6152L9.12737 6.28182L7.62737 6.28182L7.62739 11.6152L9.12739 11.6152Z" fill="#FF8E3C"/></svg>
+                                    .name Flat amount
+                                .amount
+                                    span.bold {{(to.amount * (to.currentPrice ? to.currentPrice : 1.24)).toFixed(2)}}
+                                    span &nbsp; USD
+                        
+                        //- 
+                        
+                        .token-detail(v-for="from in store.get('sidedrawerStorage').data.from")
+                            .ico
+                                img(:src="from.thumb")/
+                            .data
+                                .network {{from.label}}
+                                .name {{from.name}}
+                            .amount
+                                span.bold {{from.amount.toFixed(2)}} {{from.name}}
+                        .transfer-btn 
+                        button.white 
+                            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.5 14L12.5 21M12.5 21L5.5 14M12.5 21L12.5 3" stroke="#3D3B39" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        .token-detail(v-for="to in store.get('sidedrawerStorage').data.to")
+                            .ico
+                                img(:src="to.thumb")/
+                            .data
+                                .network {{to.label}}
+                                .name {{to.name}}
+                            .amount
+                                span.bold {{((store.get('sidedrawerStorage').data.from[0].amount * 1.38) - (store.get('sidedrawerStorage').data.from[0].amount)).toFixed(2)}} {{to.name}}
+
+                        //- 
+
+
+                        .details
+                            .item 
+                                .info
+                                    .label.bold Transaction costs
+                                    .amount
+                                        span {{(store.get('sidedrawerStorage').data.from[0].amount * store.get('sidedrawerStorage').data.from[0].currentPrice).toFixed(2)}} {{store.get('sidedrawerStorage').data.from[0].address}}
+                                    .chevron(:class="transactionCostsSwap ? 'opened' : ''", @click="transactionCostsSwap = !transactionCostsSwap")
+                                        <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 5.33268L10.6667 9.99935L6 14.666" stroke="#3D3B39" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                .more-details(v-if="transactionCostsSwap")
+                                    .inside 
+                                        .label Transaction fee
+                                        .amount
+                                            .value {{((store.get('sidedrawerStorage').data.from[0].amount * store.get('sidedrawerStorage').data.from[0].currentPrice) / 50).toFixed(2)}} {{store.get('sidedrawerStorage').data.from[0].name}}
+                                            .converted {{((store.get('sidedrawerStorage').data.from[0].amount * store.get('sidedrawerStorage').data.from[0].currentPrice) / 75).toFixed(2)}} USD
+                                    .inside 
+                                        .label Service fee
+                                        .amount
+                                            .value {{((store.get('sidedrawerStorage').data.from[0].amount * store.get('sidedrawerStorage').data.from[0].currentPrice) / 89).toFixed(2)}} {{store.get('sidedrawerStorage').data.from[0].name}}
+                                            .converted {{((store.get('sidedrawerStorage').data.from[0].amount * store.get('sidedrawerStorage').data.from[0].currentPrice) / 96).toFixed(2)}} USD
+                                    .inside 
+                                        .label Liquidity provider fee
+                                        .amount
+                                            .value {{((store.get('sidedrawerStorage').data.from[0].amount * store.get('sidedrawerStorage').data.from[0].currentPrice) / 95).toFixed(2)}} {{store.get('sidedrawerStorage').data.from[0].name}}
+                                            .converted {{((store.get('sidedrawerStorage').data.from[0].amount * store.get('sidedrawerStorage').data.from[0].currentPrice) / 98).toFixed(2)}} USD
+                            .item-gas 
+                                .info
+                                    .label Gas fee
+                                    .amount
+                                        .amount
+                                            .value {{((store.get('sidedrawerStorage').data.from[0].amount * store.get('sidedrawerStorage').data.from[0].currentPrice) / 99).toFixed(2)}} {{store.get('sidedrawerStorage').data.from[0].name}}
+                                            //- .converted {{((store.get('sidedrawerStorage').data.from[0].amount * store.get('sidedrawerStorage').data.from[0].currentPrice) / 98).toFixed(2)}} USD
+                                    .chevron(:class="gasGeeSwap ? 'opened' : ''", @click="gasGeeSwap = !gasGeeSwap")
+                                        <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 5.33268L10.6667 9.99935L6 14.666" stroke="#3D3B39" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                .details(v-if="gasGeeSwap")
+                                    .tabs
+                                        .tab.active Cheap
+                                        .tab Fast
+                                        .tab Super fast
+                                .padding(style="height: 0px;")
+
+                .window-footer  
+                    // swap
+                    button.purple(
+                        v-if="store.get('sidedrawerStorage').action == 'swap'"
+                        @click="reviewSwap()"
+                    ) Confirm
+            //-
+            //- Swap - confirm with password
+            span.send-global(v-if="store.get('sidedrawerStorage').action == 'swap-confirm' ? true : false")
+
+                .window-header
+                    .title
+                        //- span Address Book
+                        span(v-if="store.get('sidedrawerStorage').title") {{store.get("sidedrawerStorage").title}}
+                        span(v-if="store.get('sidedrawerStorage').title === null || store.get('sidedrawerStorage').title === undefined") Lace.io
+                    .close
+                        button.navigation(@click="close()")
+                            span
+                                .icon
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6L18 18" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+                .window-content.with-2-buttons
+                    div
+                        .title.animated.fadeInUp
+                            h3 Transaction confirmation
+                            p Please sign the transaction with your password.
+                        .password.animated.fadeIn.delay-0-5s
+                            label.recipient-address
+                                input(v-model="confirmPasswordSwap", type="password", placeholder="Type your password")/
+                                .icon-btn-recipient
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9998 12C14.9998 13.6569 13.6566 15 11.9998 15C10.3429 15 8.99976 13.6569 8.99976 12C8.99976 10.3431 10.3429 9 11.9998 9C13.6566 9 14.9998 10.3431 14.9998 12Z" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.45801 12C3.73228 7.94288 7.52257 5 12.0002 5C16.4778 5 20.2681 7.94291 21.5424 12C20.2681 16.0571 16.4778 19 12.0002 19C7.52256 19 3.73226 16.0571 2.45801 12Z" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+                .window-footer  
+                    // swap
+                    button.purple(
+                        v-if="store.get('sidedrawerStorage').action == 'swap-confirm'"
+                        :disabled="confirmPasswordSwap.length > 3 ? false : 'disabled'"
+                        @click="reviewSwapConfirmPassword()"
+                    ) Confirm
+                    button.tertiary(
+                        v-if="store.get('sidedrawerStorage').action == 'swap-confirm'"
+                        @click="closeSwap()"
+                    ) Close
+            //-
+             //- Swap -done
+            span.send-global(v-if="store.get('sidedrawerStorage').action == 'swap-done' ? true : false")
+
+                .window-header
+                    .title
+                        //- span Address Book
+                        span(v-if="store.get('sidedrawerStorage').title") {{store.get("sidedrawerStorage").title}}
+                        span(v-if="store.get('sidedrawerStorage').title === null || store.get('sidedrawerStorage').title === undefined") Lace.io
+                    .close
+                        button.navigation(@click="close()")
+                            span
+                                .icon
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6L18 18" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+                .window-content.with-buttons
+                    div
+                        .summary-done.animated.fadeIn.delay-0-5s
+                            .ico
+                                <svg width="112" height="112" viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M56 37.3333V56L70 70M98 56C98 79.196 79.196 98 56 98C32.804 98 14 79.196 14 56C14 32.804 32.804 14 56 14C79.196 14 98 32.804 98 56Z" stroke="#FDC300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            h3 All Done
+                            .desc The transaction will complete and show in your activity soon.
+                            .hash 1e2818032b182204bfa18536d07bfa5c5c6bfe7870c0cb3c1c9030ca214539d5
+
+                .window-footer  
+                    // swap
+                    //- button.purple(
+                    //-     v-if="store.get('sidedrawerStorage').action == 'swap-confirm'"
+                    //-     :disabled="confirmPasswordSwap.length > 3 ? false : 'disabled'"
+                    //-     @click="reviewSwapConfirmPassword()"
+                    //- ) Confirm
+                    button.tertiary(
+                        v-if="store.get('sidedrawerStorage').action == 'swap-done'"
+                        @click="close()"
+                    ) Close
+            //-
+
+
+            //---------------------
+
+            //- Buy
+            span.send-global.buy-sell(v-if="store.get('sidedrawerStorage').action == 'swap-buy-and-sell' ? true : false")
+
+                .window-header
+                    .title
+                        //- span Address Book
+                        span(v-if="store.get('sidedrawerStorage').title") {{store.get("sidedrawerStorage").title}}
+                        span(v-if="store.get('sidedrawerStorage').title === null || store.get('sidedrawerStorage').title === undefined") Lace.io
+                    .close
+                        button.navigation(@click="close()")
+                            span
+                                .icon
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6L18 18" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+                .window-content.with-buttons
+                    div
+                        .header
+                            h3 Payment method
+                            p Select a payment method to proceed
+                        div
+                            .payments-tabs
+                                .payment-tab
+                                    .card.selected
+                                        .ico
+                                            <svg viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M512 32h-448c-35.35 0-64 28.65-64 64v320c0 35.35 28.65 64 64 64h448c35.35 0 64-28.65 64-64V96C576 60.65 547.3 32 512 32zM48.13 96c0-8.838 7.164-16 16-16h447.8c8.836 0 16 7.162 16 16v32H48.13V96zM527.9 416c0 8.836-7.164 16-16 16H64.13c-8.836 0-16-7.164-16-16L48 224h480L527.9 416zM120 384h48c13.25 0 23.1-10.75 23.1-24S181.3 336 168 336h-48C106.8 336 96 346.8 96 360S106.8 384 120 384zM248 384h112c13.25 0 24-10.75 24-24c0-13.26-10.75-24-24-24h-112C234.7 336 224 346.7 224 360C224 373.3 234.7 384 248 384z"/></svg>
+                                        .label Card
+                                    .card.disabled
+                                        .ico.xl
+                                            <svg viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M116.9 158.5c-7.5 8.9-19.5 15.9-31.5 14.9-1.5-12 4.4-24.8 11.3-32.6 7.5-9.1 20.6-15.6 31.3-16.1 1.2 12.4-3.7 24.7-11.1 33.8m10.9 17.2c-17.4-1-32.3 9.9-40.5 9.9-8.4 0-21-9.4-34.8-9.1-17.9.3-34.5 10.4-43.6 26.5-18.8 32.3-4.9 80 13.3 106.3 8.9 13 19.5 27.3 33.5 26.8 13.3-.5 18.5-8.6 34.5-8.6 16.1 0 20.8 8.6 34.8 8.4 14.5-.3 23.6-13 32.5-26 10.1-14.8 14.3-29.1 14.5-29.9-.3-.3-28-10.9-28.3-42.9-.3-26.8 21.9-39.5 22.9-40.3-12.5-18.6-32-20.6-38.8-21.1m100.4-36.2v194.9h30.3v-66.6h41.9c38.3 0 65.1-26.3 65.1-64.3s-26.4-64-64.1-64h-73.2zm30.3 25.5h34.9c26.3 0 41.3 14 41.3 38.6s-15 38.8-41.4 38.8h-34.8V165zm162.2 170.9c19 0 36.6-9.6 44.6-24.9h.6v23.4h28v-97c0-28.1-22.5-46.3-57.1-46.3-32.1 0-55.9 18.4-56.8 43.6h27.3c2.3-12 13.4-19.9 28.6-19.9 18.5 0 28.9 8.6 28.9 24.5v10.8l-37.8 2.3c-35.1 2.1-54.1 16.5-54.1 41.5.1 25.2 19.7 42 47.8 42zm8.2-23.1c-16.1 0-26.4-7.8-26.4-19.6 0-12.3 9.9-19.4 28.8-20.5l33.6-2.1v11c0 18.2-15.5 31.2-36 31.2zm102.5 74.6c29.5 0 43.4-11.3 55.5-45.4L640 193h-30.8l-35.6 115.1h-.6L537.4 193h-31.6L557 334.9l-2.8 8.6c-4.6 14.6-12.1 20.3-25.5 20.3-2.4 0-7-.3-8.9-.5v23.4c1.8.4 9.3.7 11.6.7z"/></svg>
+                                        .label Apple Pay
+                                    .card.disabled
+                                        .ico.xl
+                                            <svg viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="M105.72,215v41.25h57.1a49.66,49.66,0,0,1-21.14,32.6c-9.54,6.55-21.72,10.28-36,10.28-27.6,0-50.93-18.91-59.3-44.22a65.61,65.61,0,0,1,0-41l0,0c8.37-25.46,31.7-44.37,59.3-44.37a56.43,56.43,0,0,1,40.51,16.08L176.47,155a101.24,101.24,0,0,0-70.75-27.84,105.55,105.55,0,0,0-94.38,59.11,107.64,107.64,0,0,0,0,96.18v.15a105.41,105.41,0,0,0,94.38,59c28.47,0,52.55-9.53,70-25.91,20-18.61,31.41-46.15,31.41-78.91A133.76,133.76,0,0,0,205.38,215Zm389.41-4c-10.13-9.38-23.93-14.14-41.39-14.14-22.46,0-39.34,8.34-50.5,24.86l20.85,13.26q11.45-17,31.26-17a34.05,34.05,0,0,1,22.75,8.79A28.14,28.14,0,0,1,487.79,248v5.51c-9.1-5.07-20.55-7.75-34.64-7.75-16.44,0-29.65,3.88-39.49,11.77s-14.82,18.31-14.82,31.56a39.74,39.74,0,0,0,13.94,31.27c9.25,8.34,21,12.51,34.79,12.51,16.29,0,29.21-7.3,39-21.89h1v17.72h22.61V250C510.25,233.45,505.26,220.34,495.13,211ZM475.9,300.3a37.32,37.32,0,0,1-26.57,11.16A28.61,28.61,0,0,1,431,305.21a19.41,19.41,0,0,1-7.77-15.63c0-7,3.22-12.81,9.54-17.42s14.53-7,24.07-7C470,265,480.3,268,487.64,273.94,487.64,284.07,483.68,292.85,475.9,300.3Zm-93.65-142A55.71,55.71,0,0,0,341.74,142H279.07V328.74H302.7V253.1h39c16,0,29.5-5.36,40.51-15.93.88-.89,1.76-1.79,2.65-2.68A54.45,54.45,0,0,0,382.25,158.26Zm-16.58,62.23a30.65,30.65,0,0,1-23.34,9.68H302.7V165h39.63a32,32,0,0,1,22.6,9.23A33.18,33.18,0,0,1,365.67,220.49ZM614.31,201,577.77,292.7h-.45L539.9,201H514.21L566,320.55l-29.35,64.32H561L640,201Z"/></svg>
+                                        .label Google Pay
+                                    .card.disabled
+                                        .ico
+                                            <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 14C8.10457 14 9 13.1046 9 12C9 10.8954 8.10457 10 7 10C5.89543 10 5 10.8954 5 12C5 13.1046 5.89543 14 7 14Z" fill="currentColor"/><path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" fill="currentColor"/><path d="M17 14C18.1046 14 19 13.1046 19 12C19 10.8954 18.1046 10 17 10C15.8954 10 15 10.8954 15 12C15 13.1046 15.8954 14 17 14Z" fill="currentColor"/><path clip-rule="evenodd" d="M0 5C0 3.34315 1.34315 2 3 2H21C22.6569 2 24 3.34315 24 5V19C24 20.6569 22.6569 22 21 22H3C1.34315 22 0 20.6569 0 19V5ZM3 4H21C21.5523 4 22 4.44772 22 5V19C22 19.5523 21.5523 20 21 20H3C2.44772 20 2 19.5523 2 19V5C2 4.44772 2.44771 4 3 4Z" fill="currentColor" fill-rule="evenodd"/></svg>
+                                        .label Other 
+                            .form-payment 
+                                label
+                                    input(type="text", placeholder="Your Name", value="Lorem Ipsum")
+                                label
+                                    input(type="text", placeholder="Card Number", value="1234 5678 9123 4567")
+                                    .ico-card
+                                        <svg enable-background="new 0 0 128 128" height="128px" id="Layer_1" version="1.1" viewBox="0 0 128 128" width="128px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g><path d="M112,16H16C7.164,16,0,23.164,0,32v64c0,8.836,7.164,16,16,16h96c8.836,0,16-7.164,16-16V32    C128,23.164,120.836,16,112,16z M120,96c0,4.414-3.59,8-8,8H16c-4.412,0-8-3.586-8-8V32c0-4.414,3.588-8,8-8h96    c4.41,0,8,3.586,8,8V96z" fill="#B0BEC5"/></g></g><path d="M104,64c0,13.254-10.746,24-24,24S56,77.254,56,64s10.746-24,24-24S104,50.746,104,64z" fill="#FFA000"/><path d="M72,64c0,13.254-10.746,24-24,24S24,77.254,24,64s10.746-24,24-24S72,50.746,72,64z" fill="#D32F2F"/></svg>
+                                .split-col 
+                                    label
+                                        input(type="text", placeholder="Expiration", value="01/2024")
+                                    label
+                                        input(type="text", placeholder="CVV", value="001")
+                        //- input(type="text", placeholder="Country")
+                        //- 
+
+                .window-footer  
+                    // swap
+                    button.purple(
+                        @click="buyAndSellBuy()"
+                    ) Confirm
+            //-
+            //- Swap buy & sell - confirm with password
+            span.send-global(v-if="store.get('sidedrawerStorage').action == 'swap-confirm-buy' ? true : false")
+
+                .window-header
+                    .title
+                        //- span Address Book
+                        span(v-if="store.get('sidedrawerStorage').title") {{store.get("sidedrawerStorage").title}}
+                        span(v-if="store.get('sidedrawerStorage').title === null || store.get('sidedrawerStorage').title === undefined") Lace.io
+                    .close
+                        button.navigation(@click="close()")
+                            span
+                                .icon
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6L18 18" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+                .window-content.with-2-buttons
+                    div
+                        .title.animated.fadeInUp
+                            h3 Transaction confirmation
+                            p Please sign the transaction with your password.
+                        .password.animated.fadeIn.delay-0-5s
+                            label.recipient-address
+                                input(v-model="confirmPasswordSwap", type="password", placeholder="Type your password")/
+                                .icon-btn-recipient
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9998 12C14.9998 13.6569 13.6566 15 11.9998 15C10.3429 15 8.99976 13.6569 8.99976 12C8.99976 10.3431 10.3429 9 11.9998 9C13.6566 9 14.9998 10.3431 14.9998 12Z" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.45801 12C3.73228 7.94288 7.52257 5 12.0002 5C16.4778 5 20.2681 7.94291 21.5424 12C20.2681 16.0571 16.4778 19 12.0002 19C7.52256 19 3.73226 16.0571 2.45801 12Z" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+                .window-footer  
+                    // swap
+                    button.purple(
+                        v-if="store.get('sidedrawerStorage').action == 'swap-confirm-buy'"
+                        :disabled="confirmPasswordSwap.length > 3 ? false : 'disabled'"
+                        @click="buyAndSellBuyDone()"
+                    ) Confirm
+                    button.tertiary(
+                        v-if="store.get('sidedrawerStorage').action == 'swap-confirm-buy'"
+                        @click="close()"
+                    ) Close
+            //-
+             //- Swap - buy & sell - done
+            span.send-global(v-if="store.get('sidedrawerStorage').action == 'swap-confirm-buy-done' ? true : false")
+
+                .window-header
+                    .title
+                        //- span Address Book
+                        span(v-if="store.get('sidedrawerStorage').title") {{store.get("sidedrawerStorage").title}}
+                        span(v-if="store.get('sidedrawerStorage').title === null || store.get('sidedrawerStorage').title === undefined") Lace.io
+                    .close
+                        button.navigation(@click="close()")
+                            span
+                                .icon
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6L18 18" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+                .window-content.with-buttons
+                    div
+                        .summary-done.animated.fadeIn.delay-0-5s
+                            .ico
+                                <svg width="112" height="112" viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M56 37.3333V56L70 70M98 56C98 79.196 79.196 98 56 98C32.804 98 14 79.196 14 56C14 32.804 32.804 14 56 14C79.196 14 98 32.804 98 56Z" stroke="#FDC300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            h3 All Done
+                            .desc The transaction will complete and show in your activity soon.
+                            .hash 1e2818032b182204bfa18536d07bfa5c5c6bfe7870c0cb3c1c9030ca214539d5
+
+                .window-footer  
+                    // swap
+                    //- button.purple(
+                    //-     v-if="store.get('sidedrawerStorage').action == 'swap-confirm'"
+                    //-     :disabled="confirmPasswordSwap.length > 3 ? false : 'disabled'"
+                    //-     @click="reviewSwapConfirmPassword()"
+                    //- ) Confirm
+                    button.tertiary(
+                        v-if="store.get('sidedrawerStorage').action == 'swap-confirm-buy-done'"
+                        @click="close()"
+                    ) Close
+            //-
         /////////////////////////////////////
         // !
 

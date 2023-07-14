@@ -14,7 +14,7 @@ export default {
                 showIcon: true,
                 grid: "2fr auto",
                 // columns: ['', ''],
-                template: 'activity',
+                template: 'activitySwap',
             },
             formattedActivity: [],
             activity: this.store.get("activity"),
@@ -25,9 +25,10 @@ export default {
                 {
                     name: "Select",
                     address: "Select",
-                    balance: 0,
-                    amount: 0.0000000,
-                    cost: 0,
+                    balance: 0.00,
+                    amount: 0.00,
+                    cost: 0.24,
+                    currentPrice: 0.24,
                     thumb: "https://cdn0.iconfinder.com/data/icons/essentials-9/128/__Menu-512.png",
                     ico: "https://cdn0.iconfinder.com/data/icons/essentials-9/128/__Menu-512.png",
                     type: "token",
@@ -49,6 +50,7 @@ export default {
     },
     methods: {
         openSidedrawer(item) {
+            this.store.set({ key: 'sidedrawerStorage', value: item })
             this.store.set({ key: 'sidedrawerVisible', value: true })
         },
         standardNumberFormat(number) {
@@ -79,6 +81,7 @@ export default {
                     balance: st.balance,
                     amount: 1,
                     cost: st.aproxPrice,
+                    currentPrice: st.aproxPrice,
                     ico: st.thumb,
                     thumb: st.thumb,
                     type: "nft",
@@ -88,14 +91,21 @@ export default {
             if (st.type == "token") {
                 t = {
                     name: st.address,
-                    address: st.address,
-                    balance: st.balance,
-                    amount: 1,
+                    amount: 0.00,
                     cost: st.currentPrice,
+                    currentPrice: st.currentPrice,
                     ico: st.thumb,
-                    thumb: st.thumb,
-                    type: "token",
                     hotSwap: false,
+                    //-
+                    thumb: st.thumb,
+                    label: st.label,
+                    address: st.address,
+                    currentPrice: st.currentPrice,
+                    variation: st.variation,
+                    balance: st.balance,
+                    last24HoursVariation: st.last24HoursVariation,
+                    type: st.type,
+                    network: st.network,
                 }
             }
 
@@ -124,6 +134,7 @@ export default {
                     balance: st.balance,
                     amount: 1,
                     cost: st.aproxPrice,
+                    currentPrice: st.aproxPrice,
                     ico: st.thumb,
                     thumb: st.thumb,
                     type: "nft",
@@ -133,14 +144,21 @@ export default {
             if (st.type == "token") {
                 t = {
                     name: st.address,
-                    address: st.address,
-                    balance: st.balance,
-                    amount: 1,
+                    amount: 0.00,
                     cost: st.currentPrice,
+                    currentPrice: st.currentPrice,
                     ico: st.thumb,
-                    thumb: st.thumb,
-                    type: "token",
                     hotSwap: false,
+                    //-
+                    thumb: st.thumb,
+                    label: st.label,
+                    address: st.address,
+                    currentPrice: st.currentPrice,
+                    variation: st.variation,
+                    balance: st.balance,
+                    last24HoursVariation: st.last24HoursVariation,
+                    type: st.type,
+                    network: st.network,
                 }
             }
 
@@ -149,6 +167,7 @@ export default {
                     this.swapDataTo[i] = t
                 }
             })
+
         }
     },
     components: {
@@ -160,15 +179,21 @@ export default {
             this.swapDataFrom.length = 0;
             const d = this.store.get("storedTrading");
             let l = {
-                name: d.name,
-                address: d.address,
-                balance: d.balance,
-                amount: d.amount,
-                cost: d.cost,
-                thumb: d.thumb,
-                ico: d.ico,
-                type: d.type,
+                name: d.address,
+                amount: 0.00,
+                cost: d.currentPrice,
+                ico: d.thumb,
                 hotSwap: false,
+                //-
+                thumb: d.thumb,
+                label: d.label,
+                address: d.address,
+                currentPrice: d.currentPrice,
+                variation: d.variation,
+                balance: d.balance,
+                last24HoursVariation: d.last24HoursVariation,
+                type: d.type,
+                network: d.network,
             }
             this.swapDataFrom.push(d);
         }
@@ -231,7 +256,7 @@ export default {
                                         ref="walletBalance"
                                         :from="0"
                                         :to="asset.balance"
-                                        :format="tokenNumberFormat"
+                                        :format="simpleNumberFormat"
                                         :duration="1"
                                         :delay="0"
                                         easing="Power1.easeOut"
@@ -241,9 +266,9 @@ export default {
                             label
                                 input(
                                     type="number"
-                                    vv-model="asset.amount"
+                                    v-model="asset.amount"
                                     pattern="([0-9]{1,3}).([0-9]{1,3})"
-                                    :value="asset.balance"
+                                    placeholder="0.00"
                                 )
                         .cost-usd 
                             span ≈ {{ asset.cost }} USD
@@ -265,7 +290,7 @@ export default {
                                         number(
                                             ref="walletBalance"
                                             :from="0"
-                                            :to="t.balance"
+                                            :to="t.amount"
                                             :format="standardNumberFormat"
                                             :duration="2"
                                             :delay="1"
@@ -300,9 +325,14 @@ export default {
                     .value
                         .amount
                             label
-                                input(type="number", v-model="asset.amount", pattern="([0-9]{1,3}).([0-9]{1,3})")
+                                input(
+                                    disabled="disabled", 
+                                    type="number", 
+                                    :value="((swapDataFrom[0].amount * 1.38) - (swapDataFrom[0].amount)).toFixed(2)", pattern="([0-9]{1,3}).([0-9]{1,3})"
+                                    placeholder="0.00"
+                                )
                         .cost-usd 
-                            span ≈ {{ asset.cost }} USD
+                            span ≈ {{ asset.currentPrice }} USD
                     // !
                     .modal-clickable.send-select-add-asset.animated.fadeIn(v-if="asset.hotSwap")
                         .list-tokens
@@ -347,8 +377,10 @@ export default {
             .tab(@click="activeTabSlippage = 1", :class="activeTabSlippage == 1? 'active' : ''") 1%
             .tab(@click="activeTabSlippage = 2.5", :class="activeTabSlippage == 2.5 ? 'active' : ''") 2.5%
             .tab(@click="activeTabSlippage = 5", :class="activeTabSlippage == 5 ? 'active' : ''") Custom
-        .review-btn
-            button.purple Review swap
+        .review-btn(@click="openSidedrawer({action: 'swap', title: 'Swap', data:{from: swapDataFrom, to: swapDataTo}})")
+            button.purple(
+                :disabled="swapDataTo[0].name == 'Select' ? 'disabled' : (swapDataFrom[0].amount < 1 ? 'disabled' : (swapDataFrom[0].amount == null ? 'disabled' : false))"
+            ) Review swap
     
     .buy-and-sell.animated.toggleInUp.delay-0-5s(v-if="activeTab == 1")
         .action-toggle 
@@ -384,9 +416,9 @@ export default {
                     .value
                         .amount
                             label
-                                input(type="number", v-model="asset.amount", pattern="([0-9]{1,3}).([0-9]{1,3})")
+                                input(type="number", v-model="asset.amount", placeholder="0.00", pattern="([0-9]{1,3}).([0-9]{1,3})")
                         .cost-usd
-                            span ≈ {{ asset.cost }} USD
+                            span ≈ {{ (asset.amount * asset.currentPrice).toFixed(2) }} USD
                     // !
                     .modal-clickable.send-select-add-asset.animated.fadeIn(v-if="asset.hotSwap")
                         .list-tokens
@@ -422,7 +454,7 @@ export default {
                 number(
                     ref="walletBalance"
                     :from="0"
-                    :to="2.15"
+                    :to="(((swapDataFrom[0].amount == 0 ? 1 : swapDataFrom[0].amount) * swapDataFrom[0].currentPrice) / 53)"
                     :format="standardNumberFormat"
                     :duration="1"
                     :delay="0"
@@ -430,7 +462,11 @@ export default {
                 )
                 span USD
         .review-btn
-            button.purple To payment options
+            button.purple(
+                @click="openSidedrawer({action: 'swap-buy-and-sell', title: 'Buy and Sell', data: swapDataFrom[0]})"
+                :disabled="swapDataFrom[0].amount < 1 ? 'disabled' : (swapDataFrom[0].amount == null ? 'disabled' : false)"
+            ) To payment options
+    
     .activity-list(v-if="activeTab == 2")
         Table(
             :design="design"

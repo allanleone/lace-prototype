@@ -47,6 +47,8 @@ export default {
             showSugestionsEdit: false,
             createOrRestore: "",
             showModalWords: true,
+            modalTerms: false,
+            modalPrivacy: false,
             wordsRecovery: [
             ],
             indexKeyNavigation: 0,
@@ -318,9 +320,10 @@ export default {
         .sticky  
             //- Lace Brand         
             .brand 
-                img(class="standard", :src="'assets/images/' + store.theme + '/lace.svg'", alt="")
-                img(class="symbol", :src="'assets/images/' + store.theme + '/lace_symbol.svg'", alt="")
-                MainNetworkStatus/       
+                router-link(to="/tokens")
+                    img(class="standard", :src="'assets/images/' + store.theme + '/lace.svg'", alt="")
+                    img(class="symbol", :src="'assets/images/' + store.theme + '/lace_symbol.svg'", alt="")
+                //- MainNetworkStatus/       
             //-           
             //-  Main menu    
             MainMenu(theme="theme")/   
@@ -449,14 +452,25 @@ export default {
                             
                             .content-column.animated.fadeIn.delay-1s
                                 //- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                                .content-stage(v-if="stage == 2")
+                                .content-stage(v-if="stage == 2", style="position: relative;")
                                     h2 Lace terms of use
+                                    div Please review the Lace Privacy Policy and Terms of Use.
+                                    .clear(style="height: 30px;")
+                                    .buttons-terms
+                                        .item-term(@click="modalTerms = true")
+                                            .label Terms of use
+                                            .chevron
+                                                <svg width="1em" height="12px" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="SocialLink-module_arrow__II2PS"><path fill-rule="evenodd" clip-rule="evenodd" d="M.293 9.707a1 1 0 0 1 0-1.414L3.586 5 .293 1.707A1 1 0 0 1 1.707.293l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414 0Z" fill="currentColor"></path></svg>
+                                        .item-term(@click="modalPrivacy = true")
+                                            .label Privacy Policy
+                                            .chevron
+                                                <svg width="1em" height="12px" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="SocialLink-module_arrow__II2PS"><path fill-rule="evenodd" clip-rule="evenodd" d="M.293 9.707a1 1 0 0 1 0-1.414L3.586 5 .293 1.707A1 1 0 0 1 1.707.293l4 4a1 1 0 0 1 0 1.414l-4 4a1 1 0 0 1-1.414 0Z" fill="currentColor"></path></svg>
                                     .content-section
-                                        include includes/terms.pug
-                                        span.col-input
+                                        //- include includes/terms.pug
+                                        //- span.col-input
                                             span
                                                 <svg class="feather feather-chevron-down" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"/></svg>
-                                        div.know-more-privacy.animated.fadeInUp
+                                        //- div.know-more-privacy.animated.fadeInUp
                                             div.title-know-more Your privacy it's important to us
                                             ul 
                                                 li 
@@ -476,7 +490,7 @@ export default {
                                                     span
                                                         <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L5.29289 17.2929ZM18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L18.7071 6.70711ZM6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L6.70711 5.29289ZM17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L17.2929 18.7071ZM6.70711 18.7071L18.7071 6.70711L17.2929 5.29289L5.29289 17.2929L6.70711 18.7071ZM5.29289 6.70711L17.2929 18.7071L18.7071 17.2929L6.70711 5.29289L5.29289 6.70711Z' fill='#FF5470'/></svg>
                                                     span Not sell your personal data
-                                        div.col-input
+                                        //- div.col-input
                                             label.improve-input
                                                 span
                                                     input(type="checkbox", :checked="true", v-model="helpImprove")
@@ -485,15 +499,40 @@ export default {
                                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 16H12V12H11M12 8H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#C0C0C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                                     span.required-label Optional
                                         
+                                        .padding(style="height: 30px;")
                                         div 
-                                            label.terms-input(:style="!termsChecked ? 'background-color: #FDC30022;' : ''")
+                                            label.terms-input(:style="!termsChecked ? 'background-color: transparent;' : ''")
                                                 span
                                                     input(type="checkbox", v-model="termsChecked")
                                                     span I accept the terms of use
-                                                .info(vv-if="!termsChecked")
+                                                .info(v-if="!termsChecked")
                                                     <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12.884 2.532c-.346-.654-1.422-.654-1.768 0l-9 17A.999.999 0 0 0 3 21h18a.998.998 0 0 0 .883-1.467L12.884 2.532zM13 18h-2v-2h2v2zm-2-4V9h2l.001 5H11z"/></svg>
                                                     span.required-label Required to continue
                                         .padding(style="height: 20px;")
+                                    .overlay-terms(v-if="modalTerms || modalPrivacy")
+                                        .scrollable(v-if="modalTerms")
+                                            include includes/terms.pug
+                                        .scrollable(v-if="modalPrivacy")
+                                            .clear(style="height: 50px;")
+                                            div.title-know-more Your privacy it's important to us
+                                                ul 
+                                                    li 
+                                                        span
+                                                            <svg v-if="helpImprove" width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5 13L9 17L19 7' stroke='#2CB67D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg> 
+                                                            <svg v-if="!helpImprove" width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L5.29289 17.2929ZM18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L18.7071 6.70711ZM6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L6.70711 5.29289ZM17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L17.2929 18.7071ZM6.70711 18.7071L18.7071 6.70711L17.2929 5.29289L5.29289 17.2929L6.70711 18.7071ZM5.29289 6.70711L17.2929 18.7071L18.7071 17.2929L6.70711 5.29289L5.29289 6.70711Z' fill='#FF5470'/></svg>
+                                                        span Lace will  collect pseudonymous analytics info
+                                                    li 
+                                                        span
+                                                            <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L5.29289 17.2929ZM18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L18.7071 6.70711ZM6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L6.70711 5.29289ZM17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L17.2929 18.7071ZM6.70711 18.7071L18.7071 6.70711L17.2929 5.29289L5.29289 17.2929L6.70711 18.7071ZM5.29289 6.70711L17.2929 18.7071L18.7071 17.2929L6.70711 5.29289L5.29289 6.70711Z' fill='#FF5470'/></svg>
+                                                        span Not access your private keys
+                                                    li 
+                                                        span
+                                                            <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L5.29289 17.2929ZM18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L18.7071 6.70711ZM6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L6.70711 5.29289ZM17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L17.2929 18.7071ZM6.70711 18.7071L18.7071 6.70711L17.2929 5.29289L5.29289 17.2929L6.70711 18.7071ZM5.29289 6.70711L17.2929 18.7071L18.7071 17.2929L6.70711 5.29289L5.29289 6.70711Z' fill='#FF5470'/></svg>
+                                                        span Not record your IP address
+                                                    li 
+                                                        span
+                                                            <svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L5.29289 17.2929ZM18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L18.7071 6.70711ZM6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L6.70711 5.29289ZM17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L17.2929 18.7071ZM6.70711 18.7071L18.7071 6.70711L17.2929 5.29289L5.29289 17.2929L6.70711 18.7071ZM5.29289 6.70711L17.2929 18.7071L18.7071 17.2929L6.70711 5.29289L5.29289 6.70711Z' fill='#FF5470'/></svg>
+                                                        span Not sell your personal data
                                 //- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
                                 //- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -672,12 +711,14 @@ export default {
                                 //- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                                     
                                 .button-area.fadeIn.delay-1s
-                                    button.tertiary(@click="changeStageTo('back')") Back 
-                                    span
+                                    button.tertiary(v-if="!modalTerms && !modalPrivacy", @click="changeStageTo('back')") Back 
+                                    button.tertiary(v-if="modalTerms", @click="modalTerms = false; modalPrivacy = false;", style="white-space: nowrap; width: 540px;") Close Terms of Use
+                                    button.tertiary(v-if="modalPrivacy", @click="modalPrivacy = false; modalPrivacy = false;", style="white-space: nowrap; width: 540px;") Close Privacy Policy
+                                    span(v-if="!modalTerms && !modalPrivacy")
                                         //- button.tertiary(@click="changeStageTo(4, false)", v-if="stage == 3", style="margin: auto") 
                                             span Skip
-                                    span
-                                        button.purple(v-if="stage >= 2", @click="(createOrRestore == 'create' ? (showModalWords = true) : (showModalWords = false)); changeStageTo('next')", :disabled="nextShouldBeEnabled()") 
+                                    span(v-if="!modalTerms && !modalPrivacy")
+                                        button.purple(v-if="(stage >= 2) && (!modalTerms && !modalPrivacy)", @click="(createOrRestore == 'create' ? (showModalWords = true) : (showModalWords = false)); changeStageTo('next')", :disabled="nextShouldBeEnabled()") 
                                             span(v-if="stage > 2 && stage != 5") Next
                                             span(v-if="stage == 2 && stage != 5") Next
                                             span(v-if="stage == 5") Go to my wallet
@@ -818,6 +859,53 @@ export default {
     position: relative;
     width: 100%;
     overflow: hidden;
+    .overlay-terms {
+        position: absolute;
+        top: 100px;
+        left: 0px;
+        width: 100%;
+        height: calc(100% - 120px);
+        background-color: var(--bgCard);
+        overflow-x: hidden;
+        overflow-y: auto;
+        z-index: 1;
+    }
+    .buttons-terms{
+        padding: 20px;
+        border: solid 1px var(--lightGrayPlus);
+        border-radius: var(--radius);
+        width: calc(100% - 50px);
+        min-width: 0;
+        .item-term{
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 20px;
+            align-items: center;
+            justify-content: left;
+            text-align: left;
+            border-radius: var(--radius);
+            cursor: pointer;
+            &:first-child{
+                margin: -20px -20px 0 -20px;
+                border-bottom: solid 1px var(--lightGrayPlus);
+            }
+            &:last-child{
+                margin: 0px -20px -20px -20px;
+                padding: 30px;
+            }
+            &:hover{
+                background-color: var(--lightGray);
+            }
+            .label{
+
+            }
+            .chrevron{
+                
+            }
+        }
+    }
+
+
     .nav-onboarding {
         display: grid;
         grid-template-columns: 1fr 200px;
@@ -1594,6 +1682,7 @@ export default {
                     }
                 }
             }
+            
 
         }
 
