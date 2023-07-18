@@ -13,6 +13,8 @@ export const generalStore = defineStore('general', {
         addedToCardano: false,
         addedToPolygon: false,
         tokenSelectedFromTable: false,
+        polygonAdded: false,
+        cardanoAdded: false,
         // !
         // address book
         addressBookContacts: [
@@ -336,127 +338,138 @@ export const generalStore = defineStore('general', {
             }, 1000) 
         },
         async increaseTokenCardano(){
-            let currentDate = new Date();
-            if(!this.$state.addedToCardano){
-                this.$state.addedToCardano = true;
-                this.$state.tokens.push({
-                        thumb: "https://s2.coinmarketcap.com/static/img/coins/64x64/13769.png",
-                        label: "World Mobile Token",
-                        address: "WMT",
-                        currentPrice: "0.1077",
-                        variation: "1.43",
-                        balance: 1000,
-                        last24HoursVariation: [5.587, 7.654, 4.118, 6.289, 4.843, 8.568, 8.829, 4.679, 8.241, 4.452, 4.799, 4.125, 4.845, 8.888, 3.979, 7.583, 9.791, 6.046, 6.331, 4.995, 3.989, 3.481, 6.227, 6.658, 3.675],
-                        clicked: false,
-                        type: "token",
-                        policyId: "asset1kmp6nmdx5ptmjnt30vq2m2606nz35ae4xfx588",
-                        assetId: "50994cb11612b0e6ded5ad396dd49ff11a90d0e79b299c580a4f1gv2",
-                        network: "CARDANO",
-                    });
+
+            if(!this.$state.cardanoAdded){
+                let currentDate = new Date();
+                if(!this.$state.addedToCardano){
+                    this.$state.addedToCardano = true;
                     this.$state.tokens.push({
-                            thumb: "https://s2.coinmarketcap.com/static/img/coins/64x64/25264.png",
-                            label: "Snek",
-                            address: "SNEK",
-                            currentPrice: "0.0004091",
-                            variation: "-6.43",
-                            balance: 5000,
+                            thumb: "https://s2.coinmarketcap.com/static/img/coins/64x64/13769.png",
+                            label: "World Mobile Token",
+                            address: "WMT",
+                            currentPrice: "0.1077",
+                            variation: "1.43",
+                            balance: 1000,
                             last24HoursVariation: [5.587, 7.654, 4.118, 6.289, 4.843, 8.568, 8.829, 4.679, 8.241, 4.452, 4.799, 4.125, 4.845, 8.888, 3.979, 7.583, 9.791, 6.046, 6.331, 4.995, 3.989, 3.481, 6.227, 6.658, 3.675],
                             clicked: false,
                             type: "token",
                             policyId: "asset1kmp6nmdx5ptmjnt30vq2m2606nz35ae4xfx588",
                             assetId: "50994cb11612b0e6ded5ad396dd49ff11a90d0e79b299c580a4f1gv2",
                             network: "CARDANO",
+                        });
+                        this.$state.tokens.push({
+                                thumb: "https://s2.coinmarketcap.com/static/img/coins/64x64/25264.png",
+                                label: "Snek",
+                                address: "SNEK",
+                                currentPrice: "0.0004091",
+                                variation: "-6.43",
+                                balance: 5000,
+                                last24HoursVariation: [5.587, 7.654, 4.118, 6.289, 4.843, 8.568, 8.829, 4.679, 8.241, 4.452, 4.799, 4.125, 4.845, 8.888, 3.979, 7.583, 9.791, 6.046, 6.331, 4.995, 3.989, 3.481, 6.227, 6.658, 3.675],
+                                clicked: false,
+                                type: "token",
+                                policyId: "asset1kmp6nmdx5ptmjnt30vq2m2606nz35ae4xfx588",
+                                assetId: "50994cb11612b0e6ded5ad396dd49ff11a90d0e79b299c580a4f1gv2",
+                                network: "CARDANO",
+                        });
+                    this.$state.activity.push({
+                        thumb: "received",
+                        label: "Received",
+                        timestamp: currentDate,
+                        bundle: [
+                            "1000 SNEK",
+                        ],
+                        convertedTotal: "0.0004091",
+                        status: "Success",
+                        hash: "kksldkfjsldsdfsfdsdwd98fh23049fjhs0wdrfu023ru0wdf",
+                        network: "CARDANO",
+                        type: "transfer"
                     });
-                this.$state.activity.push({
-                    thumb: "received",
-                    label: "Received",
-                    timestamp: currentDate,
-                    bundle: [
-                        "1000 SNEK",
-                    ],
-                    convertedTotal: "0.0004091",
-                    status: "Success",
-                    hash: "kksldkfjsldsdfsfdsdwd98fh23049fjhs0wdrfu023ru0wdf",
-                    network: "CARDANO",
-                    type: "transfer"
-                });
-                this.$state.activity.push({
-                    thumb: "received",
-                    label: "Received",
-                    timestamp: currentDate,
-                    bundle: [
-                        "5000 WMT",
-                    ],
-                    convertedTotal: "0.1077",
-                    status: "Success",
-                    hash: "pppokasodpasdasdgsdadalla98fh23049fjhs0wdrfu023ru0wdf",
-                    network: "CARDANO",
-                    type: "transfer"
-                });
+                    this.$state.activity.push({
+                        thumb: "received",
+                        label: "Received",
+                        timestamp: currentDate,
+                        bundle: [
+                            "5000 WMT",
+                        ],
+                        convertedTotal: "0.1077",
+                        status: "Success",
+                        hash: "pppokasodpasdasdgsdadalla98fh23049fjhs0wdrfu023ru0wdf",
+                        network: "CARDANO",
+                        type: "transfer"
+                    });
+                }
             }
         },
         async increaseTokenPolygon(){
-            let currentDate = new Date();
             if(!this.$state.addedToPolygon){
+            let currentDate = new Date();
                 this.$state.addedToPolygon = true;
-                this.$state.tokens.push({
-                    thumb: "data:image/png;base64,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",
-                    label: "Polygon",
-                    address: "MATIC",
-                    currentPrice: "0.74",
-                    variation: "-3.56",
-                    balance: 200,
-                    last24HoursVariation: [0.710, 0.945, 0.715, 0.556, 0.431, 0.500, 0.777, 0.406, 0.698, 0.485, 0.896, 0.453, 0.823, 0.886, 0.409, 0.701, 0.732, 0.623, 0.844, 0.597, 0.412, 0.529, 0.497, 0.723, 0.788],
-                    clicked: false,
-                    type: "token",
-                    policyId: "asset1kmp6nmdx5ptmjnt30vq2m2606nz35ae4xfx588",
-                    assetId: "0xe5906ADDcf045B7D0B6e882bCF311f2575961d95",
-                    network: "POLYGON",
-                });
-                this.$state.nfts.push({
-                    id: "3",
-                    label: "Duis aute irure dolor in reprehenderit in",
-                    thumb: "https://lh3.googleusercontent.com/aDukKM0MNXSgS4W_JTQC8aCDVa1pQlphr3nquDpni9rM8uaPJUKkDEgaC1HoMFdBgwEQ11MlT1H_GDCC5TGq7413FKTCgwsOD_VwNQ",
-                    policyId: "habkjsh42jk3hjkawshdeajshed",
-                    assetId: "habkjsh42jk3hjkawshdeajshed",
-                    aproxPrice: "6394.00",
-                    currentPrice: "3.376",
-                    owners: "8210",
-                    volume: "12.34m",
-                    clicked: false,
-                    type: "nft",
-                    balance: 1,
-                    network: "POLYGON",
-                    valueSign: "MATIC",
-                    networkName: "Polygon",
-                    thumbNetwork: "data:image/png;base64,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",
-                });
-                this.$state.activity.push({
-                    thumb: "received",
-                    label: "Received",
-                    timestamp: currentDate,
-                    bundle: [
-                        "200 MATIC",
-                    ],
-                    convertedTotal: "0.74",
-                    status: "Success",
-                    hash: "kksldkfjsldsdfsfdsdwd98fh23049fjhs0wdrfu023ru0wdf",
-                    network: "POLYGON",
-                    type: "transfer"
-                });
-                this.$state.activity.push({
-                    thumb: "received",
-                    label: "Received",
-                    timestamp: currentDate,
-                    bundle: [
-                        "1 NFT",
-                    ],
-                    convertedTotal: "0.1077",
-                    status: "Success",
-                    hash: "pppokasodpasdasdgsdadalla98fh23049fjhs0wdrfu023ru0wdf",
-                    network: "POLYGON",
-                    type: "transfer"
-                });
+                // this.$state.tokens.push({
+                //     thumb: "data:image/png;base64,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",
+                //     label: "Polygon",
+                //     address: "MATIC",
+                //     currentPrice: "0.74",
+                //     variation: "-3.56",
+                //     balance: 200,
+                //     last24HoursVariation: [0.710, 0.945, 0.715, 0.556, 0.431, 0.500, 0.777, 0.406, 0.698, 0.485, 0.896, 0.453, 0.823, 0.886, 0.409, 0.701, 0.732, 0.623, 0.844, 0.597, 0.412, 0.529, 0.497, 0.723, 0.788],
+                //     clicked: false,
+                //     type: "token",
+                //     policyId: "asset1kmp6nmdx5ptmjnt30vq2m2606nz35ae4xfx588",
+                //     assetId: "0xe5906ADDcf045B7D0B6e882bCF311f2575961d95",
+                //     network: "POLYGON",
+                // });
+                 this.$state.tokens.forEach((t)=>{
+                    if(t.address == "MATIC"){
+                        t.balance += 100;
+                    }
+                 });
+                 if(!this.$state.polygonAdded){
+                    this.$state.polygonAdded = true;
+                    this.$state.nfts.push({
+                        id: "3",
+                        label: "Duis aute irure dolor in reprehenderit in",
+                        thumb: "https://lh3.googleusercontent.com/aDukKM0MNXSgS4W_JTQC8aCDVa1pQlphr3nquDpni9rM8uaPJUKkDEgaC1HoMFdBgwEQ11MlT1H_GDCC5TGq7413FKTCgwsOD_VwNQ",
+                        policyId: "habkjsh42jk3hjkawshdeajshed",
+                        assetId: "habkjsh42jk3hjkawshdeajshed",
+                        aproxPrice: "6394.00",
+                        currentPrice: "3.376",
+                        owners: "8210",
+                        volume: "12.34m",
+                        clicked: false,
+                        type: "nft",
+                        balance: 1,
+                        network: "POLYGON",
+                        valueSign: "MATIC",
+                        networkName: "Polygon",
+                        thumbNetwork: "data:image/png;base64,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",
+                    });
+                    this.$state.activity.push({
+                        thumb: "received",
+                        label: "Received",
+                        timestamp: currentDate,
+                        bundle: [
+                            "200 MATIC",
+                        ],
+                        convertedTotal: "0.74",
+                        status: "Success",
+                        hash: "kksldkfjsldsdfsfdsdwd98fh23049fjhs0wdrfu023ru0wdf",
+                        network: "POLYGON",
+                        type: "transfer"
+                    });
+                    this.$state.activity.push({
+                        thumb: "received",
+                        label: "Received",
+                        timestamp: currentDate,
+                        bundle: [
+                            "1 NFT",
+                        ],
+                        convertedTotal: "0.1077",
+                        status: "Success",
+                        hash: "pppokasodpasdasdgsdadalla98fh23049fjhs0wdrfu023ru0wdf",
+                        network: "POLYGON",
+                        type: "transfer"
+                    });
+                 }
             }
         },
         async activitySwapPush(item){

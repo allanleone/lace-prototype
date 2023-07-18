@@ -28,6 +28,7 @@ export default {
             loadingTransfer: false,
             transactionCostsSwap: false,
             gasGeeSwap: false,
+            copyInProgress: false,
             activityDesign: {
                 showIcon: true,
                 grid: "2fr auto",
@@ -379,7 +380,10 @@ export default {
                 setTimeout(()=>{
                     this.transferProcess = false;
                     setTimeout(()=>{
-                        this.close();
+                        // 
+                        let s = this.store.get("sidedrawerStorage");
+                        s.action = "request-password-3";
+                        // 
                     }, 1000);
                 }, 4000);
             }, 2000);
@@ -430,26 +434,32 @@ export default {
         // Receive
         confirmCopy(w){
 
-            navigator.clipboard.writeText(w.addr);
+            if(!this.copyInProgress){
+                this.copyInProgress = true;
+                navigator.clipboard.writeText(w.addr);
 
-            if(w.network == "CARDANO"){
-                this.copied = w.name;
-                this.copyingProcess = true;
-                setTimeout(()=>{
-                    this.copyingProcess = false;
+                if(w.network == "CARDANO"){
+                    this.copied = w.name;
+                    this.copyingProcess = true;
                     setTimeout(()=>{
-                        this.store.increaseTokenCardano();
-                    }, 10000);
-                }, 4000);
-            }else if (w.network == "POLYGON") {
-                this.copied = w.name;
-                this.copyingProcess = true;
-                setTimeout(() => {
-                    this.copyingProcess = false;
+                        this.copyingProcess = false;
+                        setTimeout(()=>{
+                            this.store.increaseTokenCardano();
+                        }, 10000);
+                    }, 4000);
+                }else if (w.network == "POLYGON") {
+                    this.copied = w.name;
+                    this.copyingProcess = true;
                     setTimeout(() => {
-                        this.store.increaseTokenPolygon();
-                    }, 10000);
-                }, 4000);
+                        this.copyingProcess = false;
+                        setTimeout(() => {
+                            this.store.increaseTokenPolygon();
+                        }, 10000);
+                    }, 4000);
+                }
+                setTimeout(()=>{
+                    this.copyInProgress = false;
+                }, 10000)
             }
 
         },
@@ -549,14 +559,9 @@ export default {
                 }
             }
         }
+
     },
     mounted(){
-
-        // Work on this later 👍🏻
-        // if(localStorage.getItem('prototypeSaveFile') !== null && localStorage.getItem('prototypeSaveFile')  !== undefined){
-        //     let s = JSON.parse(localStorage.getItem('prototypeSaveFile'))
-        //     this.store.set({ key: 'addressBookContacts', value: s })
-        // }
 
         switch(this.router){
             case "addressBook":
@@ -570,7 +575,6 @@ export default {
                 // }
             break;
         }
-
 
     },
 }
@@ -2464,7 +2468,7 @@ export default {
     .sidedrawer-window.animated.toggleInRight.delay-0-5s
         // !
 
-        // Settings ////////////////////
+        // Settings ////////////////////////
         //- 
         span.settings(v-if="router == 'settings' && store.get('settingsPage') == 1 && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' ")
             .window-header
@@ -2606,9 +2610,9 @@ export default {
                     v-show="store.get('settingsPage') == 1"
                 ) Cancel
         //- 
-        //////////////////////////////////////////////////////////////
+        /////////////////////////////////////
 
-        // Activity ////////////////////
+        // Activity ////////////////////////
         span.activity-sidedrawer(v-if="store.get('sidedrawerStorage').action == 'activity' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' ")
             //- .window-header.with-back-button
             .window-header
@@ -2683,7 +2687,7 @@ export default {
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#E84D66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 img.animated.zoomIn(v-if="typeOfChain == 2 && addressBookWalletAddress.length > 2", src="https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/cardano_ada-512.png")
 
-        /////////////////////////////////////
+        ////////////////////////////////////
 
         // Address Book ////////////////////
         span.address-book(v-if="router == 'addressBook' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' ")
@@ -2872,9 +2876,9 @@ export default {
                     @click="close()"
                     v-show="!addressBookEditing"
                 ) Cancel
-        /////////////////////////////////////
+        ////////////////////////////////////
 
-        // Receive ////////////////////
+        // Receive //////////////////////////
         span.receive-global(v-if="store.get('sidedrawerStorage').global ? (store.get('sidedrawerStorage').global == 'receive' && store.get('sidedrawerStorage').action == 'receive' ? true : false) : false")
 
             .window-header
@@ -2911,7 +2915,7 @@ export default {
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 16H6C4.89543 16 4 15.1046 4 14V6C4 4.89543 4.89543 4 6 4H14C15.1046 4 16 4.89543 16 6V8M10 20H18C19.1046 20 20 19.1046 20 18V10C20 8.89543 19.1046 8 18 8H10C8.89543 8 8 8.89543 8 10V18C8 19.1046 8.89543 20 10 20Z" stroke="#3D3B39" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         /////////////////////////////////////
 
-        // Send ////////////////////
+        // Send /////////////////////////////
         //- >> default
         span.send-global(v-if="store.get('sidedrawerStorage').global ? (store.get('sidedrawerStorage').global == 'send' && store.get('sidedrawerStorage').action == 'send' ? true : false) : false")
 
@@ -3349,7 +3353,7 @@ export default {
                     v-if="store.get('sidedrawerStorage').action == 'review-transaction-from-send' || store.get('sidedrawerStorage').action == 'request-password'"
                 ) Cancel
             // !
-        /////////////////////////////////////
+        //- 
         //- >> password confirmation [in progress/loading]
         span.send-global(v-if="store.get('sidedrawerStorage').global ? (store.get('sidedrawerStorage').global == 'send' && store.get('sidedrawerStorage').action == 'request-password-2' ? true : false) : false")
 
@@ -3405,11 +3409,45 @@ export default {
                     disabled="disabled"
                 ) Cancel
             // !
+        //- 
+        //- Send - done
+        span.send-global(v-if="store.get('sidedrawerStorage').global ? (store.get('sidedrawerStorage').global == 'send' && store.get('sidedrawerStorage').action == 'request-password-3' ? true : false) : false")
 
+            .window-header
+                .title
+                    //- span Address Book
+                    span(v-if="store.get('sidedrawerStorage').title") {{store.get("sidedrawerStorage").title}}
+                    span(v-if="store.get('sidedrawerStorage').title === null || store.get('sidedrawerStorage').title === undefined") Lace.io
+                .close
+                    button.navigation(@click="close()")
+                        span
+                            .icon
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6L18 18" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+            .window-content.with-buttons
+                div(style="display: grid; place-content: center; text-align: center;")
+                    .summary-done.animated.fadeIn.delay-0-5s
+                        .ico
+                            <svg width="112" height="112" viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M56 37.3333V56L70 70M98 56C98 79.196 79.196 98 56 98C32.804 98 14 79.196 14 56C14 32.804 32.804 14 56 14C79.196 14 98 32.804 98 56Z" stroke="#FDC300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        h3 All Done
+                        .desc The transaction will complete and show in your activity soon.
+                        .hash 1e2818032b182204bfa18536d07bfa5c5c6bfe7870c0cb3c1c9030ca214539d5
+
+            .window-footer  
+                // swap
+                //- button.purple(
+                //-     v-if="store.get('sidedrawerStorage').action == 'swap-confirm'"
+                //-     :disabled="confirmPasswordSwap.length > 3 ? false : 'disabled'"
+                //-     @click="reviewSwapConfirmPassword()"
+                //- ) Confirm
+                button.tertiary(
+                    v-if="store.get('sidedrawerStorage').action == 'swap-done'"
+                    @click="close()"
+                ) Close
+        //-
         /////////////////////////////////////
-        ////////////////////////////
 
-        // Tokens ////////////////////
+        // Tokens ///////////////////////////
         span.tokens-sidedrawer(v-if="router == 'tokens' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' ")
             //- .window-header.with-back-button
             .window-header
@@ -3541,7 +3579,7 @@ export default {
                 ) Send
         /////////////////////////////////////
 
-        // NFTs ////////////////////
+        // NFTs ////////////////////////////
         span.nfts-sidedrawer(v-if="router == 'nfts' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' ")
             //- .window-header.with-back-button
             .window-header
@@ -3614,7 +3652,7 @@ export default {
                 ) Send NFT
         /////////////////////////////////////
         
-        // Trading ////////////////////
+        // Trading /////////////////////////
         //- 
         span.trading-sidedrawer(v-if="router == 'trading' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive'")
 
@@ -3765,7 +3803,7 @@ export default {
                         @click="closeSwap()"
                     ) Close
             //-
-             //- Swap -done
+            //- Swap -done
             span.send-global(v-if="store.get('sidedrawerStorage').action == 'swap-done' ? true : false")
 
                 .window-header
