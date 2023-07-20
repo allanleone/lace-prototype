@@ -1,0 +1,81 @@
+{
+  "prototype": {
+    "onboarding": {
+      "stage-1": {
+        "button-1": "Create",
+        "desc-1": "Create a new Lace wallet",
+        "desc-2": "Connect your hardware wallet",
+        "desc-3": "Enter your recovery phrase",
+        "intro": "Hello Web3",
+        "subtitle": "Choose an option to get started",
+        "title-1": "New wallet",
+        "title-2": "Hardware wallet",
+        "title-3": "Restore wallet",
+        "button-2": "Connect",
+        "button-3": "Restore",
+        "compatibility": "Compatible with",
+        "footer-1": "Cookie policy",
+        "footer-2": "Private policy",
+        "footer-3": "Terms of use",
+        "modal-btn-cancel": "Cancel",
+        "modal-btn-ok": "OK",
+        "modal-desc": "If you're restoring a wallet created in another application, you may find some of your assets are not visible. Don't worry. Create a new wallet and send your assets to your new Lace wallet address and everything should be visible again.",
+        "modal-title": "Restoring a multi-address wallet?"
+      },
+      "placeholder": {
+        "confirm-password": "Confirm password",
+        "password": "Your password",
+        "wallet-name": "Wallet name"
+      },
+      "stage-2": {
+        "desc": "Please review the lace Privacy Policy and Terms of Use",
+        "title": "Lace terms of use",
+        "accept-the-terms": "I accept the terms of use",
+        "full-privacy": "Your privacy it's important to us\n\n✅ Lace will collect pseudonymous analytics info\n❌ Not access your private keys\n❌ Not record your IP address\n❌ Not sell your personal data",
+        "full-privacy-button": "Close Privacy Policy",
+        "full-terms": "Last Updated Date: March 14, 2023\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra nibh cras pulvinar mattis nunc sed. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Aliquet nibh praesent tristique magna sit. Imperdiet proin fermentum leo vel orci porta non pulvinar. Massa vitae tortor condimentum lacinia quis vel. Ac odio tempor orci dapibus ultrices in. Ultricies lacus sed turpis tincidunt. Augue eget arcu dictum varius duis at consectetur. Tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum.\n\nEt netus et malesuada fames. Lectus quam id leo in. Dignissim diam quis enim lobortis scelerisque. Sem viverra aliquet eget sit. Eu facilisis sed odio morbi quis commodo odio. Donec enim diam vulputate ut pharetra. Ultricies mi quis hendrerit dolor magna eget. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Sollicitudin ac orci phasellus egestas. Et tortor at risus viverra adipiscing at in tellus integer. Quis enim lobortis scelerisque fermentum dui faucibus in. Sit amet consectetur adipiscing elit. Posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis. Tempus imperdiet nulla malesuada pellentesque elit eget.\n\nSagittis id consectetur purus ut. Porta lorem mollis aliquam ut porttitor.",
+        "full-terms-button": "Close Terms of use",
+        "item-privacy": "Privacy Policy",
+        "item-terms": "Terms of use",
+        "terms-required": "Required to continue"
+      },
+      "stage-3": {
+        "title": "Let’s setup your new wallet",
+        "choose-a-wallet-name": "Choose a name to help you identify your wallet",
+        "password-validation-1": "Add more numbers and characters",
+        "password-validation-2": "Use a longer pattern with more turns",
+        "password-validation-3": "Strong password",
+        "password-validation-4": "Matching passwords",
+        "setup-password": "Set up your password"
+      },
+      "stage-4": {
+        "desc": "We recommend to write it down in a safe place",
+        "title": "Save your passphrase"
+      },
+      "stage-5": {
+        "desc": "Enter each word of your recovery phrase in the right order",
+        "passphrase-type-1": "12-words",
+        "passphrase-type-2": "15-words",
+        "passphrase-type-3": "24-words",
+        "title": "Confirm your passphrase"
+      },
+      "stage-6": {
+        "desc": "It’s time to your start your Web3 journey. Plus you can follow us to stay up to date on all our latest news and content",
+        "discord": "Follow us on Discord",
+        "title": "Hurray! All done :)",
+        "twitter": "Follow us on twitter",
+        "youtube": "Follow us on Youtube"
+      },
+      "timeline": {
+        "btn-continue": "Continue",
+        "btn-go-to-wallet": "Go to my wallet",
+        "btn-next": "Next",
+        "btn-previous": "Back",
+        "item-1": "Legal & Analytics",
+        "item-2": "Wallet setup",
+        "item-3": "Recovery phrase",
+        "item-4": "All done"
+      }
+    }
+  }
+}
