@@ -1,0 +1,81 @@
+{
+  "prototype": {
+    "onboarding": {
+      "stage-1": {
+        "button-1": "Crea",
+        "desc-1": "Crea un nuovo portafoglio Lace",
+        "desc-2": "Collega il tuo portafoglio hardware",
+        "desc-3": "Inserisci la tua frase di recupero",
+        "intro": "Ciao Web3",
+        "subtitle": "Scegli un'opzione per iniziare",
+        "title-1": "Nuovo portafoglio",
+        "title-2": "Portafoglio hardware",
+        "title-3": "Ripristina portafoglio",
+        "button-2": "Collega",
+        "button-3": "Ripristina",
+        "compatibility": "Compatibile con",
+        "footer-1": "Politica sui cookie",
+        "footer-2": "Informativa sulla privacy",
+        "footer-3": "Termini di utilizzo",
+        "modal-btn-cancel": "Annulla",
+        "modal-btn-ok": "OK",
+        "modal-desc": "Se stai ripristinando un portafoglio creato in un'altra applicazione, potresti non vedere alcuni dei tuoi asset. Non preoccuparti. Crea un nuovo portafoglio e invia i tuoi asset all'indirizzo del tuo nuovo portafoglio Lace e tutto dovrebbe essere nuovamente visibile.",
+        "modal-title": "Ripristino di un portafoglio multi-indirizzo?"
+      },
+      "placeholder": {
+        "confirm-password": "Conferma password",
+        "password": "La tua password",
+        "wallet-name": "Nome del portafoglio"
+      },
+      "stage-2": {
+        "desc": "Ti preghiamo di esaminare l'Informativa sulla privacy e i Termini di utilizzo di Lace",
+        "title": "Termini di utilizzo di Lace",
+        "accept-the-terms": "Accetto i termini di utilizzo",
+        "full-privacy": "La tua privacy è importante per noi\n\n✅ Lace raccoglierà informazioni analitiche in forma anonima\n❌ Non accederà alle tue chiavi private\n❌ Non registrerà il tuo indirizzo IP\n❌ Non venderà i tuoi dati personali",
+        "full-privacy-button": "Chiudi Informativa sulla privacy",
+        "full-terms": "Data dell'ultimo aggiornamento: 14 marzo 2023\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra nibh cras pulvinar mattis nunc sed. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Aliquet nibh praesent tristique magna sit. Imperdiet proin fermentum leo vel orci porta non pulvinar. Massa vitae tortor condimentum lacinia quis vel. Ac odio tempor orci dapibus ultrices in. Ultricies lacus sed turpis tincidunt. Augue eget arcu dictum varius duis at consectetur. Tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum.\n\nEt netus et malesuada fames. Lectus quam id leo in. Dignissim diam quis enim lobortis scelerisque. Sem viverra aliquet eget sit. Eu facilisis sed odio morbi quis commodo odio. Donec enim diam vulputate ut pharetra. Ultricies mi quis hendrerit dolor magna eget. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Sollicitudin ac orci phasellus egestas. Et tortor at risus viverra adipiscing at in tellus integer. Quis enim lobortis scelerisque fermentum dui faucibus in. Sit amet consectetur adipiscing elit. Posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis. Tempus imperdiet nulla malesuada pellentesque elit eget.\n\nSagittis id consectetur purus ut. Porta lorem mollis aliquam ut porttitor.",
+        "full-terms-button": "Chiudi Termini di utilizzo",
+        "item-privacy": "Informativa sulla privacy",
+        "item-terms": "Termini di utilizzo",
+        "terms-required": "Richiesto per continuare"
+      },
+      "stage-3": {
+        "title": "Configuriamo il tuo nuovo portafoglio",
+        "choose-a-wallet-name": "Scegli un nome per identificare il tuo portafoglio",
+        "password-validation-1": "Aggiungi più numeri e caratteri",
+        "password-validation-2": "Usa un modello più lungo con più movimenti",
+        "password-validation-3": "Password forte",
+        "password-validation-4": "Password corrispondenti",
+        "setup-password": "Configura la tua password"
+      },
+      "stage-4": {
+        "desc": "Ti consigliamo di scriverla in un luogo sicuro",
+        "title": "Salva la tua frase di recupero"
+      },
+      "stage-5": {
+        "desc": "Inserisci ogni parola della tua frase di recupero nell'ordine corretto",
+        "passphrase-type-1": "12 parole",
+        "passphrase-type-2": "15 parole",
+        "passphrase-type-3": "24 parole",
+        "title": "Conferma la tua frase di recupero"
+      },
+      "stage-6": {
+        "desc": "È il momento di iniziare il tuo viaggio in Web3. Puoi anche seguirci per essere sempre aggiornato su tutte le nostre ultime notizie e contenuti",
+        "discord": "Seguici su Discord",
+        "title": "Evviva! Tutto è pronto! :)",
+        "twitter": "Seguici su Twitter",
+        "youtube": "Seguici su YouTube"
+      },
+      "timeline": {
+        "btn-continue": "Continua",
+        "btn-go-to-wallet": "Vai al mio portafoglio",
+        "btn-next": "Avanti",
+        "btn-previous": "Indietro",
+        "item-1": "Legale e Analitico",
+        "item-2": "Configurazione del portafoglio",
+        "item-3": "Frase di recupero",
+        "item-4": "Tutto è pronto"
+      }
+    }
+  }
+}
