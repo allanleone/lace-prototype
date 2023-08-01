@@ -6,7 +6,8 @@
         "desc-1": "Criar uma nova carteira Lace",
         "desc-2": "Conectar sua carteira de hardware",
         "desc-3": "Inserir sua frase de recuperação",
-        "intro": "Olá Web3",
+        "intro-1": "Oi",
+        "intro-2": "Web3",
         "subtitle": "Escolha uma opção para começar",
         "title-1": "Nova carteira",
         "title-2": "Carteira de hardware",
@@ -33,7 +34,7 @@
         "accept-the-terms": "Eu aceito os termos de uso",
         "full-privacy": "Sua privacidade é importante para nós\n\n✅ A Lace coletará informações analíticas pseudônimas\n❌ Não acessará suas chaves privadas\n❌ Não registrará seu endereço IP\n❌ Não venderá seus dados pessoais",
         "full-privacy-button": "Fechar Política de Privacidade",
-        "full-terms": "Data da última atualização: 14 de março de 2023\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra nibh cras pulvinar mattis nunc sed. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Aliquet nibh praesent tristique magna sit. Imperdiet proin fermentum leo vel orci porta non pulvinar. Massa vitae tortor condimentum lacinia quis vel. Ac odio tempor orci dapibus ultrices in. Ultricies lacus sed turpis tincidunt. Augue eget arcu dictum varius duis at consectetur. Tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum.\n\nEt netus et malesuada fames. Lectus quam id leo in. Dignissim diam quis enim lobortis scelerisque. Sem viverra aliquet eget sit. Eu facilisis sed odio morbi quis commodo odio. Donec enim diam vulputate ut pharetra. Ultricies mi quis hendrerit dolor magna eget. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Sollicitudin ac orci phasellus egestas. Et tortor at risus viverra adipiscing at in tellus integer. Quis enim lobortis scelerisque fermentum dui faucibus in. Sit amet consectetur adipiscing elit. Posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis. Tempus imperdiet nulla malesuada pellentesque elit eget.\n\nSagittis id consectetur purus ut. Porta lorem mollis aliquam ut porttitor.",
+        "full-terms": "Bem-vindo aos Serviços da IOG! Por favor, leia atentamente os seguintes Termos de Serviço antes de usar nossa plataforma.\n\n1. Uso dos Serviços:\n1.1. Você deve ter pelo menos 18 anos para acessar e usar nossos Serviços.\n1.2. Você é responsável por manter a segurança de sua conta e não deve compartilhar suas credenciais com terceiros.\n1.3. O uso não autorizado dos Serviços encerra sua licença.\n\n2. Serviços de Terceiros:\n2.1. Alguns Serviços podem incluir aplicativos de Terceiros hospedados por outras empresas.\n2.2. A IOG não está diretamente envolvida com os Serviços de Terceiros.\n2.3. O uso dos Serviços de Terceiros está sujeito aos seus respectivos termos e condições.\n\n3. Seu Conteúdo:\n3.1. Você pode publicar materiais em nossa plataforma, referidos como 'Seu Conteúdo.'\n3.2. A IOG tem uma licença para usar Seu Conteúdo para seus Propósitos Comerciais.\n\n4. Conduta do Usuário:\n4.1. Não se envolva em ações que violem os Termos ou a lei aplicável.\n4.2. A IOG pode investigar possíveis violações e tomar as medidas necessárias.\n\n5. Limitação de Responsabilidade:\n5.1. A IOG não se responsabiliza por danos indiretos, incidentais ou consequenciais.\n5.2. A responsabilidade total da IOG por danos é limitada a $100.\n\n6. Resolução de Disputas:\n6.1. Tente uma solução informal antes de qualquer arbitragem.\n6.2. Todas as disputas serão resolvidas por meio de arbitragem, exceto por reivindicações específicas.\n6.3. Você tem o direito de desistir do Acordo de Arbitragem dentro de 30 dias.\n\n7. Disposições Gerais:\n7.1. As comunicações entre você e a IOG serão feitas por meio eletrônico.\n7.2. Estes Termos são regidos pelas leis do estado de Nova York.\n7.3. Todas as reivindicações e disputas serão julgadas exclusivamente em Manhattan, Nova York.\n\nObrigado por usar os Serviços da IOG! Se tiver alguma dúvida ou preocupação, entre em contato conosco.",
         "full-terms-button": "Fechar Termos de Uso",
         "item-privacy": "Política de Privacidade",
         "item-terms": "Termos de Uso",
@@ -75,6 +76,12 @@
         "item-2": "Configuração da carteira",
         "item-3": "Frase de recuperação",
         "item-4": "Tudo pronto"
+      },
+      "extras": {
+        "btn-help": "Ajuda e Suporte",
+        "footer-help": "Política de Cookies",
+        "footer-private": "Política de Privacidade",
+        "footer-terms": "Termos de Uso"
       }
     }
   }

@@ -166,26 +166,29 @@ export default {
             return useRouter().currentRoute.value.name
         }, 
         changeStageTo(st, timer){
-            if(this.stage == 5){
-                window.location.href = "/tokens"
-            }else{
-                // 
-                if(st == "back"){  
-                    return this.stage = (this.stage - 1);
-                }
-                if(st == "next"){  
-                    return this.stage = (this.stage + 1);
-                }
-                if(!timer){
-                    this.popupRestore = false;
-                    this.stage = st; 
+            setTimeout(()=>{
+                console.log(st, timer)
+                if(this.stage == 5){
+                    window.location.href = "/tokens"
                 }else{
-                    window.setTimeout(()=>{
-                        this.stage = st;
-                    }, timer)
+                    // 
+                    if(st == "back"){  
+                        return this.stage = (this.stage - 1);
+                    }
+                    if(st == "next"){  
+                        return this.stage = (this.stage + 1);
+                    }
+                    if(!timer){
+                        this.popupRestore = false;
+                        this.stage = st; 
+                    }else{
+                        window.setTimeout(()=>{
+                            this.stage = st;
+                        }, timer)
+                    }
+                    // 
                 }
-                // 
-            }
+            },0)
         },
         nextShouldBeEnabled(){
             if(this.stage == 2){
@@ -297,7 +300,7 @@ export default {
     updated(){
         this.page = useRouter().currentRoute.value.name;
         setTimeout(() => { 
-            console.log(this.page)
+            // console.log(this.page)
             if(this.page == "onboarding"){
                 document.querySelector("#lace").style.backgroundImage = "url('assets/images/background-onboarding.png')"
             }else{
@@ -313,49 +316,6 @@ export default {
         // document.querySelector(".debug").innerHTML = "c: " + document.querySelector(".content").offsetWidth + " | " + "m: " + minimum;
     }, 
     created(){
-
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", "token 63445dc3-dab4-4f1d-879d-b7d23a8bc60d.6a8b80b981feecfa40149f4a04aba82c7a3d5721");
-        myHeaders.append("Access-Control-Allow-Origin", "*");
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            // mode: "no-cors",
-            redirect: 'follow'
-        };
-
-        // fetch("https://api.dittowords.com/v1/components?format=nested&variant&includeRichText=true", requestOptions)
-
-        // Portuguese-BR
-        const langArray = ['en', 'pt_br', 'jp', 'ru', 'es', 'it'];
-        let index = 0;
-
-        const loadLangJson = ()=> {
-
-            //  -----------------------
-            fetch("assets/lang/" + langArray[index] + ".json", requestOptions)
-                .then(response => response.text())
-                .then(result => {
-                    console.log(langArray[index])
-                    let r = JSON.parse(result);
-                    this.store.setLang({ key: langArray[index], value: r });
-                    index++;
-                    console.log(index, langArray.length)
-                    if (index < langArray.length) {
-                        loadLangJson();
-                    } else {
-                        // SET AS DONE /////////////////////////////////////////
-                        this.store.set({ key: 'langDoneLoading', value: true })
-                        ////////////////////////////////////////////////////////
-                    }
-                })
-                .catch(error => console.log('error', error));
-            //  -----------------------
-
-        };
-
-        loadLangJson();
 
     },
 } 
@@ -455,9 +415,8 @@ export default {
                 span
                     .icon 
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM12.0001 8C10.5283 8 9.47159 8.70623 9.13224 9.4263C8.89681 9.92589 8.30095 10.14 7.80136 9.90458C7.30178 9.66914 7.08764 9.07329 7.32308 8.5737C8.08197 6.96338 9.98852 6 12.0001 6C13.3001 6 14.5155 6.39395 15.4285 7.07868C16.3418 7.76364 17.0001 8.78625 17.0001 10C17.0001 12.0693 15.166 13.5082 13.1827 13.8887C13.11 13.9026 13.0522 13.9386 13.0206 13.972C13.0064 13.9871 13.0014 13.9974 13.0002 14.0001C13.0002 14.0003 13.0001 14.0004 13.0001 14.0005C12.9998 14.5526 12.5522 15 12.0001 15C11.4478 15 11.0001 14.5523 11.0001 14C11.0001 12.8579 11.9097 12.0964 12.8059 11.9245C14.2788 11.6419 15.0001 10.7295 15.0001 10C15.0001 9.5569 14.7629 9.0795 14.2285 8.67868C13.6937 8.27763 12.9092 8 12.0001 8ZM11 17C11 16.4477 11.4477 16 12 16H12.01C12.5623 16 13.01 16.4477 13.01 17C13.01 17.5523 12.5623 18 12.01 18H12C11.4477 18 11 17.5523 11 17Z" fill="url(#paint0_linear_6610_345401)"/><defs><linearGradient id="paint0_linear_6610_345401" x1="-1.65957" y1="-1.65957" x2="27.6428" y2="0.501649" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"/><stop offset="1" stop-color="#FDC300"/></linearGradient></defs></svg>
-                    .label Help and support 
+                    .label {{this.store.translate("prototype", "onboarding", "extras", "btn-help")}}
                     .chevron
-        //- .background-onboarding.animated.fadeIn.delay-0-8s(style="background-image: url('assets/images/background-onboarding.png')")
 
         //-
         .body-onboarding.animated.fadeIn
@@ -467,14 +426,14 @@ export default {
                 //- 
                 h1.bold.animatedIntro
                     TransitionGroup(name="fade")
-                        div(vv-if="stage == 1", :key="1") {{ this.store.translate("prototype", "onboarding", "stage-1", "intro") ? this.store.translate("prototype", "onboarding", "stage-1", "intro").split(" ")[0] : '' }}
-                        div.gradient(:key="2") {{ this.store.translate("prototype", "onboarding", "stage-1", "intro") ? this.store.translate("prototype", "onboarding", "stage-1", "intro").split(" ")[1] : '' }}
+                        div(:key="1") {{ this.store.translate("prototype", "onboarding", "stage-1", "intro-1") }}
+                        div.gradient(:key="2") {{ this.store.translate("prototype", "onboarding", "stage-1", "intro-2") }}
                 Transition(name="fade")
                     .stage-1
                         .content-column.animated.fadeIn.delay-4s
                             h1.bold.placeholder
-                                div {{ this.store.translate("prototype", "onboarding", "stage-1", "intro").split(" ")[0] }}
-                                div.gradient {{ this.store.translate("prototype", "onboarding", "stage-1", "intro").split(" ")[1] }}
+                                div(:key="1") {{ this.store.translate("prototype", "onboarding", "stage-1", "intro-1") }}
+                                div.gradient(:key="2") {{ this.store.translate("prototype", "onboarding", "stage-1", "intro-2") }}
                             h4
                                 div.animated.fadeIn.delay-3-5s {{ this.store.translate("prototype", "onboarding", "stage-1", "subtitle") }}
                             .networks
@@ -791,9 +750,9 @@ export default {
 
         .footer-onboarding.animated.fadeIn.delay-2s
             .links
-                a() Cookie policy
-                a() Private policy
-                a() Terms of use
+                a() {{this.store.translate("prototype", "onboarding", "extras", "footer-help")}}
+                a() {{this.store.translate("prototype", "onboarding", "extras", "footer-private")}}
+                a() {{this.store.translate("prototype", "onboarding", "extras", "footer-terms")}}
         //-
     //-   
     //- 
@@ -832,10 +791,10 @@ export default {
 
 .lang-selection{
     position: fixed;
-    width: 24px;
-    height: 24px;
-    bottom: 20px;
-    left: 20px;
+    width: 16px;
+    height: 16px;
+    bottom: 15px;
+    left: 15px;
     z-index: 9999999999999999999999999;
     padding: 10px;
     background-color: var(--lightGray);
@@ -847,6 +806,7 @@ export default {
     .selected{
         img{
             width: 100%;
+            box-shadow: var(--tinyShadow);
         }
     }
     .list{
@@ -881,6 +841,8 @@ export default {
         .img{
             width: 24px;
             height: 24px;
+            border-radius: 100px;
+            box-shadow: var(--tinyShadow);
             img{
                 width: 100%;
             }
@@ -974,6 +936,9 @@ export default {
         overflow-x: hidden;
         overflow-y: auto;
         z-index: 1;
+        pre{
+            white-space: pre-wrap !important;
+        }
     }
     .buttons-terms{
         padding: 20px;
@@ -1335,8 +1300,8 @@ export default {
                 --positionClip: 370px 250px;
                 @keyframes circleRevealRestore {
                     0%{clip-path: circle(0px at var(--positionClip));}
-                    99%{clip-path: circle(1000px at var(--positionClip));}
-                    100%{display: none;}
+                    100%{clip-path: circle(1000px at var(--positionClip));}
+                    // 100%{display: none;}
                 }
                 a, a:visited, a:active, a:hover{
                     color: var(--blue);
@@ -1552,7 +1517,7 @@ export default {
                         }
                     }
                     .follow {
-                        width: calc(100% - 20px);
+                        width: calc(100% - 30px);
                         height: auto;
                         padding: 10px;
                         display: grid;

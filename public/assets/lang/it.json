@@ -6,7 +6,8 @@
         "desc-1": "Crea un nuovo portafoglio Lace",
         "desc-2": "Collega il tuo portafoglio hardware",
         "desc-3": "Inserisci la tua frase di recupero",
-        "intro": "Ciao Web3",
+        "intro-1": "Ciao",
+        "intro-2": "Web3",
         "subtitle": "Scegli un'opzione per iniziare",
         "title-1": "Nuovo portafoglio",
         "title-2": "Portafoglio hardware",
@@ -33,7 +34,7 @@
         "accept-the-terms": "Accetto i termini di utilizzo",
         "full-privacy": "La tua privacy è importante per noi\n\n✅ Lace raccoglierà informazioni analitiche in forma anonima\n❌ Non accederà alle tue chiavi private\n❌ Non registrerà il tuo indirizzo IP\n❌ Non venderà i tuoi dati personali",
         "full-privacy-button": "Chiudi Informativa sulla privacy",
-        "full-terms": "Data dell'ultimo aggiornamento: 14 marzo 2023\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra nibh cras pulvinar mattis nunc sed. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Aliquet nibh praesent tristique magna sit. Imperdiet proin fermentum leo vel orci porta non pulvinar. Massa vitae tortor condimentum lacinia quis vel. Ac odio tempor orci dapibus ultrices in. Ultricies lacus sed turpis tincidunt. Augue eget arcu dictum varius duis at consectetur. Tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum.\n\nEt netus et malesuada fames. Lectus quam id leo in. Dignissim diam quis enim lobortis scelerisque. Sem viverra aliquet eget sit. Eu facilisis sed odio morbi quis commodo odio. Donec enim diam vulputate ut pharetra. Ultricies mi quis hendrerit dolor magna eget. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Sollicitudin ac orci phasellus egestas. Et tortor at risus viverra adipiscing at in tellus integer. Quis enim lobortis scelerisque fermentum dui faucibus in. Sit amet consectetur adipiscing elit. Posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis. Tempus imperdiet nulla malesuada pellentesque elit eget.\n\nSagittis id consectetur purus ut. Porta lorem mollis aliquam ut porttitor.",
+        "full-terms": "Benvenuto ai Servizi di IOG! Leggi attentamente i seguenti Termini di Servizio prima di utilizzare la nostra piattaforma.\n\n1. Uso dei Servizi:\n1.1. Devi avere almeno 18 anni per accedere e utilizzare i nostri Servizi.\n1.2. Sei responsabile della sicurezza del tuo account e non devi condividere le tue credenziali con terzi.\n1.3. L'uso non autorizzato dei Servizi comporta la terminazione della tua licenza.\n\n2. Servizi di Terze Parti:\n2.1. Alcuni Servizi potrebbero includere applicazioni di Terze Parti ospitate da altre aziende.\n2.2. IOG non è direttamente coinvolto nei Servizi di Terze Parti.\n2.3. L'uso dei Servizi di Terze Parti è soggetto ai rispettivi termini e condizioni.\n\n3. Il Tuo Contenuto:\n3.1. Puoi pubblicare materiali sulla nostra piattaforma, definiti come 'Il Tuo Contenuto'.\n3.2. IOG ha una licenza per utilizzare Il Tuo Contenuto per scopi commerciali.\n\n4. Comportamento dell'Utente:\n4.1. Non intraprendere azioni che violino i Termini o la legge applicabile.\n4.2. IOG può investigare possibili violazioni e prendere le misure necessarie.\n\n5. Limitazione di Responsabilità:\n5.1. IOG non è responsabile per danni indiretti, incidentali o consequenziali.\n5.2. La responsabilità totale di IOG per danni è limitata a $100.\n\n6. Risoluzione delle Controversie:\n6.1. Prova a risolvere informalmente le controversie prima di ricorrere all'arbitrato.\n6.2. Tutte le controversie saranno risolte tramite arbitrato, ad eccezione di reclami specifici.\n6.3. Hai il diritto di rinunciare all'Accordo di Arbitrato entro 30 giorni.\n\n7. Disposizioni Generali:\n7.1. Le comunicazioni tra te e IOG avverranno in forma elettronica.\n7.2. Questi Termini sono disciplinati dalle leggi dello stato di New York.\n7.3. Tutte le controversie saranno esclusivamente giudicate a Manhattan, New York.\n\nGrazie per l'utilizzo dei Servizi di IOG! Se hai domande o preoccupazioni, contattaci.",
         "full-terms-button": "Chiudi Termini di utilizzo",
         "item-privacy": "Informativa sulla privacy",
         "item-terms": "Termini di utilizzo",
@@ -75,6 +76,12 @@
         "item-2": "Configurazione del portafoglio",
         "item-3": "Frase di recupero",
         "item-4": "Tutto è pronto"
+      },
+      "extras": {
+        "btn-help": "Aiuto e Supporto",
+        "footer-help": "Informativa sui Cookie",
+        "footer-private": "Informativa sulla Privacy",
+        "footer-terms": "Termini di Utilizzo"
       }
     }
   }

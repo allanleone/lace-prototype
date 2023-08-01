@@ -6,7 +6,8 @@
         "desc-1": "新しいLaceウォレットを作成する",
         "desc-2": "ハードウェアウォレットを接続する",
         "desc-3": "リカバリーフレーズを入力する",
-        "intro": "こんにちは、Web3",
+        "intro-1": "やあ",
+        "intro-2": "Web3",
         "subtitle": "始めるためのオプションを選択してください",
         "title-1": "新しいウォレット",
         "title-2": "ハードウェアウォレット",
@@ -33,7 +34,7 @@
         "accept-the-terms": "利用規約に同意します",
         "full-privacy": "プライバシーは大切です\n\n✅ Laceは擬似匿名の分析情報を収集します\n❌ プライベートキーにアクセスしません\n❌ IPアドレスを記録しません\n❌ 個人データを販売しません",
         "full-privacy-button": "プライバシーポリシーを閉じる",
-        "full-terms": "最終更新日：2023年3月14日\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra nibh cras pulvinar mattis nunc sed. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Aliquet nibh praesent tristique magna sit. Imperdiet proin fermentum leo vel orci porta non pulvinar. Massa vitae tortor condimentum lacinia quis vel. Ac odio tempor orci dapibus ultrices in. Ultricies lacus sed turpis tincidunt. Augue eget arcu dictum varius duis at consectetur. Tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum.\n\nEt netus et malesuada fames. Lectus quam id leo in. Dignissim diam quis enim lobortis scelerisque. Sem viverra aliquet eget sit. Eu facilisis sed odio morbi quis commodo odio. Donec enim diam vulputate ut pharetra. Ultricies mi quis hendrerit dolor magna eget. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Sollicitudin ac orci phasellus egestas. Et tortor at risus viverra adipiscing at in tellus integer. Quis enim lobortis scelerisque fermentum dui faucibus in. Sit amet consectetur adipiscing elit. Posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis. Tempus imperdiet nulla malesuada pellentesque elit eget.\n\nSagittis id consectetur purus ut. Porta lorem mollis aliquam ut porttitor.",
+        "full-terms": "IOGのサービスへようこそ！プラットフォームを使用する前に、以下の利用規約をよくお読みください。\n\n1. サービスの利用:\n1.1. サービスのアクセスおよび利用には、18歳以上である必要があります。\n1.2. アカウントのセキュリティを保持し、第三者と資格情報を共有しないように注意してください。\n1.3. 許可されていないサービスの利用はライセンスを終了させます。\n\n2. サードパーティのサービス:\n2.1. 一部のサービスには他社がホストするサードパーティのアプリケーションが含まれている場合があります。\n2.2. IOGはサードパーティのサービスと直接関係していません。\n2.3. サードパーティのサービスの利用はそれらの各々の利用規約に準拠します。\n\n3. あなたのコンテンツ:\n3.1. プラットフォームにマテリアルを投稿できます。「あなたのコンテンツ」とします。\n3.2. IOGはあなたのコンテンツをビジネス目的に利用するライセンスを持ちます。\n\n4. ユーザーの行動:\n4.1. 利用規約または適用法に違反する行為を行わないでください。\n4.2. IOGは可能な違反を調査し、必要な措置を取る場合があります。\n\n5. 責任の制限:\n5.1. IOGは間接的、付随的または結果的な損害に対して責任を負いません。\n5.2. IOGの損害賠償の総額は$100に制限されます。\n\n6. 紛争解決:\n6.1. 仲裁の前に非公式の解決を試みてください。\n6.2. 一部の特定の請求を除き、すべての紛争は仲裁により解決されます。\n6.3. 仲裁契約から30日以内に取り消す権利があります。\n\n7. 一般規定:\n7.1. IOGとの間の通信は電子形式で行われます。\n7.2. これらの規約はニューヨーク州の法律に従って適用されます。\n7.3. すべての請求と紛争はニューヨーク州マンハッタンでのみ裁かれます。\n\nIOGのサービスをご利用いただきありがとうございます！ご質問やご懸念がある場合は、お問い合わせください。",
         "full-terms-button": "利用規約を閉じる",
         "item-privacy": "プライバシーポリシー",
         "item-terms": "利用規約",
@@ -75,6 +76,12 @@
         "item-2": "ウォレットのセットアップ",
         "item-3": "リカバリーフレーズ",
         "item-4": "すべて完了"
+      },
+      "extras": {
+        "btn-help": "ヘルプとサポート",
+        "footer-help": "クッキーポリシー",
+        "footer-private": "プライバシーポリシー",
+        "footer-terms": "利用規約"
       }
     }
   }

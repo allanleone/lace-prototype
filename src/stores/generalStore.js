@@ -44,6 +44,47 @@ export const generalStore = defineStore('general', {
                 ico: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/800px-Bitcoin.svg.png",
             },
         ],
+        // NFTs
+         nfts: [
+            {
+                id: "1",
+                label: "Lorem ipsum dolor",
+                thumb: "https://public.nftstatic.com/static/nft/res/c10afbb0984f44379d835050ef6c1c6a.jpeg",
+                policyId: "habkjsh42jk3hjkawshdeajshed",
+                assetId: "habkjsh42jk3hjkawshdeajshed",
+                aproxPrice: "5387.00",
+                currentPrice: "3.376",
+                owners: "8210",
+                volume: "12.34m",
+                clicked: false,
+                type: "nft",
+                balance: 1,
+                network: "CARDANO",
+                valueSign: "ADA",
+                networkName: "Cardano",
+                thumbNetwork: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tXNYaJZUHNddtcvDz8w-U2kQM_gbZsUeqA&usqp=CAU",
+            },
+            {
+                id: "2",
+                label: "Consectetur adipiscing elit, sed do eiusmod tempor",
+                thumb: "https://makerradar.com/wp-content/uploads/2022/03/Nyan-Flying-Cat-Gif.gif",
+                policyId: "habkjsh42jk3hjkawshdeajshed",
+                assetId: "habkjsh42jk3hjkawshdeajshed",
+                aproxPrice: "6394.00",
+                currentPrice: "3.376",
+                owners: "8210",
+                volume: "12.34m",
+                clicked: false,
+                type: "nft",
+                balance: 1,
+                network: "CARDANO",
+                valueSign: "ADA",
+                networkName: "Cardano",
+                thumbNetwork: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tXNYaJZUHNddtcvDz8w-U2kQM_gbZsUeqA&usqp=CAU",
+
+            },
+        ],
+        // !
         // !
         //tokens
         tokens: [

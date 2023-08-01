@@ -6,7 +6,8 @@
         "desc-1": "Crear una nueva billetera Lace",
         "desc-2": "Conectar tu billetera de hardware",
         "desc-3": "Ingresar tu frase de recuperación",
-        "intro": "Hola Web3",
+        "intro-1": "Hola",
+        "intro-2": "Web3",
         "subtitle": "Elige una opción para comenzar",
         "title-1": "Nueva billetera",
         "title-2": "Billetera de hardware",
@@ -33,7 +34,7 @@
         "accept-the-terms": "Acepto los términos de uso",
         "full-privacy": "Tu privacidad es importante para nosotros\n\n✅ Lace recopilará información analítica de forma anónima\n❌ No accederá a tus claves privadas\n❌ No registrará tu dirección IP\n❌ No venderá tus datos personales",
         "full-privacy-button": "Cerrar Política de privacidad",
-        "full-terms": "Fecha de última actualización: 14 de marzo de 2023\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra nibh cras pulvinar mattis nunc sed. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Aliquet nibh praesent tristique magna sit. Imperdiet proin fermentum leo vel orci porta non pulvinar. Massa vitae tortor condimentum lacinia quis vel. Ac odio tempor orci dapibus ultrices in. Ultricies lacus sed turpis tincidunt. Augue eget arcu dictum varius duis at consectetur. Tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum.\n\nEt netus et malesuada fames. Lectus quam id leo in. Dignissim diam quis enim lobortis scelerisque. Sem viverra aliquet eget sit. Eu facilisis sed odio morbi quis commodo odio. Donec enim diam vulputate ut pharetra. Ultricies mi quis hendrerit dolor magna eget. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Sollicitudin ac orci phasellus egestas. Et tortor at risus viverra adipiscing at in tellus integer. Quis enim lobortis scelerisque fermentum dui faucibus in. Sit amet consectetur adipiscing elit. Posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis. Tempus imperdiet nulla malesuada pellentesque elit eget.\n\nSagittis id consectetur purus ut. Porta lorem mollis aliquam ut porttitor.",
+        "full-terms": "¡Bienvenido a los Servicios de IOG! Por favor, lee atentamente los siguientes Términos de Servicio antes de usar nuestra plataforma.\n\n1. Uso de los Servicios:\n1.1. Debes tener al menos 18 años para acceder y usar nuestros Servicios.\n1.2. Eres responsable de mantener la seguridad de tu cuenta y no debes compartir tus credenciales con terceros.\n1.3. El uso no autorizado de los Servicios termina tu licencia.\n\n2. Servicios de Terceros:\n2.1. Algunos Servicios pueden incluir aplicaciones de terceros alojadas por otras empresas.\n2.2. IOG no está directamente involucrado con los Servicios de Terceros.\n2.3. El uso de los Servicios de Terceros está sujeto a sus respectivos términos y condiciones.\n\n3. Tu Contenido:\n3.1. Puedes publicar materiales en nuestra plataforma, denominados 'Tu Contenido'.\n3.2. IOG tiene una licencia para usar Tu Contenido con fines comerciales.\n\n4. Conducta del Usuario:\n4.1. No realices acciones que violen los Términos o la ley aplicable.\n4.2. IOG puede investigar posibles violaciones y tomar las medidas necesarias.\n\n5. Limitación de Responsabilidad:\n5.1. IOG no se responsabiliza por daños indirectos, incidentales o consecuentes.\n5.2. La responsabilidad total de IOG por daños está limitada a $100.\n\n6. Resolución de Disputas:\n6.1. Intenta resolver las disputas de forma informal antes de recurrir a la arbitraje.\n6.2. Todas las disputas se resolverán a través de arbitraje, excepto por reclamaciones específicas.\n6.3. Tienes derecho a optar por no participar en el Acuerdo de Arbitraje durante 30 días.\n\n7. Disposiciones Generales:\n7.1. Las comunicaciones entre tú y IOG se realizarán en forma electrónica.\n7.2. Estos Términos están regidos por las leyes del estado de Nueva York.\n7.3. Todas las reclamaciones y disputas se litigarán exclusivamente en Manhattan, Nueva York.\n\n¡Gracias por usar los Servicios de IOG! Si tienes alguna pregunta o inquietud, contáctanos.",
         "full-terms-button": "Cerrar Términos de uso",
         "item-privacy": "Política de privacidad",
         "item-terms": "Términos de uso",
@@ -75,6 +76,12 @@
         "item-2": "Configuración de la billetera",
         "item-3": "Frase de recuperación",
         "item-4": "¡Todo listo!"
+      },
+      "extras": {
+        "btn-help": "Ayuda y Soporte",
+        "footer-help": "Política de Cookies",
+        "footer-private": "Política de Privacidad",
+        "footer-terms": "Términos de Uso"
       }
     }
   }

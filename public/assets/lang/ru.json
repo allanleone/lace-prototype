@@ -6,7 +6,8 @@
         "desc-1": "Создать новый кошелек Lace",
         "desc-2": "Подключить аппаратный кошелек",
         "desc-3": "Введите вашу фразу восстановления",
-        "intro": "Привет, Web3",
+        "intro-1": "Привет",
+        "intro-2": "Web3",
         "subtitle": "Выберите вариант, чтобы начать",
         "title-1": "Новый кошелек",
         "title-2": "Аппаратный кошелек",
@@ -33,7 +34,7 @@
         "accept-the-terms": "Я принимаю условия использования",
         "full-privacy": "Ваша конфиденциальность важна для нас\n\n✅ Lace будет собирать псевдонимные аналитические данные\n❌ Не будет иметь доступ к вашим закрытым ключам\n❌ Не будет записывать ваш IP-адрес\n❌ Не будет продавать ваши персональные данные",
         "full-privacy-button": "Закрыть Политику конфиденциальности",
-        "full-terms": "Дата последнего обновления: 14 марта 2023 года\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra nibh cras pulvinar mattis nunc sed. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum. Aliquet nibh praesent tristique magna sit. Imperdiet proin fermentum leo vel orci porta non pulvinar. Massa vitae tortor condimentum lacinia quis vel. Ac odio tempor orci dapibus ultrices in. Ultricies lacus sed turpis tincidunt. Augue eget arcu dictum varius duis at consectetur. Tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum.\n\nEt netus et malesuada fames. Lectus quam id leo in. Dignissim diam quis enim lobortis scelerisque. Sem viverra aliquet eget sit. Eu facilisis sed odio morbi quis commodo odio. Donec enim diam vulputate ut pharetra. Ultricies mi quis hendrerit dolor magna eget. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Sollicitudin ac orci phasellus egestas. Et tortor at risus viverra adipiscing at in tellus integer. Quis enim lobortis scelerisque fermentum dui faucibus in. Sit amet consectetur adipiscing elit. Posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis. Tempus imperdiet nulla malesuada pellentesque elit eget.\n\nSagittis id consectetur purus ut. Porta lorem mollis aliquam ut porttitor.",
+        "full-terms": "Добро пожаловать в Сервисы IOG! Пожалуйста, внимательно прочитайте следующие Правила использования перед использованием нашей платформы.\n\n1. Использование Сервисов:\n1.1. Для доступа и использования наших Сервисов вам должно быть не менее 18 лет.\n1.2. Вы несете ответственность за безопасность своей учетной записи и не должны передавать учетные данные третьим лицам.\n1.3. Неавторизованное использование Сервисов приведет к прекращению вашей лицензии.\n\n2. Сервисы третьих сторон:\n2.1. Некоторые Сервисы могут включать приложения третьих сторон, размещенные другими компаниями.\n2.2. IOG не принимает непосредственного участия в Сервисах третьих сторон.\n2.3. Использование Сервисов третьих сторон регулируется их собственными условиями.\n\n3. Ваш контент:\n3.1. Вы можете размещать материалы на нашей платформе, которые называются 'Ваш контент'.\n3.2. IOG имеет лицензию на использование вашего контента в коммерческих целях.\n\n4. Поведение пользователя:\n4.1. Не совершайте действия, нарушающие Правила или действующее законодательство.\n4.2. IOG может исследовать возможные нарушения и предпринять необходимые меры.\n\n5. Ограничение ответственности:\n5.1. IOG не несет ответственности за косвенные, случайные или последующие убытки.\n5.2. Общая ответственность IOG за убытки ограничена $100.\n\n6. Разрешение споров:\n6.1. Попробуйте разрешить споры неформально перед обращением к арбитражу.\n6.2. Все споры будут разрешаться путем арбитража, за исключением указанных претензий.\n6.3. У вас есть право отказаться от Соглашения об арбитраже в течение 30 дней.\n\n7. Общие положения:\n7.1. Коммуникация между вами и IOG будет осуществляться в электронной форме.\n7.2. Эти Правила регулируются законами штата Нью-Йорк.\n7.3. Все претензии и споры будут рассматриваться исключительно в Манхэттене, Нью-Йорке.\n\nСпасибо, что используете Сервисы IOG! Если у вас возникнут вопросы или заботы, пожалуйста, свяжитесь с нами.",
         "full-terms-button": "Закрыть Условия использования",
         "item-privacy": "Политика конфиденциальности",
         "item-terms": "Условия использования",
@@ -75,6 +76,12 @@
         "item-2": "Настройка кошелька",
         "item-3": "Фраза восстановления",
         "item-4": "Все готово"
+      },
+      "extras": {
+        "btn-help": "Помощь и поддержка",
+        "footer-help": "Политика использования куки",
+        "footer-private": "Политика конфиденциальности",
+        "footer-terms": "Условия использования"
       }
     }
   }
