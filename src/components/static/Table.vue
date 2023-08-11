@@ -135,6 +135,41 @@ export default {
         .table-col{
             display: grid;
             align-content: center;
+            &:hover{
+                .data-with-icon{
+                    .thumb.received{
+                        @keyframes iconReceived{
+                            0%{transform: translate(0, 0)}
+                            50%{transform: translate(30px, 30px)}
+                            51%{transform: translate(-30px, -30px)}
+                            100%{transform: translate(0, 0)}
+                        }
+                        svg{
+                            animation: iconReceived .5s ease-in-out forwards;
+                        }
+                    }
+                    .thumb.sent{
+                        @keyframes iconSent{
+                            0%{transform: translate(0, 0)}
+                            50%{transform: translate(30px, -30px)}
+                            51%{transform: translate(-30px, 30px)}
+                            100%{transform: translate(0, 0)}
+                        }
+                        svg{
+                            animation: iconSent .5s ease-in-out forwards;
+                        }
+                    }
+                    .thumb.self{
+                        @keyframes iconSwap{
+                            0%{transform: rotate(0deg)}
+                            100%{transform: rotate(-180deg)}
+                        }
+                        svg{
+                            animation: iconSwap .5s ease-in-out forwards;
+                        }
+                    }
+                }
+            }
         }
         .data-with-icon{
             display: grid;
@@ -149,6 +184,7 @@ export default {
                 overflow: hidden;
                 // padding: 4px;
                 border: solid 1px var(--bgCardBorder);
+                background-color: var(--bgCardBorder);
                 border-radius: 100px;
                 position: relative;
                 span{
@@ -160,6 +196,9 @@ export default {
                     border-radius: 100px;
                     width: 100%;
                     height: auto;
+                    circle{
+                        fill: transparent;
+                    }
                 }
             }
             .label{
@@ -295,7 +334,7 @@ export default {
         v-if="design.template != 'activity'"
     )    
         .table-col(v-for="d in design.columns")
-            span {{ d }}
+            span(v-if="d ? true : false") {{ store.translate(d) }}
 
     // STAKING /////////////////////////////////////////////////////////////
     .table-body.table-row.animated.fadeInUp(
@@ -448,7 +487,7 @@ export default {
             // type 'full' (name + icon + address)
             .table-col
                 .data-with-icon(:class="design.showIcon ? '' : 'without-icon'")
-                    .thumb(v-if="design.showIcon")
+                    .thumb(v-if="design.showIcon", :class="d.thumb")
                         span(v-if="d.thumb == 'received'")
                             <svg width="1em" height="1em" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class=""><circle opacity="0.1" cx="24" cy="24" r="24" fill="#2CB67D"></circle><path d="M30.364 20.464v9.9m0 0h-9.9m9.9 0L17.636 17.636" stroke="#2CB67D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                         span(v-if="d.thumb == 'delegation'")
@@ -496,7 +535,8 @@ export default {
             // type 'full' (name + icon + address)
             .table-col
                 .data-with-icon(:class="design.showIcon ? '' : 'without-icon'")
-                    .thumb(v-if="design.showIcon")
+                    .thumb(v-if="design.showIcon", class="")
+                        span {{ d.thumb }}
                         span(v-if="d.thumb == 'received'")
                             <svg width="1em" height="1em" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class=""><circle opacity="0.1" cx="24" cy="24" r="24" fill="#2CB67D"></circle><path d="M30.364 20.464v9.9m0 0h-9.9m9.9 0L17.636 17.636" stroke="#2CB67D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                         span(v-if="d.thumb == 'delegation'")

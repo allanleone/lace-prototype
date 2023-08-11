@@ -4,6 +4,7 @@ export default {
     props: {
         dataImage: String,
         expanded: Boolean,
+        store: Object,
     },
     data() {
         return{
@@ -17,14 +18,28 @@ export default {
 
     },
     mounted() {
+
+      let angle = this.store.get('tempAngle')
+      let zoom = this.store.get('tempZoom')
+      let parallax = this.store.get('tempParallax')
+      let shadowSize = this.store.get('tempShadow')
+      let shadowOpc = this.store.get('tempShadowOpc')
+      let shadowBlur = this.store.get('tempShadowBlur')
         
       //////////////////////
       let logica = (e) => {
 
+        angle = this.store.get('tempAngle')
+        zoom = this.store.get('tempZoom')
+        parallax = this.store.get('tempParallax')
+        shadowSize = this.store.get('tempShadow')
+        shadowOpc = this.store.get('tempShadowOpc')
+        shadowBlur = this.store.get('tempShadowBlur')
+
         let rect = e.target.getBoundingClientRect();
-        let x = ((rect.width / 2 - (e.clientX - rect.left)) / 15) * -1;
-        let y = (-(rect.height / 2 - (e.clientY - rect.top)) / 15) * -1;
-        let [xShadow, yShadow] = [(-x * 60) / 50, -(-y * 60) / 50];
+        let x = ((rect.width / 2 - (e.clientX - rect.left)) / angle) * -1;
+        let y = (-(rect.height / 2 - (e.clientY - rect.top)) / angle) * -1;
+        let [xShadow, yShadow] = [(-x * 60) / shadowSize, -(-y * 60) / shadowSize];
 
         if(this.expanded){
           x = ((rect.width / 2 - (e.clientX - rect.left)) / 100) * -1;
@@ -34,9 +49,9 @@ export default {
         if (this.hoverInAction) {
           e.target.style.transiton = `none`;
         }
-        e.target.style.boxShadow = `${xShadow}px ${yShadow}px 20px rgba(150,150,150,.35)`;
-        e.target.style.transform = `rotateX(${y}deg) rotateY(${x}deg) scale(1.05)`;
-        e.target.style.backgroundPosition = `calc(50% - calc(${x}% / 2)) calc(50% + calc(${y}% / 1))`;
+        e.target.style.boxShadow = `${xShadow}px ${yShadow}px ${shadowBlur}px rgba(150,150,150,${shadowOpc})`;
+        e.target.style.transform = `rotateX(${y}deg) rotateY(${x}deg) scale(${zoom})`;
+        e.target.style.backgroundPosition = `calc(50% - calc(${x}% / ${parallax})) calc(50% + calc(${y}% / (${parallax} / 2)))`;
       };
 
       const elemento = document.querySelectorAll('.nft-card');
@@ -46,7 +61,7 @@ export default {
           if(!this.hoverInAction){
             this.hoverInAction = true;
             elm.querySelector(".poster .nft-thumb-image").style.transition = `transform .25s ease-out, box-shadow .25s ease-out, background-position .25s ease-out`;
-            elm.querySelector(".poster .nft-thumb-image").style.transform = `scale(1.05)`;
+            elm.querySelector(".poster .nft-thumb-image").style.transform = `scale(${zoom})`;
             setTimeout(()=>{
               elm.querySelector(".poster .nft-thumb-image").style.transition = `none`;
             }, 500)

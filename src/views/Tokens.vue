@@ -10,7 +10,7 @@ export default {
             design: {
                 showIcon: true,
                 grid: "1.5fr 1fr 1fr",
-                columns: ['Token', 'Price / 24hr %', 'Balance'],
+                columns: ["lace.menu.tokens", 'lace.labels.price', 'lace.labels.balance'],
                 template: 'tokens',
                 walletBalanceAmount: 0,
             },
@@ -63,7 +63,7 @@ export default {
 <template lang="pug">
 .tokens
     h1.animated.fadeInUp
-        span Tokens
+        span(v-html='store.translate("lace.menu.tokens")')
         span.counter 
             span (
             number(

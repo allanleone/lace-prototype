@@ -15,7 +15,9 @@ const locals = { name: "My Pug" }
 // https://vitejs.dev/config/
 export default defineConfig({
   // base: './',
-  plugins: [basicSsl(), vue({
+  plugins: [
+    // basicSsl(), 
+    vue({
     template: {
       compilerOptions: {
         // isCustomElement: (tag) => ['Brand', UserMenu].includes(tag),

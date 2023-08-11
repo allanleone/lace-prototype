@@ -519,6 +519,10 @@ export default {
             s.action = "swap-confirm-buy-done";
             this.store.set({ key: 'sidedrawerStorage', value: s })
         },  
+        setMockupNFTs(){
+            this.close();
+            this.store.nftsNested.active = true;
+        },
         ////////////////
     },
     updated(){
@@ -3580,7 +3584,7 @@ export default {
         /////////////////////////////////////
 
         // NFTs ////////////////////////////
-        span.nfts-sidedrawer(v-if="router == 'nfts' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' ")
+        span.nfts-sidedrawer(v-if="router == 'nfts' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' && store.get('sidedrawerStorage').action == 'nft' ? true : false ")
             //- .window-header.with-back-button
             .window-header
                 .title
@@ -3650,6 +3654,44 @@ export default {
                 button.purple(
                                         @click="openSidedrawer({global: 'send', action: 'send', title: 'Send', selectedToken: store.get('sidedrawerStorage').value})"
                 ) Send NFT
+        //- folder
+        span.nfts-sidedrawer(v-if="router == 'nfts' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' && store.get('sidedrawerStorage').action == 'nft-create-folder' ? true : false ")
+            //- .window-header.with-back-button
+            .window-header
+                .title
+                    //- span Address Book
+                    span(v-if="store.get('sidedrawerStorage').title") {{store.get("sidedrawerStorage").title}}
+                    span(v-if="store.get('sidedrawerStorage').title === null || store.get('sidedrawerStorage').title === undefined") Lace.io
+                .close
+                    button.navigation(@click="close()")
+                        span
+                            .icon
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6L18 18" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+            .window-content(style="grid-template-rows: 0px 1fr;")
+                h3 Create a new folder
+                div(style="display: grid; place-content: center; text-align: center;")
+                    .summary-done.animated.fadeIn.delay-0-5s
+                        .token-details
+                            label
+                                input(type="text", placeholder="Folder name", style="width: 300px;")
+                        div(style="width: 300px;text-align: left; padding-left: 20px;")
+                            .max(class="text-align: left;") max. 20 chars
+            .window-footer  
+                // add
+                //- button.purple(
+                //-     @click="openSidedrawer({action: 'nft-folder', title: 'NFT Folder', action: 'nft-select-items'})"
+                //- ) Create
+                button.purple(
+                    @click="setMockupNFTs()"
+                ) Create
+                button.tertiary(
+                    @click="close()"
+                ) Cancel
+                    //- 
+                    //- 
+                    //- 
+                    //- 
         /////////////////////////////////////
         
         // Trading /////////////////////////
