@@ -79,7 +79,8 @@ export default {
     //- QACodeAddFunds/
     .balance.animated.fadeInUp.delay-0-8s
         .info-label
-            h6 Total wallet balance
+            h6 
+                span(v-html='store.translate("lace.labels.total-wallet-balance")')
             .icon 
                 <svg width="1em" height="1em" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="h2F_3zS1iuR_cDZ_XOEP"><path d="M11 14h-1v-4H9m1-4h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         .balance-amount

@@ -101,13 +101,20 @@ export default {
                     v-if="!menu.selected && hoverIndex != index"
                 )
                 .label
-                    span(v-if="menu.route == '/'") {{ this.store.translate("lace.menu.dashboard") }}
-                    span(v-if="menu.route == '/tokens'") {{ this.store.translate("lace.menu.tokens") }}
-                    span(v-if="menu.route == '/nfts'") {{ this.store.translate("lace.menu.nfts") }}
-                    span(v-if="menu.route == '/activity'") {{ this.store.translate("lace.menu.activity") }}
-                    span(v-if="menu.route == '/staking'") {{ this.store.translate("lace.menu.staking") }}
-                    span(v-if="menu.route == '/dappstore'") {{ this.store.translate("lace.menu.dapp-store") }}
-                    span(v-if="menu.route == '/trading'") {{ this.store.translate("lace.menu.trading") }}
+                    span(v-if="menu.route == '/'") 
+                        span(v-html='store.translate("lace.menu.dashboard")')
+                    span(v-if="menu.route == '/tokens'") 
+                        span(v-html='store.translate("lace.menu.tokens")')
+                    span(v-if="menu.route == '/nfts'") 
+                        span(v-html='store.translate("lace.menu.nfts")')
+                    span(v-if="menu.route == '/activity'") 
+                        span(v-html='store.translate("lace.menu.activity")')
+                    span(v-if="menu.route == '/staking'") 
+                        span(v-html='store.translate("lace.menu.staking")')
+                    span(v-if="menu.route == '/dappstore'") 
+                        span(v-html='store.translate("lace.menu.dapp-store")')
+                    span(v-if="menu.route == '/trading'") 
+                        span(v-html='store.translate("lace.menu.trading")')
 </template>
 <!--  -->
 <style lang="scss">

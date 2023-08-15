@@ -324,7 +324,7 @@ export default {
 .table
 
     label.token-label.animated.fadeInUp.delay-1s(v-if="design.template == 'tokens'")
-        input(type="text", placeholder="Search")
+        input(type="text", :placeholder="store.translate('lace.input-placeholders.search-by-id-or-name', true)")
         .ico
             <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class=""><path fill-rule="evenodd" clip-rule="evenodd" d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12Zm-8 6a8 8 0 1 1 14.32 4.906l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.387-5.387A8 8 0 0 1 2 10Z" fill="url(#search_component_svg__a)"></path><defs><linearGradient id="search_component_svg__a" x1="-1.66" y1="-1.66" x2="27.643" y2="0.502" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"></stop><stop offset="1" stop-color="#FDC300"></stop></linearGradient></defs></svg>       
     
@@ -334,7 +334,8 @@ export default {
         v-if="design.template != 'activity'"
     )    
         .table-col(v-for="d in design.columns")
-            span(v-if="d ? true : false") {{ store.translate(d) }}
+            span(v-if="d ? true : false") 
+                span(v-html='store.translate(d)')
 
     // STAKING /////////////////////////////////////////////////////////////
     .table-body.table-row.animated.fadeInUp(
@@ -458,8 +459,9 @@ export default {
         .table-column 
             hr/
             .legal-source.right
-                span Powered by 
-                a(href="https://www.coingecko.com/", target="_blank") CoinGecko
+                span 
+                    span(v-html='store.translate("lace.labels.powered-by")')
+                a(href="https://www.coingecko.com/", target="_blank") &nbsp;CoinGecko
     // TOKENS //////////////////////////////////////////////////////////////
 
     // ACTIVITY //////////////////////////////////////////////////////////////

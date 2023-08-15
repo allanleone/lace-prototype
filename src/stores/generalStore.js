@@ -25,6 +25,7 @@ export const generalStore = defineStore('general', {
         selectedLang: 'en',
         langLoaded: false,
         lang: {},
+        baseLangForPreloading: {},
         // !
         // address book
         addressBookContacts: [
@@ -356,21 +357,26 @@ export const generalStore = defineStore('general', {
     getters: {
         currentTheme: (state) => state.theme,
         get: (state) => (val) => state[val],
-        translate: (state) => (wordKey) => {
+        translate: (state) => (wordKey, placeholder) => {
             if(state.langLoaded){
                 // 
                 if(wordKey){
                     if(state.lang[wordKey]){
                         return state.lang[wordKey]
                     }else{
-                        return "◼◼◼◼"
+                        return "⚠"
                     }
                 }else{
-                    return ""
+                    return "..."
                 }
                 // 
             }else{
-                return "…"
+                if(!placeholder){
+                    return "<span class='text-pre-loading'>" + state.baseLangForPreloading[wordKey] + "</span>"
+                }else{
+                    return "..."
+
+                }
             }
         },
     },
@@ -576,18 +582,24 @@ export const generalStore = defineStore('general', {
                 // mode: "no-cors",
                 redirect: 'follow'
             };
-
+            
             //  -----------------------
             fetch(url + params, requestOptions)
                 .then(response => response.text())
                 .then(result => {
-
+                    
+                    if(val == 'en'){
+                        let baseLang = JSON.parse(result);
+                        this.baseLangForPreloading = baseLang;
+                    }
+                    
                     setTimeout(()=>{
                         let r = JSON.parse(result);
                         this.lang = r;
                         this.selectedLang = val;
                         this.langLoaded = true;
-                    }, 3000)
+                        this.baseLangForPreloading = JSON.parse(result);
+                    }, 6000)
                     
                 }
             )
