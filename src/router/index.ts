@@ -16,6 +16,11 @@ const router = createRouter({
       component: () => import('../views/Tokens.vue')
     },
     {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/Dashboard.vue')
+    },
+    {
       path: '/nfts',
       name: 'nfts',
       component: () => import('../views/NFTs.vue')

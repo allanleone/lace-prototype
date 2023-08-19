@@ -169,7 +169,7 @@ export default {
             setTimeout(()=>{
                 console.log(st, timer)
                 if(this.stage == 5){
-                    window.location.href = "/tokens"
+                    window.location.href = "/dashboard"
                 }else{
                     // 
                     if(st == "back"){  
@@ -374,36 +374,36 @@ export default {
 
     .lang-selection(@click="langSelectionOpened = !langSelectionOpened")
         .selected
-            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'pt_br' ? true : false", src="https://cdn4.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_Brazil_-_Circle-256.png")/
-            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'en' ? true : false", src="https://cdn1.iconfinder.com/data/icons/world-flags-circular/1000/Flag_of_United_Kingdom_-_Circle-64.png")/
-            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'jp' ? true : false", src="https://cdn3.iconfinder.com/data/icons/o-shaped-flag-1/128/O_shaped_asian_flag-16-64.png")/
-            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'ru' ? true : false", src="https://cdn3.iconfinder.com/data/icons/o-shaped-flag-1/128/O_shaped_asian_flag-35-64.png")/
-            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'es' ? true : false", src="https://cdn4.iconfinder.com/data/icons/world-flags-12/512/Untitled-2-05-64.png")/
-            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'it' ? true : false", src="https://cdn1.iconfinder.com/data/icons/european-country-flags/83/italy-64.png")/
+            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'pt_br' ? true : false", :src="'assets/lang/pt_br.png'")/
+            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'en' ? true : false", :src="'assets/lang/en.png'")/
+            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'jp' ? true : false", :src="'assets/lang/jp.png'")/
+            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'ru' ? true : false", :src="'assets/lang/ru.png'")/
+            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'es' ? true : false", :src="'assets/lang/es.png'")/
+            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'it' ? true : false", :src="'assets/lang/it.png'")/
         .list.animated.toggleInUp(v-if="langSelectionOpened")
             .item(@click="this.store.LoadTranslationAPI('en')", :class="store.get('selectedLang') == 'en' ? 'selected' : ''")
                 .img
-                    img(src="assets/lang/en.png")/
+                    img(:src="'assets/lang/en.png'")/
                 .label English
             .item(@click="this.store.LoadTranslationAPI('pt_br')", :class="store.get('selectedLang') == 'pt_br' ? 'selected' : ''")
                 .img
-                    img(src="assets/lang/pt_br.png")/
+                    img(:src="'assets/lang/pt_br.png'")/
                 .label Português do Brasil
             .item(@click="this.store.LoadTranslationAPI('jp')", :class="store.get('selectedLang') == 'jp' ? 'selected' : ''")
                 .img
-                    img(src="assets/lang/jp.png")/
+                    img(:src="'assets/lang/jp.png'")/
                 .label 日本
             .item(@click="this.store.LoadTranslationAPI('ru')", :class="store.get('selectedLang') == 'ru' ? 'selected' : ''")
                 .img
-                    img(src="assets/lang/ru.png")/
+                    img(:src="'assets/lang/ru.png'")/
                 .label Pусский
             .item(@click="this.store.LoadTranslationAPI('es')", :class="store.get('selectedLang') == 'es' ? 'selected' : ''")
                 .img
-                    img(src="assets/lang/es.png")/
+                    img(:src="'assets/lang/es.png'")/
                 .label Español
             .item(@click="this.store.LoadTranslationAPI('it')", :class="store.get('selectedLang') == 'it' ? 'selected' : ''")
                 .img
-                    img(src="assets/lang/it.png")/
+                    img(:src="'assets/lang/it.png'")/
                 .label Italiano
     .onboarding(v-if="!showOrHideMainMenuOnThisPage()")
 

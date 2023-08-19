@@ -371,12 +371,38 @@ export const generalStore = defineStore('general', {
                 }
                 // 
             }else{
-                if(!placeholder){
-                    return "<span class='text-pre-loading'>" + state.baseLangForPreloading[wordKey] + "</span>"
-                }else{
-                    return "..."
 
+                
+                if(state.baseLangForPreloading[wordKey]){
+                    //                     
+                    if(!placeholder){
+                        // -----------------
+                        const shuffleText = (chars) =>{
+                            if(chars){
+                                const shuffledCharacters = chars.split('').slice();
+                                for (let i = 0; i < chars.split('').slice().length; i++) {
+                                    const randomIndex = Math.floor(Math.random() * shuffledCharacters.length);
+                                    const temp = shuffledCharacters[i];
+                                    shuffledCharacters[i] = shuffledCharacters[randomIndex];
+                                    shuffledCharacters[randomIndex] = temp;
+                                }
+                                return shuffledCharacters.join('');
+                            }
+                        }
+                        const timer = setInterval(() => {
+                            document.querySelectorAll(".text-pre-loading").forEach((t)=>{
+                                t.innerHTML = shuffleText(t.innerHTML);
+                            })
+                        }, 200)
+                        setTimeout(()=>{clearInterval(timer)}, 5000)
+                        // -----------------
+                        return "<span class='text-pre-loading'>" + state.baseLangForPreloading[wordKey] + "</span>"
+                    }else{
+                        return "..."
+                    }
+                    // 
                 }
+
             }
         },
     },
@@ -566,20 +592,20 @@ export const generalStore = defineStore('general', {
             this.lang = {};
                 
             //  -----------------------
-            let url = 'https://api.dittowords.com';
-            let params = "/v1/components?format=flat&variant=" + val + "&includeRichText=true";
+            let url = 'assets/lang'; //'https://api.dittowords.com';
+            let params = '/' + val + '.json'; //"/v1/components?format=flat&variant=" + val + "&includeRichText=true";
             let myHeaders = new Headers();
                 myHeaders.append("Authorization", "token 63445dc3-dab4-4f1d-879d-b7d23a8bc60d.6a8b80b981feecfa40149f4a04aba82c7a3d5721");
+                myHeaders.append("Access-Control-Allow-Origin", "*");
 
-            if (location.host.indexOf('localhost') != -1) {
-                url = 'assets/lang';
-                params = '/' + val + '.json';
-            }
+            // if (location.host.indexOf('localhost') != -1) {
+            //     url = 'assets/lang';
+            //     params = '/' + val + '.json';
+            // }
 
             var requestOptions = {
                 method: 'GET',
                 headers: myHeaders,
-                // mode: "no-cors",
                 redirect: 'follow'
             };
             
@@ -599,7 +625,7 @@ export const generalStore = defineStore('general', {
                         this.selectedLang = val;
                         this.langLoaded = true;
                         this.baseLangForPreloading = JSON.parse(result);
-                    }, 6000)
+                    }, 3000)
                     
                 }
             )
