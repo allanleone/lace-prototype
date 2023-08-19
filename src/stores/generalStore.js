@@ -595,8 +595,8 @@ export const generalStore = defineStore('general', {
             let url = 'assets/lang'; //'https://api.dittowords.com';
             let params = '/' + val + '.json'; //"/v1/components?format=flat&variant=" + val + "&includeRichText=true";
             let myHeaders = new Headers();
-                myHeaders.append("Authorization", "token 63445dc3-dab4-4f1d-879d-b7d23a8bc60d.6a8b80b981feecfa40149f4a04aba82c7a3d5721");
-                myHeaders.append("Access-Control-Allow-Origin", "*");
+                // myHeaders.append("Authorization", "token 63445dc3-dab4-4f1d-879d-b7d23a8bc60d.6a8b80b981feecfa40149f4a04aba82c7a3d5721");
+                // myHeaders.append("Access-Control-Allow-Origin", "*");
 
             // if (location.host.indexOf('localhost') != -1) {
             //     url = 'assets/lang';
