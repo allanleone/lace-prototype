@@ -10,7 +10,6 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@dittowords/cli": "^4.0.0-alpha.1",
     "@vitejs/plugin-basic-ssl": "^1.0.1",
     "chart.js": "^4.3.0",
     "grid-layout-plus": "^1.0.2",

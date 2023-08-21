@@ -147,7 +147,7 @@ export default {
         },
         showOrHideSidebarOnThisPage(){
             const router = useRouter().currentRoute.value.name;
-            if(router == "DAppStore" || router == "Onboarding"){
+            if(router == "DAppStore" || router == "Onboarding" || router == "Dashboard"){
                 return false;
             }else{
                 return true;
@@ -371,47 +371,13 @@ export default {
     //-     
     //-     
     //- 
-
-    .lang-selection(@click="langSelectionOpened = !langSelectionOpened")
-        .selected
-            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'pt_br' ? true : false", :src="'assets/lang/pt_br.png'")/
-            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'en' ? true : false", :src="'assets/lang/en.png'")/
-            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'jp' ? true : false", :src="'assets/lang/jp.png'")/
-            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'ru' ? true : false", :src="'assets/lang/ru.png'")/
-            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'es' ? true : false", :src="'assets/lang/es.png'")/
-            img.animated.zoom.delay-0-2s(v-if="store.get('selectedLang') == 'it' ? true : false", :src="'assets/lang/it.png'")/
-        .list.animated.toggleInUp(v-if="langSelectionOpened")
-            .item(@click="this.store.LoadTranslationAPI('en')", :class="store.get('selectedLang') == 'en' ? 'selected' : ''")
-                .img
-                    img(:src="'assets/lang/en.png'")/
-                .label English
-            .item(@click="this.store.LoadTranslationAPI('pt_br')", :class="store.get('selectedLang') == 'pt_br' ? 'selected' : ''")
-                .img
-                    img(:src="'assets/lang/pt_br.png'")/
-                .label Português do Brasil
-            .item(@click="this.store.LoadTranslationAPI('jp')", :class="store.get('selectedLang') == 'jp' ? 'selected' : ''")
-                .img
-                    img(:src="'assets/lang/jp.png'")/
-                .label 日本
-            .item(@click="this.store.LoadTranslationAPI('ru')", :class="store.get('selectedLang') == 'ru' ? 'selected' : ''")
-                .img
-                    img(:src="'assets/lang/ru.png'")/
-                .label Pусский
-            .item(@click="this.store.LoadTranslationAPI('es')", :class="store.get('selectedLang') == 'es' ? 'selected' : ''")
-                .img
-                    img(:src="'assets/lang/es.png'")/
-                .label Español
-            .item(@click="this.store.LoadTranslationAPI('it')", :class="store.get('selectedLang') == 'it' ? 'selected' : ''")
-                .img
-                    img(:src="'assets/lang/it.png'")/
-                .label Italiano
     .onboarding(v-if="!showOrHideMainMenuOnThisPage()")
 
         //- 
         .nav-onboarding.animated.fadeInDown.delay-0-5s 
             .brand-onboarding
                 img(class="standard", :src="'assets/images/' + store.theme + '/lace.svg'", alt="")
-            button.help-and-support
+            //- button.help-and-support
                 span
                     .icon 
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12ZM12.0001 8C10.5283 8 9.47159 8.70623 9.13224 9.4263C8.89681 9.92589 8.30095 10.14 7.80136 9.90458C7.30178 9.66914 7.08764 9.07329 7.32308 8.5737C8.08197 6.96338 9.98852 6 12.0001 6C13.3001 6 14.5155 6.39395 15.4285 7.07868C16.3418 7.76364 17.0001 8.78625 17.0001 10C17.0001 12.0693 15.166 13.5082 13.1827 13.8887C13.11 13.9026 13.0522 13.9386 13.0206 13.972C13.0064 13.9871 13.0014 13.9974 13.0002 14.0001C13.0002 14.0003 13.0001 14.0004 13.0001 14.0005C12.9998 14.5526 12.5522 15 12.0001 15C11.4478 15 11.0001 14.5523 11.0001 14C11.0001 12.8579 11.9097 12.0964 12.8059 11.9245C14.2788 11.6419 15.0001 10.7295 15.0001 10C15.0001 9.5569 14.7629 9.0795 14.2285 8.67868C13.6937 8.27763 12.9092 8 12.0001 8ZM11 17C11 16.4477 11.4477 16 12 16H12.01C12.5623 16 13.01 16.4477 13.01 17C13.01 17.5523 12.5623 18 12.01 18H12C11.4477 18 11 17.5523 11 17Z" fill="url(#paint0_linear_6610_345401)"/><defs><linearGradient id="paint0_linear_6610_345401" x1="-1.65957" y1="-1.65957" x2="27.6428" y2="0.501649" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"/><stop offset="1" stop-color="#FDC300"/></linearGradient></defs></svg>
@@ -419,6 +385,7 @@ export default {
                         //- Translate(:store="store", t="prototype.onboarding.extras.btn-help")
                         span(v-html='store.translate("prototype.onboarding.extras.btn-help")')
                     .chevron
+            UserMenu(class="middle no-widgets", :theme="theme", :store="store", style="margin-top: -20px;")/
 
         //-
         .body-onboarding.animated.fadeIn
@@ -443,7 +410,7 @@ export default {
                             h4
                                 div.animated.fadeIn.delay-3-5s 
                                     span(v-html='store.translate("prototype.onboarding.stage-1.subtitle")')
-                            .networks
+                            .networks(:class="store.get('theme') == 'dark' ? 'dark' : ''")
                                 div
                                     span(v-html='store.translate("prototype.onboarding.stage-1.compatibility")')
                                 div 
@@ -987,7 +954,7 @@ export default {
     }
     .buttons-terms{
         padding: 20px;
-        border: solid 1px var(--lightGrayPlus);
+        border: solid 1px var(--bgCardBorder);
         border-radius: var(--radius);
         width: calc(100% - 50px);
         min-width: 0;
@@ -1000,16 +967,17 @@ export default {
             text-align: left;
             border-radius: var(--radius);
             cursor: pointer;
+            border-color: var(--bgCardBorder) !important;
             &:first-child{
                 margin: -20px -20px 0 -20px;
-                border-bottom: solid 1px var(--lightGrayPlus);
+                border-bottom: solid 1px var(--bgCardBorder);
             }
             &:last-child{
                 margin: 0px -20px -20px -20px;
                 padding: 30px;
             }
             &:hover{
-                background-color: var(--lightGray);
+                background-color: var(--bgCardHover);
             }
             .label{
 
@@ -1029,6 +997,8 @@ export default {
         place-content: center;
         margin: 20px 30px;
         gap: 20px;
+        z-index: 1;
+        position: absolute;
         .brand-onboarding{
             
         }
@@ -1084,8 +1054,8 @@ export default {
         place-content: center;
         min-width: 840px;
         // min-height: 585px;
-        height: calc(100% - 200px); 
-        margin: auto auto 100px auto;
+        height: calc(100% - 0px); 
+        margin: auto auto auto auto;
 
         .new-wallet-mockup{
             position: absolute;
@@ -1102,7 +1072,7 @@ export default {
             .word{
                 padding: 20px;
                 display: inline-grid;
-                background-color: var(--lightGray);
+                background-color: var(--bgCardActive);
                 border-radius: 200px;
                 margin: 10px;
             }
@@ -1120,7 +1090,7 @@ export default {
             // height: 10px;
             width: 840px;
             height: 585px;
-            background-color: #ffffffCC;
+            background-color: var(--bgCardTransparent);
             border-radius: var(--radius); 
             // animation: introEffect 4s ease-in-out forwards;
             box-shadow: var(--tinyShadow);
@@ -1184,7 +1154,7 @@ export default {
                     }
                     transform-origin: bottom right 60px;
                     animation: popupwindowIntro .35s ease-in-out;
-                    background: #ffffff;
+                    background: var(--bgCardTransparent);
                     border-radius: var(--radius);
                     width: 480px;
                     height: auto;
@@ -1242,6 +1212,11 @@ export default {
                             margin-right: 5px;
                             margin-top: 10px;
                             opacity: .25;
+                        }
+                        &.dark{
+                            svg, img{
+                                filter: brightness(0) invert(1);
+                            }
                         }
                     }
                 }
@@ -1358,7 +1333,7 @@ export default {
                 padding: 40px;
                 top: calc(50% - 300px);
                 left: calc(50% - 420px);
-                background-color: #ffffff; 
+                background-color: var(--bgCard); 
                 border-radius: var(--radius); 
                 animation: circleRevealRestore .75s ease-in-out forwards;
                 animation-delay: .5s;
@@ -1529,7 +1504,7 @@ export default {
                         .tooltip{
                             position: absolute;
                             margin-top: -105px;
-                            background: #fff;
+                            background: var(--bgCardTransparent);
                             box-shadow: var(--tinyShadow);
                             opacity: 1;
                             width: 210px;
@@ -1549,7 +1524,7 @@ export default {
                         gap: 10px;
                         grid-template-columns: 1fr 1fr 1fr;
                         padding: 5px;
-                        background-color: var(--lightGrayPlus);
+                        background-color: var(--bgCardActive);
                         border-radius: 12px;
                         margin: 15px 0;
                         .tab{
@@ -1558,7 +1533,7 @@ export default {
                             text-align: center;
                             cursor: pointer;
                             &.active{
-                                background-color: var(--white);
+                                background-color: var(--bgCardHover);
                             }
                         }
                     }
@@ -1568,12 +1543,12 @@ export default {
                         padding: 10px;
                         display: grid;
                         grid-template-columns: 50px 1fr 50px;
-                        background-color: var(--lightGray);
+                        background-color: var(--bgCardActive);
                         margin: 10px;
                         border-radius: 100px;
                         cursor: pointer;
                         &:hover{
-                            background-color: var(--lightGrayPlus);
+                            background-color: var(--bgCardHover);
                         }
                         span{
                             padding-left: 20px;
@@ -1610,7 +1585,7 @@ export default {
                     overflow: visible;
                     .item-rec{
                         padding: 20px;
-                        background-color: var(--lightGrayPlus);
+                        background-color: var(--bgCardActive);
                         width: auto;
                         display: inline-block;
                         margin: 5px 10px;
@@ -1628,7 +1603,7 @@ export default {
                             top: 0;
                             left: 0;
                             margin: 0px -10px;
-                            border: solid 1px var(--lightGrayPlus);
+                            border: solid 1px var(--bgCardBorder);
                             border-radius: 100px;
                             input{
                                 width: calc(100% - 20px);
@@ -1636,11 +1611,23 @@ export default {
                                 background: var(--inputTextBg);
                             }
                         }
+                        .textarea-recovery{
+                            background: var(--bgCard) !important;
+                            color: var(--textColorPrimary) !important;
+                        }
+                        .auto-complete{
+                            background: var(--bgCard) !important;
+                            color: var(--textColorPrimary) !important;
+                            .item{
+                                background: var(--bgCard) !important;
+                                color: var(--textColorPrimary) !important;
+                            }
+                        }
                         .overlay-hover{
                             display: none;
                             position: absolute;
                             // background-color: #e6e1f7;
-                            background-color: var(--lightGray);
+                            background-color: var(--bgCardActive);
                             width: 100%;
                             height: 100%;
                             top: 0;
@@ -1698,17 +1685,17 @@ export default {
                         max-height: 150px;
                         overflow-x: hidden;
                         overflow-y: scroll;
-                        background: var(--white);
+                        background: var(--bgCard);
                         .item{
                             padding: 10px;
                             border-radius: 3px;
                             margin: 3px 0;
                             &.highlight{
                                 // background-color: var(--accentPurpleTransparent);
-                                background-color: var(--lightGrayPlus);
+                                background-color: var(--bgCardActive);
                             }
                             &:hover{
-                                background-color: var(--lightGrayPlus);
+                                background-color: var(--bgCardActive);
                             }
                         }
                         &:hover{
@@ -1853,6 +1840,9 @@ export default {
                             width: 20px !important;
                             height: auto;
                             opacity: .25;
+                            &.dark{
+                                filter: brightness(0) invert(1);
+                            }
                         }
                     }
                     &.responsive{

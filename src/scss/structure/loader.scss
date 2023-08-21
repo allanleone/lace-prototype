@@ -31,9 +31,14 @@
         position: absolute;
         background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
         background-size: 100%;
-        animation: placeholderLoader 2s linear infinite;
+        animation: placeholderLoader .75s linear infinite;
         z-index: 1;
         // -webkit-background-clip: text;
         // -webkit-text-fill-color: transparent;
     }
+}
+.gradient:has(.text-pre-loading){
+    background: transparent !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: var(--textColorPrimary) !important;
 }

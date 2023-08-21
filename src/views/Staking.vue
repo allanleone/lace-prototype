@@ -14,7 +14,7 @@ export default {
             design: {
                 showIcon: true,
                 grid: "2fr .5fr 1fr auto",
-                columns: ['Pool name', 'ROS', 'Cost', 'Saturation'],
+                columns: ['lace.labels.pool-name', 'lace.labels.ros', 'lace.labels.transaction-costs', 'lace.labels.total'],
                 template: 'staking',
             },
             stakepools: [
@@ -71,14 +71,14 @@ export default {
 .staking 
     .page-title
         h1.animated.fadeInUp
-            span Staking
+            span(v-html="store.translate('lace.labels.start-staking')")
             span.counter ({{ onStakes.length }})
-    QACodeAddFunds.add-funds/
+    QACodeAddFunds.add-funds(:store="store")/
     .search-stake-pools.animated.fadeInUp.delay-0-6s
         h3 
-            span Stake pools
+            span(v-html="store.translate('lace.labels.stake-pools')")
             span.count (2456)
-        Input.search-staking(placeholder="Search by type, token name or ID")/
+        Input.search-staking(:placeholder="store.translate('lace.input-placeholders.search-by-id-or-name', true)")/
         Table.animated.fadeInUp.delay-0-8s(
             :design="design"
             :data="stakepools"

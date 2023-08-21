@@ -58,9 +58,9 @@ export default {
 <template lang="pug">
 .activity
     h1.animated.fadeInUp 
-        span Activity
+        span(v-html="store.translate('lace.menu.activity')")
         span.counter ({{ activity.length }})
-    //- QACodeAddFunds/
+    //- QACodeAddFunds.add-funds(:store="store")/
     Table(
             :design="design"
             :data="formattedActivity"

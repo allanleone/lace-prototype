@@ -30,7 +30,7 @@ body{
 
     // colored
     --accentPurple: #7F5AF0;
-    --accentPurpleTransparent: rgba(127, 90, 240, 0.3);;
+    --accentPurpleTransparent: rgba(127, 90, 240, 0.3);
     --hoverPurple: #7452DB;
     --pink: #FF92DE;
     --dataPink: #FF5470;
@@ -58,10 +58,10 @@ body{
     // light mode
     --bg: #fff; // ! new
     --bgCard: #fff; // ! new
+    --bgCardTransparent: #ffffffEE; // ! new
     --bgCardBorder: #EFEFEF; // ! new
     --bgCardHover: rgba(239, 239, 239, 0.56); // ! new
     --bgCardActive: #EFEFEF; // ! new
-    --bgCardBorder: #EFEFEF; // ! new
     //
     --inputTextBg: #f9f9f9; // ! new
     //-
@@ -89,6 +89,7 @@ body{
         //
         --bg: #1E1E1E; // ! new
         --bgCard: #282828; // ! new
+        --bgCardTransparent: #282828EE; // ! new
         --bgCardBorder: #2F2F2F; // ! new
         --bgCardHover: #333333; // ! new
         --bgCardActive: #2E2E2E; // ! new
@@ -103,7 +104,6 @@ body{
         --lightGray: #a9a9a9;
         --lightGrayTransparent: rgba(169, 169, 169, 0.56);
         --transparent: rgba(0, 0, 0, 0.05);
-        --gradientTransparent: linear-gradient(90deg, #ff0000, #ffffff22);
         //
         //!! --midBlack: #252525;
         //!! --lightBlack: #282828;

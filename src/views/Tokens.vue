@@ -76,7 +76,7 @@ export default {
                     easing="Power1.easeOut"
                 )
             span )
-    //- QACodeAddFunds/
+    //- QACodeAddFunds.add-funds(:store="store")/
     .balance.animated.fadeInUp.delay-0-8s
         .info-label
             h6 

@@ -392,7 +392,7 @@ export default {
         
         // type 'price' (number)
         //.table-col(:style="'visibility: hidden;'")
-        .table-col(:style="d.overlay ? 'visibility: hidden;' : ''") 
+        .table-col(:style="d.overlay ? 'visibility: visible;' : ''") 
             div 
                 number(
                     ref="tokenPercentage"
@@ -442,9 +442,10 @@ export default {
                 span &nbsp;USD
                 //- {{ (Number(d.balance.replace(',','')) * Number(d.currentPrice)).toFixed(2) }} USD
     
-        .chart-overlay.animated.fadeIn(v-if="d.overlay")
+        //- .chart-overlay.animated.fadeIn(v-if="d.overlay")
             LineChart(
                 :mainData="d.last24HoursVariation"
+                :labels="['0h', '1h', '2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h']"
                 :currentPrice="d.currentPrice"
                 :ref="'lineTokensChart_' + i"
             )/
@@ -499,7 +500,17 @@ export default {
                         span(v-if="d.thumb == 'self'")
                             <svg width="1em" height="1em" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class=""><circle opacity="0.1" r="24" transform="matrix(1 0 0 -1 24 24)" fill="#2CB67D"></circle><path d="M16.75 16a.75.75 0 0 0-1.5 0h1.5ZM16 21h-.75c0 .414.336.75.75.75V21Zm15.194 2.093a.75.75 0 1 0 1.488-.186l-1.488.186ZM21 21.75a.75.75 0 0 0 0-1.5v1.5ZM31.25 32a.75.75 0 0 0 1.5 0h-1.5Zm.75-5h.75a.75.75 0 0 0-.75-.75V27Zm-5-.75a.75.75 0 0 0 0 1.5v-1.5Zm-10.194-1.343a.75.75 0 1 0-1.488.186l1.488-.186ZM15.25 16v5h1.5v-5h-1.5Zm8.75.75a7.251 7.251 0 0 1 7.194 6.343l1.488-.186A8.751 8.751 0 0 0 24 15.25v1.5Zm-6.723 4.531A7.253 7.253 0 0 1 24 16.75v-1.5a8.753 8.753 0 0 0-8.114 5.469l1.39.562ZM16 21.75h.581v-1.5H16v1.5Zm.581 0H21v-1.5h-4.419v1.5ZM32.75 32v-5h-1.5v5h1.5Zm-2.027-5.281A7.253 7.253 0 0 1 24 31.25v1.5a8.753 8.753 0 0 0 8.114-5.469l-1.39-.562ZM32 26.25h-.581v1.5H32v-1.5Zm-.581 0H27v1.5h4.419v-1.5Zm-7.419 5a7.251 7.251 0 0 1-7.194-6.343l-1.488.186A8.751 8.751 0 0 0 24 32.75v-1.5Z" fill="#2CB67D"></path></svg>
                     .info
-                        .label.bold {{ d.label }}
+                        .label.bold 
+                            //- {{ d.label }}
+                            //- copy
+                            span(v-if="d.thumb == 'received'")
+                                span(v-html="store.translate('lace.labels.received')")
+                            span(v-if="d.thumb == 'delegation'")
+                                span(v-html="store.translate('lace.labels.delegation')")
+                            span(v-if="d.thumb == 'sent'")
+                                span(v-html="store.translate('lace.labels.sent')")
+                            span(v-if="d.thumb == 'self'")
+                                span(v-html="store.translate('lace.labels.reward')")
                         .address.secondary {{ convertTimestap(d.timestamp) }}
         
             // type 'bundle' (String)
@@ -538,7 +549,7 @@ export default {
             .table-col
                 .data-with-icon(:class="design.showIcon ? '' : 'without-icon'")
                     .thumb(v-if="design.showIcon", class="")
-                        span {{ d.thumb }}
+                        //- icon
                         span(v-if="d.thumb == 'received'")
                             <svg width="1em" height="1em" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class=""><circle opacity="0.1" cx="24" cy="24" r="24" fill="#2CB67D"></circle><path d="M30.364 20.464v9.9m0 0h-9.9m9.9 0L17.636 17.636" stroke="#2CB67D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                         span(v-if="d.thumb == 'delegation'")
@@ -548,7 +559,17 @@ export default {
                         span(v-if="d.thumb == 'self'")
                             <svg width="1em" height="1em" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class=""><circle opacity="0.1" r="24" transform="matrix(1 0 0 -1 24 24)" fill="#2CB67D"></circle><path d="M16.75 16a.75.75 0 0 0-1.5 0h1.5ZM16 21h-.75c0 .414.336.75.75.75V21Zm15.194 2.093a.75.75 0 1 0 1.488-.186l-1.488.186ZM21 21.75a.75.75 0 0 0 0-1.5v1.5ZM31.25 32a.75.75 0 0 0 1.5 0h-1.5Zm.75-5h.75a.75.75 0 0 0-.75-.75V27Zm-5-.75a.75.75 0 0 0 0 1.5v-1.5Zm-10.194-1.343a.75.75 0 1 0-1.488.186l1.488-.186ZM15.25 16v5h1.5v-5h-1.5Zm8.75.75a7.251 7.251 0 0 1 7.194 6.343l1.488-.186A8.751 8.751 0 0 0 24 15.25v1.5Zm-6.723 4.531A7.253 7.253 0 0 1 24 16.75v-1.5a8.753 8.753 0 0 0-8.114 5.469l1.39.562ZM16 21.75h.581v-1.5H16v1.5Zm.581 0H21v-1.5h-4.419v1.5ZM32.75 32v-5h-1.5v5h1.5Zm-2.027-5.281A7.253 7.253 0 0 1 24 31.25v1.5a8.753 8.753 0 0 0 8.114-5.469l-1.39-.562ZM32 26.25h-.581v1.5H32v-1.5Zm-.581 0H27v1.5h4.419v-1.5Zm-7.419 5a7.251 7.251 0 0 1-7.194-6.343l-1.488.186A8.751 8.751 0 0 0 24 32.75v-1.5Z" fill="#2CB67D"></path></svg>
                     .info
-                        .label.bold {{ d.label }}
+                        .label.bold
+                            //-  {{ d.label }}
+                            //- copy
+                            span(v-if="d.thumb == 'received'")
+                                span(v-html="store.translate('lace.labels.received')")
+                            span(v-if="d.thumb == 'delegation'")
+                                span(v-html="store.translate('lace.labels.delegation')")
+                            span(v-if="d.thumb == 'sent'")
+                                span(v-html="store.translate('lace.labels.sent')")
+                            span(v-if="d.thumb == 'self'")
+                                span(v-html="store.translate('lace.labels.reward')")
                         .address.secondary {{ convertTimestap(d.timestamp) }}
         
             // type 'bundle' (String)

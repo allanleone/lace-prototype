@@ -119,19 +119,19 @@ export default {
 .box-add-funds.animated.fadeIn.slow.delay-0-5s
     .welcome-group 
         .content-add-funds-mobile
-            h1 Welcome
-            h5.subtitle-add-funds Add funds to start
+            h1(v-html="store.translate('lace.labels.welcome')")
+            h5.subtitle-add-funds(v-html="store.translate('lace.labels.add-funds')")
         .qr-code
             QA/
         .content-add-funds
-            h1 Welcome
-            h5.subtitle-add-funds Add funds to start
+            h1(v-html="store.translate('lace.labels.welcome')")
+            h5.subtitle-add-funds(v-html="store.translate('lace.labels.add-funds')")
             .address addr1q86a0lr6atpagle72hx6g5c5v27hxn4k27qcwzv26r7ednvzj3tw59zn62kup4fwx2zhl454anu8wtalrusr77s4q4gs7a67m4
             button.tertiary
                 span
                     .icon
                         <svg width="1em" height="1em" viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class=""><path fill-rule="evenodd" clip-rule="evenodd" d="M3 2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1V7a3 3 0 0 1 3-3h5V3a1 1 0 0 0-1-1H3Zm11 2V3a3 3 0 0 0-3-3H3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h1v1a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3h-1ZM7 6a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H7Z" fill="currentColor"></path></svg>
-                    .label Copy address
+                    .label(v-html="store.translate('lace.labels.copy-address')")
                     .chevron
         .content-add-funds-mobile
             h5.subtitle-add-funds Use this address or scan the QR code to transfer funds
@@ -140,7 +140,7 @@ export default {
                 span
                     .icon
                         <svg width="1em" height="1em" viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class=""><path fill-rule="evenodd" clip-rule="evenodd" d="M3 2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1V7a3 3 0 0 1 3-3h5V3a1 1 0 0 0-1-1H3Zm11 2V3a3 3 0 0 0-3-3H3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h1v1a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3h-1ZM7 6a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H7Z" fill="currentColor"></path></svg>
-                    .label Copy address
+                    .label(v-html="store.translate('lace.labels.copy-address')")
                     .chevron
         .bg 
             Portal/

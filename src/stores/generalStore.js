@@ -24,6 +24,7 @@ export const generalStore = defineStore('general', {
         //
         selectedLang: 'en',
         langLoaded: false,
+        langLoadedFirstRun: false,
         lang: {},
         baseLangForPreloading: {},
         // !
@@ -378,6 +379,8 @@ export const generalStore = defineStore('general', {
                     if(!placeholder){
                         // -----------------
                         const shuffleText = (chars) =>{
+                            //- no shuffle active
+                            return chars
                             if(chars){
                                 const shuffledCharacters = chars.split('').slice();
                                 for (let i = 0; i < chars.split('').slice().length; i++) {
@@ -588,6 +591,7 @@ export const generalStore = defineStore('general', {
         async LoadTranslationAPI(val){
 
             this.langLoaded = false;
+            
 
             this.lang = {};
                 
@@ -614,7 +618,8 @@ export const generalStore = defineStore('general', {
                 .then(response => response.text())
                 .then(result => {
                     
-                    if(val == 'en'){
+                    if(val == 'en' && !this.langLoadedFirstRun){
+                        this.langLoadedFirstRun = true;
                         let baseLang = JSON.parse(result);
                         this.baseLangForPreloading = baseLang;
                     }

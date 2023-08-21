@@ -51,6 +51,7 @@ export default {
 
 <template lang="pug">
 .nfts
+    //!!!!!!!!!!!!!!!!!!! DEBUG !!!!!!!!!!!!!!!
     //- .sliders
         label
             div
@@ -79,6 +80,8 @@ export default {
         button.purple(style="width: 150px;", @click="updateStore()")
             span(v-if="angle == store.get('tempAngle') && zoom == store.get('tempZoom') && parallax == store.get('tempParallax') && shadow == store.get('tempShadow') && shadowOpc == store.get('tempShadowOpc') && shadowBlur == store.get('tempShadowBlur')") Updated 
             span(v-else) click to update
+    //!!!!!!!!!!!!!!!!!!! DEBUG !!!!!!!!!!!!!!!
+
     .page-title(style="margin-bottom: 30px;")
         h1.animated.fadeInUp
             button.navigation.animated.fadeInLeft(v-if="folderOpened", @click="folderOpened = false;")
@@ -86,7 +89,7 @@ export default {
                     .icon
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 19L3 12M3 12L10 5M3 12L21 12" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             span.animated.fadeInLeft(style="display: inline-block; margin-left: 10px;") 
-                span {{store.translate("lace.menu.nfts")}}
+                span(v-html='store.translate("lace.menu.nfts")')
                 span.counter(v-if="!folderOpened") ({{ nfts.length }})
                 span.counter(v-if="folderOpened") &nbsp; > 
             span.animated.fadeInRight(v-if="folderOpened", style="display: inline-block; margin-left: 10px;") 
@@ -97,8 +100,8 @@ export default {
                 span
                     .icon 
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 13H15M12 10V16M3 17V7C3 5.89543 3.89543 5 5 5H11L13 7H19C20.1046 7 21 7.89543 21 9V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17Z" stroke="url(#paint0_linear_17397_113264)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="paint0_linear_17397_113264" x1="-0.293617" y1="2.4383" x2="25.9856" y2="4.93033" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"/><stop offset="1" stop-color="#FDC300"/></linearGradient></defs></svg>
-                    .label Create folder
-    //- QACodeAddFunds/
+                    .label(v-html="store.translate('lace.labels.create-folder')")
+    //- QACodeAddFunds.add-funds(:store="store")/
     .cards-space(:class="folderOpened ? 'folder-view' : ''")
 
         //- FOLDERS
@@ -384,7 +387,7 @@ export default {
         }
     }
     .page-title{
-        grid-template-columns: 1fr 200px;
+        grid-template-columns: 1fr auto;
         display: grid;
         align-content: center;
         z-index: 1;
@@ -397,7 +400,7 @@ export default {
             align-self: center;
             justify-self: right;
             button{
-                width: 180px;
+                width: auto;
                 float: right;
                 z-index: 1;
             }
