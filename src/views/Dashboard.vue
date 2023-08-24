@@ -17,7 +17,7 @@ export default {
     data() {
         return {
             layout: [
-                { x: 0, y: 0, w: 2, h: 1.5, i: '0', static: true, resizable: false, draggable: false, },
+                { x: 0, y: 0, w: 2, h: 1.5, i: '0', static: false, resizable: true, draggable: true, },
                 { x: 0, y: 0, w: 2, h: 1, i: '1',   static: false, resizable: true, draggable: true, },
                 { x: 0, y: 0, w: 1, h: 1, i: '2',   static: false, resizable: true, draggable: true, },
                 { x: 1, y: 1, w: 1, h: 1, i: '3',   static: false, resizable: false, draggable: true, },

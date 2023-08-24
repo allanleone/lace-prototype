@@ -514,7 +514,8 @@ export default {
 <template lang="pug">
 .user-menu(:class="AmIOnOnboarding() ? 'onboarding-stage' : ''", v-if="AmIOnOnboarding() != undefined ? true : false")
     .brand(v-if="!AmIOnOnboarding()")
-        img(class="symbol", :src="'assets/images/' + theme + '/lace_symbol.svg'", alt="")
+        img(class="symbol", src="@/assets/images/light/lace_symbol.svg", alt="", v-if="store.theme == 'light'")
+        img(class="symbol", src="@/assets/images/dark/lace_symbol.svg", alt="", v-if="store.theme == 'dark'")
         MainNetworkStatus/
     button.receive(v-if="!AmIOnOnboarding()", @click="openSidedrawer({global: 'receive', action: 'receive', title: 'Receive'})")
         span

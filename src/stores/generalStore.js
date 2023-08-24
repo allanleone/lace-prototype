@@ -1,5 +1,13 @@
 import { defineStore } from 'pinia'
 
+import JSONen from '@/assets/lang/en.json';
+import JSONpt_br from '@/assets/lang/pt_br.json';
+import JSONjp from '@/assets/lang/jp.json';
+import JSONit from '@/assets/lang/it.json';
+import JSONes from '@/assets/lang/es.json';
+import JSONru from '@/assets/lang/ru.json';
+import JSONfr from '@/assets/lang/fr.json';
+
 export const generalStore = defineStore('general', {
     state: () => ({ 
         theme: "light",
@@ -354,6 +362,244 @@ export const generalStore = defineStore('general', {
         // trading
         storedTrading: null,
         // !
+        // DApp Store
+        dappCategories: [
+            {
+                name: "Featured",
+                url: "/featured",
+                active: true,
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.66347 17H14.3364M11.9999 3V4M18.3639 5.63604L17.6568 6.34315M21 11.9999H20M4 11.9999H3M6.34309 6.34315L5.63599 5.63604M8.46441 15.5356C6.51179 13.5829 6.51179 10.4171 8.46441 8.46449C10.417 6.51187 13.5829 6.51187 15.5355 8.46449C17.4881 10.4171 17.4881 13.5829 15.5355 15.5356L14.9884 16.0827C14.3555 16.7155 13.9999 17.5739 13.9999 18.469V19C13.9999 20.1046 13.1045 21 11.9999 21C10.8954 21 9.99995 20.1046 9.99995 19V18.469C9.99995 17.5739 9.6444 16.7155 9.01151 16.0827L8.46441 15.5356Z" stroke="#3D3B39" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            },
+            {
+                name: "Favourites",
+                url: "/favourites",
+                active: false,
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.31802 6.31802C2.56066 8.07538 2.56066 10.9246 4.31802 12.682L12.0001 20.364L19.682 12.682C21.4393 10.9246 21.4393 8.07538 19.682 6.31802C17.9246 4.56066 15.0754 4.56066 13.318 6.31802L12.0001 7.63609L10.682 6.31802C8.92462 4.56066 6.07538 4.56066 4.31802 6.31802Z" stroke="#3D3B39" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            },
+            {
+                name: "Development",
+                url: "/development",
+                active: false,
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20L14 4M18 8L22 12L18 16M6 16L2 12L6 8" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            },
+            {
+                name: "NFTs",
+                url: "/nfts",
+                active: false,
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 16L8.15901 11.4142C9.03769 10.6332 10.4623 10.6332 11.341 11.4142L16.5 16M14.25 14L16.034 12.4142C16.9127 11.6332 18.3373 11.6332 19.216 12.4142L21 14M14.25 8H14.2613M5.25 20H18.75C19.9926 20 21 19.1046 21 18V6C21 4.89543 19.9926 4 18.75 4L5.25 4C4.00736 4 3 4.89543 3 6L3 18C3 19.1046 4.00736 20 5.25 20Z" stroke="#3D3B39" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            },
+            {
+                name: "DeFi",
+                url: "/defi",
+                active: false,
+                icon: '<svg fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17 9v-2c0-1.1046-0.8954-2-2-2h-10c-1.1046 0-2 0.89543-2 2v6c0 1.1046 0.89543 2 2 2h2m2 4h10c1.1046 0 2-0.8954 2-2v-6c0-1.1046-0.8954-2-2-2h-10c-1.1046 0-2 0.89543-2 2v6c0 1.1046 0.89543 2 2 2zm7-5c0 1.1046-0.8954 2-2 2s-2-0.8954-2-2 0.8954-2 2-2 2 0.8954 2 2z" stroke="#3D3B39" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>',
+            },
+            {
+                name: "Identity",
+                url: "/identity",
+                active: false,
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.9999 11C11.9999 14.5172 10.9911 17.7988 9.24707 20.5712M5.80688 18.5304C5.82459 18.5005 5.84273 18.4709 5.8613 18.4413C7.2158 16.2881 7.99991 13.7418 7.99991 11C7.99991 8.79086 9.79077 7 11.9999 7C14.209 7 15.9999 8.79086 15.9999 11C15.9999 12.017 15.9307 13.0186 15.7966 14M13.6792 20.8436C14.2909 19.6226 14.7924 18.3369 15.1707 17M19.0097 18.132C19.6547 15.8657 20 13.4732 20 11C20 6.58172 16.4183 3 12 3C10.5429 3 9.17669 3.38958 8 4.07026M3 15.3641C3.64066 14.0454 4 12.5646 4 11C4 9.54285 4.38958 8.17669 5.07026 7" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            },
+            {
+                name: "Security",
+                url: "/security",
+                active: false,
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 12L11 14L15 10M20.6179 5.98434C20.4132 5.99472 20.2072 5.99997 20 5.99997C16.9265 5.99997 14.123 4.84453 11.9999 2.94434C9.87691 4.84446 7.07339 5.99985 4 5.99985C3.79277 5.99985 3.58678 5.9946 3.38213 5.98422C3.1327 6.94783 3 7.95842 3 9.00001C3 14.5915 6.82432 19.2898 12 20.622C17.1757 19.2898 21 14.5915 21 9.00001C21 7.95847 20.8673 6.94791 20.6179 5.98434Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            },
+            {
+                name: "Social",
+                url: "/social",
+                active: false,
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 20H22L22 18C22 16.3431 20.6569 15 19 15C18.0444 15 17.1931 15.4468 16.6438 16.1429M17 20H7M17 20V18C17 17.3438 16.8736 16.717 16.6438 16.1429M7 20H2V18C2 16.3431 3.34315 15 5 15C5.95561 15 6.80686 15.4468 7.35625 16.1429M7 20V18C7 17.3438 7.12642 16.717 7.35625 16.1429M7.35625 16.1429C8.0935 14.301 9.89482 13 12 13C14.1052 13 15.9065 14.301 16.6438 16.1429M15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7ZM21 10C21 11.1046 20.1046 12 19 12C17.8954 12 17 11.1046 17 10C17 8.89543 17.8954 8 19 8C20.1046 8 21 8.89543 21 10ZM7 10C7 11.1046 6.10457 12 5 12C3.89543 12 3 11.1046 3 10C3 8.89543 3.89543 8 5 8C6.10457 8 7 8.89543 7 10Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            },
+            {
+                name: "Marketplace",
+                url: "/marketplace",
+                active: false,
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3L5 3L5.4 5M7 13L17 13L21 5L5.4 5M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            },
+            {
+                name: "Education",
+                url: "/education",
+                active: false,
+
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 14L21 9L12 4L3 9L12 14ZM12 14L18.1591 10.5783C18.7017 11.9466 19 13.4384 19 14.9999C19 15.7013 18.9398 16.3885 18.8244 17.0569C16.2143 17.3106 13.849 18.4006 12 20.0555C10.151 18.4006 7.78571 17.3106 5.17562 17.0569C5.06017 16.3885 5 15.7012 5 14.9999C5 13.4384 5.29824 11.9466 5.84088 10.5782L12 14ZM8 19.9999L8 12.5L12 10.2778" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+            },
+            {
+                name: "Games",
+                url: "/games",
+                active: false,
+                icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7L4 17L12 21" stroke="#3D3B39" stroke-width="2" stroke-linejoin="round"/></svg>',
+            },
+
+        ],
+        dappHighlights: [
+            {
+                name: "Sunday Swap",
+                desc: "We concept, design and build innovative, decentralized software to power the next generation of global financial services.",
+                image: "/assets/dappstore/highlight-2.png",
+                ico: "https://crypto.jobs/storage/company-logos/18ZZW9IREQktAniuO6ZMBAShzJKeFzzLhYvLAJPc.png",
+                url: "",
+                status: "live",
+                hover: false,
+            },
+            {
+                name: "Artano",
+                desc: "NFT marketplace, with the aim to research and develop the next generation of NFTs called infinite NFTs",
+                image: "/assets/dappstore/highlight-1.png",
+                ico: "https://www.lidonation.com/storage/440/conversions/artano-logo-thumbnail.jpg",
+                url: "",
+                status: "live",
+                hover: false,
+            },
+            {
+                name: "Blockfrost",
+                desc: "Your gateway to the Cardano ecosystem",
+                image: "/assets/dappstore/highlight-3.png",
+                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                url: "",
+                status: "live",
+                hover: false,
+            },
+            {
+                name: "JPG.store",
+                desc: "JPG Store is the largest Cardano NFT marketplace. We believe in people, planet, & purpose before profit. ",
+                image: "/assets/dappstore/highlight-4.png",
+                ico: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAMAAAAt85rTAAAAw1BMVEX/2yT///8AAAD/yQD/3iXStR5LS0vryiHvvAAsJgZAMwD00SJtXQ8kJCRRUVHDw8P29vZ7e3v/0QBLOwD/4yXxzyL61yOPexTGqhv/zQDgwB+6oBq0mhmkjBdkVg2qqqoLCQFKPwr/6iYUEQNcTw2ZhBV5aBHOsR0lHwSHcxMeGgRFOghNQgoRERFjY2M8NAc8PDw3Lgfr6+udnZ3//+z/6qn/3WH/0iP/1Tf/4Xf/8ML///RLQiJLRDWXdgCNbwDPogCUcZHIAAAC8UlEQVR4nO3diVbaQBSA4XAdpZHUWiWETWUTsFBo7WY39f2fquWUpVLbhjiTO3D+/wHifGYmkOiZBAERERERERERERERERERERERERGR/xlTKW1WxRjtQafPmHrjsh9tUj9pDoJtIZr65Vg2b3hV1R55usqNMANv1qtkK05ikpE3a1TyX3j2BJ9Ir+i50Ayyzs8tEZbOn+YTGXstNPurkT5P3euHxNhjYXl5AicXL1I3eQic7vsrLC9914XUHb9cm6XtfW3HX4sXYzxO7/sTKGGxrC15vOUSfLOB7xGgiKezdAk8eCpw6OfXNntACas+nkOLQBk2PFyHNoEiHs5Su8BWs6INWs8uUIZn2qD1LANFzjxbh9aBklS8upjaB0ri1S2wA2DrShv1ew6AIlFHm7XKCVDO/VmHboDS9+Ym3xFQIl+uNK6A0i77IXQGlLYfs9QdUHp1H4QOgX4IXQLlrQePE50CZah/Dt0CpT3QFjoGynSgfPvkGijduq7QOVC6jR0HSqgqzAEoYVNxluYBFFF8YJoPUJpqnxY5AfX+gJgTUPqlHQeK1pe23IB9petMbkDZKmDhYnOg0iLMCLye/BPzWEqLMCOwUHh3lLLFv9QofVBkBqbuaNeBBwABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIEODWA99/+PiptmezWu3m85evvgC/nVjFLbv57gnw1BHw5BQgQIAAAQIECBAgQIAAAQLcReChMrA4//li93nMqsXxtbYbNYsB3O7VrBt/HvF2cXytTZ3Ko/kAunf3z6x3f9edH76ttfOYaSx+xRIeWm/1ziq9t23EI8mhUazlC4Jmy72v1dTzBaUr90C1bdVmmTjLyxU3aqy72a/pRN3/DzJ73aijvRFu0Ijc+SLdHVR/ZeJq0puG1pv2kqoHe1HPMpW46KDYnxczzN5Vaz9tExEREREREREREREREREREREREVnqBzmmkDq6wDowAAAAAElFTkSuQmCC",
+                url: "",
+                status: "live",
+                hover: false,
+            },
+        ],
+        dapps: [
+            {
+                name: "Sunday Swap",
+                desc: "We concept, design and build innovative, decentralized software to power the next generation of global financial services.",
+                image: "/assets/dappstore/highlight-2.png",
+                ico: "https://crypto.jobs/storage/company-logos/18ZZW9IREQktAniuO6ZMBAShzJKeFzzLhYvLAJPc.png",
+                url: "",
+                status: "live",
+                certification: {
+                    l1: true,
+                    l2: false,
+                    l3: true,
+                },
+                hover: false,
+            },
+            {
+                name: "Artano",
+                desc: "NFT marketplace, with the aim to research and develop the next generation of NFTs called infinite NFTs",
+                image: "/assets/dappstore/highlight-1.png",
+                ico: "https://www.lidonation.com/storage/440/conversions/artano-logo-thumbnail.jpg",
+                url: "",
+                status: "live",
+                certification: {
+                    l1: false,
+                    l2: false,
+                    l3: false,
+                },
+                hover: false,
+            },
+            {
+                name: "Blockfrost",
+                desc: "Your gateway to the Cardano ecosystem",
+                image: "/assets/dappstore/highlight-3.png",
+                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                url: "",
+                status: "live",
+                certification: {
+                    l1: true,
+                    l2: true,
+                    l3: false,
+                },
+                hover: false,
+            },
+            {
+                name: "JPG.store",
+                desc: "JPG Store is the largest Cardano NFT marketplace. We believe in people, planet, & purpose before profit. ",
+                image: "/assets/dappstore/highlight-4.png",
+                ico: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAMAAAAt85rTAAAAw1BMVEX/2yT///8AAAD/yQD/3iXStR5LS0vryiHvvAAsJgZAMwD00SJtXQ8kJCRRUVHDw8P29vZ7e3v/0QBLOwD/4yXxzyL61yOPexTGqhv/zQDgwB+6oBq0mhmkjBdkVg2qqqoLCQFKPwr/6iYUEQNcTw2ZhBV5aBHOsR0lHwSHcxMeGgRFOghNQgoRERFjY2M8NAc8PDw3Lgfr6+udnZ3//+z/6qn/3WH/0iP/1Tf/4Xf/8ML///RLQiJLRDWXdgCNbwDPogCUcZHIAAAC8UlEQVR4nO3diVbaQBSA4XAdpZHUWiWETWUTsFBo7WY39f2fquWUpVLbhjiTO3D+/wHifGYmkOiZBAERERERERERERERERERERERERGR/xlTKW1WxRjtQafPmHrjsh9tUj9pDoJtIZr65Vg2b3hV1R55usqNMANv1qtkK05ikpE3a1TyX3j2BJ9Ir+i50Ayyzs8tEZbOn+YTGXstNPurkT5P3euHxNhjYXl5AicXL1I3eQic7vsrLC9914XUHb9cm6XtfW3HX4sXYzxO7/sTKGGxrC15vOUSfLOB7xGgiKezdAk8eCpw6OfXNntACas+nkOLQBk2PFyHNoEiHs5Su8BWs6INWs8uUIZn2qD1LANFzjxbh9aBklS8upjaB0ri1S2wA2DrShv1ew6AIlFHm7XKCVDO/VmHboDS9+Ym3xFQIl+uNK6A0i77IXQGlLYfs9QdUHp1H4QOgX4IXQLlrQePE50CZah/Dt0CpT3QFjoGynSgfPvkGijduq7QOVC6jR0HSqgqzAEoYVNxluYBFFF8YJoPUJpqnxY5AfX+gJgTUPqlHQeK1pe23IB9petMbkDZKmDhYnOg0iLMCLye/BPzWEqLMCOwUHh3lLLFv9QofVBkBqbuaNeBBwABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIEODWA99/+PiptmezWu3m85evvgC/nVjFLbv57gnw1BHw5BQgQIAAAQIECBAgQIAAAQLcReChMrA4//li93nMqsXxtbYbNYsB3O7VrBt/HvF2cXytTZ3Ko/kAunf3z6x3f9edH76ttfOYaSx+xRIeWm/1ziq9t23EI8mhUazlC4Jmy72v1dTzBaUr90C1bdVmmTjLyxU3aqy72a/pRN3/DzJ73aijvRFu0Ijc+SLdHVR/ZeJq0puG1pv2kqoHe1HPMpW46KDYnxczzN5Vaz9tExEREREREREREREREREREREREVnqBzmmkDq6wDowAAAAAElFTkSuQmCC",
+                url: "",
+                status: "live",
+                certification: {
+                    l1: true,
+                    l2: true,
+                    l3: true,
+                },
+                hover: false,
+            },
+            {
+                name: "Sunday Swap",
+                desc: "We concept, design and build innovative, decentralized software to power the next generation of global financial services.",
+                image: "/assets/dappstore/highlight-2.png",
+                ico: "https://crypto.jobs/storage/company-logos/18ZZW9IREQktAniuO6ZMBAShzJKeFzzLhYvLAJPc.png",
+                url: "",
+                status: "live",
+                certification: {
+                    l1: true,
+                    l2: true,
+                    l3: false,
+                },
+                hover: false,
+            },
+            {
+                name: "Artano",
+                desc: "NFT marketplace, with the aim to research and develop the next generation of NFTs called infinite NFTs",
+                image: "/assets/dappstore/highlight-1.png",
+                ico: "https://www.lidonation.com/storage/440/conversions/artano-logo-thumbnail.jpg",
+                url: "",
+                status: "live",
+                certification: {
+                    l1: true,
+                    l2: false,
+                    l3: true,
+                },
+                hover: false,
+            },
+            {
+                name: "Blockfrost",
+                desc: "Your gateway to the Cardano ecosystem",
+                image: "/assets/dappstore/highlight-3.png",
+                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                url: "",
+                status: "live",
+                certification: {
+                    l1: false,
+                    l2: false,
+                    l3: false,
+                },
+                hover: false,
+            },
+            {
+                name: "JPG.store",
+                desc: "JPG Store is the largest Cardano NFT marketplace. We believe in people, planet, & purpose before profit. ",
+                image: "/assets/dappstore/highlight-4.png",
+                ico: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAMAAAAt85rTAAAAw1BMVEX/2yT///8AAAD/yQD/3iXStR5LS0vryiHvvAAsJgZAMwD00SJtXQ8kJCRRUVHDw8P29vZ7e3v/0QBLOwD/4yXxzyL61yOPexTGqhv/zQDgwB+6oBq0mhmkjBdkVg2qqqoLCQFKPwr/6iYUEQNcTw2ZhBV5aBHOsR0lHwSHcxMeGgRFOghNQgoRERFjY2M8NAc8PDw3Lgfr6+udnZ3//+z/6qn/3WH/0iP/1Tf/4Xf/8ML///RLQiJLRDWXdgCNbwDPogCUcZHIAAAC8UlEQVR4nO3diVbaQBSA4XAdpZHUWiWETWUTsFBo7WY39f2fquWUpVLbhjiTO3D+/wHifGYmkOiZBAERERERERERERERERERERERERGR/xlTKW1WxRjtQafPmHrjsh9tUj9pDoJtIZr65Vg2b3hV1R55usqNMANv1qtkK05ikpE3a1TyX3j2BJ9Ir+i50Ayyzs8tEZbOn+YTGXstNPurkT5P3euHxNhjYXl5AicXL1I3eQic7vsrLC9914XUHb9cm6XtfW3HX4sXYzxO7/sTKGGxrC15vOUSfLOB7xGgiKezdAk8eCpw6OfXNntACas+nkOLQBk2PFyHNoEiHs5Su8BWs6INWs8uUIZn2qD1LANFzjxbh9aBklS8upjaB0ri1S2wA2DrShv1ew6AIlFHm7XKCVDO/VmHboDS9+Ym3xFQIl+uNK6A0i77IXQGlLYfs9QdUHp1H4QOgX4IXQLlrQePE50CZah/Dt0CpT3QFjoGynSgfPvkGijduq7QOVC6jR0HSqgqzAEoYVNxluYBFFF8YJoPUJpqnxY5AfX+gJgTUPqlHQeK1pe23IB9petMbkDZKmDhYnOg0iLMCLye/BPzWEqLMCOwUHh3lLLFv9QofVBkBqbuaNeBBwABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIEODWA99/+PiptmezWu3m85evvgC/nVjFLbv57gnw1BHw5BQgQIAAAQIECBAgQIAAAQLcReChMrA4//li93nMqsXxtbYbNYsB3O7VrBt/HvF2cXytTZ3Ko/kAunf3z6x3f9edH76ttfOYaSx+xRIeWm/1ziq9t23EI8mhUazlC4Jmy72v1dTzBaUr90C1bdVmmTjLyxU3aqy72a/pRN3/DzJ73aijvRFu0Ijc+SLdHVR/ZeJq0puG1pv2kqoHe1HPMpW46KDYnxczzN5Vaz9tExEREREREREREREREREREREREVnqBzmmkDq6wDowAAAAAElFTkSuQmCC",
+                url: "",
+                status: "live",
+                certification: {
+                    l1: true,
+                    l2: false,
+                    l3: true,
+                },
+                hover: false,
+            },
+            {
+                name: "Artano",
+                desc: "NFT marketplace, with the aim to research and develop the next generation of NFTs called infinite NFTs",
+                image: "/assets/dappstore/highlight-1.png",
+                ico: "https://www.lidonation.com/storage/440/conversions/artano-logo-thumbnail.jpg",
+                url: "",
+                status: "live",
+                certification: {
+                    l1: false,
+                    l2: false,
+                    l3: false,
+                },
+                hover: false,
+            },
+        ],
+        // !
     }),
     getters: {
         currentTheme: (state) => state.theme,
@@ -414,7 +660,7 @@ export const generalStore = defineStore('general', {
             this[val.key] = val.value
         },
         async pushItem(val) {
-            console.log(this[val.key], val.value)
+            // console.log(this[val.key], val.value)
             this[val.key].push(val.value);
         },
         setDelayed(val) {
@@ -590,10 +836,38 @@ export const generalStore = defineStore('general', {
         },
         async LoadTranslationAPI(val){
 
+            // set as loading
             this.langLoaded = false;
-            
-
             this.lang = {};
+
+            // check if it's the first run
+            if(val == 'en' && !this.langLoadedFirstRun){
+                this.langLoadedFirstRun = true;
+                let baseLang = JSONen;
+                this.baseLangForPreloading = baseLang;
+            }
+
+            // apply the lang w/ a delay (on purprose)
+            setTimeout(()=>{
+                let r;
+                if(val == 'en') r = JSONen;
+                if(val == 'pt_br') r = JSONpt_br;
+                if(val == 'jp') r = JSONjp;
+                if(val == 'it') r = JSONit;
+                if(val == 'ru') r = JSONru;
+                if(val == 'es') r = JSONes;
+                if(val == 'fr') r = JSONfr;
+                this.lang = r;
+                this.selectedLang = val;
+                this.langLoaded = true;
+                this.baseLangForPreloading = r;
+
+                // debug
+                // console.log(val, this.selectedLang, this.lang,)
+            }, 3000)
+
+            return;
+
                 
             //  -----------------------
             let url = 'assets/lang'; //'https://api.dittowords.com';

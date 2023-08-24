@@ -41,6 +41,11 @@ const router = createRouter({
       component: () => import('../views/DAppStore.vue')
     },
     {
+      path: '/dappstore/:featured',
+      name: 'DAppStoreDashboard',
+      component: () => import('../views/DAppStore.vue')
+    },
+    {
       path: '/settings',
       name: 'settings',
       component: () => import('../views/Settings.vue')

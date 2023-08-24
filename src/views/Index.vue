@@ -16,6 +16,7 @@ import Tracker from '../components/tracker/Tracker.vue';
 
 //- Widgets ----------------------------------------------
 import AboutYourWallet from '../components/widgets/AboutYourWallet.vue'
+import DappStoreGuide from '../components/widgets/DappStoreGuide.vue'
 import WalletSettings from '../components/widgets/WalletSettings.vue'
 import AboutLace from '../components/widgets/AboutLace.vue'
 import Search from '../components/widgets/Search.vue'
@@ -134,6 +135,7 @@ export default {
         MainNetworkStatus,
         AddressBook,
         Tracker,
+        DappStoreGuide,
     },
     methods: {
         toggleSidebar() {
@@ -328,8 +330,10 @@ export default {
             //- Lace Brand         
             .brand 
                 router-link(to="/tokens")
-                    img(class="standard", :src="'assets/images/' + store.theme + '/lace.svg'", alt="")
-                    img(class="symbol", :src="'assets/images/' + store.theme + '/lace_symbol.svg'", alt="")
+                    img(class="standard", src="@/assets/images/light/lace.svg", alt="", v-if="store.theme == 'light'")
+                    img(class="standard", src="@/assets/images/dark/lace.svg", alt="", v-if="store.theme == 'dark'")
+                    img(class="symbol", src="@/assets/images/light/lace_symbol.svg", alt="", v-if="store.theme == 'light'")
+                    img(class="symbol", src="@/assets/images/dark/lace_symbol.svg", alt="", v-if="store.theme == 'dark'")
                 //- MainNetworkStatus/       
             //-           
             //-  Main menu    
@@ -349,7 +353,7 @@ export default {
                     AboutYourWallet.animated.toggleInRight.delay-0-8s(title="About your wallet")/
                 .underlay    
             //- .debug(style="position: fixed; font-size: 42px; bottom: 20px; left: 20px; background-color: #eeeeeeee; border-radius: 10px; z-index: 99999999999; padding: 10px;") 768
-            <RouterView :store="store" />   
+            <RouterView path="*" :store="store" />   
     .col(v-if="showOrHideMainMenuOnThisPage()") 
         .sticky 
             UserMenu(class="side", :theme="theme", :store="store",)/    
@@ -360,6 +364,7 @@ export default {
                 AboutLace.animated.toggleInLeft.delay-0-2s(title="About Lace", v-show="checkPageName() == 'settings'")/
                 //- AddressBook.animated.toggleInLeft.delay-0-2s(title="Add new address", v-show="checkPageName() == 'addressBook'")/
                 AboutYourWallet.animated.toggleInLeft.delay-0-2s(title="About your wallet", v-show="checkPageName() == 'addressBook' || checkPageName() == 'tokens' || checkPageName() == 'nfts' || checkPageName() == 'activity' || checkPageName() == 'staking' || checkPageName() == 'dashboard' || checkPageName() == 'trading'")/
+                DappStoreGuide.animated.toggleInLeft.delay-0-2s(title="DApp Store Guide", v-show="checkPageName().indexOf('DAppStore') != -1 ? true : false")/
     SideDrawer(:store="store", v-if="store.sidedrawerVisible")/
     
     //-     
@@ -376,7 +381,8 @@ export default {
         //- 
         .nav-onboarding.animated.fadeInDown.delay-0-5s 
             .brand-onboarding
-                img(class="standard", :src="'assets/images/' + store.theme + '/lace.svg'", alt="")
+                img(class="standard", src="@/assets/images/light/lace.svg", alt="", v-if="store.theme == 'light'")
+                img(class="standard", src="@/assets/images/dark/lace.svg", alt="", v-if="store.theme == 'dark'")
             //- button.help-and-support
                 span
                     .icon 
