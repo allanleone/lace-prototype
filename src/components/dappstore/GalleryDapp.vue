@@ -233,6 +233,11 @@ export default {
         &:hover{
             background-color: var(--bgCardHover);
         }
+        &.dark{
+            svg, img{
+                filter: brightness(0) invert(1);
+            }
+        }
     }
     .go-next{
         left: 1px;
@@ -294,9 +299,9 @@ export default {
                         .name(v-html="slide.name") 
                         .desc(v-html="slide.desc") 
     
-    .go-next(@click="slideTo('next')")
+    .go-next(@click="slideTo('next')", :class="store.get('theme')")
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.9315 22.3459L4.04102 14.4554M4.04102 14.4554L11.9315 6.56494M4.04102 14.4554L24.3309 14.4554" stroke="#212121" stroke-width="2.25443" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    .go-prev(@click="slideTo('prev')")
+    .go-prev(@click="slideTo('prev')", :class="store.get('theme')")
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.7247 5.65406L24.6152 13.5446M24.6152 13.5446L16.7247 21.4351M24.6152 13.5446L4.32538 13.5446" stroke="#212121" stroke-width="2.25443" stroke-linecap="round" stroke-linejoin="round"/></svg>
         
     .thumbs

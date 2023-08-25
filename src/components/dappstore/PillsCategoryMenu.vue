@@ -42,7 +42,13 @@ export default {
                     maxSize
                 )
             }, 250);
-        }
+        },
+        selectCat(cat){
+            this.store.dappCategories.forEach((dc)=>{
+                dc.active = false;
+            });
+            cat.active = true;
+        },
     },
     created(){
     },
@@ -73,12 +79,18 @@ export default {
             color: var(--white);
             .ico{
                 filter: brightness(0) invert(1);
+                &.dark{
+                    filter: brightness(0) invert(1);
+                }
             }
         }
         .ico{
             width: 24px;
             height: auto;
             margin-right: 10px;
+            &.dark{
+                filter: brightness(0) invert(1);
+            }
         }
         .label{
             display: grid;
@@ -120,6 +132,11 @@ export default {
 }
 .action-next, .action-prev{
     z-index: 1;
+    &.dark{
+        img, svg{
+            filter: brightness(0) invert(1);
+        }
+    }
 }
 .next, .prev{
     background-color: var(--bgCardHover);
@@ -134,17 +151,18 @@ export default {
     z-index: -1;
 }
 </style>
+
 <template lang="pug">
-.action-prev(@click="pillPrev()", v-if="!hidePrev")
+.action-prev(@click="pillPrev()", v-if="!hidePrev", :class="store.get('theme')")
     .prev 
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 19L8 12L15 5" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-.action-next(@click="pillNext()", v-if="!hideNext")
+.action-next(@click="pillNext()", v-if="!hideNext", :class="store.get('theme')")
     .next 
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 5L16 12L9 19" stroke="#3D3B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 .pill-menu(:style="!hideNext ? 'padding-left: 0;' : ''")
     span.pills
-        router-link(v-for="cat in store.get('dappCategories')", :to="'dappstore' + cat.url", :class="cat.active ? 'active' : ''")
-            .ico(v-html="cat.icon") 
+        router-link(v-for="cat in store.get('dappCategories')", :to="'/dappstore' + cat.url", :class="cat.active ? 'active' : ''", @click="selectCat(cat)")
+            .ico(v-html="cat.icon", :class="this.store.get('theme')") 
             .label(v-html="cat.name")
 .placeholder-pill-menu
 

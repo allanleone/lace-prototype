@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 import FirstRun from '../components/dappstore/FirstRun.vue';
 import PillsCategoryMenu from '../components/dappstore/PillsCategoryMenu.vue';
 import GalleryDapp from '../components/dappstore/GalleryDapp.vue';
@@ -10,11 +10,17 @@ export default {
         store: Object,
     },
     data() {
-        return {}
+        return {
+            mockupLatestDapps: [],
+        }
     },
     methods: {
         routeName(){
             const router = useRouter().currentRoute.value.name;
+            return router;
+        },
+        routeSection(){
+            const router = useRouter().currentRoute.value.params.section;
             return router;
         },
     },
@@ -24,7 +30,13 @@ export default {
         GalleryDapp,
         DAppCard,
         DAppStatus,
-    }
+    },
+    mounted(){
+        this.mockupLatestDapps = JSON.parse(JSON.stringify(this.store.get('dapps')));
+        this.mockupLatestDapps.forEach((m)=>{
+            m.promoted = false;
+        })
+    },
 }
 </script>
 
@@ -33,7 +45,11 @@ export default {
 span.dappstore
     span(v-if="routeName() == 'DAppStore'")
         FirstRun/
+
+    //- Featured
     span(v-if="routeName() == 'DAppStoreDashboard'")
+
+        //- Headers (standard)
         .dappstore-dashboard
             h1.title.animated.fadeInUp Dapp Store 
             div.search.animated.fadeInUp.delay-0-5s
@@ -43,50 +59,104 @@ span.dappstore
                         <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" class=""><path fill-rule="evenodd" clip-rule="evenodd" d="M10 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12Zm-8 6a8 8 0 1 1 14.32 4.906l5.387 5.387a1 1 0 0 1-1.414 1.414l-5.387-5.387A8 8 0 0 1 2 10Z" fill="url(#search_component_svg__a)"></path><defs><linearGradient id="search_component_svg__a" x1="-1.66" y1="-1.66" x2="27.643" y2="0.502" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"></stop><stop offset="1" stop-color="#FDC300"></stop></linearGradient></defs></svg>
             div.animated.fadeInUp.delay-1s
                 PillsCategoryMenu(:store="store")/
-            div.animated.fadeInUp.delay-1-2s
-                GalleryDapp.animated.fadeInUp.delay-1s(:store="store")/
-            .dapp-block.animated.fadeInUp.delay-1-5s
-                .promoted
-                    h2 Promoted
-                    DAppCard(
-                        :store="store", 
-                        :items="this.store.get('dapps').slice(0, 3)"
-                        :size="'with-image'"
-                    )/
-            .dapp-block.animated.fadeInUp.delay-1-5s
-                .latest-certified
-                    h2 Recommended
-                    DAppCard(
-                        :store="store", 
-                        :items="this.store.get('dapps').slice(0, 3)"
-                        :size="'description'"
-                    )/
-            .dapp-block.animated.fadeInUp.delay-1-5s
-                .most-popular
-                    h2 Most Popular
-                    DAppCard(
-                        :store="store", 
-                        :items="this.store.get('dapps')"
-                        :size="'small'"
-                        :hoverEffect="true"
-                    )/
-            .dapp-block.animated.fadeInUp.delay-1-5s
-                .latest
-                    h2 Latest
-                    DAppCard(
-                        :store="store", 
-                        :items="this.store.get('dapps')"
-                        :size="'small'"
-                        :hoverEffect="false"
-                    )/
-            .dapp-block.animated.fadeInUp.delay-1-5s
-                .latest-certified
-                    h2 Latest Certified DApps
-                    DAppCard(
-                        :store="store", 
-                        :items="this.store.get('dapps').slice(0, 3)"
-                        :size="'certification-details'"
-                    )/
+            
+            //- FEATURED
+            span(v-if="routeSection() == 'featured'")
+                div.animated.fadeInUp.delay-1-2s
+                    GalleryDapp.animated.fadeInUp.delay-1s(:store="store")/
+                .dapp-block.animated.fadeInUp.delay-1-5s
+                    .latest-certified
+                        h4 Featured
+                        DAppCard(
+                            :store="store", 
+                            :items="this.store.get('dapps').slice(0, 3)"
+                            :size="'certification-details'"
+                            :promoted="true"
+                        )/
+                .dapp-block.animated.fadeInUp.delay-1-5s
+                    .most-popular
+                        h4 Most Popular
+                        DAppCard(
+                            :store="store", 
+                            :items="this.store.get('dapps').slice(0, 12)"
+                            :size="'small'"
+                            :hoverEffect="true"
+                            :promoted="true"
+                        )/
+                .dapp-block.animated.fadeInUp.delay-1-5s
+                    .latest-certified
+                        h4 Latest
+                        DAppCard(
+                            :store="store", 
+                            :items="mockupLatestDapps.slice(0, 3)"
+                            :size="'small'"
+                            :hoverEffect="true"
+                            :promoted="true"
+                        )/
+            
+            //- Favourites
+            span(v-if="routeSection() == 'favourites'")
+                div.animated.fadeInUp.delay-0-2s
+                .dapp-block.animated.fadeInUp.delay-0-4s
+                    .most-popular
+                        h4 Favorites
+                        DAppCard(
+                            :store="store", 
+                            :items="this.store.get('dappFavorites').slice(0,5)"
+                            :size="'description'"
+                            :hoverEffect="true"
+                            :promoted="true"
+                        )/
+                .dapp-block.animated.fadeInUp.delay-0-4s
+                    .most-popular
+                        h4 You may also like
+                        DAppCard(
+                            :store="store", 
+                            :items="this.store.get('dapps').slice(0, 6)"
+                            :size="'small'"
+                            :hoverEffect="true"
+                            :promoted="true"
+                        )/
+                .dapp-block.animated.fadeInUp.delay-0-5s
+                    .promoted
+                        h4 Promoted
+                        DAppCard(
+                            :store="store", 
+                            :items="this.store.get('dappPromoted').slice(0, 3)"
+                            :size="'with-image'"
+                            :hoverEffect="true"
+                            :promoted="false"
+                        )/
+
+            //- Development
+            span(v-if="routeSection() == 'development'")
+                div.animated.fadeInUp.delay-0-2s
+                .dapp-block.animated.fadeInUp.delay-0-4s
+                    .most-popular
+                        h4 Development
+                        DAppCard(
+                            :store="store", 
+                            :items="this.store.get('dapps').slice(0, 11)"
+                            :size="'small'"
+                            :hoverEffect="true"
+                            :promoted="true"
+                        )/
+            
+            //- NFTs
+            span(v-if="routeSection() == 'nfts'")
+                div.animated.fadeInUp.delay-0-2s
+                .dapp-block.animated.fadeInUp.delay-0-4s
+                    .most-popular
+                        h4 NFTs
+                        DAppCard(
+                            :store="store", 
+                            :items="this.store.get('dapps').slice(0, 11)"
+                            :size="'small'"
+                            :hoverEffect="true"
+                            :promoted="true"
+                        )/
+        
+   
 
 </template>
 
@@ -95,7 +165,7 @@ span.dappstore
     position: relative;
     margin-bottom: 100px;
     .dappstore-dashboard{
-        margin-bottom: 100px;
+        margin-bottom: 200px;
     }
     .search{
         position: relative;
@@ -112,7 +182,10 @@ span.dappstore
         }
     }
     .dapp-block{
-        margin-top: 50px;
+        margin-bottom: 120px;
+        &:hover{
+            z-index: 999;
+        }
     }
     // 
     .dapp-ico{

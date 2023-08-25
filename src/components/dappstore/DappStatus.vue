@@ -20,11 +20,12 @@ export default {
         display: flex;
         flex-wrap: nowrap;
         align-content: center;
+        align-items: center;
         justify-content: left;
         text-align: left;
     }
     .orb{
-        --orbSize: 18px;
+        --orbSize: 12px;
         width: var(--orbSize);
         height: var(--orbSize);
         border-radius: 100px;
@@ -59,6 +60,7 @@ export default {
         }
     }
     .name{
+            font-size: 12px;
         div{
             &.na{
                 color: var(--midGray);
