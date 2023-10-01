@@ -22,6 +22,7 @@ import AboutLace from '../components/widgets/AboutLace.vue'
 import Search from '../components/widgets/Search.vue'
 import NetworkInfo from '../components/widgets/NetworkInfo.vue'
 import AddressBook from '../components/widgets/AddressBook.vue'
+import PromotedDapp from '../components/widgets/PromotedDapp.vue'
 // -------------------------------------------------------
 
 export default {
@@ -136,6 +137,7 @@ export default {
         AddressBook,
         Tracker,
         DappStoreGuide,
+        PromotedDapp,
     },
     methods: {
         toggleSidebar() {
@@ -351,6 +353,7 @@ export default {
                     AboutLace.animated.toggleInRight.delay-0-4s(title="About Lace")/
                     NetworkInfo.animated.toggleInRight.delay-0-6s(title="Network Info")/
                     AboutYourWallet.animated.toggleInRight.delay-0-8s(title="About your wallet")/
+
                 .underlay    
             //- .debug(style="position: fixed; font-size: 42px; bottom: 20px; left: 20px; background-color: #eeeeeeee; border-radius: 10px; z-index: 99999999999; padding: 10px;") 768
             <RouterView path="*" :store="store" />   
@@ -365,6 +368,7 @@ export default {
                 //- AddressBook.animated.toggleInLeft.delay-0-2s(title="Add new address", v-show="checkPageName() == 'addressBook'")/
                 AboutYourWallet.animated.toggleInLeft.delay-0-2s(title="About your wallet", v-show="checkPageName() == 'addressBook' || checkPageName() == 'tokens' || checkPageName() == 'nfts' || checkPageName() == 'activity' || checkPageName() == 'staking' || checkPageName() == 'dashboard' || checkPageName() == 'trading'")/
                 DappStoreGuide.animated.toggleInLeft.delay-0-2s(title="DApp Store Guide", v-show="checkPageName().indexOf('DAppStore') != -1 ? true : false")/
+                PromotedDapp.animated.toggleInRight.delay-0-8s(title="Promoted DApp", :store="store", v-show="checkPageName().indexOf('DAppStore') != -1 ? true : false")/
     SideDrawer(:store="store", v-if="store.sidedrawerVisible")/
     
     //-     
@@ -545,34 +549,34 @@ export default {
                                                 .bar 
                                                 .bar  
                                                 .bar 
-                                            span(v-if="password.length > 0")
+                                            span(vv-if="password.length > 0")
                                                 .feedback-passwd(:class="password.length < 3 ? 'red' : 'green'") 
+                                                    span(style="height: 22px; display: block;", :style="password.length < 4 ? '' : 'visibility: hidden;'")
+                                                        <svg v-if="password.length > 0 && password.length < 3" width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L5.29289 17.2929ZM18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L18.7071 6.70711ZM6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L6.70711 5.29289ZM17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L17.2929 18.7071ZM6.70711 18.7071L18.7071 6.70711L17.2929 5.29289L5.29289 17.2929L6.70711 18.7071ZM5.29289 6.70711L17.2929 18.7071L18.7071 17.2929L6.70711 5.29289L5.29289 6.70711Z' fill='#FF5470'/></svg>
+                                                        <svg v-if="password.length > 0 && password.length >= 3" width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5 13L9 17L19 7' stroke='#2CB67D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg> 
                                                     span 
-                                                        <svg v-if="password.length < 3" width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L5.29289 17.2929ZM18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L18.7071 6.70711ZM6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L6.70711 5.29289ZM17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L17.2929 18.7071ZM6.70711 18.7071L18.7071 6.70711L17.2929 5.29289L5.29289 17.2929L6.70711 18.7071ZM5.29289 6.70711L17.2929 18.7071L18.7071 17.2929L6.70711 5.29289L5.29289 6.70711Z' fill='#FF5470'/></svg>
-                                                        <svg v-if="password.length >= 3" width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5 13L9 17L19 7' stroke='#2CB67D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg> 
-                                                    span 
-                                                        span(v-html='store.translate("prototype.onboarding.stage-3.password-validation-1")')
-                                                .feedback-passwd(:class="password.length < 5 ? 'red' : 'green'") 
+                                                        span(v-if="password.length > 0",v-html='store.translate("prototype.onboarding.stage-3.password-validation-1")', :style="password.length < 4 ? '' : 'visibility: hidden;'")
+                                                //- .feedback-passwd(:class="password.length < 5 ? 'red' : 'green'") 
                                                     span 
                                                         <svg v-if="password.length < 5" width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L5.29289 17.2929ZM18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L18.7071 6.70711ZM6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L6.70711 5.29289ZM17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L17.2929 18.7071ZM6.70711 18.7071L18.7071 6.70711L17.2929 5.29289L5.29289 17.2929L6.70711 18.7071ZM5.29289 6.70711L17.2929 18.7071L18.7071 17.2929L6.70711 5.29289L5.29289 6.70711Z' fill='#FF5470'/></svg>
                                                         <svg v-if="password.length >= 5" width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5 13L9 17L19 7' stroke='#2CB67D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg> 
                                                     span 
                                                         span(v-html='store.translate("prototype.onboarding.stage-3.password-validation-2")')
-                                                .feedback-passwd.green(:class="password.length < 7 ? 'red' : 'green'") 
+                                                //- .feedback-passwd.green(:class="password.length < 7 ? 'red' : 'green'") 
                                                     span 
                                                         <svg v-if="password.length < 7" width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L5.29289 17.2929ZM18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L18.7071 6.70711ZM6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L6.70711 5.29289ZM17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L17.2929 18.7071ZM6.70711 18.7071L18.7071 6.70711L17.2929 5.29289L5.29289 17.2929L6.70711 18.7071ZM5.29289 6.70711L17.2929 18.7071L18.7071 17.2929L6.70711 5.29289L5.29289 6.70711Z' fill='#FF5470'/></svg>
                                                         <svg v-if="password.length >= 7" width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5 13L9 17L19 7' stroke='#2CB67D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg> 
                                                     span 
                                                         span(v-html='store.translate("prototype.onboarding.stage-3.password-validation-3")')
-                                        label
+                                        label.animated(v-if="password.length > 4", style="height: 85px; margin-top: -40px;")
                                             input(type="password", :placeholder='this.store.translate("prototype.onboarding.placeholder.confirm-password", true)', v-model="checkpassword")/
                                             <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="ant-input-password-icon" data-testid="password-input-show-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.512 12a9.004 9.004 0 0 0 16.977 0 9.004 9.004 0 0 0-16.977 0Zm-2.008-.3C2.906 7.238 7.074 4 12 4c4.927 0 9.095 3.238 10.497 7.7a1 1 0 0 1 0 .6C21.095 16.762 16.927 20 12 20c-4.927 0-9.095-3.238-10.497-7.7a1 1 0 0 1 0-.6ZM12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-4 2a4 4 0 1 1 8 0 4 4 0 0 1-8 0Z" fill="#878E9E"></path></svg>
-                                            .score(:class="checkpassword.length < 3 ? (checkpassword.length < 1 ? 'none' : 'low') : (checkpassword.length < 6 ? 'medium' : (checkpassword.length >=7 ? 'great' : 'high'))")
+                                            //- .score(:class="checkpassword.length < 3 ? (checkpassword.length < 1 ? 'none' : 'low') : (checkpassword.length < 6 ? 'medium' : (checkpassword.length >=7 ? 'great' : 'high'))")
                                                 .bar 
                                                 .bar 
                                                 .bar 
                                                 .bar 
-                                            .feedback-passwd(v-if="checkpassword.length > 0")
+                                            //- .feedback-passwd(v-if="checkpassword.length > 0")
                                                 span 
                                                     <svg v-if="checkpassword.length < 5" width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L5.29289 17.2929ZM18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L18.7071 6.70711ZM6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L6.70711 5.29289ZM17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L17.2929 18.7071ZM6.70711 18.7071L18.7071 6.70711L17.2929 5.29289L5.29289 17.2929L6.70711 18.7071ZM5.29289 6.70711L17.2929 18.7071L18.7071 17.2929L6.70711 5.29289L5.29289 6.70711Z' fill='#FF5470'/></svg>
                                                     <svg v-if="checkpassword.length >= 5" width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M5 13L9 17L19 7' stroke='#2CB67D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg> 
@@ -1397,8 +1401,9 @@ export default {
                         }
                         .passwd{
                             display: grid;
-                            grid-template-columns: 1fr 1fr;
+                            grid-template-columns: 1fr;
                             gap: 20px;
+                            overflow: hidden;
                             svg{
                                 width: 16px;
                                 position: absolute;
@@ -1414,6 +1419,9 @@ export default {
                                 margin-top: -8px;
                                 margin-bottom: 10px;
                                 grid-template-columns: 1fr 1fr 1fr 1fr;
+                                input{
+                                    margin: 10px auto;
+                                }
                                 &.none{
                                     .bar{
                                         background-color: var(--midGray);

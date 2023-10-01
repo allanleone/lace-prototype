@@ -433,6 +433,143 @@ export const generalStore = defineStore('general', {
             },
 
         ],
+        dappFeature: [
+            {
+                "name": "Artano",
+                "desc": "NFT marketplace, with the aim to research and develop the next generation of NFTs called infinite NFTs",
+                "image": "/assets/dappstore/highlight-1.png",
+                "ico": "/assets/dappstore/not-found.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                "l1": false,
+                "l2": false,
+                "l3": false
+                },
+                "hover": false,
+                "promoted": true
+            },
+            {
+                "name": "Blockfrost",
+                "desc": "Your gateway to the Cardano ecosystem",
+                "image": "/assets/dappstore/highlight-3.png",
+                "ico": "/assets/dappstore/not-found.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                "l1": false,
+                "l2": false,
+                "l3": false
+                },
+                "hover": false,
+                "promoted": true
+            },
+            {
+                "name": "JPG.store",
+                "desc": "JPG Store is the largest Cardano NFT marketplace. We believe in people, planet, & purpose before profit.",
+                "image": "/assets/dappstore/highlight-4.png",
+                "ico": "/assets/dappstore/not-found.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                "l1": false,
+                "l2": false,
+                "l3": false
+                },
+                "hover": false,
+                "promoted": true
+            },
+            {
+                "name": "Sunday Swap",
+                "desc": "We concept, design and build innovative, decentralized software to power the next generation of global financial services.",
+                "image": "/assets/dappstore/highlight-2.png",
+                "ico": "/assets/dappstore/not-found.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                "l1": false,
+                "l2": false,
+                "l3": false
+                },
+                "hover": false,
+                "promoted": true
+            },
+            {
+                "name": "NFTStudio",
+                "desc": "Create, mint, and trade NFTs on Cardano",
+                "image": "https://example.com/nftstudio.png",
+                "ico": "/assets/dappstore/not-found.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                "l1": false,
+                "l2": false,
+                "l3": false
+                },
+                "hover": false,
+                "promoted": true
+            },
+            {
+                "name": "CardanoGovernance",
+                "desc": "Participate in Cardano's decentralized governance",
+                "image": "https://example.com/cardano-governance.png",
+                "ico": "/assets/dappstore/not-found.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                "l1": false,
+                "l2": false,
+                "l3": false
+                },
+                "hover": false,
+                "promoted": true
+            },
+            {
+                "name": "CardanoNFTMarket",
+                "desc": "Marketplace for Cardano NFTs",
+                "image": "https://example.com/cardano-nft-market.png",
+                "ico": "/assets/dappstore/not-found.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                "l1": false,
+                "l2": false,
+                "l3": false
+                },
+                "hover": false,
+                "promoted": true
+            },
+            {
+                "name": "CardanoDex",
+                "desc": "Decentralized exchange for Cardano",
+                "image": "https://example.com/cardano-dex.png",
+                "ico": "/assets/dappstore/not-found.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                "l1": false,
+                "l2": false,
+                "l3": false
+                },
+                "hover": false,
+                "promoted": true
+            },
+            {
+                "name": "CardanoMint",
+                "desc": "Mint your own tokens on Cardano",
+                "image": "https://example.com/cardano-mint.png",
+                "ico": "/assets/dappstore/not-found.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                "l1": false,
+                "l2": false,
+                "l3": false
+                },
+                "hover": false,
+                "promoted": true
+            }
+        ],
         dappHighlights: [
             {
                 name: "Sunday Swap",
@@ -468,7 +605,7 @@ export const generalStore = defineStore('general', {
                 name: "Blockfrost",
                 desc: "Your gateway to the Cardano ecosystem",
                 image: "/assets/dappstore/highlight-3.png",
-                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                ico: "/assets/dappstore/not-found.png",
                 url: "",
                 status: "live",
                 certification: {
@@ -504,9 +641,9 @@ export const generalStore = defineStore('general', {
                 url: "",
                 status: "live",
                 certification: {
-                    l1: true,
+                    l1: false,
                     l2: false,
-                    l3: true,
+                    l3: false,
                 },
                 hover: false,
                 promoted: false,
@@ -515,7 +652,7 @@ export const generalStore = defineStore('general', {
                 name: "Blockfrost",
                 desc: "Your gateway to the Cardano ecosystem",
                 image: "/assets/dappstore/highlight-3.png",
-                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                ico: "/assets/dappstore/not-found.png",
                 url: "",
                 status: "live",
                 certification: {
@@ -551,9 +688,9 @@ export const generalStore = defineStore('general', {
                 url: "",
                 status: "live",
                 certification: {
-                    l1: true,
+                    l1: false,
                     l2: false,
-                    l3: true,
+                    l3: false,
                 },
                 hover: false,
                 promoted: false,
@@ -562,7 +699,7 @@ export const generalStore = defineStore('general', {
                 name: "Blockfrost",
                 desc: "Your gateway to the Cardano ecosystem",
                 image: "/assets/dappstore/highlight-3.png",
-                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                ico: "/assets/dappstore/not-found.png",
                 url: "",
                 status: "live",
                 certification: {
@@ -598,9 +735,9 @@ export const generalStore = defineStore('general', {
                 url: "",
                 status: "live",
                 certification: {
-                    l1: true,
+                    l1: false,
                     l2: false,
-                    l3: true,
+                    l3: false,
                 },
                 hover: false,
                 promoted: false,
@@ -609,7 +746,7 @@ export const generalStore = defineStore('general', {
                 name: "Blockfrost",
                 desc: "Your gateway to the Cardano ecosystem",
                 image: "/assets/dappstore/highlight-3.png",
-                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                ico: "/assets/dappstore/not-found.png",
                 url: "",
                 status: "live",
                 certification: {
@@ -654,7 +791,7 @@ export const generalStore = defineStore('general', {
                 name: "Blockfrost",
                 desc: "Your gateway to the Cardano ecosystem",
                 image: "/assets/dappstore/highlight-3.png",
-                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                ico: "/assets/dappstore/not-found.png",
                 url: "",
                 status: "live",
                 certification: {
@@ -688,9 +825,9 @@ export const generalStore = defineStore('general', {
                 url: "",
                 status: "live",
                 certification: {
-                    l1: true,
+                    l1: false,
                     l2: false,
-                    l3: true,
+                    l3: false,
                 },
                 hover: false,
                 promoted: false,
@@ -714,7 +851,7 @@ export const generalStore = defineStore('general', {
                 name: "Blockfrost",
                 desc: "Your gateway to the Cardano ecosystem",
                 image: "/assets/dappstore/highlight-3.png",
-                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                ico: "/assets/dappstore/not-found.png",
                 url: "",
                 status: "live",
                 certification: {
@@ -774,7 +911,7 @@ export const generalStore = defineStore('general', {
                 name: "Blockfrost",
                 desc: "Your gateway to the Cardano ecosystem",
                 image: "/assets/dappstore/highlight-3.png",
-                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                ico: "/assets/dappstore/not-found.png",
                 url: "",
                 status: "live",
                 certification: {
@@ -823,9 +960,9 @@ export const generalStore = defineStore('general', {
                 url: "",
                 status: "live",
                 certification: {
-                    l1: true,
+                    l1: false,
                     l2: false,
-                    l3: true,
+                    l3: false,
                 },
                 hover: false,
                 promoted: false,
@@ -849,7 +986,7 @@ export const generalStore = defineStore('general', {
                 name: "Blockfrost",
                 desc: "Your gateway to the Cardano ecosystem",
                 image: "/assets/dappstore/highlight-3.png",
-                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                ico: "/assets/dappstore/not-found.png",
                 url: "",
                 status: "live",
                 certification: {
@@ -883,8 +1020,8 @@ export const generalStore = defineStore('general', {
                 url: "",
                 status: "live",
                 certification: {
-                    l1: true,
-                    l2: true,
+                    l1: false,
+                    l2: false,
                     l3: false,
                 },
                 hover: false,
@@ -909,7 +1046,7 @@ export const generalStore = defineStore('general', {
                 name: "Blockfrost",
                 desc: "Your gateway to the Cardano ecosystem",
                 image: "/assets/dappstore/highlight-3.png",
-                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                ico: "/assets/dappstore/not-found.png",
                 url: "",
                 status: "live",
                 certification: {
@@ -958,9 +1095,9 @@ export const generalStore = defineStore('general', {
                 url: "",
                 status: "live",
                 certification: {
-                    l1: true,
+                    l1: false,
                     l2: false,
-                    l3: true,
+                    l3: false,
                 },
                 hover: false,
                 promoted: false,
@@ -984,7 +1121,7 @@ export const generalStore = defineStore('general', {
                 name: "Blockfrost",
                 desc: "Your gateway to the Cardano ecosystem",
                 image: "/assets/dappstore/highlight-3.png",
-                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                ico: "/assets/dappstore/not-found.png",
                 url: "",
                 status: "live",
                 certification: {
@@ -1018,8 +1155,8 @@ export const generalStore = defineStore('general', {
                 url: "",
                 status: "live",
                 certification: {
-                    l1: true,
-                    l2: true,
+                    l1: false,
+                    l2: false,
                     l3: false,
                 },
                 hover: false,
@@ -1044,7 +1181,7 @@ export const generalStore = defineStore('general', {
                 name: "Blockfrost",
                 desc: "Your gateway to the Cardano ecosystem",
                 image: "/assets/dappstore/highlight-3.png",
-                ico: "https://cardanocrowd.com/storage/images/public/images/51-ST-blockfrostlogo.png",
+                ico: "/assets/dappstore/not-found.png",
                 url: "",
                 status: "live",
                 certification: {
@@ -1086,6 +1223,443 @@ export const generalStore = defineStore('general', {
                 promoted: false,
             },
         ],
+        dappsDevelopment: [
+            {
+                "name": "Blockfrost",
+                "desc": "We provide an instant and scalable Cardano API for free.",
+                "image": "/assets/dappstore/development/01.png",
+                "ico": "/assets/dappstore/development/01.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "API3",
+                "desc": "The Web3 API Economy. Create trustless applications that interact with Web APIs.",
+                "image": "/assets/dappstore/development/02.png",
+                "ico": "/assets/dappstore/development/02.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Charli3",
+                "desc": "The first decentralized oracle network for the Cardano network that interacts with resources on and off of the blockchain.",
+                "image": "/assets/dappstore/development/03.png",
+                "ico": "/assets/dappstore/development/03.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": false,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Cardano Stack Exchange",
+                "desc": "Cardano Stack Exchange is a question and answer site for users and developers of the Cardano cryptocurrency ecosystem.",
+                "image": "/assets/dappstore/development/04.png",
+                "ico": "/assets/dappstore/development/04.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": false,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Tangocrypto",
+                "desc": "We provide a suite of high-availability APIs and developer tools (SDKs).",
+                "image": "/assets/dappstore/development/05.png",
+                "ico": "/assets/dappstore/development/05.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Wolfram Alpha",
+                "desc": "Wolfram Alpha, a major computational knowledge engine providing technology for major services such as Apple’s Siri assistant.",
+                "image": "/assets/dappstore/development/06.png",
+                "ico": "/assets/dappstore/development/06.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": true
+            },
+            {
+                "name": "Koios",
+                "desc": "Decentralized and Elastic RESTful query layer for exploring data on Cardano blockchain.",
+                "image": "/assets/dappstore/development/07.png",
+                "ico": "/assets/dappstore/development/07.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Cardano Tx Submit Service",
+                "desc": "An open-source Cardano Tx Submission Service that provides some stats and customizability. It hooks directly to cardano-submit-tx and cardano-node.",
+                "image": "/assets/dappstore/development/08.png",
+                "ico": "/assets/dappstore/development/08.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "PyCardano",
+                "desc": "A lightweight Cardano library in Python.",
+                "image": "/assets/dappstore/development/09.png",
+                "ico": "/assets/dappstore/development/09.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Logosphere",
+                "desc": "Web3 protocol of interoperable metadata represented as a semantic knowledge graph, providing a framework for building interoperable decentralized applications.",
+                "image": "/assets/dappstore/development/10.png",
+                "ico": "/assets/dappstore/development/10.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Chainlink",
+                "desc": "Chainlink provides the largest collection of decentralized services powering the world’s hybrid smart contracts.",
+                "image": "/assets/dappstore/development/11.png",
+                "ico": "/assets/dappstore/development/11.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Clear Contracts",
+                "desc": "We democratize smart contracts by turning Plutus code into simple online forms.",
+                "image": "/assets/dappstore/development/12.png",
+                "ico": "/assets/dappstore/development/12.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Smart Contract Made Easy",
+                "desc": "SCEZ is a friendly tool to create Smart Contracts, NFT, Native Tokens and Blockchain Transactions.",
+                "image": "/assets/dappstore/development/13.png",
+                "ico": "/assets/dappstore/development/13.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Orcfax",
+                "desc": "Orcfax is a decentralized Cardano oracle. Oracles publish data about the real world to blockchain smart contracts.",
+                "image": "/assets/dappstore/development/14.png",
+                "ico": "/assets/dappstore/development/14.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "CardanoSharp",
+                "desc": "CardanoSharp is a .NET/C# Cryptographic and Serialization Library.",
+                "image": "/assets/dappstore/development/15.png",
+                "ico": "/assets/dappstore/development/15.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Fluree",
+                "desc": "Open source semantic graph database that guarantees data integrity, facilitates secure data sharing, and powers data insights",
+                "image": "/assets/dappstore/development/16.png",
+                "ico": "/assets/dappstore/development/16.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Aiken",
+                "desc": "Cardano smart contract language and toolchain.",
+                "image": "/assets/dappstore/development/17.png",
+                "ico": "/assets/dappstore/development/17.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "tx-submit-api",
+                "desc": "Cardano Transaction Submission API.",
+                "image": "/assets/dappstore/development/18.png",
+                "ico": "/assets/dappstore/development/18.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Sign With Wallet",
+                "desc": "Sign with Wallet lets users log into apps with their wallet credentials instead of using traditional social media accounts.",
+                "image": "/assets/dappstore/development/19.png",
+                "ico": "/assets/dappstore/development/19.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "BloxBean",
+                "desc": "List of OpenSource projects aimed at solving tooling issues and development challenges on blockchain protocols.",
+                "image": "/assets/dappstore/development/20.png",
+                "ico": "/assets/dappstore/development/20.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Lucid",
+                "desc": "Build on Cardano the easy way.",
+                "image": "/assets/dappstore/development/21.png",
+                "ico": "/assets/dappstore/development/21.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Blockery.io",
+                "desc": "Our mission is to provide the cheapest, most secure, and easy to use platform for businesses integrating with the blockchain.",
+                "image": "/assets/dappstore/development/22.png",
+                "ico": "/assets/dappstore/development/22.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "ADANATOR",
+                "desc": "A publicly available GraphQL instance for Cardano data",
+                "image": "/assets/dappstore/development/23.png",
+                "ico": "/assets/dappstore/development/23.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "TxPipe",
+                "desc": "Open-source software for a decentralized world.",
+                "image": "/assets/dappstore/development/24.png",
+                "ico": "/assets/dappstore/development/24.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Demeter",
+                "desc": "Build and deploy dApps on a single platform with Demeter – effortlessly scale to support millions of users.",
+                "image": "/assets/dappstore/development/25.png",
+                "ico": "/assets/dappstore/development/25.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "blockrockZ",
+                "desc": "blockrockZ is a project that provides a powerful GraphQL and REST API for seamless integration between the Cardano Blockchain and various applications.",
+                "image": "/assets/dappstore/development/26.png",
+                "ico": "/assets/dappstore/development/26.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Opshin",
+                "desc": "Community Cardano Smart Contract programming language with 100% valid but restricted Python3 compiling to Untyped Plutus Core",
+                "image": "/assets/dappstore/development/27.png",
+                "ico": "/assets/dappstore/development/27.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "Blink Labs",
+                "desc": "Open Source software and custom solutions for the Cardano Blockchain.",
+                "image": "/assets/dappstore/development/28.png",
+                "ico": "/assets/dappstore/development/28.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            },
+            {
+                "name": "MESH",
+                "desc": "Mesh is an open-source library that provides everything you need to build Web3 apps, with ease.",
+                "image": "/assets/dappstore/development/29.png",
+                "ico": "/assets/dappstore/development/29.png",
+                "url": "",
+                "status": "live",
+                "certification": {
+                    "l1": true,
+                    "l2": false,
+                    "l3": false
+                },
+                "hover": false,
+                "promoted": false
+            }
+        ]
         // !
     }),
     getters: {

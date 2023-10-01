@@ -290,7 +290,7 @@ export default {
         @slide-start="toggleListOfSlides(true)"
         @slide-end="toggleListOfSlides(false)"
     )
-        Slide(v-for="(slide, i) in items", :key="slide")
+        Slide(v-for="(slide, i) in store.get('dappFeature').slice(0, 3)", :key="slide")
             .carousel__item
                 .img(:style="'background-image: url(' + slide.image + ')'")/
                 .dapp-detals
