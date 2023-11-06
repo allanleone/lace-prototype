@@ -221,7 +221,7 @@ export default {
                     border-right-color: transparent;
                     border-radius: var(--iconRadius) 0px 0px var(--iconRadius);
                     background: var(--transparent);
-                    z-index: -1;
+                    // z-index: -1;
                 }
                 &:nth-child(2){
                     border-left-color: transparent;

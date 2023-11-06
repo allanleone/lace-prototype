@@ -264,5 +264,7 @@
   "prototype.onboarding.extras.footer-help": "Cookieポリシー",
   "prototype.onboarding.extras.footer-private": "プライバシーポリシー",
   "prototype.onboarding.extras.type-here": "ここに入力",
-  "prototype.onboarding.extras.footer-terms": "利用規約"
+  "prototype.onboarding.extras.footer-terms": "利用規約",
+  "prototype.staking.decentralization-on": "Support decentralization",
+  "prototype.staking.decentralization-off": "Don't decentralization"
 }

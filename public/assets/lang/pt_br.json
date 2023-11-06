@@ -265,5 +265,7 @@
   "prototype.onboarding.extras.footer-help": "Política de Cookies",
   "prototype.onboarding.extras.footer-private": "Política de Privacidade",
   "prototype.onboarding.extras.type-here": "Digite aqui",
-  "prototype.onboarding.extras.footer-terms": "Termos de Uso"
+  "prototype.onboarding.extras.footer-terms": "Termos de Uso",
+  "prototype.staking.decentralization-on": "Support decentralization",
+  "prototype.staking.decentralization-off": "Don't decentralization"
 }

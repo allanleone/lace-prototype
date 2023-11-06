@@ -2,6 +2,11 @@
 import QACodeAddFunds from '../components/static/AddFunds.vue';
 import Table from '../components/static/Table.vue';
 import Input from '../components/static/ui/Input.vue';
+//-
+import PillsCategoryMenu from '../components/dappstore/PillsCategoryMenu.vue';
+import StakingCard from '../components/static/StakingCard.vue';
+import Toggle from '../components/static/ui/Toggle.vue'
+
 export default {
     props: {
         store: Object,
@@ -52,6 +57,8 @@ export default {
                 },
             ],
             onStakes: [],
+            activeTab: 1,
+            advFilter: false,
         }
     },
     methods: {
@@ -63,6 +70,10 @@ export default {
         QACodeAddFunds,
         Input,
         Table,
+        //
+        PillsCategoryMenu,
+        StakingCard,
+        Toggle,
     }
 }
 </script>
@@ -71,10 +82,10 @@ export default {
 .staking 
     .page-title
         h1.animated.fadeInUp
-            span(v-html="store.translate('lace.labels.start-staking')")
+            span(v-html="'Staking'")
             span.counter ({{ onStakes.length }})
-    QACodeAddFunds.add-funds(:store="store")/
-    .search-stake-pools.animated.fadeInUp.delay-0-6s
+    //- QACodeAddFunds.add-funds(:store="store")/
+    //- .search-stake-pools.animated.fadeInUp.delay-0-6s
         h3 
             span(v-html="store.translate('lace.labels.stake-pools')")
             span.count (2456)
@@ -83,6 +94,109 @@ export default {
             :design="design"
             :data="stakepools"
             :store="store"
+        )/
+    .tabs-a.animated.fadeInUp.delay-0-5s
+        .tab-a(@click="activeTab = 0", :class="activeTab == 0 ? 'active' : ''") Overview
+        .tab-a(@click="activeTab = 1", :class="activeTab == 1 ? 'active' : ''") Browse Pools
+
+
+    //content
+    .recommended-header
+        h5 
+            span Recommended 
+            span.small ({{ this.store.get('poolRecommended').length }})
+        button.tertiary 
+            .icon 
+                <svg style="transform: rotate(180deg)" class="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+        button.tertiary 
+            .icon 
+                <svg class="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+    .recommended-list 
+        StakingCard(
+            :store="store", 
+            :items="this.store.get('poolRecommended').slice(0, 4)"
+            :hoverEffect="true"
+            :promoted="true"
+        )/
+    //- .recommended-showmore
+        button.tertiary 
+            .ico 
+                <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6.34317 7.75732L4.92896 9.17154L12 16.2426L19.0711 9.17157L17.6569 7.75735L12 13.4142L6.34317 7.75732Z" fill="currentColor"/></svg>
+            .label Show More
+    .more-header 
+        h5 
+            span Pools 
+            span.small ({{ this.store.get('pools').length }})
+        .decentralization 
+            //- Toggle(
+                    :store="store"
+                    @click.stop=""
+                    :status="this.store.theme == 'light' ? true : false"
+                    labelOn="prototype.staking.decentralization-on"
+                    labelOff="prototype.staking.decentralization-off"
+                    tooltip="Turn on or off the lights 💡"
+                    colorOn="var(--orange)"
+                    colorOff="var(--accentPurple)"
+                    iconSvgOn=''
+                    iconSvgOff=''
+                )/
+        .advanced-filters
+            button.tertiary(@click="advFilter = !advFilter")
+                .label Advanced filters
+                .ico(:style="advFilter ? 'transform: rotate(180deg); margin-top: -3px;' : ''")
+                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title/><polyline points="112 184 256 328 400 184" style="fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:48px"/></svg>
+            .adv-filter(v-show="advFilter")
+                h5 Advanced Filters
+                .item 
+                    .label List Style
+                    .toggle
+                        span grid
+                        span table
+                .item 
+                    .label List Density
+                    .toggle
+                        span 0
+                        span 50
+                        span 100
+                .item 
+                    .label Decentralization
+                    .toggle
+                        span on
+                        span off 
+                .item 
+                    .label Sort by
+                    .toggle
+                        span sat
+                        span cost 
+                .item 
+                    .label Saturation
+                    .toggle
+                        span 0
+                        span 100
+                .item 
+                    .label Cost
+                    .toggle
+                        span 0
+                        span 100
+                .item 
+                    .label Margin
+                    .toggle
+                        span 0
+                        span 100
+                .item 
+                    .label Pledge
+                    .toggle
+                        span 0
+                        span 100
+                
+    .search 
+        Input.search-staking(:placeholder="store.translate('lace.input-placeholders.search-by-id-or-name', true)")/
+    .pools 
+        StakingCard(
+            :store="store", 
+            :items="this.store.get('pools').slice(0, 999)"
+            :hoverEffect="true"
+            :promoted="false"
         )/
 </template>
 
@@ -99,6 +213,168 @@ export default {
             margin-top: 10px !important;
         }
         margin-bottom: 10px;
+    }
+    .tabs-a{
+        width: 100%;
+        // display: grid;
+        align-items: center;
+        border-bottom: solid 1px var(--lightGrayPlus);
+        .tab-a{
+            padding: 20px;
+            display: inline-grid;
+            width: auto;
+            cursor: pointer;
+            border-bottom: solid 4px transparent;
+            transition: border .25s ease-in-out;
+            &.active{
+                font-weight: bold;
+                border-bottom: solid 4px var(--orange);
+            }
+        }
+    }
+    //-
+    .recommended-header{
+        padding: 20px 0;
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        gap: 10px;
+        button{
+            padding: 0;
+            border-radius: 100px;
+            width: 40px;
+            height: 40px;
+            place-content: center;
+            svg{
+                width: 90%;
+                height: 90%;
+            }
+            
+        }
+    }
+    .recommended-showmore{
+        padding: 20px;
+        margin: auto;
+        text-align: center;
+        button{
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px;
+        }
+    }
+    //
+    .more-header {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        gap: 20px;
+        margin-top: 50px;
+    }
+    .advanced-filters{
+        position: relative;
+        button{
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px;
+            border-radius: 100px;
+            svg{
+                width: 16px;
+                height: 16px;
+            }
+        }
+        .adv-filter{
+            position: absolute;
+            width: 220px;
+            height: auto;
+            min-height: 200px;
+            top: 55px;
+            right: 0px;
+            background-color: var(--bgCard);
+            box-shadow: var(--tinyShadow);
+            z-index: 1;
+            padding: 10px 30px;
+            border-radius: var(--radius);
+            h4,h5,h6{
+                margin-bottom: 20px;
+            }
+            .item{
+                display: grid;
+                grid-template-columns: 1fr auto;
+                font-size: 14px;
+                span{
+                    padding: 5px;
+                    display: inline-flex;
+                    justify-self: end;
+                }
+                .label{
+                    text-align: left;
+                }
+                .toggle{
+                    text-align: right;
+                    display: block;
+                    justify-items: end;
+                }
+            }
+        }
+    }
+    span.small{
+        font-size: 14px;
+        color: var(--textColorSecondary);
+    }
+    .decentralization{
+        display: grid;
+        place-content: center;
+        .toggle{
+            height: 25px;
+        }
+    }
+    .recommended-list {
+        width: calc(100% - 0px);
+        height: 65px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        .dapp-card{
+            // grid-template-columns: repeat(4, 25%);
+            @media screen and (max-width: 668px) {
+                width: calc(100% - 20px);
+                grid-template-columns: repeat(2,50%);
+            }
+            @media screen and (min-width: 668px) and (max-width: 1023px) {
+                width: calc(100% - 20px);
+                grid-template-columns: repeat(3, 33.33%);
+            }
+            @media screen and (min-width: 1024px) and (max-width: 1280px) {
+                width: calc(100% - 60px);
+                grid-template-columns: repeat(4, 25%);
+            }
+            @media screen and (min-width: 1280px) and (max-width: 1439px) {
+                width: calc(100% - 40px);
+                grid-template-columns: repeat(3, 33.33%);
+            }
+            @media screen and (min-width: 1440px) {
+                width: calc(100% - 60px);
+                grid-template-columns: repeat(4, 25%);
+            }
+        }
+    }
+    .pools{
+        .dapp-card{
+            @media screen and (max-width: 668px) {
+                grid-template-columns: repeat(2,50%);
+            }
+            @media screen and (min-width: 668px) and (max-width: 1023px) {
+                grid-template-columns: repeat(3, 33.33%);
+            }
+            @media screen and (min-width: 1024px) and (max-width: 1280px) {
+                grid-template-columns: repeat(4, 25%);
+            }
+            @media screen and (min-width: 1280px) and (max-width: 1439px) {
+                grid-template-columns: repeat(3, 33.33%);
+            }
+            @media screen and (min-width: 1440px) {
+                grid-template-columns: repeat(5, 20%);
+            }
+        }
+        margin-bottom: 100px;
+        width: calc(100% - 60px);
     }
 }
 </style>
