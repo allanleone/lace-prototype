@@ -83,6 +83,7 @@ export default {
     .page-title
         h1.animated.fadeInUp
             span(v-html="'Staking'")
+            span (WIP)
             span.counter ({{ onStakes.length }})
     //- QACodeAddFunds.add-funds(:store="store")/
     //- .search-stake-pools.animated.fadeInUp.delay-0-6s
@@ -370,7 +371,7 @@ export default {
                 grid-template-columns: repeat(3, 33.33%);
             }
             @media screen and (min-width: 1440px) {
-                grid-template-columns: repeat(5, 20%);
+                grid-template-columns: repeat(4, 25%);
             }
         }
         margin-bottom: 100px;

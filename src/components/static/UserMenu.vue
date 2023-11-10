@@ -71,7 +71,7 @@ export default {
     cursor: pointer;
     display: grid;
     padding-top: 20px;
-    grid-template-columns: 1fr 1fr auto auto;
+    grid-template-columns: 1fr 1fr auto auto auto;
     gap: 10px;
     z-index: 2;
     &.onboarding-stage{
@@ -509,7 +509,47 @@ export default {
         margin: 0 -20px;
     }
 }
-
+.rewards-btn{
+    padding: 6px 12px;
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 24px;
+    place-content: center;
+    gap: 10px;
+    position: relative;
+    background: linear-gradient(var(--bgCard, var(--black, var(--bgCard))), var(--bgCard, var(--dark-mode-bg-black, var(--bgCard)))) padding-box, var(--gradient) border-box;
+    color: var(--textColorPrimary);
+    border: solid 2px transparent;
+    .label{
+        display: none;
+    }
+    img, svg{
+        // filter: brightness(0) invert(1);
+    }
+    svg, img{
+        width: 32px;
+    }
+    .count{
+        border-radius: 100%;
+        width: 24px;
+        height: 24px;
+        display: grid;
+        place-content: center;
+        position: absolute;
+        background: var(--bgCard);
+        font-size: 14px;
+        right: -5px;
+        top: -5px;
+        box-shadow: var(--shadow);
+    }
+    div{
+        display: grid;
+        place-content: center;
+    }
+    &:hover{
+        background: var(--bgCardBorder);
+    }
+}
 </style>
 <template lang="pug">
 .user-menu(:class="AmIOnOnboarding() ? 'onboarding-stage' : ''", v-if="AmIOnOnboarding() != undefined ? true : false")
@@ -542,6 +582,13 @@ export default {
                 <svg width="1em" height="1em" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path  d="M3.5 8a1 1 0 0 0 2 0h-2Zm1-4V3a1 1 0 0 0-1 1h1Zm4 1a1 1 0 0 0 0-2v2Zm11 3a1 1 0 1 0 2 0h-2Zm1-4h1a1 1 0 0 0-1-1v1Zm-4-1a1 1 0 1 0 0 2V3Zm-11 13a1 1 0 1 0-2 0h2Zm-1 4h-1a1 1 0 0 0 1 1v-1Zm4 1a1 1 0 1 0 0-2v2Zm1.707-5.293a1 1 0 0 0-1.414-1.414l1.414 1.414Zm4.586-7.414a1 1 0 0 0 1.414 1.414l-1.414-1.414Zm-6 1.414a1 1 0 0 0 1.414-1.414L8.793 9.707ZM20.5 20v1a1 1 0 0 0 1-1h-1Zm-4.293-5.707a1 1 0 0 0-1.414 1.414l1.414-1.414ZM21.5 16a1 1 0 1 0-2 0h2Zm-5 3a1 1 0 1 0 0 2v-2ZM5.5 8V4h-2v4h2Zm-1-3h4V3h-4v2Zm17 3V4h-2v4h2Zm-1-5h-4v2h4V3Zm-17 13v4h2v-4h-2Zm1 5h4v-2h-4v2Zm.707-.293 5-5-1.414-1.414-5 5 1.414 1.414Zm11-11 5-5-1.414-1.414-5 5 1.414 1.414Zm-6-1.414-5-5-1.414 1.414 5 5 1.414-1.414Zm11 11-5-5-1.414 1.414 5 5 1.414-1.414ZM19.5 16v4h2v-4h-2Zm1 3h-4v2h4v-2Z" fill="currentColor"></path></svg>
             .label Expand
             .chevron
+    router-link(to="/rewards")
+        .rewards-btn(v-if="!AmIOnOnboarding()")
+            .ico 
+                //- <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m21 2-5 5-4-5-4 5-5-5v13h18zM5 21h14a2 2 0 0 0 2-2v-2H3v2a2 2 0 0 0 2 2z"/></svg>
+                img(src="https://cliply.co/wp-content/uploads/2021/03/392103930_CROWN_EMOJI_400px.gif")
+            .label Rewards
+            .count 1
     button.secondary.user-profile(@click="toggleUserMenu()", :class="store.get('userMenu') == 'opened' ? 'active' : ''")
         span
             //- .status

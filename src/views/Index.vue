@@ -23,6 +23,7 @@ import Search from '../components/widgets/Search.vue'
 import NetworkInfo from '../components/widgets/NetworkInfo.vue'
 import AddressBook from '../components/widgets/AddressBook.vue'
 import PromotedDapp from '../components/widgets/PromotedDapp.vue'
+import Arch from '../components/widgets/Arch.vue'
 // -------------------------------------------------------
 
 export default {
@@ -138,6 +139,7 @@ export default {
         Tracker,
         DappStoreGuide,
         PromotedDapp,
+        Arch,
     },
     methods: {
         toggleSidebar() {
@@ -369,6 +371,7 @@ export default {
                 AboutYourWallet.animated.toggleInLeft.delay-0-2s(title="About your wallet", v-show="checkPageName() == 'addressBook' || checkPageName() == 'tokens' || checkPageName() == 'nfts' || checkPageName() == 'activity' || checkPageName() == 'staking' || checkPageName() == 'dashboard' || checkPageName() == 'trading'")/
                 DappStoreGuide.animated.toggleInLeft.delay-0-2s(title="DApp Store Guide", v-show="checkPageName().indexOf('DAppStore') != -1 ? true : false")/
                 PromotedDapp.animated.toggleInRight.delay-0-8s(title="Promoted DApp", :store="store", v-show="checkPageName().indexOf('DAppStore') != -1 ? true : false")/
+                Arch.animated.toggleInRight.delay-0-8s(title="Your Score", :store="store", v-if="checkPageName() === 'rewards' ? true : false")/
     SideDrawer(:store="store", v-if="store.sidedrawerVisible")/
     
     //-     
@@ -805,6 +808,7 @@ export default {
 @import '../scss/components/buttons';
 @import '../scss/components/pills';
 @import '../scss/components/input';
+@import '../scss/components/rewards';
 
 #lace{
     background-position: center center;

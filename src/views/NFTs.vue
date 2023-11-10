@@ -84,11 +84,11 @@ export default {
 
     .page-title(style="margin-bottom: 30px;")
         h1.animated.fadeInUp
-            button.navigation.animated.fadeInLeft(v-if="folderOpened", @click="folderOpened = false;")
+            button.navigation(v-if="folderOpened", @click="folderOpened = false;")
                 span 
                     .icon
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 19L3 12M3 12L10 5M3 12L21 12" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            span.animated.fadeInLeft(style="display: inline-block; margin-left: 10px;") 
+            span(style="display: inline-block; margin-left: 10px;") 
                 span(v-html='store.translate("lace.menu.nfts")')
                 span.counter(v-if="!folderOpened") ({{ nfts.length }})
                 span.counter(v-if="folderOpened") &nbsp; > 
@@ -96,13 +96,168 @@ export default {
                 span Favourites
                 span.counter(v-if="store.get('nftsNested').items.length > 3 ?  true : false") ({{ store.get('nftsNested').items.length }})
         span.floating-add-button.animated.toggleInRight
-            button(@click="openSidedrawer({action: 'nft-folder', title: 'NFT Folder', action: 'nft-create-folder'})")
+            button(@click="openSidedrawer({action: 'nft-folder', title: 'NFT Folder', action: 'nft-create-folder'})", style="padding: 10px 20px;")
                 span
                     .icon 
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 13H15M12 10V16M3 17V7C3 5.89543 3.89543 5 5 5H11L13 7H19C20.1046 7 21 7.89543 21 9V17C21 18.1046 20.1046 19 19 19H5C3.89543 19 3 18.1046 3 17Z" stroke="url(#paint0_linear_17397_113264)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="paint0_linear_17397_113264" x1="-0.293617" y1="2.4383" x2="25.9856" y2="4.93033" gradientUnits="userSpaceOnUse"><stop stop-color="#FF92E1"/><stop offset="1" stop-color="#FDC300"/></linearGradient></defs></svg>
                     .label(v-html="store.translate('lace.labels.create-folder')")
     //- QACodeAddFunds.add-funds(:store="store")/
-    .cards-space(:class="folderOpened ? 'folder-view' : ''")
+    .partners.animated.fadeInUp.delay-1s
+        h4 Featured
+        //- 
+        .partner
+            .logo 
+                img(src="https://dashboard-assets.dappradar.com/document/19475/labsbymutants-dapp-other-cardano-logo-166x166_497bcda0d25c23e28c9c0a4a27e9835c.png")
+            .label Monster Lab - 0.5% discount on NFTs using Lace Wallet
+        .know-more 
+            button.tertiary Open
+        //- .desc A platform with a variety of utilities for NFT projects. We offer raffles, staking and whitelist management services for Cardano NFT projects. Our main goal is to bring fun to the NFT environment.
+        .scroll-feature 
+            .pre 
+            .post
+            .cards-featured
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d426c6f636b4f776c734e616e61303330.webp')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d426c6f636b4f776c734e616e61303330.webp')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d426c6f636b4f776c734e616e61303330.webp')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d426c6f636b4f776c734e616e61303330.webp')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d426c6f636b4f776c734e616e61303330.webp')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d426c6f636b4f776c734e616e61303330.webp')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d426c6f636b4f776c734e616e61303330.webp')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d426c6f636b4f776c734e616e61303330.webp')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+                .card-s(style="background-image: url('https://assets.epoch.art/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d/7ea3e7719938f8acd700327d6c9dffd7523a02dce1d9891b5f3a452d426c6f636b4f776c734e616e61303330.webp')")
+                .card-s(style="background-image: url('https://assets.epoch.art/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017/d79181749db228d10c98501a7e1728585780bcf133b7b3df953a9017496e74726f766572747332353434.webp')")
+                .card-s(style="background-image: url('https://ipfs5.jpgstoreapis.com/ipfs/QmeC8vfJjZ14mhPbkqiocEhM2ueDey4LLeqmPUQCdD5sjF')")
+                .card-s(style="background-image: url('https://images.squarespace-cdn.com/content/v1/61ac9cf1e52ca44ca9f17a09/ef27c9c9-7cf2-4a07-9d46-0d75e8692644/unnamed-1.gif')")
+                .card-s(style="background-image: url('https://openseauserdata.com/files/0110e851ff002208b6dd9b21987bf2da.gif')")
+                .card-s(style="background-image: url('https://media.tenor.com/CIsD36vxMNkAAAAC/portalheads-wen-nfts-animation-nft-now-wen-portals.gif')")
+                .card-s(style="background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/a70e7d134500327.61d6d49b56e00.gif')")
+                .card-s(style="background-image: url('https://lh3.googleusercontent.com/l-TjjfLnm_2eBLr497nO4N12YTnM1sRatCgyL-Z74ot5dLIygZYmrAQmMkZGEiClgjbaiTmrCyY_la6LkpU7CJOqzrfncuq_a0vFWw')")
+            
+        //- 
+    .new-section.animated.fadeInUp.delay-1-5s
+        h4 Your Collection
+    br/
+    br/
+    .cards-space.animated.fadeInUp.delay-1-5s(:class="folderOpened ? 'folder-view' : ''")
 
         //- FOLDERS
         .nft-folder.animated.fadeInUp.delay-1s(@click="folderOpened = true;", v-if="!folderOpened && store.get('nftsNested').active")
@@ -121,7 +276,7 @@ export default {
         //- FOLDERS
         
         //- FOLDERS ALT
-        .nft-folder.alt.animated.fadeInUp.delay-1s(@click="folderOpened = true;", v-if="!folderOpened && store.get('nftsNested').active")
+        //- .nft-folder.alt.animated.fadeInUp.delay-1s(@click="folderOpened = true;", v-if="!folderOpened && store.get('nftsNested').active")
             .nft-nested-card.animated.fadeInUp(v-for="(nft, i) in store.get('nftsNested').items.slice(0,3)")
                 .poster-nested
                     .nft-thumb-image-nested(:style="'background-image: url(' + nft.thumb +')'")
@@ -165,7 +320,7 @@ export default {
 .nfts{
     .cards-space{
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         text-align: center;
         gap: 10px;
         &.folder-view{
@@ -257,6 +412,7 @@ export default {
             gap: 0;
             transition: width .5s ease-in-out, background-color 1s ease-in-out;
             cursor: pointer;
+            position: relative;
             &:before{
                 content: '';
                 border-radius: var(--radius);
@@ -415,6 +571,82 @@ export default {
     .sliders{
         position: fixed;
         bottom: 40px;
+    }
+
+    //
+
+    .partners{
+        padding-bottom: 180px;
+        position: relative;
+        .partner{
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 10px;
+            place-content: center;
+            margin: 20px 0;
+            .logo{
+                width: 24px;
+                img{
+                    width: 100%;
+                    border-radius: 100%;
+                }
+            }
+            .label{
+                font-size: 14px;
+                color: var(--textColorSecondary);
+                height: auto;
+                display: grid;
+                align-items: center;
+            }
+        }
+        .desc{
+            font-size: 14px;
+            color: var(--textColorSecondary);
+            margin-top: -20px;
+            margin-bottom: 20px;
+        }
+        .know-more {
+            position: absolute;
+            right: 0;
+            top: 30px;
+        }
+        .scroll-feature {
+            overflow: hidden;
+            width: 100%;
+            position: absolute;
+            .pre, .post{
+                width: 50px;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: linear-gradient(90deg, var(--bg), #00000000);
+                z-index: 1;
+            }
+            .post{
+                left: auto;
+                right: 0;
+                background: linear-gradient(90deg, #00000000, var(--bg));
+            }
+            .cards-featured{
+                @keyframes scrollLeft {
+                    0%{margin-left: 0;}
+                    100%{margin-left: -10000px;}
+                }
+                animation: scrollLeft 250s linear infinite;
+                white-space: nowrap;
+                display: inline-flex;
+                gap: 20px;
+                width: auto;
+                .card-s{
+                    border-radius: 20px;
+                    width: 100px;
+                    aspect-ratio: 3 / 4;
+                    background-size: cover;
+                    background-position: center center;
+                }
+            }
+        }
     }
 
 }

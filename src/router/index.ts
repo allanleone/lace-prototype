@@ -60,6 +60,11 @@ const router = createRouter({
       name: 'trading',
       component: () => import('../views/Trading.vue')
     },
+    {
+      path: '/rewards',
+      name: 'rewards',
+      component: () => import('../views/Rewards.vue')
+    },
     // {
     //   path: '/portal',
     //   name: 'Portal',

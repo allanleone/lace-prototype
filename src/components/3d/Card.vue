@@ -19,12 +19,21 @@ export default {
     },
     mounted() {
 
-      let angle = this.store.get('tempAngle')
-      let zoom = this.store.get('tempZoom')
-      let parallax = this.store.get('tempParallax')
-      let shadowSize = this.store.get('tempShadow')
-      let shadowOpc = this.store.get('tempShadowOpc')
-      let shadowBlur = this.store.get('tempShadowBlur')
+      let angle = 0
+      let zoom = 0
+      let parallax = 0
+      let shadowSize = 0
+      let shadowOpc = 0
+      let shadowBlur = 0
+      
+      if (!this.expanded) {
+        let angle = this.store.get('tempAngle') 
+        let zoom = this.store.get('tempZoom')
+        let parallax = this.store.get('tempParallax')
+        let shadowSize = this.store.get('tempShadow')
+        let shadowOpc = this.store.get('tempShadowOpc')
+        let shadowBlur = this.store.get('tempShadowBlur')
+      }
         
       //////////////////////
       let logica = (e) => {

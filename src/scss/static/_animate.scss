@@ -3225,6 +3225,11 @@ $duration: .45s;
     animation-delay: .9s;
 }
 
+.animated.delay-1-0s {
+    -webkit-animation-delay: 1.0s;
+    animation-delay: 1.0s;
+}
+
 .animated.delay-1-1s {
     -webkit-animation-delay: 1.1s;
     animation-delay: 1.1s;
@@ -3348,9 +3353,9 @@ $duration: .45s;
 
 @media (prefers-reduced-motion) {
     .animated {
-        -webkit-animation: unset !important;
-        animation: unset !important;
-        -webkit-transition: none !important;
-        transition: none !important;
+        // -webkit-animation: unset !important;
+        // animation: unset !important;
+        // -webkit-transition: none !important;
+        // transition: none !important;
     }
 }

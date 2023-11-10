@@ -3618,7 +3618,7 @@ export default {
                         .nft-card.animated.fadeInUp
                             .poster
                                 .nft-thumb-image(:style="'background-image: url(' + store.get('sidedrawerStorage').value.thumb +')'")
-                        Card(:data-image="store.get('sidedrawerStorage').value.thumb")
+                        Card(:data-image="store.get('sidedrawerStorage').value.thumb", :store="store")
                     //- 
                     //- 
                     //- 
