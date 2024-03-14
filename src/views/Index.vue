@@ -336,6 +336,7 @@ export default {
                     img(class="standard", src="@/assets/images/dark/lace.svg", alt="", v-if="store.theme == 'dark'")
                     img(class="symbol", src="@/assets/images/light/lace_symbol.svg", alt="", v-if="store.theme == 'light'")
                     img(class="symbol", src="@/assets/images/dark/lace_symbol.svg", alt="", v-if="store.theme == 'dark'")
+                .net(style="padding: 5px; position: absolute; background-color: #ff000022; border-radius: 10px; margin-left: 280px; white-space: nowrap;") Midnight (testnet)
                 //- MainNetworkStatus/       
             //-           
             //-  Main menu    

@@ -29,6 +29,7 @@ export default {
             transactionCostsSwap: false,
             gasGeeSwap: false,
             copyInProgress: false,
+            statustDustToken: 0,
             activityDesign: {
                 showIcon: true,
                 grid: "2fr auto",
@@ -36,14 +37,25 @@ export default {
                 template: 'activity',
             },
             globalSendAssets: [
+                // {
+                //     name: "ADA",
+                //     address: "ADA",
+                //     balance: this.store.get("tokens")[0].balance,
+                //     amount: "0.00",
+                //     cost: 0.254,
+                //     thumb: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tXNYaJZUHNddtcvDz8w-U2kQM_gbZsUeqA&usqp=CAU",
+                //     ico: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tXNYaJZUHNddtcvDz8w-U2kQM_gbZsUeqA&usqp=CAU",
+                //     type: "token",
+                //     hotSwap: false,
+                // },
                 {
-                    name: "ADA",
-                    address: "ADA",
+                    name: "Midnight",
+                    address: "tDUST",
                     balance: this.store.get("tokens")[0].balance,
                     amount: "0.00",
                     cost: 0.254,
-                    thumb: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tXNYaJZUHNddtcvDz8w-U2kQM_gbZsUeqA&usqp=CAU",
-                    ico: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tXNYaJZUHNddtcvDz8w-U2kQM_gbZsUeqA&usqp=CAU",
+                    thumb: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAM1BMVEVHcEwKCgoKCgoKCgoJCQkKCgoKCgoAAACCgoK6urrV1dWdnZ3////19fXi4uJycnJAQEB3i5UhAAAAB3RSTlMAJ670/69kVAZOWwAAALRJREFUeAF9koEOxRAMRQtWaGf//7Wved22Jg03iYsDWgWAEFN2SiWA6MgLHbIvLxWgrGGE7z689d0LhtXWe6uGwosGETFLM14MDzvpnCia0hFqobAhhFmaIdRCHMLEWsN38EBEXYxzoh6D+MFKOsusa6ga2Aj/fl3q1AzsjOpdnfseumMz3kbNPUhlHmRCUblQTNzPwKcvi1z69olff9n6s/dlEvNSZVua26IWhZI8SVH2/QBN5xEZL7QIwgAAAABJRU5ErkJggg==",
+                    ico: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAM1BMVEVHcEwKCgoKCgoKCgoJCQkKCgoKCgoAAACCgoK6urrV1dWdnZ3////19fXi4uJycnJAQEB3i5UhAAAAB3RSTlMAJ670/69kVAZOWwAAALRJREFUeAF9koEOxRAMRQtWaGf//7Wved22Jg03iYsDWgWAEFN2SiWA6MgLHbIvLxWgrGGE7z689d0LhtXWe6uGwosGETFLM14MDzvpnCia0hFqobAhhFmaIdRCHMLEWsN38EBEXYxzoh6D+MFKOsusa6ga2Aj/fl3q1AzsjOpdnfseumMz3kbNPUhlHmRCUblQTNzPwKcvi1z69olff9n6s/dlEvNSZVua26IWhZI8SVH2/QBN5xEZL7QIwgAAAABJRU5ErkJggg==",
                     type: "token",
                     hotSwap: false,
                 },
@@ -567,6 +579,8 @@ export default {
     },
     mounted(){
 
+        this.statustDustToken = 0;
+
         switch(this.router){
             case "addressBook":
                 // if(this.store.get("sidedrawerStorage").action == "add"){
@@ -579,6 +593,16 @@ export default {
                 // }
             break;
         }
+
+        setTimeout(()=>{
+            this.statustDustToken = 1;
+            setTimeout(()=>{
+                this.statustDustToken = 2;
+                setTimeout(()=>{
+                    this.statustDustToken = 3;
+                }, 6000)
+            }, 6000)
+        }, 6000)
 
     },
 }
@@ -698,6 +722,15 @@ export default {
     }
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    @keyframes customrefreshicon {
+        0%{transform: rotate(0deg);}
+        100%{transform: rotate(-360deg);}
+    }
+    .custom-animation-arrow{
+        animation: customrefreshicon 1s infinite linear;
+        transform-origin: 12px 24px;
+    }
 
     // Settings
     .settings{
@@ -2642,6 +2675,13 @@ export default {
                         .item 
                             .label Transaction hash
                             .value.hashed.main-hashed {{store.get('sidedrawerStorage').value.hash}}
+                        .item 
+                            .label Network
+                            .value.hashed.main-hashed
+                                .network-box(style="display: flex; width: 210px; border-radius: 100px; background: #cccccccc; place-content: center; margin-left: 60px; margin-top: 0px;") 
+                                    .ico(style="padding: 10px;")
+                                        img(src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAM1BMVEVHcEwKCgoKCgoKCgoJCQkKCgoKCgoAAACCgoK6urrV1dWdnZ3////19fXi4uJycnJAQEB3i5UhAAAAB3RSTlMAJ670/69kVAZOWwAAALRJREFUeAF9koEOxRAMRQtWaGf//7Wved22Jg03iYsDWgWAEFN2SiWA6MgLHbIvLxWgrGGE7z689d0LhtXWe6uGwosGETFLM14MDzvpnCia0hFqobAhhFmaIdRCHMLEWsN38EBEXYxzoh6D+MFKOsusa6ga2Aj/fl3q1AzsjOpdnfseumMz3kbNPUhlHmRCUblQTNzPwKcvi1z69olff9n6s/dlEvNSZVua26IWhZI8SVH2/QBN5xEZL7QIwgAAAABJRU5ErkJggg==")
+                                    .label(style="padding: 0px 10px; color: black;display: grid;place-content: center;") Midnight (testnet)
                     h4 Summary
                     .column-activity
                         .item 
@@ -3013,7 +3053,7 @@ export default {
                                         span Balance: 
                                         span   {{ asset.balance }}
                                 .value
-                                    .amount
+                                    .amount(style="margin-top: 15px;")
                                         label
                                             input(
                                                 type="number"
@@ -3023,7 +3063,7 @@ export default {
                                                 min="0"
                                             )/
                                     .cost-usd 
-                                        span ≈ {{ asset.cost }} USD
+                                        //- span ≈ {{ asset.cost }}
                                 //- 
                                 //- 
                                 //- 
@@ -3072,7 +3112,7 @@ export default {
                                 //- 
                                 //- 
                                 //- 
-                        button.white(@click="selectToken();")
+                        //- button.white(@click="selectToken();")
                             span
                                 .ico 
                                     <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 1V7M7.5 7V13M7.5 7H13.5M7.5 7L1.5 7" stroke="#6F7786" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3091,21 +3131,49 @@ export default {
                     .cost-breakdown
                         h5 
                             span Transaction costs
-                            span.amount  0.36 USD
+                            span.amount  2 ADA
                         .chevron.expanded
                             <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 5.33268L10.6667 9.99935L6 14.666" stroke="#3D3B39" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     .expanded-list
                         .items-list(v-for="fee in globalSendAssets")
                             .detail
-                                .ico-cost(:class="fee.type", :style="'background-image: url(' + fee.ico + ')'") 
+                                .ico-cost(:class="fee.type", :style="'background-image: url(' + 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0tXNYaJZUHNddtcvDz8w-U2kQM_gbZsUeqA&usqp=CAU' + ')'") 
                                     //- img(:src="fee.ico")
                                 .label-detail
                                     span Transaction fee
                                     span.info-detail
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 16H12V12H11M12 8H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#6F7786" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             .amount
-                                .cost {{ (((fee.cost / 100) * (fee.amount + 1)) / 50).toFixed(2) }} {{ fee.name ? (fee.name.length > 10 ? fee.name.substr(0, 7) + '...' : fee.name) : '' }}
-                                .converted {{ (((fee.cost / 100) * (fee.amount + 1)) / 50).toFixed(2) }} USD
+                                .cost {{ 0.20.toFixed(2) }} {{ fee.name ? (fee.name.length > 10 ? 'ADA' + '...' : 'ADA') : '' }}
+                                //- .converted {{ (((fee.cost / 100) * (fee.amount + 1)) / 50).toFixed(2) }} USD
+
+                    // info
+                    .info-msg(v-if="statustDustToken == 0 || statustDustToken == 2", style="background: #fcf5e3; height: 20px; padding: 20px; width: calc(100% - 40px); border-radius: 16px; display: flex; margin-top: 20px;")
+                        .icon.custom-animation-arrow(style="margin: -15px 10px 0 0; position: absolute;")
+                            <svg width="24" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4V9H4.58152M19.9381 11C19.446 7.05369 16.0796 4 12 4C8.64262 4 5.76829 6.06817 4.58152 9M4.58152 9H9M20 20V15H19.4185M19.4185 15C18.2317 17.9318 15.3574 20 12 20C7.92038 20 4.55399 16.9463 4.06189 13M19.4185 15H15" stroke="#6750A3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        span(style="padding-left: 30px;")
+                            span Waiting for local node...
+                    // error
+                    .info-msg(v-if="statustDustToken == 1", style="background: #D9D9D9; height: 20px; padding: 20px; width: calc(100% - 40px); border-radius: 16px; display: flex; margin-top: 20px;")
+                        .icon(style="margin: -15px 10px 0 0; position: absolute;")
+                            <svg width="24" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM13.25 17C13.25 17.6904 12.6904 18.25 12 18.25C11.3096 18.25 10.75 17.6904 10.75 17C10.75 16.3096 11.3096 15.75 12 15.75C12.6904 15.75 13.25 16.3096 13.25 17ZM12 5.75C11.3096 5.75 10.75 6.30964 10.75 7V12C10.75 12.6904 11.3096 13.25 12 13.25C12.6904 13.25 13.25 12.6904 13.25 12V7C13.25 6.30964 12.6904 5.75 12 5.75Z" fill="#FF5470"/></svg>
+                        span(style="padding-left: 30px;")
+                            span Unable to connect to the proof server, please check your settings
+                    // success
+                    .info-msg(v-if="statustDustToken >= 3", style="background: #DBFFE3; height: 20px; padding: 20px; width: calc(100% - 40px); border-radius: 16px; display: flex; margin-top: 20px;")
+                        .icon(style="margin: -15px 10px 0 0; position: absolute;")
+                            <svg width="24" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM16.6339 10.3839C17.122 9.89573 17.122 9.10427 16.6339 8.61612C16.1457 8.12796 15.3543 8.12796 14.8661 8.61612L10.75 12.7322L9.13388 11.1161C8.64573 10.628 7.85427 10.628 7.36612 11.1161C6.87796 11.6043 6.87796 12.3957 7.36612 12.8839L9.86612 15.3839C10.3543 15.872 11.1457 15.872 11.6339 15.3839L16.6339 10.3839Z" fill="#2CB67D"/></svg>
+                        span(style="padding-left: 30px;")
+                            span Connected to your local proof server successfully [localhost:9786]
+
+
+                    
+                    .info-msg(style="background: #fcf5e3; height: auto;padding: 20px; width: calc(100% - 40px); border-radius: 16px; display: flex; margin-top: 20px;")
+                            .icon(style="margin: 0px 10px 0 0;")
+                                <svg width="24" height="48" viewBox="0 0 24 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 28H12V24H11M12 20H12.01M21 24C21 28.9706 16.9706 33 12 33C7.02944 33 3 28.9706 3 24C3 19.0294 7.02944 15 12 15C16.9706 15 21 19.0294 21 24Z" stroke="#7F5AF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            span 
+                                span To send DUST tokens on Midnight, you must have a local proof server installed and running to execute a transaction.&nbsp;
+                                span(style="text-decoration: underline; cursor: pointer;") Learn more
             
             .window-footer  
                 // review
@@ -3299,8 +3367,36 @@ export default {
                                 .transact(v-for="t in globalSendAssets")
                                     div 
                                         span {{ (t.amount / 50).toFixed(2) }}  
-                                        span &nbsp;{{ t.address ? (t.address.length > 10 ? t.address.substr(0, 7) + '...' : t.address) : '' }}
-                                    div  {{ ((t.amount * (t.cost ? t.cost : 2)) / 50).toFixed(2) }} USD
+                                        span &nbsp;{{ t.address ? (t.address.length > 10 ? t.address.substr(0, 7) + '...' : 'ADA') : '' }}
+                                    //- div  {{ ((t.amount * (t.cost ? t.cost : 2)) / 50).toFixed(2) }} USD
+
+                        // info
+                        .info-msg(v-if="statustDustToken == 0 || statustDustToken == 2", style="background: #fcf5e3; height: 20px; padding: 20px; width: calc(100% - 40px); border-radius: 16px; display: flex; margin-top: 20px;")
+                            .icon.custom-animation-arrow(style="margin: -15px 10px 0 0; position: absolute;")
+                                <svg width="24" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4V9H4.58152M19.9381 11C19.446 7.05369 16.0796 4 12 4C8.64262 4 5.76829 6.06817 4.58152 9M4.58152 9H9M20 20V15H19.4185M19.4185 15C18.2317 17.9318 15.3574 20 12 20C7.92038 20 4.55399 16.9463 4.06189 13M19.4185 15H15" stroke="#6750A3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            span(style="padding-left: 30px;")
+                                span Waiting for local node...
+                        // error
+                        .info-msg(v-if="statustDustToken == 1", style="background: #D9D9D9; height: 20px; padding: 20px; width: calc(100% - 40px); border-radius: 16px; display: flex; margin-top: 20px;")
+                            .icon(style="margin: -15px 10px 0 0; position: absolute;")
+                                <svg width="24" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM13.25 17C13.25 17.6904 12.6904 18.25 12 18.25C11.3096 18.25 10.75 17.6904 10.75 17C10.75 16.3096 11.3096 15.75 12 15.75C12.6904 15.75 13.25 16.3096 13.25 17ZM12 5.75C11.3096 5.75 10.75 6.30964 10.75 7V12C10.75 12.6904 11.3096 13.25 12 13.25C12.6904 13.25 13.25 12.6904 13.25 12V7C13.25 6.30964 12.6904 5.75 12 5.75Z" fill="#FF5470"/></svg>
+                            span(style="padding-left: 30px;")
+                                span Unable to connect to the proof server, please check your settings
+                        // success
+                        .info-msg(v-if="statustDustToken >= 3", style="background: #DBFFE3; height: 20px; padding: 20px; width: calc(100% - 40px); border-radius: 16px; display: flex; margin-top: 20px;")
+                            .icon(style="margin: -15px 10px 0 0; position: absolute;")
+                                <svg width="24" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM16.6339 10.3839C17.122 9.89573 17.122 9.10427 16.6339 8.61612C16.1457 8.12796 15.3543 8.12796 14.8661 8.61612L10.75 12.7322L9.13388 11.1161C8.64573 10.628 7.85427 10.628 7.36612 11.1161C6.87796 11.6043 6.87796 12.3957 7.36612 12.8839L9.86612 15.3839C10.3543 15.872 11.1457 15.872 11.6339 15.3839L16.6339 10.3839Z" fill="#2CB67D"/></svg>
+                            span(style="padding-left: 30px;")
+                                span Connected to your local proof server successfully [localhost:9786]
+
+
+                        
+                        .info-msg(style="background: #fcf5e3; height: auto;padding: 20px; width: calc(100% - 40px); border-radius: 16px; display: flex; margin-top: 20px;")
+                                .icon(style="margin: 0px 10px 0 0;")
+                                    <svg width="24" height="48" viewBox="0 0 24 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 28H12V24H11M12 20H12.01M21 24C21 28.9706 16.9706 33 12 33C7.02944 33 3 28.9706 3 24C3 19.0294 7.02944 15 12 15C16.9706 15 21 19.0294 21 24Z" stroke="#7F5AF0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                span 
+                                    span To send DUST tokens on Midnight, you must have a local proof server installed and running to execute a transaction.&nbsp;
+                                    span(style="text-decoration: underline; cursor: pointer;") Learn more
                     
             .window-footer  
                 // review
@@ -3452,7 +3548,7 @@ export default {
         /////////////////////////////////////
 
         // Tokens ///////////////////////////
-        span.tokens-sidedrawer(v-if="router == 'tokens' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' ")
+        // span.tokens-sidedrawer(v-if="router == 'tokens' && store.get('sidedrawerStorage').global !== 'send' && store.get('sidedrawerStorage').global !== 'receive' ")
             //- .window-header.with-back-button
             .window-header
                 .title

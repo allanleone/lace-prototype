@@ -10,7 +10,7 @@ export default {
             design: {
                 showIcon: true,
                 grid: "1.5fr 1fr 1fr",
-                columns: ["lace.menu.tokens", 'lace.labels.price', 'lace.labels.balance'],
+                columns: ["lace.menu.tokens", '', 'lace.labels.balance'],
                 template: 'tokens',
                 walletBalanceAmount: 0,
             },
@@ -94,7 +94,7 @@ export default {
                     :delay="1"
                     easing="Power1.easeOut"
                 )
-            .coin USD
+            .coin tDUST
         .increase-or-decreased
             span +
             number(
@@ -106,7 +106,7 @@ export default {
                     :delay="1"
                     easing="Power1.easeOut"
                 )
-            span %
+            span
     .balance-on-other-networks.animated.fadeIn.delay-1s(v-if="checkBalanceDisabledNetworks()")
         div We have identified a positive balance with a previously disabled network. 
         div Please go to the Settings, then Networks for more information.

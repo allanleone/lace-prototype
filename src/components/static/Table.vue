@@ -36,6 +36,9 @@ export default {
             this.store.set({ key: 'sidedrawerStorage', value: item })
             this.store.set({ key: 'sidedrawerVisible', value: true })
         },
+        openDefaultSend(){
+            document.querySelector("button.send").trigger('click')
+        },
         standardNumberFormat(number) {
             return "" + number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
@@ -377,7 +380,8 @@ export default {
         v-show="checkToken(d)"
         :style="'grid-template-columns:' + design.grid + ';'"
         :class="i > 9 ? 'delay-2s' : 'delay-1-' + (i + 1) + 's'"
-        @click="store.set({ key: 'tokenSelectedFromTable', value: true }); openSidedrawer({action: 'token', title: 'Token details', value: d}); "
+        x-click="store.set({ key: 'tokenSelectedFromTable', value: true }); openSidedrawer({action: 'token', title: 'Token details', value: d}); "
+        @click="store.set({ key: 'tokenSelectedFromTable', value: true }); openSidedrawer({global: 'send', action: 'send', title: 'Send'}); "
         @mouseenter="d.overlay = true"
         @mouseleave="d.overlay = false"
     ) 
@@ -393,6 +397,7 @@ export default {
         // type 'price' (number)
         //.table-col(:style="'visibility: hidden;'")
         .table-col(:style="d.overlay ? 'visibility: visible;' : ''") 
+        //.table-col(:style="d.overlay ? 'visibility: visible;' : ''") 
             div 
                 number(
                     ref="tokenPercentage"
@@ -423,13 +428,13 @@ export default {
                     ref="tokenPercentage"
                     :from="0"
                     :to="d.balance"
-                    :format="tokenNumberFormat"
+                    :format="standardNumberFormat"
                     :duration="2"
                     :delay="0"
                     easing="Power1.easeOut"
                 )
                 span &nbsp;{{ d.address }}
-            div.right.secondary 
+            //- div.right.secondary 
                 number(
                     ref="tokenPercentage"
                     :from="0"
@@ -451,9 +456,10 @@ export default {
             )/
         .button-overlay(
             v-if="d.overlay"
-            @click.stop="tokenDetailsTrade(d)"
+            xx-xclick.stop="tokenDetailsTrade(d)"
+            @click="openSidedrawer({global: 'send', action: 'send', title: 'Send'})"
         )
-            button.purple.animated.fadeIn Trade
+            button.purple.animated.fadeIn Send
     .raw-row.animated.fadeIn.delay-2s(
         v-if="design.template == 'tokens'"
     ) 
