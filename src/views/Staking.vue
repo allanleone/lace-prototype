@@ -5,6 +5,7 @@ import Input from '../components/static/ui/Input.vue';
 //-
 import PillsCategoryMenu from '../components/dappstore/PillsCategoryMenu.vue';
 import StakingCard from '../components/static/StakingCard.vue';
+import StakingTable from '../components/static/StakingTable.vue';
 import Toggle from '../components/static/ui/Toggle.vue'
 
 export default {
@@ -58,12 +59,31 @@ export default {
             ],
             onStakes: [],
             activeTab: 1,
+            activeSubTab: 1,
             advFilter: false,
         }
     },
     methods: {
         openSidedrawer(item) {
             this.store.set({ key: 'sidedrawerVisible', value: true })
+        },
+        clearPools(){
+            let empt = [];
+            this.store.set({ key: 'selectedPools', value: empt });
+            this.store.pools.map((ps)=>{
+                ps.promoted = false;
+            })
+        },
+        scrollTopNow(){
+            document.querySelector("body").scrollTo({ top: 0, behavior: 'smooth' });
+        },
+        changeView(type){
+            if(type == 'table'){
+                this.store.set({ key: 'poolView', value: type });
+            }
+            if (type == 'grid') {
+                this.store.set({ key: 'poolView', value: type });
+            }
         }
     },
     components: {
@@ -73,6 +93,7 @@ export default {
         //
         PillsCategoryMenu,
         StakingCard,
+        StakingTable,
         Toggle,
     }
 }
@@ -102,28 +123,6 @@ export default {
 
 
     //content
-    .recommended-header
-        h5 
-            span Recommended 
-            span.small ({{ this.store.get('poolRecommended').length }})
-        button.tertiary 
-            .icon 
-                <svg style="transform: rotate(180deg)" class="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
-        button.tertiary 
-            .icon 
-                <svg class="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
-    .recommended-list 
-        StakingCard(
-            :store="store", 
-            :items="this.store.get('poolRecommended').slice(0, 4)"
-            :hoverEffect="true"
-            :promoted="true"
-        )/
-    //- .recommended-showmore
-        button.tertiary 
-            .ico 
-                <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6.34317 7.75732L4.92896 9.17154L12 16.2426L19.0711 9.17157L17.6569 7.75735L12 13.4142L6.34317 7.75732Z" fill="currentColor"/></svg>
-            .label Show More
     .more-header 
         h5 
             span Pools 
@@ -142,63 +141,112 @@ export default {
                     iconSvgOff=''
                 )/
         .advanced-filters
-            button.tertiary(@click="advFilter = !advFilter")
-                .label Advanced filters
-                .ico(:style="advFilter ? 'transform: rotate(180deg); margin-top: -3px;' : ''")
-                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title/><polyline points="112 184 256 328 400 184" style="fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:48px"/></svg>
-            .adv-filter(v-show="advFilter")
-                h5 Advanced Filters
-                .item 
-                    .label List Style
-                    .toggle
-                        span grid
-                        span table
-                .item 
-                    .label List Density
-                    .toggle
-                        span 0
-                        span 50
-                        span 100
-                .item 
-                    .label Decentralization
-                    .toggle
-                        span on
-                        span off 
-                .item 
-                    .label Sort by
-                    .toggle
-                        span sat
-                        span cost 
-                .item 
-                    .label Saturation
-                    .toggle
-                        span 0
-                        span 100
-                .item 
-                    .label Cost
-                    .toggle
-                        span 0
-                        span 100
-                .item 
-                    .label Margin
-                    .toggle
-                        span 0
-                        span 100
-                .item 
-                    .label Pledge
-                    .toggle
-                        span 0
-                        span 100
-                
+            .tabs-b 
+                .tab-b(@click="changeView('grid'); activeSubTab = 1", :class="activeSubTab == 1 ? 'active' : ''")
+                    <svg class="feather feather-grid" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="7" width="7" x="3" y="3"/><rect height="7" width="7" x="14" y="3"/><rect height="7" width="7" x="14" y="14"/><rect height="7" width="7" x="3" y="14"/></svg>
+                .tab-b(@click="changeView('table'); activeSubTab = 2", :class="activeSubTab == 2 ? 'active' : ''")
+                    <svg fill="none" height="24" stroke-width="1.5" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 12H7.5H12H16.5H21M3 12V16.5M3 12V7.5M21 12V16.5M21 12V7.5M3 16.5V20.4C3 20.7314 3.26863 21 3.6 21H7.5H12H16.5H20.4C20.7314 21 21 20.7314 21 20.4V16.5M3 16.5H7.5H12H16.5H21M21 7.5V3.6C21 3.26863 20.7314 3 20.4 3H16.5H12H7.5H3.6C3.26863 3 3 3.26863 3 3.6V7.5M21 7.5H16.5H12H7.5H3" stroke="currentColor" stroke-width="1.5"/></svg>
+            //- button.tertiary(@click="advFilter = !advFilter")
+            //-     .label Advanced filters
+            //-     .ico(:style="advFilter ? 'transform: rotate(180deg); margin-top: -3px;' : ''")
+            //-         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title/><polyline points="112 184 256 328 400 184" style="fill:none;stroke:#000;stroke-linecap:square;stroke-miterlimit:10;stroke-width:48px"/></svg>
+            //- .adv-filter(v-show="advFilter")
+            //-     h5 Advanced Filters
+            //-     .item 
+            //-         .label List Style
+            //-         .toggle
+            //-             span grid
+            //-             span table
+            //-     .item 
+            //-         .label List Density
+            //-         .toggle
+            //-             span 0
+            //-             span 50
+            //-             span 100
+            //-     .item 
+            //-         .label Decentralization
+            //-         .toggle
+            //-             span on
+            //-             span off 
+            //-     .item 
+            //-         .label Sort by
+            //-         .toggle
+            //-             span sat
+            //-             span cost 
+            //-     .item 
+            //-         .label Saturation
+            //-         .toggle
+            //-             span 0
+            //-             span 100
+            //-     .item 
+            //-         .label Cost
+            //-         .toggle
+            //-             span 0
+            //-             span 100
+            //-     .item 
+            //-         .label Margin
+            //-         .toggle
+            //-             span 0
+            //-             span 100
+            //-     .item 
+            //-         .label Pledge
+            //-         .toggle
+            //-             span 0
+            //-             span 100
+            
     .search 
-        Input.search-staking(:placeholder="store.translate('lace.input-placeholders.search-by-id-or-name', true)")/
-    .pools 
-        StakingCard(
-            :store="store", 
-            :items="this.store.get('pools').slice(0, 999)"
-            :hoverEffect="true"
-            :promoted="false"
-        )/
+        Input.search-staking(:placeholder="'Search by pool name or ticker'")/
+    .selection-counter.animated.fadeInUp(v-if="this.store.get('selectedPools').length > 0")
+         .copy {{ this.store.get('selectedPools').length }} pools selected (max 10)
+         .buttons 
+            button.tertiary(@click="clearPools()") Clear
+            button.primary Next
+    .scroll-top.animated.fadeInUp(@click="scrollTopNow()",:class="this.store.get('selectedPools').length > 0 ? 'bar-visible' : ''")
+        <svg baseProfile="tiny" height="32px" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Guides__x26__Forms"/><g id="Icons"><g><rect height="2" width="16" x="8" y="7"/><polygon points="8,18.5 9.414,19.914 15,14.328 15,25 17,25 17,14.328 22.586,19.914 24,18.5 16,10.5   "/></g></g></svg>
+    
+    // Staking Cards
+    span(v-if="this.store.poolView == 'grid'")
+        .selected-pools(v-if="this.store.get('selectedPools').length > 0")
+            h5 Selected ({{this.store.get('selectedPools').length}})
+            .pools(style="margin-bottom:40px")
+                StakingCard(
+                    :store="store", 
+                    :items="this.store.get('selectedPools').slice(0, 999)"
+                    :hoverEffect="true"
+                    :promoted="true"
+                )/
+            hr(style="margin-bottom: 40px; opacity: .10")/
+
+        .pools 
+            StakingCard(
+                :store="store", 
+                :items="this.store.get('pools').slice(0, 999)"
+                :hoverEffect="true"
+                :promoted="false"
+            )/
+
+    // Staking Table
+    span(v-if="this.store.poolView == 'table'")
+        .selected-pools(v-if="this.store.get('selectedPools').length > 0")
+            h5 Selected ({{this.store.get('selectedPools').length}})
+            .pools(style="margin-bottom:40px")
+                StakingTable(
+                    :store="store", 
+                    :items="this.store.get('selectedPools').slice(0, 999)"
+                    :hoverEffect="true"
+                    :promoted="true"
+                )/
+            hr(style="margin-bottom: 40px; opacity: .10")/
+
+        .pools 
+            StakingTable(
+                :store="store", 
+                :items="this.store.get('pools').slice(0, 999)"
+                :hoverEffect="true"
+                :promoted="false"
+            )/
+
+
 </template>
 
 <style lang="scss" scoped>
@@ -215,6 +263,49 @@ export default {
         }
         margin-bottom: 10px;
     }
+
+    .selection-counter{
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: calc(100% -  80px);
+        background-color: var(--bgCard);
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        z-index: 999;
+        box-shadow: var(--tinyShadow);
+        padding: 20px;
+        border-radius: 20px;
+        align-items: center;
+        .buttons{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+    }
+    .scroll-top{
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: var(--bgCard);
+        display: grid;
+        z-index: 999;
+        place-content: center;
+        border-radius: 20px;
+        align-items: center;
+        border: solid 1px var(--lightGrayPlus);
+        cursor: pointer;
+        transition: all .5s ease-in-out;
+        &:hover{
+            box-shadow: var(--tinyShadow);
+            background-color: var(--lightGrayPlus);
+        }
+        &.bar-visible{
+            bottom: 120px;
+        }
+    }
     .tabs-a{
         width: 100%;
         // display: grid;
@@ -230,6 +321,27 @@ export default {
             &.active{
                 font-weight: bold;
                 border-bottom: solid 4px var(--orange);
+            }
+        }
+    }
+    .tabs-b{
+        width: 100%;
+        display: grid;
+        align-items: center;
+        border-bottom: solid 1px var(--lightGrayPlus);
+        border-radius: 20px;
+        padding: 8px;
+        background-color: var(--lightGrayPlus);
+        grid-template-columns: 1fr 1fr;
+        .tab-b{
+            border-radius: 10px;
+            padding: 10px;
+            display: grid;
+            place-content: center;
+            cursor: pointer;
+            &.active{
+                font-weight: bold;
+                background-color: var(--lightGray);
             }
         }
     }

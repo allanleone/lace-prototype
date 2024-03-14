@@ -762,7 +762,7 @@ export const generalStore = defineStore('general', {
                     l3: false,
                 },
                 hover: false,
-                promoted: true,
+                promoted: false,
             },
             {
                 name: "Blockfrost",
@@ -963,7 +963,7 @@ export const generalStore = defineStore('general', {
                     l3: false,
                 },
                 hover: false,
-                promoted: true,
+                promoted: false,
             },
             {
                 name: "JPG.store",
@@ -1143,7 +1143,7 @@ export const generalStore = defineStore('general', {
                     l3: false,
                 },
                 hover: false,
-                promoted: true,
+                promoted: false,
             },
             {
                 name: "Blockfrost",
@@ -1828,7 +1828,7 @@ export const generalStore = defineStore('general', {
         poolRecommended: [
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -1902,7 +1902,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -1976,7 +1976,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -2050,7 +2050,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -2124,7 +2124,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -2197,10 +2197,14 @@ export const generalStore = defineStore('general', {
                 }
             },
         ],
+        selectedPools: [
+           
+        ],
+        poolView: 'grid',
         pools: [
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -2274,7 +2278,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -2348,7 +2352,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -2423,7 +2427,7 @@ export const generalStore = defineStore('general', {
             //
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -2497,7 +2501,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -2571,7 +2575,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -2645,7 +2649,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -2719,7 +2723,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -2793,7 +2797,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -2867,7 +2871,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -2941,7 +2945,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -3015,7 +3019,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -3089,7 +3093,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -3163,7 +3167,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -3237,7 +3241,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -3311,7 +3315,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -3385,7 +3389,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -3459,7 +3463,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -3533,7 +3537,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -3607,7 +3611,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -3681,7 +3685,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -3755,7 +3759,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -3829,7 +3833,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -3902,7 +3906,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -3976,7 +3980,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -4050,7 +4054,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -4124,7 +4128,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -4198,7 +4202,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -4271,7 +4275,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -4345,7 +4349,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -4419,7 +4423,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -4493,7 +4497,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -4567,7 +4571,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -4640,7 +4644,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -4714,7 +4718,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -4788,7 +4792,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -4862,7 +4866,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -4936,7 +4940,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -5009,7 +5013,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -5083,7 +5087,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -5157,7 +5161,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -5231,7 +5235,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -5305,7 +5309,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -5378,7 +5382,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -5452,7 +5456,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -5526,7 +5530,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -5600,7 +5604,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -5674,7 +5678,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -5747,7 +5751,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -5821,7 +5825,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -5895,7 +5899,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -5969,7 +5973,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -6043,7 +6047,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -6116,7 +6120,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -6190,7 +6194,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -6264,7 +6268,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -6338,7 +6342,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -6412,7 +6416,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -6485,7 +6489,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -6559,7 +6563,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -6633,7 +6637,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -6707,7 +6711,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -6781,7 +6785,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -6854,7 +6858,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -6928,7 +6932,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -7002,7 +7006,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -7076,7 +7080,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -7150,7 +7154,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -7223,7 +7227,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -7297,7 +7301,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -7371,7 +7375,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -7445,7 +7449,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -7519,7 +7523,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -7592,7 +7596,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -7666,7 +7670,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -7740,7 +7744,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -7814,7 +7818,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -7888,7 +7892,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -7961,7 +7965,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -8035,7 +8039,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -8109,7 +8113,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -8183,7 +8187,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -8257,7 +8261,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -8330,7 +8334,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -8404,7 +8408,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -8478,7 +8482,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -8552,7 +8556,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -8626,7 +8630,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -8699,7 +8703,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -8773,7 +8777,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -8847,7 +8851,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -8921,7 +8925,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -8995,7 +8999,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -9068,7 +9072,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -9142,7 +9146,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -9216,7 +9220,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -9290,7 +9294,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -9364,7 +9368,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -9437,7 +9441,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -9511,7 +9515,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -9585,7 +9589,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -9659,7 +9663,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -9733,7 +9737,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -9806,7 +9810,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -9880,7 +9884,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -9954,7 +9958,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -10028,7 +10032,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -10102,7 +10106,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -10175,7 +10179,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -10249,7 +10253,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -10323,7 +10327,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -10397,7 +10401,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -10471,7 +10475,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -10544,7 +10548,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -10618,7 +10622,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -10692,7 +10696,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -10766,7 +10770,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -10840,7 +10844,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -10913,7 +10917,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -10987,7 +10991,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -11061,7 +11065,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -11135,7 +11139,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -11209,7 +11213,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -11282,7 +11286,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -11356,7 +11360,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -11430,7 +11434,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -11504,7 +11508,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -11578,7 +11582,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -11651,7 +11655,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -11725,7 +11729,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -11799,7 +11803,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -11873,7 +11877,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -11947,7 +11951,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -12020,7 +12024,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -12094,7 +12098,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -12168,7 +12172,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -12242,7 +12246,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -12316,7 +12320,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -12389,7 +12393,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -12463,7 +12467,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -12537,7 +12541,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -12611,7 +12615,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -12685,7 +12689,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -12758,7 +12762,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -12832,7 +12836,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -12906,7 +12910,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -12980,7 +12984,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -13054,7 +13058,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -13127,7 +13131,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -13201,7 +13205,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -13275,7 +13279,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -13349,7 +13353,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -13423,7 +13427,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -13496,7 +13500,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -13570,7 +13574,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -13644,7 +13648,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -13718,7 +13722,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -13792,7 +13796,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -13865,7 +13869,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -13939,7 +13943,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -14013,7 +14017,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -14087,7 +14091,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -14161,7 +14165,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -14234,7 +14238,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -14308,7 +14312,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -14382,7 +14386,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -14456,7 +14460,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -14530,7 +14534,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -14603,7 +14607,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -14677,7 +14681,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -14751,7 +14755,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -14825,7 +14829,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -14899,7 +14903,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -14972,7 +14976,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -15046,7 +15050,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -15120,7 +15124,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -15194,7 +15198,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -15268,7 +15272,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -15341,7 +15345,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -15415,7 +15419,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -15489,7 +15493,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -15563,7 +15567,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -15637,7 +15641,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -15710,7 +15714,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -15784,7 +15788,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -15858,7 +15862,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -15932,7 +15936,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -16006,7 +16010,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -16079,7 +16083,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -16153,7 +16157,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -16227,7 +16231,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -16301,7 +16305,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -16375,7 +16379,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -16448,7 +16452,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -16522,7 +16526,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -16596,7 +16600,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -16670,7 +16674,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -16744,7 +16748,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -16817,7 +16821,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -16891,7 +16895,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -16965,7 +16969,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -17039,7 +17043,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -17113,7 +17117,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -17186,7 +17190,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -17260,7 +17264,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -17334,7 +17338,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -17408,7 +17412,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -17482,7 +17486,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -17555,7 +17559,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -17629,7 +17633,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -17703,7 +17707,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -17777,7 +17781,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -17851,7 +17855,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -17924,7 +17928,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -17998,7 +18002,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -18072,7 +18076,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -18146,7 +18150,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -18220,7 +18224,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -18293,7 +18297,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -18367,7 +18371,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -18441,7 +18445,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -18515,7 +18519,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -18589,7 +18593,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -18662,7 +18666,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -18736,7 +18740,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -18810,7 +18814,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -18884,7 +18888,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -18958,7 +18962,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -19031,7 +19035,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -19105,7 +19109,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -19179,7 +19183,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -19253,7 +19257,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -19327,7 +19331,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -19400,7 +19404,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -19474,7 +19478,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -19548,7 +19552,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -19622,7 +19626,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -19696,7 +19700,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -19769,7 +19773,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -19843,7 +19847,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -19917,7 +19921,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -19991,7 +19995,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -20065,7 +20069,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -20138,7 +20142,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -20212,7 +20216,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -20286,7 +20290,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -20360,7 +20364,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -20434,7 +20438,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -20507,7 +20511,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -20581,7 +20585,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -20655,7 +20659,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -20729,7 +20733,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -20803,7 +20807,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -20876,7 +20880,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -20950,7 +20954,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -21024,7 +21028,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -21098,7 +21102,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -21172,7 +21176,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -21245,7 +21249,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -21319,7 +21323,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -21393,7 +21397,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -21467,7 +21471,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -21541,7 +21545,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -21614,7 +21618,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -21688,7 +21692,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -21762,7 +21766,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -21836,7 +21840,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -21910,7 +21914,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -21983,7 +21987,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -22057,7 +22061,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -22131,7 +22135,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -22205,7 +22209,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -22279,7 +22283,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -22352,7 +22356,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -22426,7 +22430,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -22500,7 +22504,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -22574,7 +22578,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -22648,7 +22652,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -22721,7 +22725,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -22795,7 +22799,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -22869,7 +22873,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -22943,7 +22947,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -23017,7 +23021,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -23090,7 +23094,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -23164,7 +23168,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -23238,7 +23242,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -23312,7 +23316,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -23386,7 +23390,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -23459,7 +23463,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -23533,7 +23537,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -23607,7 +23611,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -23681,7 +23685,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -23755,7 +23759,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -23828,7 +23832,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -23902,7 +23906,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -23976,7 +23980,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -24050,7 +24054,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -24124,7 +24128,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -24197,7 +24201,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -24271,7 +24275,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -24345,7 +24349,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -24419,7 +24423,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -24493,7 +24497,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -24566,7 +24570,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -24640,7 +24644,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -24714,7 +24718,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -24788,7 +24792,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -24862,7 +24866,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -24935,7 +24939,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -25009,7 +25013,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -25083,7 +25087,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -25157,7 +25161,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -25231,7 +25235,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -25304,7 +25308,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -25378,7 +25382,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -25452,7 +25456,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -25526,7 +25530,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -25600,7 +25604,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -25673,7 +25677,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -25747,7 +25751,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -25821,7 +25825,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -25895,7 +25899,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -25969,7 +25973,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -26042,7 +26046,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -26116,7 +26120,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -26190,7 +26194,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -26264,7 +26268,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -26338,7 +26342,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -26411,7 +26415,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -26485,7 +26489,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -26559,7 +26563,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -26633,7 +26637,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -26707,7 +26711,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -26780,7 +26784,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -26854,7 +26858,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -26928,7 +26932,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -27002,7 +27006,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -27076,7 +27080,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -27149,7 +27153,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -27223,7 +27227,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -27297,7 +27301,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -27371,7 +27375,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -27445,7 +27449,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -27518,7 +27522,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -27592,7 +27596,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -27666,7 +27670,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -27740,7 +27744,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -27814,7 +27818,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -27887,7 +27891,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -27961,7 +27965,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -28035,7 +28039,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -28109,7 +28113,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -28183,7 +28187,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -28256,7 +28260,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -28330,7 +28334,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -28404,7 +28408,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -28478,7 +28482,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -28552,7 +28556,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -28625,7 +28629,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -28699,7 +28703,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -28773,7 +28777,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -28847,7 +28851,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -28921,7 +28925,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -28994,7 +28998,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -29068,7 +29072,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -29142,7 +29146,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -29216,7 +29220,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -29290,7 +29294,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -29363,7 +29367,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -29437,7 +29441,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -29511,7 +29515,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -29585,7 +29589,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -29659,7 +29663,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -29732,7 +29736,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -29806,7 +29810,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -29880,7 +29884,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -29954,7 +29958,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -30028,7 +30032,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -30101,7 +30105,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -30175,7 +30179,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -30249,7 +30253,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -30323,7 +30327,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -30397,7 +30401,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -30470,7 +30474,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -30544,7 +30548,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -30618,7 +30622,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -30692,7 +30696,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -30766,7 +30770,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -30839,7 +30843,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -30913,7 +30917,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -30987,7 +30991,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -31061,7 +31065,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -31135,7 +31139,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -31208,7 +31212,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -31282,7 +31286,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -31356,7 +31360,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -31430,7 +31434,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -31504,7 +31508,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -31577,7 +31581,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -31651,7 +31655,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -31725,7 +31729,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -31799,7 +31803,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -31873,7 +31877,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -31946,7 +31950,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -32020,7 +32024,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -32094,7 +32098,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -32168,7 +32172,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -32242,7 +32246,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -32315,7 +32319,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -32389,7 +32393,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -32463,7 +32467,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -32537,7 +32541,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -32611,7 +32615,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -32684,7 +32688,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -32758,7 +32762,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -32832,7 +32836,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -32906,7 +32910,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -32980,7 +32984,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -33053,7 +33057,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -33127,7 +33131,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -33201,7 +33205,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -33275,7 +33279,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -33349,7 +33353,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -33422,7 +33426,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -33496,7 +33500,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -33570,7 +33574,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -33644,7 +33648,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -33718,7 +33722,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -33791,7 +33795,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -33865,7 +33869,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -33939,7 +33943,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -34013,7 +34017,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -34087,7 +34091,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -34160,7 +34164,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -34234,7 +34238,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -34308,7 +34312,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -34382,7 +34386,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -34456,7 +34460,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -34529,7 +34533,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -34603,7 +34607,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -34677,7 +34681,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -34751,7 +34755,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -34825,7 +34829,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -34898,7 +34902,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -34972,7 +34976,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -35046,7 +35050,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -35120,7 +35124,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -35194,7 +35198,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -35267,7 +35271,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -35341,7 +35345,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -35415,7 +35419,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -35489,7 +35493,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -35563,7 +35567,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -35636,7 +35640,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -35710,7 +35714,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -35784,7 +35788,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -35858,7 +35862,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -35932,7 +35936,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -36005,7 +36009,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -36079,7 +36083,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -36153,7 +36157,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -36227,7 +36231,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -36301,7 +36305,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -36374,7 +36378,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -36448,7 +36452,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -36522,7 +36526,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -36596,7 +36600,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -36670,7 +36674,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -36743,7 +36747,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -36817,7 +36821,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -36891,7 +36895,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -36965,7 +36969,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -37039,7 +37043,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -37112,7 +37116,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -37186,7 +37190,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -37260,7 +37264,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -37334,7 +37338,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -37408,7 +37412,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -37481,7 +37485,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -37555,7 +37559,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -37629,7 +37633,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -37703,7 +37707,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -37777,7 +37781,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -37850,7 +37854,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -37924,7 +37928,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -37998,7 +38002,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -38072,7 +38076,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -38146,7 +38150,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -38219,7 +38223,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -38293,7 +38297,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -38367,7 +38371,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -38441,7 +38445,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -38515,7 +38519,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -38588,7 +38592,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -38662,7 +38666,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -38736,7 +38740,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -38810,7 +38814,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -38884,7 +38888,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -38957,7 +38961,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -39031,7 +39035,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -39105,7 +39109,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -39179,7 +39183,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -39253,7 +39257,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -39326,7 +39330,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -39400,7 +39404,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -39474,7 +39478,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -39548,7 +39552,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -39622,7 +39626,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -39695,7 +39699,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -39769,7 +39773,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -39843,7 +39847,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -39917,7 +39921,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -39991,7 +39995,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -40064,7 +40068,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -40138,7 +40142,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -40212,7 +40216,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -40286,7 +40290,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -40360,7 +40364,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -40433,7 +40437,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -40507,7 +40511,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -40581,7 +40585,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -40655,7 +40659,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -40729,7 +40733,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",
@@ -40802,7 +40806,7 @@ export const generalStore = defineStore('general', {
                 }
             },{
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Agro Technology Cardano",
                     ticker: "AGROT",
@@ -40876,7 +40880,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Binance Node - 29",
                     ticker: "BNP",
@@ -40950,7 +40954,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Cardano Pools United enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
                     ticker: "ACP1",
@@ -41024,7 +41028,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール カルダノウェーブプール",
                     ticker: "KITTY",
@@ -41098,7 +41102,7 @@ export const generalStore = defineStore('general', {
             },
             {
                 hover: false,
-                promoted: true,
+                promoted: false,
                 metadata: {
                     name: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     ticker: "PIADA",

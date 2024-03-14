@@ -10,13 +10,31 @@ export default {
     },
     data() {
         return {
-            
+            selected: [],
         }
     },
     components:{
         DAppStatus,
     },
     methods: {
+        selectOrAddPool(p){
+            let n = JSON.parse(JSON.stringify(p))
+            n.id= Math.floor(Math.random() * (9999999999 - 1 + 1)) + 1
+            n.hover = false;
+            n.promoted = true;
+            this.selected.push(n)
+            this.store.set({ key: 'selectedPools', value: this.selected })
+            p.hover = false;
+            p.promoted = true;
+            // document.querySelector("body").scrollTo({ top: 0, behavior: 'smooth' });
+        },
+        removePool(p){
+             this.store.selectedPools.forEach((sp, i)=>{
+                if(sp.id == p.id){
+                    this.store.selectedPools.splice(i, 1)
+                }
+             })
+        }
     },
     created(){
     },
@@ -31,21 +49,11 @@ export default {
     --animationHoverDuration: .35s;
     --delayHover: .45s;
     display: grid;
-    // grid-template-columns: repeat(3, 33.33%);
     gap: 20px;
-    // @media screen and (min-width: 1280px) and (max-width: 1660px){
-    //     grid-template-columns: repeat(2, 50%);
-    // }
-    // @media screen and (min-width: 668px) and (max-width: 1024px){
-    //     grid-template-columns: repeat(2, 50%);
-    // }
-    // @media screen and (min-width: 1px) and (max-width: 668px){
-    //     grid-template-columns: repeat(1, 100%);
-    // }
     .card{
         border-radius: var(--radius);
         border: solid 1px var(--bgCardBorder);
-        padding: 20px;
+        padding: 30px 20px;
         max-width: calc(100% - 40px);
         min-width: calc(100% - 40px);
         width: calc(100% - 40px);
@@ -121,10 +129,14 @@ export default {
                     align-items: center;
                 }
                 .grid-item{
-                    grid-template-columns: 1fr 30px;
+                    grid-template-columns: 50% 50%;
                     display: grid;
                     width: calc(100% - 16px);
                     margin: -3px 0;
+                }
+                .per{
+                    color: var(--midGray);
+                    text-align: right;
                 }
             }
             //
@@ -148,9 +160,9 @@ export default {
                 
             }
             --topStart: 0;
-            --topEnd: -100px;
+            --topEnd: -160px;
             --h: 45px;
-            --expandedHeight: 250px;
+            --expandedHeight: 370px;
             @keyframes expandHover{
                 0%{height: var(--h); top: var(--topStart); left:0; background-color: var(--bgCardHover);}
                 100%{height: var(--expandedHeight); width: calc(100% - 20px); box-shadow: var(--tinyShadow); left: -10px; top: var(--topEnd); background-color: var(--bgCard);}
@@ -216,6 +228,7 @@ export default {
                 width: calc(100% - 0px);
                 overflow: hidden;
                 text-overflow: ellipsis;
+                max-height: 20px;
             }
         }
         .row{
@@ -304,6 +317,10 @@ export default {
             }
         }
     }
+    .promoted-border{
+        border-color: var(--accentPurple);
+        // background-color: var(--accentPurpleTransparent);
+    }
     .percentage{
         .small{
             font-size: 14px;
@@ -323,32 +340,68 @@ export default {
         .metric{
             padding-left: 6px;
             font-size: 14px;
+            color: var(--midGray);
         }
         
+    }
+    .bar{
+        width: 100%;
+        height: 5px;
+        border-radius: 100px;
+        position: relative;
+        .bar-bg, .bar-progress{
+            background-color: var(--lightGrayPlus);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 100px;
+            z-index: 0;
+        }
+        .bar-progress{
+            background-color: var(--green);
+            width: 50%;
+            border-radius: 100px;
+            z-index: 1;
+        }
+    }
+    .ctas{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        button{
+            padding: 8px 20px !important;
+            width: 100%;
+            height: auto;
+        }
     }
 }
 </style>
 <template lang="pug">
-.dapp-card 
+.dapp-card
 
     //---- size "small"
     .card(
         v-for="(pool, i) in items"
         @mouseenter="pool.hover = true"
         @mouseleave="pool.hover = false"
-        :class="(pool.promoted && promoted ? 'promoted-tiny' : '')"
+        :class="(pool.promoted ? 'promoted-border' : '')"
     ) 
         .grid
             .info 
                 .row
                     span.dapp-name(v-html="pool.metadata.ticker")
+                .row
+                    .bar 
+                        .bar-progress(:style="'width:' + (5 + (pool.metrics.saturation * 100).toFixed(0)) + 'px;'")
+                        .bar-bg
+                        .bar-pct
                 //- .row.desc
                     span.dapp-name(v-html="pool.metadata.description")
             .percentage
                 .row 
-                    //- span.small Sat.
+                    span &nbsp;
                 .row(style="display: grid; grid-template-columns: 5px 1fr")
-                    .badge(:class="(pool.metrics.saturation * 100) < 2 ? ((pool.metrics.saturation * 100) < 5 ? 'yellow' : 'green') : 'green'")
+                    //- .badge(:class="(pool.metrics.saturation * 100) < 2 ? ((pool.metrics.saturation * 100) < 5 ? 'yellow' : 'green') : 'green'")
                     span.metric {{(pool.metrics.saturation * 100).toFixed(2)}}%
         //- Hover
         .hover(
@@ -359,28 +412,49 @@ export default {
                 .row.data-card
                     .info 
                         .row
-                            span.dapp-name(v-html="pool.metadata.ticker")
+                            span.dapp-name(v-html="pool.metadata.name.substr(0, 15)")
                         //- .row.desc
                             span.dapp-name(v-html="pool.metadata.description")
                     .percentage
                         .row 
                             //- span.small Sat.
                         .row(style="display: grid; grid-template-columns: 5px 1fr")
-                            .badge(:class="(pool.metrics.saturation * 100) < 2 ? ((pool.metrics.saturation * 100) < 5 ? 'yellow' : 'green') : 'green'")
-                            span.metric {{(pool.metrics.saturation * 100).toFixed(2)}}%
-                hr/
+                            //- .badge(:class="(pool.metrics.saturation * 100) < 2 ? ((pool.metrics.saturation * 100) < 5 ? 'yellow' : 'green') : 'green'")
+                            //- span.metric {{(pool.metrics.saturation * 100).toFixed(2)}}%
+                //- hr/
                 .row.desc
-                    span.dapp-name(v-html="pool.metadata.description")
-                hr/
+                    span.dapp-name(v-html="pool.metadata.description.substr(0, 100) + '...'")
+                //- hr/
+                .row.ctas
+                    button.purple(@click="selectOrAddPool(pool)", v-if="!pool.promoted") Add
+                    button.purple(@click="removePool(pool)", v-if="pool.promoted") Remove
+                    button.tertiary Details
                 .row.grid-item
-                    .label Fee
-                    .value 0.02%
+                    .label Saturation
+                    .value(style="display: grid; place-content:center; grid-template-columns: 50% 20px;")
+                        .bar
+                            .bar-progress(:style="'width:50% !important;'")
+                            .bar-bg
+                            .bar-pct
+                        .per
+                            .number(style="position: absolute; margin-top: -8px; margin-left: 5px;") 50%
                 .row.grid-item
-                    .label Margin
-                    .value 2.50%
+                    .label Live Stake
+                    .value.per 0.18%
                 .row.grid-item
-                    .label ROS
-                    .value 5%
+                    .label Pool margin
+                    .value.per 1.15%
+                .row.grid-item
+                    .label Pledge
+                    .value.per ₳ 7,343,390
+                .row.grid-item    
+                    .label Cost p/ epoch
+                    .value.per ₳ 500
+                .row.grid-item    
+                    .label Blocks
+                    .value.per 123,456
+                .row.grid-item    
+                    .label Rewards
+                    .value.per ₳ 0.452512
         //- 
-    
 </template>
